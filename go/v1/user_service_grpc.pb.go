@@ -28,7 +28,7 @@ type UserServiceClient interface {
 	LogOut(ctx context.Context, in *LogOutData, opts ...grpc.CallOption) (*Ok, error)
 	ForgotPassword(ctx context.Context, in *ForgotPassswordData, opts ...grpc.CallOption) (*ForgotPassswordResponse, error)
 	ResetPassword(ctx context.Context, in *ResetPasswordData, opts ...grpc.CallOption) (*Ok, error)
-	ChangeRole(ctx context.Context, in *UpdateRoleData, opts ...grpc.CallOption) (*Ok, error)
+	UpdateRole(ctx context.Context, in *UpdateRoleData, opts ...grpc.CallOption) (*Ok, error)
 	AddUser(ctx context.Context, in *AddStaffData, opts ...grpc.CallOption) (*Ok, error)
 	UpdateUser(ctx context.Context, in *UserData, opts ...grpc.CallOption) (*Ok, error)
 	GetMe(ctx context.Context, in *MeData, opts ...grpc.CallOption) (*UserData, error)
@@ -97,9 +97,9 @@ func (c *userServiceClient) ResetPassword(ctx context.Context, in *ResetPassword
 	return out, nil
 }
 
-func (c *userServiceClient) ChangeRole(ctx context.Context, in *UpdateRoleData, opts ...grpc.CallOption) (*Ok, error) {
+func (c *userServiceClient) UpdateRole(ctx context.Context, in *UpdateRoleData, opts ...grpc.CallOption) (*Ok, error) {
 	out := new(Ok)
-	err := c.cc.Invoke(ctx, "/userservice.UserService/ChangeRole", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/userservice.UserService/UpdateRole", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -152,7 +152,7 @@ type UserServiceServer interface {
 	LogOut(context.Context, *LogOutData) (*Ok, error)
 	ForgotPassword(context.Context, *ForgotPassswordData) (*ForgotPassswordResponse, error)
 	ResetPassword(context.Context, *ResetPasswordData) (*Ok, error)
-	ChangeRole(context.Context, *UpdateRoleData) (*Ok, error)
+	UpdateRole(context.Context, *UpdateRoleData) (*Ok, error)
 	AddUser(context.Context, *AddStaffData) (*Ok, error)
 	UpdateUser(context.Context, *UserData) (*Ok, error)
 	GetMe(context.Context, *MeData) (*UserData, error)
@@ -181,8 +181,8 @@ func (UnimplementedUserServiceServer) ForgotPassword(context.Context, *ForgotPas
 func (UnimplementedUserServiceServer) ResetPassword(context.Context, *ResetPasswordData) (*Ok, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ResetPassword not implemented")
 }
-func (UnimplementedUserServiceServer) ChangeRole(context.Context, *UpdateRoleData) (*Ok, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ChangeRole not implemented")
+func (UnimplementedUserServiceServer) UpdateRole(context.Context, *UpdateRoleData) (*Ok, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateRole not implemented")
 }
 func (UnimplementedUserServiceServer) AddUser(context.Context, *AddStaffData) (*Ok, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method AddUser not implemented")
@@ -316,20 +316,20 @@ func _UserService_ResetPassword_Handler(srv interface{}, ctx context.Context, de
 	return interceptor(ctx, in, info, handler)
 }
 
-func _UserService_ChangeRole_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _UserService_UpdateRole_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(UpdateRoleData)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(UserServiceServer).ChangeRole(ctx, in)
+		return srv.(UserServiceServer).UpdateRole(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/userservice.UserService/ChangeRole",
+		FullMethod: "/userservice.UserService/UpdateRole",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(UserServiceServer).ChangeRole(ctx, req.(*UpdateRoleData))
+		return srv.(UserServiceServer).UpdateRole(ctx, req.(*UpdateRoleData))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -438,8 +438,8 @@ var UserService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _UserService_ResetPassword_Handler,
 		},
 		{
-			MethodName: "ChangeRole",
-			Handler:    _UserService_ChangeRole_Handler,
+			MethodName: "UpdateRole",
+			Handler:    _UserService_UpdateRole_Handler,
 		},
 		{
 			MethodName: "AddUser",
