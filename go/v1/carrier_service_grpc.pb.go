@@ -34,10 +34,6 @@ type CarrierServiceClient interface {
 	UpdateQuote(ctx context.Context, in *QuoteRequest, opts ...grpc.CallOption) (*ListOfQuoteResponse, error)
 	DeleteQuote(ctx context.Context, in *QuoteRequest, opts ...grpc.CallOption) (*ListOfQuoteResponse, error)
 	GetQuotesById(ctx context.Context, in *FetchQuotesRequest, opts ...grpc.CallOption) (*QuoteResponse, error)
-	// User
-	AddUser(ctx context.Context, in *User, opts ...grpc.CallOption) (*ResponseOk, error)
-	DeleteUser(ctx context.Context, in *User, opts ...grpc.CallOption) (*ResponseOk, error)
-	UpdateUser(ctx context.Context, in *User, opts ...grpc.CallOption) (*ResponseOk, error)
 	// booking
 	BookQuote(ctx context.Context, in *BookingRequest, opts ...grpc.CallOption) (*BookingResponse, error)
 	GetBookingHistory(ctx context.Context, in *FetchBookingsRequest, opts ...grpc.CallOption) (*ListOfBooking, error)
@@ -133,33 +129,6 @@ func (c *carrierServiceClient) GetQuotesById(ctx context.Context, in *FetchQuote
 	return out, nil
 }
 
-func (c *carrierServiceClient) AddUser(ctx context.Context, in *User, opts ...grpc.CallOption) (*ResponseOk, error) {
-	out := new(ResponseOk)
-	err := c.cc.Invoke(ctx, "/carrier.CarrierService/AddUser", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *carrierServiceClient) DeleteUser(ctx context.Context, in *User, opts ...grpc.CallOption) (*ResponseOk, error) {
-	out := new(ResponseOk)
-	err := c.cc.Invoke(ctx, "/carrier.CarrierService/DeleteUser", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *carrierServiceClient) UpdateUser(ctx context.Context, in *User, opts ...grpc.CallOption) (*ResponseOk, error) {
-	out := new(ResponseOk)
-	err := c.cc.Invoke(ctx, "/carrier.CarrierService/UpdateUser", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 func (c *carrierServiceClient) BookQuote(ctx context.Context, in *BookingRequest, opts ...grpc.CallOption) (*BookingResponse, error) {
 	out := new(BookingResponse)
 	err := c.cc.Invoke(ctx, "/carrier.CarrierService/BookQuote", in, out, opts...)
@@ -203,10 +172,6 @@ type CarrierServiceServer interface {
 	UpdateQuote(context.Context, *QuoteRequest) (*ListOfQuoteResponse, error)
 	DeleteQuote(context.Context, *QuoteRequest) (*ListOfQuoteResponse, error)
 	GetQuotesById(context.Context, *FetchQuotesRequest) (*QuoteResponse, error)
-	// User
-	AddUser(context.Context, *User) (*ResponseOk, error)
-	DeleteUser(context.Context, *User) (*ResponseOk, error)
-	UpdateUser(context.Context, *User) (*ResponseOk, error)
 	// booking
 	BookQuote(context.Context, *BookingRequest) (*BookingResponse, error)
 	GetBookingHistory(context.Context, *FetchBookingsRequest) (*ListOfBooking, error)
@@ -243,15 +208,6 @@ func (UnimplementedCarrierServiceServer) DeleteQuote(context.Context, *QuoteRequ
 }
 func (UnimplementedCarrierServiceServer) GetQuotesById(context.Context, *FetchQuotesRequest) (*QuoteResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetQuotesById not implemented")
-}
-func (UnimplementedCarrierServiceServer) AddUser(context.Context, *User) (*ResponseOk, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method AddUser not implemented")
-}
-func (UnimplementedCarrierServiceServer) DeleteUser(context.Context, *User) (*ResponseOk, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DeleteUser not implemented")
-}
-func (UnimplementedCarrierServiceServer) UpdateUser(context.Context, *User) (*ResponseOk, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdateUser not implemented")
 }
 func (UnimplementedCarrierServiceServer) BookQuote(context.Context, *BookingRequest) (*BookingResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method BookQuote not implemented")
@@ -436,60 +392,6 @@ func _CarrierService_GetQuotesById_Handler(srv interface{}, ctx context.Context,
 	return interceptor(ctx, in, info, handler)
 }
 
-func _CarrierService_AddUser_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(User)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(CarrierServiceServer).AddUser(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/carrier.CarrierService/AddUser",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CarrierServiceServer).AddUser(ctx, req.(*User))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _CarrierService_DeleteUser_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(User)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(CarrierServiceServer).DeleteUser(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/carrier.CarrierService/DeleteUser",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CarrierServiceServer).DeleteUser(ctx, req.(*User))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _CarrierService_UpdateUser_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(User)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(CarrierServiceServer).UpdateUser(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/carrier.CarrierService/UpdateUser",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CarrierServiceServer).UpdateUser(ctx, req.(*User))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 func _CarrierService_BookQuote_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(BookingRequest)
 	if err := dec(in); err != nil {
@@ -586,18 +488,6 @@ var CarrierService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetQuotesById",
 			Handler:    _CarrierService_GetQuotesById_Handler,
-		},
-		{
-			MethodName: "AddUser",
-			Handler:    _CarrierService_AddUser_Handler,
-		},
-		{
-			MethodName: "DeleteUser",
-			Handler:    _CarrierService_DeleteUser_Handler,
-		},
-		{
-			MethodName: "UpdateUser",
-			Handler:    _CarrierService_UpdateUser_Handler,
 		},
 		{
 			MethodName: "BookQuote",

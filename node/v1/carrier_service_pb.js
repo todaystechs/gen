@@ -21,8 +21,6 @@ var location_pb = require('./location_pb.js');
 goog.object.extend(proto, location_pb);
 var book_pb = require('./book_pb.js');
 goog.object.extend(proto, book_pb);
-var user_pb = require('./user_pb.js');
-goog.object.extend(proto, user_pb);
 var google_protobuf_any_pb = require('google-protobuf/google/protobuf/any_pb.js');
 goog.object.extend(proto, google_protobuf_any_pb);
 goog.exportSymbol('proto.carrier.CarrierServicePing', null, global);

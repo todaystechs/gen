@@ -243,7 +243,7 @@
         "role": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/carrierRole"
+            "type": "string"
           }
         },
         "prefferedContactMethod": {
@@ -474,25 +474,6 @@
         }
       },
       "title": "type QuoteResponse struct {\n\tQuoteId     string    `dynamodbav:\"quote_id\" json:\"quote_id\"`\n\tSortId      string    `dynamodbav:\"sort_id\" json:\"sort_id\"`\n\tCarrier     Carrier   `dynamodbav:\"carrier\" json:\"carrier\"`\n\tAmount      Amount    `dynamodbav:\"amount\" json:\"amount\"`\n\tTransitTime string    `dynamodbav:\"transit_time\" json:\"transit_time\"`\n\tGuranteed   Guranteed `dynamodbav:\"guranteed\" json:\"guranteed\"`\n}"
-    },
-    "carrierRole": {
-      "type": "string",
-      "enum": [
-        "SystemOwner",
-        "SystemManager",
-        "SystemStaff",
-        "SystemDeveloper",
-        "SystemWarehouseManager",
-        "SystemWarehouseStaff",
-        "BusinessOwner",
-        "BusinessManager",
-        "BusinessStaff",
-        "BusinessWarehouseManager",
-        "BusinessWarehouseStaff",
-        "ThreePLOwner",
-        "ThreePLStaff"
-      ],
-      "default": "SystemOwner"
     },
     "carrierShippingDetail": {
       "type": "object",
