@@ -17,6 +17,8 @@ var global = Function('return this')();
 
 var address_pb = require('./address_pb.js');
 goog.object.extend(proto, address_pb);
+var google_protobuf_wrappers_pb = require('google-protobuf/google/protobuf/wrappers_pb.js');
+goog.object.extend(proto, google_protobuf_wrappers_pb);
 goog.exportSymbol('proto.carrier.Business', null, global);
 goog.exportSymbol('proto.carrier.Carrier', null, global);
 /**
@@ -93,12 +95,12 @@ proto.carrier.Carrier.prototype.toObject = function(opt_includeInstance) {
  */
 proto.carrier.Carrier.toObject = function(includeInstance, msg) {
   var f, obj = {
-    name: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    authurl: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    rateurl: jspb.Message.getFieldWithDefault(msg, 3, ""),
-    addaddressurl: jspb.Message.getFieldWithDefault(msg, 4, ""),
-    getaddressesurl: jspb.Message.getFieldWithDefault(msg, 5, ""),
-    quotehistoryurl: jspb.Message.getFieldWithDefault(msg, 6, "")
+    name: (f = msg.getName()) && google_protobuf_wrappers_pb.StringValue.toObject(includeInstance, f),
+    authurl: (f = msg.getAuthurl()) && google_protobuf_wrappers_pb.StringValue.toObject(includeInstance, f),
+    rateurl: (f = msg.getRateurl()) && google_protobuf_wrappers_pb.StringValue.toObject(includeInstance, f),
+    addaddressurl: (f = msg.getAddaddressurl()) && google_protobuf_wrappers_pb.StringValue.toObject(includeInstance, f),
+    getaddressesurl: (f = msg.getGetaddressesurl()) && google_protobuf_wrappers_pb.StringValue.toObject(includeInstance, f),
+    quotehistoryurl: (f = msg.getQuotehistoryurl()) && google_protobuf_wrappers_pb.StringValue.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -136,27 +138,33 @@ proto.carrier.Carrier.deserializeBinaryFromReader = function(msg, reader) {
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {string} */ (reader.readString());
+      var value = new google_protobuf_wrappers_pb.StringValue;
+      reader.readMessage(value,google_protobuf_wrappers_pb.StringValue.deserializeBinaryFromReader);
       msg.setName(value);
       break;
     case 2:
-      var value = /** @type {string} */ (reader.readString());
+      var value = new google_protobuf_wrappers_pb.StringValue;
+      reader.readMessage(value,google_protobuf_wrappers_pb.StringValue.deserializeBinaryFromReader);
       msg.setAuthurl(value);
       break;
     case 3:
-      var value = /** @type {string} */ (reader.readString());
+      var value = new google_protobuf_wrappers_pb.StringValue;
+      reader.readMessage(value,google_protobuf_wrappers_pb.StringValue.deserializeBinaryFromReader);
       msg.setRateurl(value);
       break;
     case 4:
-      var value = /** @type {string} */ (reader.readString());
+      var value = new google_protobuf_wrappers_pb.StringValue;
+      reader.readMessage(value,google_protobuf_wrappers_pb.StringValue.deserializeBinaryFromReader);
       msg.setAddaddressurl(value);
       break;
     case 5:
-      var value = /** @type {string} */ (reader.readString());
+      var value = new google_protobuf_wrappers_pb.StringValue;
+      reader.readMessage(value,google_protobuf_wrappers_pb.StringValue.deserializeBinaryFromReader);
       msg.setGetaddressesurl(value);
       break;
     case 6:
-      var value = /** @type {string} */ (reader.readString());
+      var value = new google_protobuf_wrappers_pb.StringValue;
+      reader.readMessage(value,google_protobuf_wrappers_pb.StringValue.deserializeBinaryFromReader);
       msg.setQuotehistoryurl(value);
       break;
     default:
@@ -189,155 +197,275 @@ proto.carrier.Carrier.prototype.serializeBinary = function() {
 proto.carrier.Carrier.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getName();
-  if (f.length > 0) {
-    writer.writeString(
+  if (f != null) {
+    writer.writeMessage(
       1,
-      f
+      f,
+      google_protobuf_wrappers_pb.StringValue.serializeBinaryToWriter
     );
   }
   f = message.getAuthurl();
-  if (f.length > 0) {
-    writer.writeString(
+  if (f != null) {
+    writer.writeMessage(
       2,
-      f
+      f,
+      google_protobuf_wrappers_pb.StringValue.serializeBinaryToWriter
     );
   }
   f = message.getRateurl();
-  if (f.length > 0) {
-    writer.writeString(
+  if (f != null) {
+    writer.writeMessage(
       3,
-      f
+      f,
+      google_protobuf_wrappers_pb.StringValue.serializeBinaryToWriter
     );
   }
   f = message.getAddaddressurl();
-  if (f.length > 0) {
-    writer.writeString(
+  if (f != null) {
+    writer.writeMessage(
       4,
-      f
+      f,
+      google_protobuf_wrappers_pb.StringValue.serializeBinaryToWriter
     );
   }
   f = message.getGetaddressesurl();
-  if (f.length > 0) {
-    writer.writeString(
+  if (f != null) {
+    writer.writeMessage(
       5,
-      f
+      f,
+      google_protobuf_wrappers_pb.StringValue.serializeBinaryToWriter
     );
   }
   f = message.getQuotehistoryurl();
-  if (f.length > 0) {
-    writer.writeString(
+  if (f != null) {
+    writer.writeMessage(
       6,
-      f
+      f,
+      google_protobuf_wrappers_pb.StringValue.serializeBinaryToWriter
     );
   }
 };
 
 
 /**
- * optional string Name = 1;
- * @return {string}
+ * optional google.protobuf.StringValue Name = 1;
+ * @return {?proto.google.protobuf.StringValue}
  */
 proto.carrier.Carrier.prototype.getName = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
+  return /** @type{?proto.google.protobuf.StringValue} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_wrappers_pb.StringValue, 1));
 };
 
 
 /**
- * @param {string} value
+ * @param {?proto.google.protobuf.StringValue|undefined} value
+ * @return {!proto.carrier.Carrier} returns this
+*/
+proto.carrier.Carrier.prototype.setName = function(value) {
+  return jspb.Message.setWrapperField(this, 1, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
  * @return {!proto.carrier.Carrier} returns this
  */
-proto.carrier.Carrier.prototype.setName = function(value) {
-  return jspb.Message.setProto3StringField(this, 1, value);
+proto.carrier.Carrier.prototype.clearName = function() {
+  return this.setName(undefined);
 };
 
 
 /**
- * optional string AuthUrl = 2;
- * @return {string}
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.carrier.Carrier.prototype.hasName = function() {
+  return jspb.Message.getField(this, 1) != null;
+};
+
+
+/**
+ * optional google.protobuf.StringValue AuthUrl = 2;
+ * @return {?proto.google.protobuf.StringValue}
  */
 proto.carrier.Carrier.prototype.getAuthurl = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
+  return /** @type{?proto.google.protobuf.StringValue} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_wrappers_pb.StringValue, 2));
 };
 
 
 /**
- * @param {string} value
+ * @param {?proto.google.protobuf.StringValue|undefined} value
+ * @return {!proto.carrier.Carrier} returns this
+*/
+proto.carrier.Carrier.prototype.setAuthurl = function(value) {
+  return jspb.Message.setWrapperField(this, 2, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
  * @return {!proto.carrier.Carrier} returns this
  */
-proto.carrier.Carrier.prototype.setAuthurl = function(value) {
-  return jspb.Message.setProto3StringField(this, 2, value);
+proto.carrier.Carrier.prototype.clearAuthurl = function() {
+  return this.setAuthurl(undefined);
 };
 
 
 /**
- * optional string RateUrl = 3;
- * @return {string}
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.carrier.Carrier.prototype.hasAuthurl = function() {
+  return jspb.Message.getField(this, 2) != null;
+};
+
+
+/**
+ * optional google.protobuf.StringValue RateUrl = 3;
+ * @return {?proto.google.protobuf.StringValue}
  */
 proto.carrier.Carrier.prototype.getRateurl = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
+  return /** @type{?proto.google.protobuf.StringValue} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_wrappers_pb.StringValue, 3));
 };
 
 
 /**
- * @param {string} value
+ * @param {?proto.google.protobuf.StringValue|undefined} value
+ * @return {!proto.carrier.Carrier} returns this
+*/
+proto.carrier.Carrier.prototype.setRateurl = function(value) {
+  return jspb.Message.setWrapperField(this, 3, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
  * @return {!proto.carrier.Carrier} returns this
  */
-proto.carrier.Carrier.prototype.setRateurl = function(value) {
-  return jspb.Message.setProto3StringField(this, 3, value);
+proto.carrier.Carrier.prototype.clearRateurl = function() {
+  return this.setRateurl(undefined);
 };
 
 
 /**
- * optional string AddAddressUrl = 4;
- * @return {string}
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.carrier.Carrier.prototype.hasRateurl = function() {
+  return jspb.Message.getField(this, 3) != null;
+};
+
+
+/**
+ * optional google.protobuf.StringValue AddAddressUrl = 4;
+ * @return {?proto.google.protobuf.StringValue}
  */
 proto.carrier.Carrier.prototype.getAddaddressurl = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 4, ""));
+  return /** @type{?proto.google.protobuf.StringValue} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_wrappers_pb.StringValue, 4));
 };
 
 
 /**
- * @param {string} value
+ * @param {?proto.google.protobuf.StringValue|undefined} value
+ * @return {!proto.carrier.Carrier} returns this
+*/
+proto.carrier.Carrier.prototype.setAddaddressurl = function(value) {
+  return jspb.Message.setWrapperField(this, 4, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
  * @return {!proto.carrier.Carrier} returns this
  */
-proto.carrier.Carrier.prototype.setAddaddressurl = function(value) {
-  return jspb.Message.setProto3StringField(this, 4, value);
+proto.carrier.Carrier.prototype.clearAddaddressurl = function() {
+  return this.setAddaddressurl(undefined);
 };
 
 
 /**
- * optional string GetAddressesUrl = 5;
- * @return {string}
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.carrier.Carrier.prototype.hasAddaddressurl = function() {
+  return jspb.Message.getField(this, 4) != null;
+};
+
+
+/**
+ * optional google.protobuf.StringValue GetAddressesUrl = 5;
+ * @return {?proto.google.protobuf.StringValue}
  */
 proto.carrier.Carrier.prototype.getGetaddressesurl = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 5, ""));
+  return /** @type{?proto.google.protobuf.StringValue} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_wrappers_pb.StringValue, 5));
 };
 
 
 /**
- * @param {string} value
+ * @param {?proto.google.protobuf.StringValue|undefined} value
+ * @return {!proto.carrier.Carrier} returns this
+*/
+proto.carrier.Carrier.prototype.setGetaddressesurl = function(value) {
+  return jspb.Message.setWrapperField(this, 5, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
  * @return {!proto.carrier.Carrier} returns this
  */
-proto.carrier.Carrier.prototype.setGetaddressesurl = function(value) {
-  return jspb.Message.setProto3StringField(this, 5, value);
+proto.carrier.Carrier.prototype.clearGetaddressesurl = function() {
+  return this.setGetaddressesurl(undefined);
 };
 
 
 /**
- * optional string QuoteHistoryUrl = 6;
- * @return {string}
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.carrier.Carrier.prototype.hasGetaddressesurl = function() {
+  return jspb.Message.getField(this, 5) != null;
+};
+
+
+/**
+ * optional google.protobuf.StringValue QuoteHistoryUrl = 6;
+ * @return {?proto.google.protobuf.StringValue}
  */
 proto.carrier.Carrier.prototype.getQuotehistoryurl = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 6, ""));
+  return /** @type{?proto.google.protobuf.StringValue} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_wrappers_pb.StringValue, 6));
 };
 
 
 /**
- * @param {string} value
+ * @param {?proto.google.protobuf.StringValue|undefined} value
+ * @return {!proto.carrier.Carrier} returns this
+*/
+proto.carrier.Carrier.prototype.setQuotehistoryurl = function(value) {
+  return jspb.Message.setWrapperField(this, 6, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
  * @return {!proto.carrier.Carrier} returns this
  */
-proto.carrier.Carrier.prototype.setQuotehistoryurl = function(value) {
-  return jspb.Message.setProto3StringField(this, 6, value);
+proto.carrier.Carrier.prototype.clearQuotehistoryurl = function() {
+  return this.setQuotehistoryurl(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.carrier.Carrier.prototype.hasQuotehistoryurl = function() {
+  return jspb.Message.getField(this, 6) != null;
 };
 
 
@@ -373,22 +501,22 @@ proto.carrier.Business.prototype.toObject = function(opt_includeInstance) {
  */
 proto.carrier.Business.toObject = function(includeInstance, msg) {
   var f, obj = {
-    type: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    id: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    orgid: jspb.Message.getFieldWithDefault(msg, 3, ""),
-    sortid: jspb.Message.getFieldWithDefault(msg, 4, ""),
-    businessname: jspb.Message.getFieldWithDefault(msg, 5, ""),
-    legalbusinessname: jspb.Message.getFieldWithDefault(msg, 6, ""),
-    businessurl: jspb.Message.getFieldWithDefault(msg, 7, ""),
-    businessemail: jspb.Message.getFieldWithDefault(msg, 8, ""),
-    phonenumber: jspb.Message.getFieldWithDefault(msg, 9, ""),
-    createdat: jspb.Message.getFieldWithDefault(msg, 10, ""),
-    updatedat: jspb.Message.getFieldWithDefault(msg, 11, ""),
-    lastloginat: jspb.Message.getFieldWithDefault(msg, 12, ""),
-    deletedat: jspb.Message.getFieldWithDefault(msg, 13, ""),
-    businesstype: jspb.Message.getFieldWithDefault(msg, 14, ""),
+    type: (f = msg.getType()) && google_protobuf_wrappers_pb.StringValue.toObject(includeInstance, f),
+    id: (f = msg.getId()) && google_protobuf_wrappers_pb.StringValue.toObject(includeInstance, f),
+    orgid: (f = msg.getOrgid()) && google_protobuf_wrappers_pb.StringValue.toObject(includeInstance, f),
+    sortid: (f = msg.getSortid()) && google_protobuf_wrappers_pb.StringValue.toObject(includeInstance, f),
+    businessname: (f = msg.getBusinessname()) && google_protobuf_wrappers_pb.StringValue.toObject(includeInstance, f),
+    legalbusinessname: (f = msg.getLegalbusinessname()) && google_protobuf_wrappers_pb.StringValue.toObject(includeInstance, f),
+    businessurl: (f = msg.getBusinessurl()) && google_protobuf_wrappers_pb.StringValue.toObject(includeInstance, f),
+    businessemail: (f = msg.getBusinessemail()) && google_protobuf_wrappers_pb.StringValue.toObject(includeInstance, f),
+    phonenumber: (f = msg.getPhonenumber()) && google_protobuf_wrappers_pb.StringValue.toObject(includeInstance, f),
+    createdat: (f = msg.getCreatedat()) && google_protobuf_wrappers_pb.StringValue.toObject(includeInstance, f),
+    updatedat: (f = msg.getUpdatedat()) && google_protobuf_wrappers_pb.StringValue.toObject(includeInstance, f),
+    lastloginat: (f = msg.getLastloginat()) && google_protobuf_wrappers_pb.StringValue.toObject(includeInstance, f),
+    deletedat: (f = msg.getDeletedat()) && google_protobuf_wrappers_pb.StringValue.toObject(includeInstance, f),
+    businesstype: (f = msg.getBusinesstype()) && google_protobuf_wrappers_pb.StringValue.toObject(includeInstance, f),
     address: (f = msg.getAddress()) && address_pb.Address.toObject(includeInstance, f),
-    primarycontact: jspb.Message.getFieldWithDefault(msg, 16, "")
+    primarycontact: (f = msg.getPrimarycontact()) && google_protobuf_wrappers_pb.StringValue.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -426,59 +554,73 @@ proto.carrier.Business.deserializeBinaryFromReader = function(msg, reader) {
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {string} */ (reader.readString());
+      var value = new google_protobuf_wrappers_pb.StringValue;
+      reader.readMessage(value,google_protobuf_wrappers_pb.StringValue.deserializeBinaryFromReader);
       msg.setType(value);
       break;
     case 2:
-      var value = /** @type {string} */ (reader.readString());
+      var value = new google_protobuf_wrappers_pb.StringValue;
+      reader.readMessage(value,google_protobuf_wrappers_pb.StringValue.deserializeBinaryFromReader);
       msg.setId(value);
       break;
     case 3:
-      var value = /** @type {string} */ (reader.readString());
+      var value = new google_protobuf_wrappers_pb.StringValue;
+      reader.readMessage(value,google_protobuf_wrappers_pb.StringValue.deserializeBinaryFromReader);
       msg.setOrgid(value);
       break;
     case 4:
-      var value = /** @type {string} */ (reader.readString());
+      var value = new google_protobuf_wrappers_pb.StringValue;
+      reader.readMessage(value,google_protobuf_wrappers_pb.StringValue.deserializeBinaryFromReader);
       msg.setSortid(value);
       break;
     case 5:
-      var value = /** @type {string} */ (reader.readString());
+      var value = new google_protobuf_wrappers_pb.StringValue;
+      reader.readMessage(value,google_protobuf_wrappers_pb.StringValue.deserializeBinaryFromReader);
       msg.setBusinessname(value);
       break;
     case 6:
-      var value = /** @type {string} */ (reader.readString());
+      var value = new google_protobuf_wrappers_pb.StringValue;
+      reader.readMessage(value,google_protobuf_wrappers_pb.StringValue.deserializeBinaryFromReader);
       msg.setLegalbusinessname(value);
       break;
     case 7:
-      var value = /** @type {string} */ (reader.readString());
+      var value = new google_protobuf_wrappers_pb.StringValue;
+      reader.readMessage(value,google_protobuf_wrappers_pb.StringValue.deserializeBinaryFromReader);
       msg.setBusinessurl(value);
       break;
     case 8:
-      var value = /** @type {string} */ (reader.readString());
+      var value = new google_protobuf_wrappers_pb.StringValue;
+      reader.readMessage(value,google_protobuf_wrappers_pb.StringValue.deserializeBinaryFromReader);
       msg.setBusinessemail(value);
       break;
     case 9:
-      var value = /** @type {string} */ (reader.readString());
+      var value = new google_protobuf_wrappers_pb.StringValue;
+      reader.readMessage(value,google_protobuf_wrappers_pb.StringValue.deserializeBinaryFromReader);
       msg.setPhonenumber(value);
       break;
     case 10:
-      var value = /** @type {string} */ (reader.readString());
+      var value = new google_protobuf_wrappers_pb.StringValue;
+      reader.readMessage(value,google_protobuf_wrappers_pb.StringValue.deserializeBinaryFromReader);
       msg.setCreatedat(value);
       break;
     case 11:
-      var value = /** @type {string} */ (reader.readString());
+      var value = new google_protobuf_wrappers_pb.StringValue;
+      reader.readMessage(value,google_protobuf_wrappers_pb.StringValue.deserializeBinaryFromReader);
       msg.setUpdatedat(value);
       break;
     case 12:
-      var value = /** @type {string} */ (reader.readString());
+      var value = new google_protobuf_wrappers_pb.StringValue;
+      reader.readMessage(value,google_protobuf_wrappers_pb.StringValue.deserializeBinaryFromReader);
       msg.setLastloginat(value);
       break;
     case 13:
-      var value = /** @type {string} */ (reader.readString());
+      var value = new google_protobuf_wrappers_pb.StringValue;
+      reader.readMessage(value,google_protobuf_wrappers_pb.StringValue.deserializeBinaryFromReader);
       msg.setDeletedat(value);
       break;
     case 14:
-      var value = /** @type {string} */ (reader.readString());
+      var value = new google_protobuf_wrappers_pb.StringValue;
+      reader.readMessage(value,google_protobuf_wrappers_pb.StringValue.deserializeBinaryFromReader);
       msg.setBusinesstype(value);
       break;
     case 15:
@@ -487,7 +629,8 @@ proto.carrier.Business.deserializeBinaryFromReader = function(msg, reader) {
       msg.setAddress(value);
       break;
     case 16:
-      var value = /** @type {string} */ (reader.readString());
+      var value = new google_protobuf_wrappers_pb.StringValue;
+      reader.readMessage(value,google_protobuf_wrappers_pb.StringValue.deserializeBinaryFromReader);
       msg.setPrimarycontact(value);
       break;
     default:
@@ -520,101 +663,115 @@ proto.carrier.Business.prototype.serializeBinary = function() {
 proto.carrier.Business.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getType();
-  if (f.length > 0) {
-    writer.writeString(
+  if (f != null) {
+    writer.writeMessage(
       1,
-      f
+      f,
+      google_protobuf_wrappers_pb.StringValue.serializeBinaryToWriter
     );
   }
   f = message.getId();
-  if (f.length > 0) {
-    writer.writeString(
+  if (f != null) {
+    writer.writeMessage(
       2,
-      f
+      f,
+      google_protobuf_wrappers_pb.StringValue.serializeBinaryToWriter
     );
   }
   f = message.getOrgid();
-  if (f.length > 0) {
-    writer.writeString(
+  if (f != null) {
+    writer.writeMessage(
       3,
-      f
+      f,
+      google_protobuf_wrappers_pb.StringValue.serializeBinaryToWriter
     );
   }
   f = message.getSortid();
-  if (f.length > 0) {
-    writer.writeString(
+  if (f != null) {
+    writer.writeMessage(
       4,
-      f
+      f,
+      google_protobuf_wrappers_pb.StringValue.serializeBinaryToWriter
     );
   }
   f = message.getBusinessname();
-  if (f.length > 0) {
-    writer.writeString(
+  if (f != null) {
+    writer.writeMessage(
       5,
-      f
+      f,
+      google_protobuf_wrappers_pb.StringValue.serializeBinaryToWriter
     );
   }
   f = message.getLegalbusinessname();
-  if (f.length > 0) {
-    writer.writeString(
+  if (f != null) {
+    writer.writeMessage(
       6,
-      f
+      f,
+      google_protobuf_wrappers_pb.StringValue.serializeBinaryToWriter
     );
   }
   f = message.getBusinessurl();
-  if (f.length > 0) {
-    writer.writeString(
+  if (f != null) {
+    writer.writeMessage(
       7,
-      f
+      f,
+      google_protobuf_wrappers_pb.StringValue.serializeBinaryToWriter
     );
   }
   f = message.getBusinessemail();
-  if (f.length > 0) {
-    writer.writeString(
+  if (f != null) {
+    writer.writeMessage(
       8,
-      f
+      f,
+      google_protobuf_wrappers_pb.StringValue.serializeBinaryToWriter
     );
   }
   f = message.getPhonenumber();
-  if (f.length > 0) {
-    writer.writeString(
+  if (f != null) {
+    writer.writeMessage(
       9,
-      f
+      f,
+      google_protobuf_wrappers_pb.StringValue.serializeBinaryToWriter
     );
   }
   f = message.getCreatedat();
-  if (f.length > 0) {
-    writer.writeString(
+  if (f != null) {
+    writer.writeMessage(
       10,
-      f
+      f,
+      google_protobuf_wrappers_pb.StringValue.serializeBinaryToWriter
     );
   }
   f = message.getUpdatedat();
-  if (f.length > 0) {
-    writer.writeString(
+  if (f != null) {
+    writer.writeMessage(
       11,
-      f
+      f,
+      google_protobuf_wrappers_pb.StringValue.serializeBinaryToWriter
     );
   }
   f = message.getLastloginat();
-  if (f.length > 0) {
-    writer.writeString(
+  if (f != null) {
+    writer.writeMessage(
       12,
-      f
+      f,
+      google_protobuf_wrappers_pb.StringValue.serializeBinaryToWriter
     );
   }
   f = message.getDeletedat();
-  if (f.length > 0) {
-    writer.writeString(
+  if (f != null) {
+    writer.writeMessage(
       13,
-      f
+      f,
+      google_protobuf_wrappers_pb.StringValue.serializeBinaryToWriter
     );
   }
   f = message.getBusinesstype();
-  if (f.length > 0) {
-    writer.writeString(
+  if (f != null) {
+    writer.writeMessage(
       14,
-      f
+      f,
+      google_protobuf_wrappers_pb.StringValue.serializeBinaryToWriter
     );
   }
   f = message.getAddress();
@@ -626,264 +783,531 @@ proto.carrier.Business.serializeBinaryToWriter = function(message, writer) {
     );
   }
   f = message.getPrimarycontact();
-  if (f.length > 0) {
-    writer.writeString(
+  if (f != null) {
+    writer.writeMessage(
       16,
-      f
+      f,
+      google_protobuf_wrappers_pb.StringValue.serializeBinaryToWriter
     );
   }
 };
 
 
 /**
- * optional string type = 1;
- * @return {string}
+ * optional google.protobuf.StringValue type = 1;
+ * @return {?proto.google.protobuf.StringValue}
  */
 proto.carrier.Business.prototype.getType = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
+  return /** @type{?proto.google.protobuf.StringValue} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_wrappers_pb.StringValue, 1));
 };
 
 
 /**
- * @param {string} value
+ * @param {?proto.google.protobuf.StringValue|undefined} value
+ * @return {!proto.carrier.Business} returns this
+*/
+proto.carrier.Business.prototype.setType = function(value) {
+  return jspb.Message.setWrapperField(this, 1, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
  * @return {!proto.carrier.Business} returns this
  */
-proto.carrier.Business.prototype.setType = function(value) {
-  return jspb.Message.setProto3StringField(this, 1, value);
+proto.carrier.Business.prototype.clearType = function() {
+  return this.setType(undefined);
 };
 
 
 /**
- * optional string id = 2;
- * @return {string}
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.carrier.Business.prototype.hasType = function() {
+  return jspb.Message.getField(this, 1) != null;
+};
+
+
+/**
+ * optional google.protobuf.StringValue id = 2;
+ * @return {?proto.google.protobuf.StringValue}
  */
 proto.carrier.Business.prototype.getId = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
+  return /** @type{?proto.google.protobuf.StringValue} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_wrappers_pb.StringValue, 2));
 };
 
 
 /**
- * @param {string} value
+ * @param {?proto.google.protobuf.StringValue|undefined} value
+ * @return {!proto.carrier.Business} returns this
+*/
+proto.carrier.Business.prototype.setId = function(value) {
+  return jspb.Message.setWrapperField(this, 2, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
  * @return {!proto.carrier.Business} returns this
  */
-proto.carrier.Business.prototype.setId = function(value) {
-  return jspb.Message.setProto3StringField(this, 2, value);
+proto.carrier.Business.prototype.clearId = function() {
+  return this.setId(undefined);
 };
 
 
 /**
- * optional string orgId = 3;
- * @return {string}
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.carrier.Business.prototype.hasId = function() {
+  return jspb.Message.getField(this, 2) != null;
+};
+
+
+/**
+ * optional google.protobuf.StringValue orgId = 3;
+ * @return {?proto.google.protobuf.StringValue}
  */
 proto.carrier.Business.prototype.getOrgid = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
+  return /** @type{?proto.google.protobuf.StringValue} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_wrappers_pb.StringValue, 3));
 };
 
 
 /**
- * @param {string} value
+ * @param {?proto.google.protobuf.StringValue|undefined} value
+ * @return {!proto.carrier.Business} returns this
+*/
+proto.carrier.Business.prototype.setOrgid = function(value) {
+  return jspb.Message.setWrapperField(this, 3, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
  * @return {!proto.carrier.Business} returns this
  */
-proto.carrier.Business.prototype.setOrgid = function(value) {
-  return jspb.Message.setProto3StringField(this, 3, value);
+proto.carrier.Business.prototype.clearOrgid = function() {
+  return this.setOrgid(undefined);
 };
 
 
 /**
- * optional string sortId = 4;
- * @return {string}
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.carrier.Business.prototype.hasOrgid = function() {
+  return jspb.Message.getField(this, 3) != null;
+};
+
+
+/**
+ * optional google.protobuf.StringValue sortId = 4;
+ * @return {?proto.google.protobuf.StringValue}
  */
 proto.carrier.Business.prototype.getSortid = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 4, ""));
+  return /** @type{?proto.google.protobuf.StringValue} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_wrappers_pb.StringValue, 4));
 };
 
 
 /**
- * @param {string} value
+ * @param {?proto.google.protobuf.StringValue|undefined} value
+ * @return {!proto.carrier.Business} returns this
+*/
+proto.carrier.Business.prototype.setSortid = function(value) {
+  return jspb.Message.setWrapperField(this, 4, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
  * @return {!proto.carrier.Business} returns this
  */
-proto.carrier.Business.prototype.setSortid = function(value) {
-  return jspb.Message.setProto3StringField(this, 4, value);
+proto.carrier.Business.prototype.clearSortid = function() {
+  return this.setSortid(undefined);
 };
 
 
 /**
- * optional string businessName = 5;
- * @return {string}
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.carrier.Business.prototype.hasSortid = function() {
+  return jspb.Message.getField(this, 4) != null;
+};
+
+
+/**
+ * optional google.protobuf.StringValue businessName = 5;
+ * @return {?proto.google.protobuf.StringValue}
  */
 proto.carrier.Business.prototype.getBusinessname = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 5, ""));
+  return /** @type{?proto.google.protobuf.StringValue} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_wrappers_pb.StringValue, 5));
 };
 
 
 /**
- * @param {string} value
+ * @param {?proto.google.protobuf.StringValue|undefined} value
+ * @return {!proto.carrier.Business} returns this
+*/
+proto.carrier.Business.prototype.setBusinessname = function(value) {
+  return jspb.Message.setWrapperField(this, 5, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
  * @return {!proto.carrier.Business} returns this
  */
-proto.carrier.Business.prototype.setBusinessname = function(value) {
-  return jspb.Message.setProto3StringField(this, 5, value);
+proto.carrier.Business.prototype.clearBusinessname = function() {
+  return this.setBusinessname(undefined);
 };
 
 
 /**
- * optional string legalBusinessName = 6;
- * @return {string}
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.carrier.Business.prototype.hasBusinessname = function() {
+  return jspb.Message.getField(this, 5) != null;
+};
+
+
+/**
+ * optional google.protobuf.StringValue legalBusinessName = 6;
+ * @return {?proto.google.protobuf.StringValue}
  */
 proto.carrier.Business.prototype.getLegalbusinessname = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 6, ""));
+  return /** @type{?proto.google.protobuf.StringValue} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_wrappers_pb.StringValue, 6));
 };
 
 
 /**
- * @param {string} value
+ * @param {?proto.google.protobuf.StringValue|undefined} value
+ * @return {!proto.carrier.Business} returns this
+*/
+proto.carrier.Business.prototype.setLegalbusinessname = function(value) {
+  return jspb.Message.setWrapperField(this, 6, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
  * @return {!proto.carrier.Business} returns this
  */
-proto.carrier.Business.prototype.setLegalbusinessname = function(value) {
-  return jspb.Message.setProto3StringField(this, 6, value);
+proto.carrier.Business.prototype.clearLegalbusinessname = function() {
+  return this.setLegalbusinessname(undefined);
 };
 
 
 /**
- * optional string businessUrl = 7;
- * @return {string}
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.carrier.Business.prototype.hasLegalbusinessname = function() {
+  return jspb.Message.getField(this, 6) != null;
+};
+
+
+/**
+ * optional google.protobuf.StringValue businessUrl = 7;
+ * @return {?proto.google.protobuf.StringValue}
  */
 proto.carrier.Business.prototype.getBusinessurl = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 7, ""));
+  return /** @type{?proto.google.protobuf.StringValue} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_wrappers_pb.StringValue, 7));
 };
 
 
 /**
- * @param {string} value
+ * @param {?proto.google.protobuf.StringValue|undefined} value
+ * @return {!proto.carrier.Business} returns this
+*/
+proto.carrier.Business.prototype.setBusinessurl = function(value) {
+  return jspb.Message.setWrapperField(this, 7, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
  * @return {!proto.carrier.Business} returns this
  */
-proto.carrier.Business.prototype.setBusinessurl = function(value) {
-  return jspb.Message.setProto3StringField(this, 7, value);
+proto.carrier.Business.prototype.clearBusinessurl = function() {
+  return this.setBusinessurl(undefined);
 };
 
 
 /**
- * optional string businessEmail = 8;
- * @return {string}
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.carrier.Business.prototype.hasBusinessurl = function() {
+  return jspb.Message.getField(this, 7) != null;
+};
+
+
+/**
+ * optional google.protobuf.StringValue businessEmail = 8;
+ * @return {?proto.google.protobuf.StringValue}
  */
 proto.carrier.Business.prototype.getBusinessemail = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 8, ""));
+  return /** @type{?proto.google.protobuf.StringValue} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_wrappers_pb.StringValue, 8));
 };
 
 
 /**
- * @param {string} value
+ * @param {?proto.google.protobuf.StringValue|undefined} value
+ * @return {!proto.carrier.Business} returns this
+*/
+proto.carrier.Business.prototype.setBusinessemail = function(value) {
+  return jspb.Message.setWrapperField(this, 8, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
  * @return {!proto.carrier.Business} returns this
  */
-proto.carrier.Business.prototype.setBusinessemail = function(value) {
-  return jspb.Message.setProto3StringField(this, 8, value);
+proto.carrier.Business.prototype.clearBusinessemail = function() {
+  return this.setBusinessemail(undefined);
 };
 
 
 /**
- * optional string phoneNumber = 9;
- * @return {string}
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.carrier.Business.prototype.hasBusinessemail = function() {
+  return jspb.Message.getField(this, 8) != null;
+};
+
+
+/**
+ * optional google.protobuf.StringValue phoneNumber = 9;
+ * @return {?proto.google.protobuf.StringValue}
  */
 proto.carrier.Business.prototype.getPhonenumber = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 9, ""));
+  return /** @type{?proto.google.protobuf.StringValue} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_wrappers_pb.StringValue, 9));
 };
 
 
 /**
- * @param {string} value
+ * @param {?proto.google.protobuf.StringValue|undefined} value
+ * @return {!proto.carrier.Business} returns this
+*/
+proto.carrier.Business.prototype.setPhonenumber = function(value) {
+  return jspb.Message.setWrapperField(this, 9, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
  * @return {!proto.carrier.Business} returns this
  */
-proto.carrier.Business.prototype.setPhonenumber = function(value) {
-  return jspb.Message.setProto3StringField(this, 9, value);
+proto.carrier.Business.prototype.clearPhonenumber = function() {
+  return this.setPhonenumber(undefined);
 };
 
 
 /**
- * optional string createdAt = 10;
- * @return {string}
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.carrier.Business.prototype.hasPhonenumber = function() {
+  return jspb.Message.getField(this, 9) != null;
+};
+
+
+/**
+ * optional google.protobuf.StringValue createdAt = 10;
+ * @return {?proto.google.protobuf.StringValue}
  */
 proto.carrier.Business.prototype.getCreatedat = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 10, ""));
+  return /** @type{?proto.google.protobuf.StringValue} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_wrappers_pb.StringValue, 10));
 };
 
 
 /**
- * @param {string} value
+ * @param {?proto.google.protobuf.StringValue|undefined} value
+ * @return {!proto.carrier.Business} returns this
+*/
+proto.carrier.Business.prototype.setCreatedat = function(value) {
+  return jspb.Message.setWrapperField(this, 10, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
  * @return {!proto.carrier.Business} returns this
  */
-proto.carrier.Business.prototype.setCreatedat = function(value) {
-  return jspb.Message.setProto3StringField(this, 10, value);
+proto.carrier.Business.prototype.clearCreatedat = function() {
+  return this.setCreatedat(undefined);
 };
 
 
 /**
- * optional string updatedAt = 11;
- * @return {string}
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.carrier.Business.prototype.hasCreatedat = function() {
+  return jspb.Message.getField(this, 10) != null;
+};
+
+
+/**
+ * optional google.protobuf.StringValue updatedAt = 11;
+ * @return {?proto.google.protobuf.StringValue}
  */
 proto.carrier.Business.prototype.getUpdatedat = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 11, ""));
+  return /** @type{?proto.google.protobuf.StringValue} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_wrappers_pb.StringValue, 11));
 };
 
 
 /**
- * @param {string} value
+ * @param {?proto.google.protobuf.StringValue|undefined} value
+ * @return {!proto.carrier.Business} returns this
+*/
+proto.carrier.Business.prototype.setUpdatedat = function(value) {
+  return jspb.Message.setWrapperField(this, 11, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
  * @return {!proto.carrier.Business} returns this
  */
-proto.carrier.Business.prototype.setUpdatedat = function(value) {
-  return jspb.Message.setProto3StringField(this, 11, value);
+proto.carrier.Business.prototype.clearUpdatedat = function() {
+  return this.setUpdatedat(undefined);
 };
 
 
 /**
- * optional string lastLoginAt = 12;
- * @return {string}
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.carrier.Business.prototype.hasUpdatedat = function() {
+  return jspb.Message.getField(this, 11) != null;
+};
+
+
+/**
+ * optional google.protobuf.StringValue lastLoginAt = 12;
+ * @return {?proto.google.protobuf.StringValue}
  */
 proto.carrier.Business.prototype.getLastloginat = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 12, ""));
+  return /** @type{?proto.google.protobuf.StringValue} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_wrappers_pb.StringValue, 12));
 };
 
 
 /**
- * @param {string} value
+ * @param {?proto.google.protobuf.StringValue|undefined} value
+ * @return {!proto.carrier.Business} returns this
+*/
+proto.carrier.Business.prototype.setLastloginat = function(value) {
+  return jspb.Message.setWrapperField(this, 12, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
  * @return {!proto.carrier.Business} returns this
  */
-proto.carrier.Business.prototype.setLastloginat = function(value) {
-  return jspb.Message.setProto3StringField(this, 12, value);
+proto.carrier.Business.prototype.clearLastloginat = function() {
+  return this.setLastloginat(undefined);
 };
 
 
 /**
- * optional string deletedAt = 13;
- * @return {string}
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.carrier.Business.prototype.hasLastloginat = function() {
+  return jspb.Message.getField(this, 12) != null;
+};
+
+
+/**
+ * optional google.protobuf.StringValue deletedAt = 13;
+ * @return {?proto.google.protobuf.StringValue}
  */
 proto.carrier.Business.prototype.getDeletedat = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 13, ""));
+  return /** @type{?proto.google.protobuf.StringValue} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_wrappers_pb.StringValue, 13));
 };
 
 
 /**
- * @param {string} value
+ * @param {?proto.google.protobuf.StringValue|undefined} value
+ * @return {!proto.carrier.Business} returns this
+*/
+proto.carrier.Business.prototype.setDeletedat = function(value) {
+  return jspb.Message.setWrapperField(this, 13, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
  * @return {!proto.carrier.Business} returns this
  */
-proto.carrier.Business.prototype.setDeletedat = function(value) {
-  return jspb.Message.setProto3StringField(this, 13, value);
+proto.carrier.Business.prototype.clearDeletedat = function() {
+  return this.setDeletedat(undefined);
 };
 
 
 /**
- * optional string businessType = 14;
- * @return {string}
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.carrier.Business.prototype.hasDeletedat = function() {
+  return jspb.Message.getField(this, 13) != null;
+};
+
+
+/**
+ * optional google.protobuf.StringValue businessType = 14;
+ * @return {?proto.google.protobuf.StringValue}
  */
 proto.carrier.Business.prototype.getBusinesstype = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 14, ""));
+  return /** @type{?proto.google.protobuf.StringValue} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_wrappers_pb.StringValue, 14));
 };
 
 
 /**
- * @param {string} value
+ * @param {?proto.google.protobuf.StringValue|undefined} value
+ * @return {!proto.carrier.Business} returns this
+*/
+proto.carrier.Business.prototype.setBusinesstype = function(value) {
+  return jspb.Message.setWrapperField(this, 14, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
  * @return {!proto.carrier.Business} returns this
  */
-proto.carrier.Business.prototype.setBusinesstype = function(value) {
-  return jspb.Message.setProto3StringField(this, 14, value);
+proto.carrier.Business.prototype.clearBusinesstype = function() {
+  return this.setBusinesstype(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.carrier.Business.prototype.hasBusinesstype = function() {
+  return jspb.Message.getField(this, 14) != null;
 };
 
 
@@ -925,20 +1349,39 @@ proto.carrier.Business.prototype.hasAddress = function() {
 
 
 /**
- * optional string primaryContact = 16;
- * @return {string}
+ * optional google.protobuf.StringValue primaryContact = 16;
+ * @return {?proto.google.protobuf.StringValue}
  */
 proto.carrier.Business.prototype.getPrimarycontact = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 16, ""));
+  return /** @type{?proto.google.protobuf.StringValue} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_wrappers_pb.StringValue, 16));
 };
 
 
 /**
- * @param {string} value
+ * @param {?proto.google.protobuf.StringValue|undefined} value
+ * @return {!proto.carrier.Business} returns this
+*/
+proto.carrier.Business.prototype.setPrimarycontact = function(value) {
+  return jspb.Message.setWrapperField(this, 16, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
  * @return {!proto.carrier.Business} returns this
  */
-proto.carrier.Business.prototype.setPrimarycontact = function(value) {
-  return jspb.Message.setProto3StringField(this, 16, value);
+proto.carrier.Business.prototype.clearPrimarycontact = function() {
+  return this.setPrimarycontact(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.carrier.Business.prototype.hasPrimarycontact = function() {
+  return jspb.Message.getField(this, 16) != null;
 };
 
 

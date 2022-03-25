@@ -25,6 +25,8 @@ var contact_pb = require('./contact_pb.js');
 goog.object.extend(proto, contact_pb);
 var business_hour_pb = require('./business_hour_pb.js');
 goog.object.extend(proto, business_hour_pb);
+var google_protobuf_wrappers_pb = require('google-protobuf/google/protobuf/wrappers_pb.js');
+goog.object.extend(proto, google_protobuf_wrappers_pb);
 goog.exportSymbol('proto.carrier.ListsOfLocation', null, global);
 goog.exportSymbol('proto.carrier.Location', null, global);
 /**
@@ -108,15 +110,15 @@ proto.carrier.Location.prototype.toObject = function(opt_includeInstance) {
  */
 proto.carrier.Location.toObject = function(includeInstance, msg) {
   var f, obj = {
-    id: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    name: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    id: (f = msg.getId()) && google_protobuf_wrappers_pb.StringValue.toObject(includeInstance, f),
+    name: (f = msg.getName()) && google_protobuf_wrappers_pb.StringValue.toObject(includeInstance, f),
     address: (f = msg.getAddress()) && address_pb.Address.toObject(includeInstance, f),
     contact: (f = msg.getContact()) && contact_pb.Contact.toObject(includeInstance, f),
     locationtype: jspb.Message.getFieldWithDefault(msg, 5, 0),
     additionalserviceList: (f = jspb.Message.getRepeatedField(msg, 6)) == null ? undefined : f,
     businesshours: (f = msg.getBusinesshours()) && business_hour_pb.BusinessHour.toObject(includeInstance, f),
-    isdefaultpickup: jspb.Message.getBooleanFieldWithDefault(msg, 8, false),
-    isdefaultdelivery: jspb.Message.getBooleanFieldWithDefault(msg, 9, false)
+    isdefaultpickup: (f = msg.getIsdefaultpickup()) && google_protobuf_wrappers_pb.BoolValue.toObject(includeInstance, f),
+    isdefaultdelivery: (f = msg.getIsdefaultdelivery()) && google_protobuf_wrappers_pb.BoolValue.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -154,11 +156,13 @@ proto.carrier.Location.deserializeBinaryFromReader = function(msg, reader) {
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {string} */ (reader.readString());
+      var value = new google_protobuf_wrappers_pb.StringValue;
+      reader.readMessage(value,google_protobuf_wrappers_pb.StringValue.deserializeBinaryFromReader);
       msg.setId(value);
       break;
     case 2:
-      var value = /** @type {string} */ (reader.readString());
+      var value = new google_protobuf_wrappers_pb.StringValue;
+      reader.readMessage(value,google_protobuf_wrappers_pb.StringValue.deserializeBinaryFromReader);
       msg.setName(value);
       break;
     case 3:
@@ -187,11 +191,13 @@ proto.carrier.Location.deserializeBinaryFromReader = function(msg, reader) {
       msg.setBusinesshours(value);
       break;
     case 8:
-      var value = /** @type {boolean} */ (reader.readBool());
+      var value = new google_protobuf_wrappers_pb.BoolValue;
+      reader.readMessage(value,google_protobuf_wrappers_pb.BoolValue.deserializeBinaryFromReader);
       msg.setIsdefaultpickup(value);
       break;
     case 9:
-      var value = /** @type {boolean} */ (reader.readBool());
+      var value = new google_protobuf_wrappers_pb.BoolValue;
+      reader.readMessage(value,google_protobuf_wrappers_pb.BoolValue.deserializeBinaryFromReader);
       msg.setIsdefaultdelivery(value);
       break;
     default:
@@ -224,17 +230,19 @@ proto.carrier.Location.prototype.serializeBinary = function() {
 proto.carrier.Location.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getId();
-  if (f.length > 0) {
-    writer.writeString(
+  if (f != null) {
+    writer.writeMessage(
       1,
-      f
+      f,
+      google_protobuf_wrappers_pb.StringValue.serializeBinaryToWriter
     );
   }
   f = message.getName();
-  if (f.length > 0) {
-    writer.writeString(
+  if (f != null) {
+    writer.writeMessage(
       2,
-      f
+      f,
+      google_protobuf_wrappers_pb.StringValue.serializeBinaryToWriter
     );
   }
   f = message.getAddress();
@@ -276,55 +284,95 @@ proto.carrier.Location.serializeBinaryToWriter = function(message, writer) {
     );
   }
   f = message.getIsdefaultpickup();
-  if (f) {
-    writer.writeBool(
+  if (f != null) {
+    writer.writeMessage(
       8,
-      f
+      f,
+      google_protobuf_wrappers_pb.BoolValue.serializeBinaryToWriter
     );
   }
   f = message.getIsdefaultdelivery();
-  if (f) {
-    writer.writeBool(
+  if (f != null) {
+    writer.writeMessage(
       9,
-      f
+      f,
+      google_protobuf_wrappers_pb.BoolValue.serializeBinaryToWriter
     );
   }
 };
 
 
 /**
- * optional string id = 1;
- * @return {string}
+ * optional google.protobuf.StringValue id = 1;
+ * @return {?proto.google.protobuf.StringValue}
  */
 proto.carrier.Location.prototype.getId = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
+  return /** @type{?proto.google.protobuf.StringValue} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_wrappers_pb.StringValue, 1));
 };
 
 
 /**
- * @param {string} value
+ * @param {?proto.google.protobuf.StringValue|undefined} value
+ * @return {!proto.carrier.Location} returns this
+*/
+proto.carrier.Location.prototype.setId = function(value) {
+  return jspb.Message.setWrapperField(this, 1, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
  * @return {!proto.carrier.Location} returns this
  */
-proto.carrier.Location.prototype.setId = function(value) {
-  return jspb.Message.setProto3StringField(this, 1, value);
+proto.carrier.Location.prototype.clearId = function() {
+  return this.setId(undefined);
 };
 
 
 /**
- * optional string name = 2;
- * @return {string}
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.carrier.Location.prototype.hasId = function() {
+  return jspb.Message.getField(this, 1) != null;
+};
+
+
+/**
+ * optional google.protobuf.StringValue name = 2;
+ * @return {?proto.google.protobuf.StringValue}
  */
 proto.carrier.Location.prototype.getName = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
+  return /** @type{?proto.google.protobuf.StringValue} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_wrappers_pb.StringValue, 2));
 };
 
 
 /**
- * @param {string} value
+ * @param {?proto.google.protobuf.StringValue|undefined} value
+ * @return {!proto.carrier.Location} returns this
+*/
+proto.carrier.Location.prototype.setName = function(value) {
+  return jspb.Message.setWrapperField(this, 2, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
  * @return {!proto.carrier.Location} returns this
  */
-proto.carrier.Location.prototype.setName = function(value) {
-  return jspb.Message.setProto3StringField(this, 2, value);
+proto.carrier.Location.prototype.clearName = function() {
+  return this.setName(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.carrier.Location.prototype.hasName = function() {
+  return jspb.Message.getField(this, 2) != null;
 };
 
 
@@ -495,38 +543,76 @@ proto.carrier.Location.prototype.hasBusinesshours = function() {
 
 
 /**
- * optional bool isDefaultPickUp = 8;
- * @return {boolean}
+ * optional google.protobuf.BoolValue isDefaultPickUp = 8;
+ * @return {?proto.google.protobuf.BoolValue}
  */
 proto.carrier.Location.prototype.getIsdefaultpickup = function() {
-  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 8, false));
+  return /** @type{?proto.google.protobuf.BoolValue} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_wrappers_pb.BoolValue, 8));
 };
 
 
 /**
- * @param {boolean} value
+ * @param {?proto.google.protobuf.BoolValue|undefined} value
+ * @return {!proto.carrier.Location} returns this
+*/
+proto.carrier.Location.prototype.setIsdefaultpickup = function(value) {
+  return jspb.Message.setWrapperField(this, 8, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
  * @return {!proto.carrier.Location} returns this
  */
-proto.carrier.Location.prototype.setIsdefaultpickup = function(value) {
-  return jspb.Message.setProto3BooleanField(this, 8, value);
+proto.carrier.Location.prototype.clearIsdefaultpickup = function() {
+  return this.setIsdefaultpickup(undefined);
 };
 
 
 /**
- * optional bool isDefaultDelivery = 9;
+ * Returns whether this field is set.
  * @return {boolean}
  */
-proto.carrier.Location.prototype.getIsdefaultdelivery = function() {
-  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 9, false));
+proto.carrier.Location.prototype.hasIsdefaultpickup = function() {
+  return jspb.Message.getField(this, 8) != null;
 };
 
 
 /**
- * @param {boolean} value
+ * optional google.protobuf.BoolValue isDefaultDelivery = 9;
+ * @return {?proto.google.protobuf.BoolValue}
+ */
+proto.carrier.Location.prototype.getIsdefaultdelivery = function() {
+  return /** @type{?proto.google.protobuf.BoolValue} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_wrappers_pb.BoolValue, 9));
+};
+
+
+/**
+ * @param {?proto.google.protobuf.BoolValue|undefined} value
+ * @return {!proto.carrier.Location} returns this
+*/
+proto.carrier.Location.prototype.setIsdefaultdelivery = function(value) {
+  return jspb.Message.setWrapperField(this, 9, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
  * @return {!proto.carrier.Location} returns this
  */
-proto.carrier.Location.prototype.setIsdefaultdelivery = function(value) {
-  return jspb.Message.setProto3BooleanField(this, 9, value);
+proto.carrier.Location.prototype.clearIsdefaultdelivery = function() {
+  return this.setIsdefaultdelivery(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.carrier.Location.prototype.hasIsdefaultdelivery = function() {
+  return jspb.Message.getField(this, 9) != null;
 };
 
 

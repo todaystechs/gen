@@ -56,41 +56,527 @@ func (m *Address) validate(all bool) error {
 
 	var errors []error
 
-	// no validation rules for StreetNumber
+	if all {
+		switch v := interface{}(m.GetStreetNumber()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, AddressValidationError{
+					field:  "StreetNumber",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, AddressValidationError{
+					field:  "StreetNumber",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetStreetNumber()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return AddressValidationError{
+				field:  "StreetNumber",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
 
-	// no validation rules for StreetName
+	if all {
+		switch v := interface{}(m.GetStreetName()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, AddressValidationError{
+					field:  "StreetName",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, AddressValidationError{
+					field:  "StreetName",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetStreetName()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return AddressValidationError{
+				field:  "StreetName",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
 
-	// no validation rules for Municipality
+	if all {
+		switch v := interface{}(m.GetMunicipality()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, AddressValidationError{
+					field:  "Municipality",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, AddressValidationError{
+					field:  "Municipality",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetMunicipality()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return AddressValidationError{
+				field:  "Municipality",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
 
-	// no validation rules for CountrySecondarySubdivision
+	if all {
+		switch v := interface{}(m.GetCountrySecondarySubdivision()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, AddressValidationError{
+					field:  "CountrySecondarySubdivision",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, AddressValidationError{
+					field:  "CountrySecondarySubdivision",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetCountrySecondarySubdivision()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return AddressValidationError{
+				field:  "CountrySecondarySubdivision",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
 
-	// no validation rules for CountrySubdivision
+	if all {
+		switch v := interface{}(m.GetCountrySubdivision()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, AddressValidationError{
+					field:  "CountrySubdivision",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, AddressValidationError{
+					field:  "CountrySubdivision",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetCountrySubdivision()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return AddressValidationError{
+				field:  "CountrySubdivision",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
 
-	// no validation rules for CountrySubdivisionName
+	if all {
+		switch v := interface{}(m.GetCountrySubdivisionName()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, AddressValidationError{
+					field:  "CountrySubdivisionName",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, AddressValidationError{
+					field:  "CountrySubdivisionName",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetCountrySubdivisionName()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return AddressValidationError{
+				field:  "CountrySubdivisionName",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
 
-	// no validation rules for PostalCode
+	if all {
+		switch v := interface{}(m.GetPostalCode()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, AddressValidationError{
+					field:  "PostalCode",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, AddressValidationError{
+					field:  "PostalCode",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetPostalCode()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return AddressValidationError{
+				field:  "PostalCode",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
 
-	// no validation rules for State
+	if all {
+		switch v := interface{}(m.GetState()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, AddressValidationError{
+					field:  "State",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, AddressValidationError{
+					field:  "State",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetState()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return AddressValidationError{
+				field:  "State",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
 
-	// no validation rules for ExtendedPostalCode
+	if all {
+		switch v := interface{}(m.GetExtendedPostalCode()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, AddressValidationError{
+					field:  "ExtendedPostalCode",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, AddressValidationError{
+					field:  "ExtendedPostalCode",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetExtendedPostalCode()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return AddressValidationError{
+				field:  "ExtendedPostalCode",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
 
-	// no validation rules for CountryCode
+	if all {
+		switch v := interface{}(m.GetCountryCode()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, AddressValidationError{
+					field:  "CountryCode",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, AddressValidationError{
+					field:  "CountryCode",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetCountryCode()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return AddressValidationError{
+				field:  "CountryCode",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
 
-	// no validation rules for Country
+	if all {
+		switch v := interface{}(m.GetCountry()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, AddressValidationError{
+					field:  "Country",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, AddressValidationError{
+					field:  "Country",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetCountry()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return AddressValidationError{
+				field:  "Country",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
 
-	// no validation rules for CountryCodeISO3
+	if all {
+		switch v := interface{}(m.GetCountryCodeISO3()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, AddressValidationError{
+					field:  "CountryCodeISO3",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, AddressValidationError{
+					field:  "CountryCodeISO3",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetCountryCodeISO3()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return AddressValidationError{
+				field:  "CountryCodeISO3",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
 
-	// no validation rules for FreeFormAddress
+	if all {
+		switch v := interface{}(m.GetFreeFormAddress()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, AddressValidationError{
+					field:  "FreeFormAddress",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, AddressValidationError{
+					field:  "FreeFormAddress",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetFreeFormAddress()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return AddressValidationError{
+				field:  "FreeFormAddress",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
 
-	// no validation rules for LocalName
+	if all {
+		switch v := interface{}(m.GetLocalName()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, AddressValidationError{
+					field:  "LocalName",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, AddressValidationError{
+					field:  "LocalName",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetLocalName()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return AddressValidationError{
+				field:  "LocalName",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
 
-	// no validation rules for Id
+	if all {
+		switch v := interface{}(m.GetId()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, AddressValidationError{
+					field:  "Id",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, AddressValidationError{
+					field:  "Id",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetId()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return AddressValidationError{
+				field:  "Id",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
 
-	// no validation rules for Type
+	if all {
+		switch v := interface{}(m.GetType()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, AddressValidationError{
+					field:  "Type",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, AddressValidationError{
+					field:  "Type",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetType()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return AddressValidationError{
+				field:  "Type",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
 
-	// no validation rules for AddressLine1
+	if all {
+		switch v := interface{}(m.GetAddressLine1()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, AddressValidationError{
+					field:  "AddressLine1",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, AddressValidationError{
+					field:  "AddressLine1",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetAddressLine1()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return AddressValidationError{
+				field:  "AddressLine1",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
 
-	// no validation rules for AddressLine2
+	if all {
+		switch v := interface{}(m.GetAddressLine2()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, AddressValidationError{
+					field:  "AddressLine2",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, AddressValidationError{
+					field:  "AddressLine2",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetAddressLine2()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return AddressValidationError{
+				field:  "AddressLine2",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
 
 	if len(errors) > 0 {
 		return AddressMultiError(errors)

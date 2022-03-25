@@ -57,7 +57,34 @@ func (m *CarrierServicePing) validate(all bool) error {
 
 	var errors []error
 
-	// no validation rules for Hi
+	if all {
+		switch v := interface{}(m.GetHi()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, CarrierServicePingValidationError{
+					field:  "Hi",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, CarrierServicePingValidationError{
+					field:  "Hi",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetHi()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return CarrierServicePingValidationError{
+				field:  "Hi",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
 
 	if len(errors) > 0 {
 		return CarrierServicePingMultiError(errors)
@@ -160,7 +187,34 @@ func (m *ResponseOk) validate(all bool) error {
 
 	var errors []error
 
-	// no validation rules for Ok
+	if all {
+		switch v := interface{}(m.GetOk()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, ResponseOkValidationError{
+					field:  "Ok",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, ResponseOkValidationError{
+					field:  "Ok",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetOk()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return ResponseOkValidationError{
+				field:  "Ok",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
 
 	if len(errors) > 0 {
 		return ResponseOkMultiError(errors)
@@ -259,7 +313,34 @@ func (m *OrgId) validate(all bool) error {
 
 	var errors []error
 
-	// no validation rules for Id
+	if all {
+		switch v := interface{}(m.GetId()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, OrgIdValidationError{
+					field:  "Id",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, OrgIdValidationError{
+					field:  "Id",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetId()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return OrgIdValidationError{
+				field:  "Id",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
 
 	if len(errors) > 0 {
 		return OrgIdMultiError(errors)

@@ -21,8 +21,8 @@ var location_pb = require('./location_pb.js');
 goog.object.extend(proto, location_pb);
 var book_pb = require('./book_pb.js');
 goog.object.extend(proto, book_pb);
-var google_protobuf_any_pb = require('google-protobuf/google/protobuf/any_pb.js');
-goog.object.extend(proto, google_protobuf_any_pb);
+var google_protobuf_wrappers_pb = require('google-protobuf/google/protobuf/wrappers_pb.js');
+goog.object.extend(proto, google_protobuf_wrappers_pb);
 goog.exportSymbol('proto.carrier.CarrierServicePing', null, global);
 goog.exportSymbol('proto.carrier.OrgId', null, global);
 goog.exportSymbol('proto.carrier.responseOk', null, global);
@@ -121,7 +121,7 @@ proto.carrier.CarrierServicePing.prototype.toObject = function(opt_includeInstan
  */
 proto.carrier.CarrierServicePing.toObject = function(includeInstance, msg) {
   var f, obj = {
-    hi: jspb.Message.getFieldWithDefault(msg, 1, "")
+    hi: (f = msg.getHi()) && google_protobuf_wrappers_pb.StringValue.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -159,7 +159,8 @@ proto.carrier.CarrierServicePing.deserializeBinaryFromReader = function(msg, rea
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {string} */ (reader.readString());
+      var value = new google_protobuf_wrappers_pb.StringValue;
+      reader.readMessage(value,google_protobuf_wrappers_pb.StringValue.deserializeBinaryFromReader);
       msg.setHi(value);
       break;
     default:
@@ -192,30 +193,50 @@ proto.carrier.CarrierServicePing.prototype.serializeBinary = function() {
 proto.carrier.CarrierServicePing.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getHi();
-  if (f.length > 0) {
-    writer.writeString(
+  if (f != null) {
+    writer.writeMessage(
       1,
-      f
+      f,
+      google_protobuf_wrappers_pb.StringValue.serializeBinaryToWriter
     );
   }
 };
 
 
 /**
- * optional string hi = 1;
- * @return {string}
+ * optional google.protobuf.StringValue hi = 1;
+ * @return {?proto.google.protobuf.StringValue}
  */
 proto.carrier.CarrierServicePing.prototype.getHi = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
+  return /** @type{?proto.google.protobuf.StringValue} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_wrappers_pb.StringValue, 1));
 };
 
 
 /**
- * @param {string} value
+ * @param {?proto.google.protobuf.StringValue|undefined} value
+ * @return {!proto.carrier.CarrierServicePing} returns this
+*/
+proto.carrier.CarrierServicePing.prototype.setHi = function(value) {
+  return jspb.Message.setWrapperField(this, 1, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
  * @return {!proto.carrier.CarrierServicePing} returns this
  */
-proto.carrier.CarrierServicePing.prototype.setHi = function(value) {
-  return jspb.Message.setProto3StringField(this, 1, value);
+proto.carrier.CarrierServicePing.prototype.clearHi = function() {
+  return this.setHi(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.carrier.CarrierServicePing.prototype.hasHi = function() {
+  return jspb.Message.getField(this, 1) != null;
 };
 
 
@@ -251,7 +272,7 @@ proto.carrier.responseOk.prototype.toObject = function(opt_includeInstance) {
  */
 proto.carrier.responseOk.toObject = function(includeInstance, msg) {
   var f, obj = {
-    ok: jspb.Message.getBooleanFieldWithDefault(msg, 1, false)
+    ok: (f = msg.getOk()) && google_protobuf_wrappers_pb.BoolValue.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -289,7 +310,8 @@ proto.carrier.responseOk.deserializeBinaryFromReader = function(msg, reader) {
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {boolean} */ (reader.readBool());
+      var value = new google_protobuf_wrappers_pb.BoolValue;
+      reader.readMessage(value,google_protobuf_wrappers_pb.BoolValue.deserializeBinaryFromReader);
       msg.setOk(value);
       break;
     default:
@@ -322,30 +344,50 @@ proto.carrier.responseOk.prototype.serializeBinary = function() {
 proto.carrier.responseOk.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getOk();
-  if (f) {
-    writer.writeBool(
+  if (f != null) {
+    writer.writeMessage(
       1,
-      f
+      f,
+      google_protobuf_wrappers_pb.BoolValue.serializeBinaryToWriter
     );
   }
 };
 
 
 /**
- * optional bool ok = 1;
- * @return {boolean}
+ * optional google.protobuf.BoolValue ok = 1;
+ * @return {?proto.google.protobuf.BoolValue}
  */
 proto.carrier.responseOk.prototype.getOk = function() {
-  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 1, false));
+  return /** @type{?proto.google.protobuf.BoolValue} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_wrappers_pb.BoolValue, 1));
 };
 
 
 /**
- * @param {boolean} value
+ * @param {?proto.google.protobuf.BoolValue|undefined} value
+ * @return {!proto.carrier.responseOk} returns this
+*/
+proto.carrier.responseOk.prototype.setOk = function(value) {
+  return jspb.Message.setWrapperField(this, 1, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
  * @return {!proto.carrier.responseOk} returns this
  */
-proto.carrier.responseOk.prototype.setOk = function(value) {
-  return jspb.Message.setProto3BooleanField(this, 1, value);
+proto.carrier.responseOk.prototype.clearOk = function() {
+  return this.setOk(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.carrier.responseOk.prototype.hasOk = function() {
+  return jspb.Message.getField(this, 1) != null;
 };
 
 
@@ -381,7 +423,7 @@ proto.carrier.OrgId.prototype.toObject = function(opt_includeInstance) {
  */
 proto.carrier.OrgId.toObject = function(includeInstance, msg) {
   var f, obj = {
-    id: jspb.Message.getFieldWithDefault(msg, 1, "")
+    id: (f = msg.getId()) && google_protobuf_wrappers_pb.StringValue.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -419,7 +461,8 @@ proto.carrier.OrgId.deserializeBinaryFromReader = function(msg, reader) {
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {string} */ (reader.readString());
+      var value = new google_protobuf_wrappers_pb.StringValue;
+      reader.readMessage(value,google_protobuf_wrappers_pb.StringValue.deserializeBinaryFromReader);
       msg.setId(value);
       break;
     default:
@@ -452,30 +495,50 @@ proto.carrier.OrgId.prototype.serializeBinary = function() {
 proto.carrier.OrgId.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getId();
-  if (f.length > 0) {
-    writer.writeString(
+  if (f != null) {
+    writer.writeMessage(
       1,
-      f
+      f,
+      google_protobuf_wrappers_pb.StringValue.serializeBinaryToWriter
     );
   }
 };
 
 
 /**
- * optional string id = 1;
- * @return {string}
+ * optional google.protobuf.StringValue id = 1;
+ * @return {?proto.google.protobuf.StringValue}
  */
 proto.carrier.OrgId.prototype.getId = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
+  return /** @type{?proto.google.protobuf.StringValue} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_wrappers_pb.StringValue, 1));
 };
 
 
 /**
- * @param {string} value
+ * @param {?proto.google.protobuf.StringValue|undefined} value
+ * @return {!proto.carrier.OrgId} returns this
+*/
+proto.carrier.OrgId.prototype.setId = function(value) {
+  return jspb.Message.setWrapperField(this, 1, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
  * @return {!proto.carrier.OrgId} returns this
  */
-proto.carrier.OrgId.prototype.setId = function(value) {
-  return jspb.Message.setProto3StringField(this, 1, value);
+proto.carrier.OrgId.prototype.clearId = function() {
+  return this.setId(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.carrier.OrgId.prototype.hasId = function() {
+  return jspb.Message.getField(this, 1) != null;
 };
 
 

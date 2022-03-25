@@ -19,6 +19,8 @@ var package_pb = require('./package_pb.js');
 goog.object.extend(proto, package_pb);
 var freight_class_pb = require('./freight_class_pb.js');
 goog.object.extend(proto, freight_class_pb);
+var google_protobuf_wrappers_pb = require('google-protobuf/google/protobuf/wrappers_pb.js');
+goog.object.extend(proto, google_protobuf_wrappers_pb);
 goog.exportSymbol('proto.carrier.Commodity', null, global);
 goog.exportSymbol('proto.carrier.DimensionUOM', null, global);
 goog.exportSymbol('proto.carrier.WeightUOM', null, global);
@@ -75,16 +77,16 @@ proto.carrier.Commodity.prototype.toObject = function(opt_includeInstance) {
  */
 proto.carrier.Commodity.toObject = function(includeInstance, msg) {
   var f, obj = {
-    density: jspb.Message.getFloatingPointFieldWithDefault(msg, 1, 0.0),
-    length: jspb.Message.getFloatingPointFieldWithDefault(msg, 2, 0.0),
-    width: jspb.Message.getFloatingPointFieldWithDefault(msg, 3, 0.0),
-    height: jspb.Message.getFloatingPointFieldWithDefault(msg, 4, 0.0),
-    weight: jspb.Message.getFloatingPointFieldWithDefault(msg, 5, 0.0),
+    density: (f = msg.getDensity()) && google_protobuf_wrappers_pb.FloatValue.toObject(includeInstance, f),
+    length: (f = msg.getLength()) && google_protobuf_wrappers_pb.FloatValue.toObject(includeInstance, f),
+    width: (f = msg.getWidth()) && google_protobuf_wrappers_pb.FloatValue.toObject(includeInstance, f),
+    height: (f = msg.getHeight()) && google_protobuf_wrappers_pb.FloatValue.toObject(includeInstance, f),
+    weight: (f = msg.getWeight()) && google_protobuf_wrappers_pb.FloatValue.toObject(includeInstance, f),
     dimensionuom: jspb.Message.getFieldWithDefault(msg, 6, 0),
     weightuom: jspb.Message.getFieldWithDefault(msg, 7, 0),
-    dimensiondisplay: jspb.Message.getFieldWithDefault(msg, 8, ""),
+    dimensiondisplay: (f = msg.getDimensiondisplay()) && google_protobuf_wrappers_pb.StringValue.toObject(includeInstance, f),
     packagetype: jspb.Message.getFieldWithDefault(msg, 9, 0),
-    quantity: jspb.Message.getFieldWithDefault(msg, 10, 0),
+    quantity: (f = msg.getQuantity()) && google_protobuf_wrappers_pb.Int32Value.toObject(includeInstance, f),
     freightclass: jspb.Message.getFieldWithDefault(msg, 11, 0)
   };
 
@@ -123,23 +125,28 @@ proto.carrier.Commodity.deserializeBinaryFromReader = function(msg, reader) {
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = /** @type {number} */ (reader.readFloat());
+      var value = new google_protobuf_wrappers_pb.FloatValue;
+      reader.readMessage(value,google_protobuf_wrappers_pb.FloatValue.deserializeBinaryFromReader);
       msg.setDensity(value);
       break;
     case 2:
-      var value = /** @type {number} */ (reader.readFloat());
+      var value = new google_protobuf_wrappers_pb.FloatValue;
+      reader.readMessage(value,google_protobuf_wrappers_pb.FloatValue.deserializeBinaryFromReader);
       msg.setLength(value);
       break;
     case 3:
-      var value = /** @type {number} */ (reader.readFloat());
+      var value = new google_protobuf_wrappers_pb.FloatValue;
+      reader.readMessage(value,google_protobuf_wrappers_pb.FloatValue.deserializeBinaryFromReader);
       msg.setWidth(value);
       break;
     case 4:
-      var value = /** @type {number} */ (reader.readFloat());
+      var value = new google_protobuf_wrappers_pb.FloatValue;
+      reader.readMessage(value,google_protobuf_wrappers_pb.FloatValue.deserializeBinaryFromReader);
       msg.setHeight(value);
       break;
     case 5:
-      var value = /** @type {number} */ (reader.readFloat());
+      var value = new google_protobuf_wrappers_pb.FloatValue;
+      reader.readMessage(value,google_protobuf_wrappers_pb.FloatValue.deserializeBinaryFromReader);
       msg.setWeight(value);
       break;
     case 6:
@@ -151,7 +158,8 @@ proto.carrier.Commodity.deserializeBinaryFromReader = function(msg, reader) {
       msg.setWeightuom(value);
       break;
     case 8:
-      var value = /** @type {string} */ (reader.readString());
+      var value = new google_protobuf_wrappers_pb.StringValue;
+      reader.readMessage(value,google_protobuf_wrappers_pb.StringValue.deserializeBinaryFromReader);
       msg.setDimensiondisplay(value);
       break;
     case 9:
@@ -159,7 +167,8 @@ proto.carrier.Commodity.deserializeBinaryFromReader = function(msg, reader) {
       msg.setPackagetype(value);
       break;
     case 10:
-      var value = /** @type {number} */ (reader.readInt32());
+      var value = new google_protobuf_wrappers_pb.Int32Value;
+      reader.readMessage(value,google_protobuf_wrappers_pb.Int32Value.deserializeBinaryFromReader);
       msg.setQuantity(value);
       break;
     case 11:
@@ -196,38 +205,43 @@ proto.carrier.Commodity.prototype.serializeBinary = function() {
 proto.carrier.Commodity.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getDensity();
-  if (f !== 0.0) {
-    writer.writeFloat(
+  if (f != null) {
+    writer.writeMessage(
       1,
-      f
+      f,
+      google_protobuf_wrappers_pb.FloatValue.serializeBinaryToWriter
     );
   }
   f = message.getLength();
-  if (f !== 0.0) {
-    writer.writeFloat(
+  if (f != null) {
+    writer.writeMessage(
       2,
-      f
+      f,
+      google_protobuf_wrappers_pb.FloatValue.serializeBinaryToWriter
     );
   }
   f = message.getWidth();
-  if (f !== 0.0) {
-    writer.writeFloat(
+  if (f != null) {
+    writer.writeMessage(
       3,
-      f
+      f,
+      google_protobuf_wrappers_pb.FloatValue.serializeBinaryToWriter
     );
   }
   f = message.getHeight();
-  if (f !== 0.0) {
-    writer.writeFloat(
+  if (f != null) {
+    writer.writeMessage(
       4,
-      f
+      f,
+      google_protobuf_wrappers_pb.FloatValue.serializeBinaryToWriter
     );
   }
   f = message.getWeight();
-  if (f !== 0.0) {
-    writer.writeFloat(
+  if (f != null) {
+    writer.writeMessage(
       5,
-      f
+      f,
+      google_protobuf_wrappers_pb.FloatValue.serializeBinaryToWriter
     );
   }
   f = message.getDimensionuom();
@@ -245,10 +259,11 @@ proto.carrier.Commodity.serializeBinaryToWriter = function(message, writer) {
     );
   }
   f = message.getDimensiondisplay();
-  if (f.length > 0) {
-    writer.writeString(
+  if (f != null) {
+    writer.writeMessage(
       8,
-      f
+      f,
+      google_protobuf_wrappers_pb.StringValue.serializeBinaryToWriter
     );
   }
   f = message.getPackagetype();
@@ -259,10 +274,11 @@ proto.carrier.Commodity.serializeBinaryToWriter = function(message, writer) {
     );
   }
   f = message.getQuantity();
-  if (f !== 0) {
-    writer.writeInt32(
+  if (f != null) {
+    writer.writeMessage(
       10,
-      f
+      f,
+      google_protobuf_wrappers_pb.Int32Value.serializeBinaryToWriter
     );
   }
   f = message.getFreightclass();
@@ -276,92 +292,187 @@ proto.carrier.Commodity.serializeBinaryToWriter = function(message, writer) {
 
 
 /**
- * optional float density = 1;
- * @return {number}
+ * optional google.protobuf.FloatValue density = 1;
+ * @return {?proto.google.protobuf.FloatValue}
  */
 proto.carrier.Commodity.prototype.getDensity = function() {
-  return /** @type {number} */ (jspb.Message.getFloatingPointFieldWithDefault(this, 1, 0.0));
+  return /** @type{?proto.google.protobuf.FloatValue} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_wrappers_pb.FloatValue, 1));
 };
 
 
 /**
- * @param {number} value
+ * @param {?proto.google.protobuf.FloatValue|undefined} value
+ * @return {!proto.carrier.Commodity} returns this
+*/
+proto.carrier.Commodity.prototype.setDensity = function(value) {
+  return jspb.Message.setWrapperField(this, 1, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
  * @return {!proto.carrier.Commodity} returns this
  */
-proto.carrier.Commodity.prototype.setDensity = function(value) {
-  return jspb.Message.setProto3FloatField(this, 1, value);
+proto.carrier.Commodity.prototype.clearDensity = function() {
+  return this.setDensity(undefined);
 };
 
 
 /**
- * optional float length = 2;
- * @return {number}
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.carrier.Commodity.prototype.hasDensity = function() {
+  return jspb.Message.getField(this, 1) != null;
+};
+
+
+/**
+ * optional google.protobuf.FloatValue length = 2;
+ * @return {?proto.google.protobuf.FloatValue}
  */
 proto.carrier.Commodity.prototype.getLength = function() {
-  return /** @type {number} */ (jspb.Message.getFloatingPointFieldWithDefault(this, 2, 0.0));
+  return /** @type{?proto.google.protobuf.FloatValue} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_wrappers_pb.FloatValue, 2));
 };
 
 
 /**
- * @param {number} value
+ * @param {?proto.google.protobuf.FloatValue|undefined} value
+ * @return {!proto.carrier.Commodity} returns this
+*/
+proto.carrier.Commodity.prototype.setLength = function(value) {
+  return jspb.Message.setWrapperField(this, 2, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
  * @return {!proto.carrier.Commodity} returns this
  */
-proto.carrier.Commodity.prototype.setLength = function(value) {
-  return jspb.Message.setProto3FloatField(this, 2, value);
+proto.carrier.Commodity.prototype.clearLength = function() {
+  return this.setLength(undefined);
 };
 
 
 /**
- * optional float width = 3;
- * @return {number}
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.carrier.Commodity.prototype.hasLength = function() {
+  return jspb.Message.getField(this, 2) != null;
+};
+
+
+/**
+ * optional google.protobuf.FloatValue width = 3;
+ * @return {?proto.google.protobuf.FloatValue}
  */
 proto.carrier.Commodity.prototype.getWidth = function() {
-  return /** @type {number} */ (jspb.Message.getFloatingPointFieldWithDefault(this, 3, 0.0));
+  return /** @type{?proto.google.protobuf.FloatValue} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_wrappers_pb.FloatValue, 3));
 };
 
 
 /**
- * @param {number} value
+ * @param {?proto.google.protobuf.FloatValue|undefined} value
+ * @return {!proto.carrier.Commodity} returns this
+*/
+proto.carrier.Commodity.prototype.setWidth = function(value) {
+  return jspb.Message.setWrapperField(this, 3, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
  * @return {!proto.carrier.Commodity} returns this
  */
-proto.carrier.Commodity.prototype.setWidth = function(value) {
-  return jspb.Message.setProto3FloatField(this, 3, value);
+proto.carrier.Commodity.prototype.clearWidth = function() {
+  return this.setWidth(undefined);
 };
 
 
 /**
- * optional float height = 4;
- * @return {number}
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.carrier.Commodity.prototype.hasWidth = function() {
+  return jspb.Message.getField(this, 3) != null;
+};
+
+
+/**
+ * optional google.protobuf.FloatValue height = 4;
+ * @return {?proto.google.protobuf.FloatValue}
  */
 proto.carrier.Commodity.prototype.getHeight = function() {
-  return /** @type {number} */ (jspb.Message.getFloatingPointFieldWithDefault(this, 4, 0.0));
+  return /** @type{?proto.google.protobuf.FloatValue} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_wrappers_pb.FloatValue, 4));
 };
 
 
 /**
- * @param {number} value
+ * @param {?proto.google.protobuf.FloatValue|undefined} value
+ * @return {!proto.carrier.Commodity} returns this
+*/
+proto.carrier.Commodity.prototype.setHeight = function(value) {
+  return jspb.Message.setWrapperField(this, 4, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
  * @return {!proto.carrier.Commodity} returns this
  */
-proto.carrier.Commodity.prototype.setHeight = function(value) {
-  return jspb.Message.setProto3FloatField(this, 4, value);
+proto.carrier.Commodity.prototype.clearHeight = function() {
+  return this.setHeight(undefined);
 };
 
 
 /**
- * optional float weight = 5;
- * @return {number}
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.carrier.Commodity.prototype.hasHeight = function() {
+  return jspb.Message.getField(this, 4) != null;
+};
+
+
+/**
+ * optional google.protobuf.FloatValue weight = 5;
+ * @return {?proto.google.protobuf.FloatValue}
  */
 proto.carrier.Commodity.prototype.getWeight = function() {
-  return /** @type {number} */ (jspb.Message.getFloatingPointFieldWithDefault(this, 5, 0.0));
+  return /** @type{?proto.google.protobuf.FloatValue} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_wrappers_pb.FloatValue, 5));
 };
 
 
 /**
- * @param {number} value
+ * @param {?proto.google.protobuf.FloatValue|undefined} value
+ * @return {!proto.carrier.Commodity} returns this
+*/
+proto.carrier.Commodity.prototype.setWeight = function(value) {
+  return jspb.Message.setWrapperField(this, 5, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
  * @return {!proto.carrier.Commodity} returns this
  */
-proto.carrier.Commodity.prototype.setWeight = function(value) {
-  return jspb.Message.setProto3FloatField(this, 5, value);
+proto.carrier.Commodity.prototype.clearWeight = function() {
+  return this.setWeight(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.carrier.Commodity.prototype.hasWeight = function() {
+  return jspb.Message.getField(this, 5) != null;
 };
 
 
@@ -402,20 +513,39 @@ proto.carrier.Commodity.prototype.setWeightuom = function(value) {
 
 
 /**
- * optional string dimensionDisplay = 8;
- * @return {string}
+ * optional google.protobuf.StringValue dimensionDisplay = 8;
+ * @return {?proto.google.protobuf.StringValue}
  */
 proto.carrier.Commodity.prototype.getDimensiondisplay = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 8, ""));
+  return /** @type{?proto.google.protobuf.StringValue} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_wrappers_pb.StringValue, 8));
 };
 
 
 /**
- * @param {string} value
+ * @param {?proto.google.protobuf.StringValue|undefined} value
+ * @return {!proto.carrier.Commodity} returns this
+*/
+proto.carrier.Commodity.prototype.setDimensiondisplay = function(value) {
+  return jspb.Message.setWrapperField(this, 8, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
  * @return {!proto.carrier.Commodity} returns this
  */
-proto.carrier.Commodity.prototype.setDimensiondisplay = function(value) {
-  return jspb.Message.setProto3StringField(this, 8, value);
+proto.carrier.Commodity.prototype.clearDimensiondisplay = function() {
+  return this.setDimensiondisplay(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.carrier.Commodity.prototype.hasDimensiondisplay = function() {
+  return jspb.Message.getField(this, 8) != null;
 };
 
 
@@ -438,20 +568,39 @@ proto.carrier.Commodity.prototype.setPackagetype = function(value) {
 
 
 /**
- * optional int32 quantity = 10;
- * @return {number}
+ * optional google.protobuf.Int32Value quantity = 10;
+ * @return {?proto.google.protobuf.Int32Value}
  */
 proto.carrier.Commodity.prototype.getQuantity = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 10, 0));
+  return /** @type{?proto.google.protobuf.Int32Value} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_wrappers_pb.Int32Value, 10));
 };
 
 
 /**
- * @param {number} value
+ * @param {?proto.google.protobuf.Int32Value|undefined} value
+ * @return {!proto.carrier.Commodity} returns this
+*/
+proto.carrier.Commodity.prototype.setQuantity = function(value) {
+  return jspb.Message.setWrapperField(this, 10, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
  * @return {!proto.carrier.Commodity} returns this
  */
-proto.carrier.Commodity.prototype.setQuantity = function(value) {
-  return jspb.Message.setProto3IntField(this, 10, value);
+proto.carrier.Commodity.prototype.clearQuantity = function() {
+  return this.setQuantity(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.carrier.Commodity.prototype.hasQuantity = function() {
+  return jspb.Message.getField(this, 10) != null;
 };
 
 
