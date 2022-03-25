@@ -1,0 +1,559 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "services.proto",
+    "version": "version not set"
+  },
+  "tags": [
+    {
+      "name": "CarrierService"
+    }
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {},
+  "definitions": {
+    "carrierAdditionalService": {
+      "type": "string",
+      "enum": [
+        "InsidePickup",
+        "InsideDelivery",
+        "PickupNotification",
+        "DeliveryNotification",
+        "LiftgatePickup",
+        "LiftGateDelivery"
+      ],
+      "default": "InsidePickup"
+    },
+    "carrierAddress": {
+      "type": "object",
+      "properties": {
+        "streetNumber": {
+          "type": "string"
+        },
+        "streetName": {
+          "type": "string"
+        },
+        "municipality": {
+          "type": "string"
+        },
+        "CountrySecondarySubdivision": {
+          "type": "string"
+        },
+        "CountrySubdivision": {
+          "type": "string"
+        },
+        "countrySubdivisionName": {
+          "type": "string"
+        },
+        "postalCode": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "extendedPostalCode": {
+          "type": "string"
+        },
+        "countryCode": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "countryCodeISO3": {
+          "type": "string"
+        },
+        "freeFormAddress": {
+          "type": "string"
+        },
+        "localName": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "addressLine1": {
+          "type": "string"
+        },
+        "addressLine2": {
+          "type": "string"
+        }
+      },
+      "title": "type Address struct {\n\tStreetNumber                string `dynamodbav:\"street_number\" json:\"street_number\"`\n\tStreetName                  string `dynamodbav:\"street_name\" json:\"street_name\"`\n\tMunicipality                string `dynamodbav:\"municipality\" json:\"municipality\"`\n\tCountrySecondarySubdivision string `dynamodbav:\"country_secondary_subdivision\"  json:\"country_secondary_subdivision\"`\n\tCountrySubdivision          string `dynamodbav:\"country_subdivision\" json:\"country_subdivision\"`\n\tCountrySubdivisionName      string `dynamodbav:\"country_subdivision_name\" json:\"country_subdivision_name\"`\n\tPostalCode                  string `dynamodbav:\"postal_code\" json:\"postal_code\"`\n\tState                       string `dynamodbav:\"state\" json:\"state\"`\n\tExtendedPostalCode          string `dynamodbav:\"extended_postal_code\" json:\"extended_postal_code\"`\n\tCountryCode                 string `dynamodbav:\"country_code\" json:\"country_code\"`\n\tCountry                     string `dynamodbav:\"country\" json:\"country\"`\n\tCountryCodeISO3             string `dynamodbav:\"country_codeISO3\" json:\"country_codeISO3\"`\n\tFreeformAddress             string `dynamodbav:\"freeform_address\" json:\"freeform_address\"`\n\tLocalName                   string `dynamodbav:\"local_name\" json:\"local_name\"`\n\tID                          string `dynamodbav:\"id\" json:\"id\"`\n\tType                        string `dynamodbav:\"type\" json:\"type\"`\n\tAddressLine2                string `dynamodbav:\"address_line2\" json:\"address_line2\"`\n\tAddressLine1                string `dynamodbav:\"address_line1\" json:\"address_line1\"`\n}"
+    },
+    "carrierAmount": {
+      "type": "object",
+      "properties": {
+        "fullAmount": {
+          "type": "number",
+          "format": "double"
+        },
+        "discountApplied": {
+          "type": "number",
+          "format": "double"
+        },
+        "netAmount": {
+          "type": "number",
+          "format": "double"
+        }
+      }
+    },
+    "carrierBookingResponse": {
+      "type": "object",
+      "properties": {
+        "bookingId": {
+          "type": "string"
+        },
+        "bolUrl": {
+          "type": "string"
+        },
+        "invoiceUrl": {
+          "type": "string"
+        },
+        "invoiceDueDate": {
+          "type": "string"
+        },
+        "pickUpStart": {
+          "type": "string"
+        },
+        "pickUpEnd": {
+          "type": "string"
+        },
+        "quoteBooked": {
+          "$ref": "#/definitions/carrierQuoteRequest"
+        }
+      }
+    },
+    "carrierBusinessHour": {
+      "type": "object",
+      "properties": {
+        "start": {
+          "type": "string"
+        },
+        "end": {
+          "type": "string"
+        }
+      }
+    },
+    "carrierCarrier": {
+      "type": "object",
+      "properties": {
+        "Name": {
+          "type": "string"
+        },
+        "AuthUrl": {
+          "type": "string"
+        },
+        "RateUrl": {
+          "type": "string"
+        },
+        "AddAddressUrl": {
+          "type": "string"
+        },
+        "GetAddressesUrl": {
+          "type": "string"
+        },
+        "QuoteHistoryUrl": {
+          "type": "string"
+        }
+      },
+      "title": "type BaseCarrier struct {\n\tName            string `json:\"name,omitempty\"`\n\tAuthUrl         string `json:\"auth_url,omitempty\"`\n\tRateUrl         string `json:\"rate_url,omitempty\"`\n\tAddAddressUrl   string `json:\"add_address_url,omitempty\"`\n\tGetAddressesUrl string `json:\"get_addresses_url,omitempty\"`\n\tQuoteHistoryUrl string `json:\"quote_history_url,omitempty\"`\n}"
+    },
+    "carrierCarrierServicePing": {
+      "type": "object",
+      "properties": {
+        "hi": {
+          "type": "string"
+        }
+      }
+    },
+    "carrierCommodity": {
+      "type": "object",
+      "properties": {
+        "density": {
+          "type": "number",
+          "format": "float"
+        },
+        "length": {
+          "type": "number",
+          "format": "float"
+        },
+        "width": {
+          "type": "number",
+          "format": "float"
+        },
+        "height": {
+          "type": "number",
+          "format": "float"
+        },
+        "weight": {
+          "type": "number",
+          "format": "float"
+        },
+        "dimensionUOM": {
+          "$ref": "#/definitions/carrierDimensionUOM"
+        },
+        "weightUOM": {
+          "$ref": "#/definitions/carrierWeightUOM"
+        },
+        "dimensionDisplay": {
+          "type": "string"
+        },
+        "packageType": {
+          "$ref": "#/definitions/carrierPackageType"
+        },
+        "quantity": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "freightClass": {
+          "$ref": "#/definitions/carrierFreightClass"
+        }
+      }
+    },
+    "carrierContact": {
+      "type": "object",
+      "properties": {
+        "firstName": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        },
+        "phoneNumber": {
+          "type": "string"
+        },
+        "phoneNumberExtension": {
+          "type": "string"
+        },
+        "emailAddress": {
+          "type": "string"
+        },
+        "phoneNumberDisplay": {
+          "type": "string"
+        },
+        "role": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/carrierRole"
+          }
+        },
+        "prefferedContactMethod": {
+          "type": "string"
+        }
+      }
+    },
+    "carrierDelivery": {
+      "type": "object",
+      "properties": {
+        "location": {
+          "$ref": "#/definitions/carrierLocation"
+        },
+        "locationType": {
+          "$ref": "#/definitions/carrierLocationType"
+        },
+        "additionalSevices": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/carrierAdditionalService"
+          }
+        },
+        "date": {
+          "type": "string"
+        }
+      }
+    },
+    "carrierDimensionUOM": {
+      "type": "string",
+      "enum": [
+        "INCH",
+        "CM"
+      ],
+      "default": "INCH"
+    },
+    "carrierFreightClass": {
+      "type": "string",
+      "enum": [
+        "Class50",
+        "Class55",
+        "Class60",
+        "Class65",
+        "Class70",
+        "Class775",
+        "Class85",
+        "Class925",
+        "Class100",
+        "Class110",
+        "Class125",
+        "Class150",
+        "Class175",
+        "Class200",
+        "Class250",
+        "Class300",
+        "Class400",
+        "Class500"
+      ],
+      "default": "Class50",
+      "title": "const (\n\tClass50  FreightClass = \"50\"\n\tClass55  FreightClass = \"55\"\n\tClass60  FreightClass = \"60\"\n\tClass65  FreightClass = \"65\"\n\tClass70  FreightClass = \"70\"\n\tClass775 FreightClass = \"77.5\"\n\tClass85  FreightClass = \"85\"\n\tClass925 FreightClass = \"92.5\"\n\tClass100 FreightClass = \"100\"\n\tClass110 FreightClass = \"110\"\n\tClass125 FreightClass = \"125\"\n\tClass150 FreightClass = \"150\"\n\tClass175 FreightClass = \"175\"\n\tClass200 FreightClass = \"200\"\n\tClass250 FreightClass = \"250\"\n\tClass300 FreightClass = \"300\"\n\tClass400 FreightClass = \"400\"\n\tClass500 FreightClass = \"500\"\n)"
+    },
+    "carrierListOfBooking": {
+      "type": "object",
+      "properties": {
+        "bookingHistory": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/carrierBookingResponse"
+          }
+        }
+      }
+    },
+    "carrierListOfQuoteResponse": {
+      "type": "object",
+      "properties": {
+        "quote": {
+          "$ref": "#/definitions/carrierQuoteRequest"
+        },
+        "quotes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/carrierQuoteResponse"
+          }
+        }
+      }
+    },
+    "carrierListsOfLocation": {
+      "type": "object",
+      "properties": {
+        "ListsOfLocation": {
+          "$ref": "#/definitions/carrierLocation"
+        }
+      }
+    },
+    "carrierLocation": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "address": {
+          "$ref": "#/definitions/carrierAddress"
+        },
+        "contact": {
+          "$ref": "#/definitions/carrierContact"
+        },
+        "locationType": {
+          "$ref": "#/definitions/carrierLocationType"
+        },
+        "additionalService": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/carrierAdditionalService"
+          }
+        },
+        "businessHours": {
+          "$ref": "#/definitions/carrierBusinessHour"
+        },
+        "isDefaultPickUp": {
+          "type": "boolean"
+        },
+        "isDefaultDelivery": {
+          "type": "boolean"
+        }
+      },
+      "title": "type Location struct {\n    Name              string              `dynamodbav:\"name,omitempty\" json:\"name,omitempty\"`\n    Address           Address             `dynamodbav:\"address,omitempty\" json:\"address,omitempty\"`\n    Contact           Contact             `dynamodbav:\"contact,omitempty\" json:\"contact,omitempty\"`\n    LocationType      LocationType        `dynamodbav:\"location_type,omitempty\" json:\"location_type,omitempty\"`\n    AdditionalService []AdditionalService `dynamodbav:\"additional_services,omitempty\" json:\"additional_services,omitempty\"`\n    BusinessHours     BusinessHours       `dynamodbav:\"business_hours,omitempty\" json:\"business_hours,omitempty\"`\n    IsDefaultPickUp   bool                `dynamodbav:\"is_default_pick_up,omitempty\" json:\"is_default_pick_up,omitempty\"`\n    IsDefaultDelivery bool                `dynamodbav:\"is_default_delivery,omitempty\" json:\"is_default_delivery,omitempty\"`\n}"
+    },
+    "carrierLocationType": {
+      "type": "string",
+      "enum": [
+        "BusinessWithDock",
+        "BusinessWithOutDock",
+        "ResidentialLocation",
+        "LimitedAccessLocation",
+        "GovermentBuilding",
+        "Apt",
+        "Suite",
+        "Floor",
+        "CommercialStore",
+        "Warehouse"
+      ],
+      "default": "BusinessWithDock"
+    },
+    "carrierPackageType": {
+      "type": "string",
+      "enum": [
+        "Pallet",
+        "Box",
+        "Bundles",
+        "Crate",
+        "Loose",
+        "Pieces",
+        "Roll"
+      ],
+      "default": "Pallet"
+    },
+    "carrierPickup": {
+      "type": "object",
+      "properties": {
+        "location": {
+          "$ref": "#/definitions/carrierLocation"
+        },
+        "locationType": {
+          "$ref": "#/definitions/carrierLocationType"
+        },
+        "additionalSevices": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/carrierAdditionalService"
+          }
+        },
+        "date": {
+          "type": "string"
+        }
+      }
+    },
+    "carrierQuoteRequest": {
+      "type": "object",
+      "properties": {
+        "quoteId": {
+          "type": "string"
+        },
+        "mode": {
+          "type": "string"
+        },
+        "liablePartyID": {
+          "type": "string"
+        },
+        "shippingDetail": {
+          "$ref": "#/definitions/carrierShippingDetail"
+        },
+        "additionalServices": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/carrierAdditionalService"
+          }
+        },
+        "commodities": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/carrierCommodity"
+          }
+        }
+      }
+    },
+    "carrierQuoteResponse": {
+      "type": "object",
+      "properties": {
+        "quoteId": {
+          "type": "string"
+        },
+        "sortId": {
+          "type": "string"
+        },
+        "carrier": {
+          "$ref": "#/definitions/carrierCarrier"
+        },
+        "amount": {
+          "$ref": "#/definitions/carrierAmount"
+        },
+        "transitTime": {
+          "type": "string"
+        },
+        "guranteed": {
+          "type": "boolean"
+        }
+      },
+      "title": "type QuoteResponse struct {\n\tQuoteId     string    `dynamodbav:\"quote_id\" json:\"quote_id\"`\n\tSortId      string    `dynamodbav:\"sort_id\" json:\"sort_id\"`\n\tCarrier     Carrier   `dynamodbav:\"carrier\" json:\"carrier\"`\n\tAmount      Amount    `dynamodbav:\"amount\" json:\"amount\"`\n\tTransitTime string    `dynamodbav:\"transit_time\" json:\"transit_time\"`\n\tGuranteed   Guranteed `dynamodbav:\"guranteed\" json:\"guranteed\"`\n}"
+    },
+    "carrierRole": {
+      "type": "string",
+      "enum": [
+        "SystemOwner",
+        "SystemManager",
+        "SystemStaff",
+        "SystemDeveloper",
+        "SystemWarehouseManager",
+        "SystemWarehouseStaff",
+        "BusinessOwner",
+        "BusinessManager",
+        "BusinessStaff",
+        "BusinessWarehouseManager",
+        "BusinessWarehouseStaff",
+        "ThreePLOwner",
+        "ThreePLStaff"
+      ],
+      "default": "SystemOwner"
+    },
+    "carrierShippingDetail": {
+      "type": "object",
+      "properties": {
+        "pickup": {
+          "$ref": "#/definitions/carrierPickup"
+        },
+        "delivery": {
+          "$ref": "#/definitions/carrierDelivery"
+        }
+      }
+    },
+    "carrierWeightUOM": {
+      "type": "string",
+      "enum": [
+        "LB",
+        "KG"
+      ],
+      "default": "LB"
+    },
+    "carrierresponseOk": {
+      "type": "object",
+      "properties": {
+        "ok": {
+          "type": "boolean"
+        }
+      }
+    },
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string",
+          "description": "A URL/resource name that uniquely identifies the type of the serialized\nprotocol buffer message. This string must contain at least\none \"/\" character. The last segment of the URL's path must represent\nthe fully qualified name of the type (as in\n`path/google.protobuf.Duration`). The name should be in a canonical form\n(e.g., leading \".\" is not accepted).\n\nIn practice, teams usually precompile into the binary all types that they\nexpect it to use in the context of Any. However, for URLs which use the\nscheme `http`, `https`, or no scheme, one can optionally set up a type\nserver that maps type URLs to message definitions as follows:\n\n* If no scheme is provided, `https` is assumed.\n* An HTTP GET on the URL must yield a [google.protobuf.Type][]\n  value in binary format, or produce an error.\n* Applications are allowed to cache lookup results based on the\n  URL, or have them precompiled into a binary to avoid any\n  lookup. Therefore, binary compatibility needs to be preserved\n  on changes to types. (Use versioned type names to manage\n  breaking changes.)\n\nNote: this functionality is not currently available in the official\nprotobuf release, and it is not used for type URLs beginning with\ntype.googleapis.com.\n\nSchemes other than `http`, `https` (or the empty scheme) might be\nused with implementation specific semantics."
+        }
+      },
+      "additionalProperties": {},
+      "description": "`Any` contains an arbitrary serialized protocol buffer message along with a\nURL that describes the type of the serialized message.\n\nProtobuf library provides support to pack/unpack Any values in the form\nof utility functions or additional generated methods of the Any type.\n\nExample 1: Pack and unpack a message in C++.\n\n    Foo foo = ...;\n    Any any;\n    any.PackFrom(foo);\n    ...\n    if (any.UnpackTo(\u0026foo)) {\n      ...\n    }\n\nExample 2: Pack and unpack a message in Java.\n\n    Foo foo = ...;\n    Any any = Any.pack(foo);\n    ...\n    if (any.is(Foo.class)) {\n      foo = any.unpack(Foo.class);\n    }\n\n Example 3: Pack and unpack a message in Python.\n\n    foo = Foo(...)\n    any = Any()\n    any.Pack(foo)\n    ...\n    if any.Is(Foo.DESCRIPTOR):\n      any.Unpack(foo)\n      ...\n\n Example 4: Pack and unpack a message in Go\n\n     foo := \u0026pb.Foo{...}\n     any, err := anypb.New(foo)\n     if err != nil {\n       ...\n     }\n     ...\n     foo := \u0026pb.Foo{}\n     if err := any.UnmarshalTo(foo); err != nil {\n       ...\n     }\n\nThe pack methods provided by protobuf library will by default use\n'type.googleapis.com/full.type.name' as the type URL and the unpack\nmethods only use the fully qualified type name after the last '/'\nin the type URL, for example \"foo.bar.com/x/y.z\" will yield type\nname \"y.z\".\n\n\nJSON\n====\nThe JSON representation of an `Any` value uses the regular\nrepresentation of the deserialized, embedded message, with an\nadditional field `@type` which contains the type URL. Example:\n\n    package google.profile;\n    message Person {\n      string first_name = 1;\n      string last_name = 2;\n    }\n\n    {\n      \"@type\": \"type.googleapis.com/google.profile.Person\",\n      \"firstName\": \u003cstring\u003e,\n      \"lastName\": \u003cstring\u003e\n    }\n\nIf the embedded message type is well-known and has a custom JSON\nrepresentation, that representation will be embedded adding a field\n`value` which holds the custom JSON in addition to the `@type`\nfield. Example (for message [google.protobuf.Duration][]):\n\n    {\n      \"@type\": \"type.googleapis.com/google.protobuf.Duration\",\n      \"value\": \"1.212s\"\n    }"
+    },
+    "rpcStatus": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "description": "The status code, which should be an enum value of [google.rpc.Code][google.rpc.Code]."
+        },
+        "message": {
+          "type": "string",
+          "description": "A developer-facing error message, which should be in English. Any\nuser-facing error message should be localized and sent in the\n[google.rpc.Status.details][google.rpc.Status.details] field, or localized by the client."
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/protobufAny"
+          },
+          "description": "A list of messages that carry the error details.  There is a common set of\nmessage types for APIs to use."
+        }
+      },
+      "description": "- Simple to use and understand for most users\n- Flexible enough to meet unexpected needs\n\n# Overview\n\nThe `Status` message contains three pieces of data: error code, error message,\nand error details. The error code should be an enum value of\n[google.rpc.Code][google.rpc.Code], but it may accept additional error codes if needed.  The\nerror message should be a developer-facing English message that helps\ndevelopers *understand* and *resolve* the error. If a localized user-facing\nerror message is needed, put the localized message in the error details or\nlocalize it in the client. The optional error details may contain arbitrary\ninformation about the error. There is a predefined set of error detail types\nin the package `google.rpc` that can be used for common error conditions.\n\n# Language mapping\n\nThe `Status` message is the logical representation of the error model, but it\nis not necessarily the actual wire format. When the `Status` message is\nexposed in different client libraries and different wire protocols, it can be\nmapped differently. For example, it will likely be mapped to some exceptions\nin Java, but more likely mapped to some error codes in C.\n\n# Other uses\n\nThe error model and the `Status` message can be used in a variety of\nenvironments, either with or without APIs, to provide a\nconsistent developer experience across different environments.\n\nExample uses of this error model include:\n\n- Partial errors. If a service needs to return partial errors to the client,\n    it may embed the `Status` in the normal response to indicate the partial\n    errors.\n\n- Workflow errors. A typical workflow has multiple steps. Each step may\n    have a `Status` message for error reporting.\n\n- Batch operations. If a client uses batch request and batch response, the\n    `Status` message should be used directly inside batch response, one for\n    each error sub-response.\n\n- Asynchronous operations. If an API call embeds asynchronous operation\n    results in its response, the status of those operations should be\n    represented directly using the `Status` message.\n\n- Logging. If some API errors are stored in logs, the message `Status` could\n    be used directly after any stripping needed for security/privacy reasons.",
+      "title": "The `Status` type defines a logical error model that is suitable for different\nprogramming environments, including REST APIs and RPC APIs. It is used by\n[gRPC](https://github.com/grpc). The error model is designed to be:"
+    }
+  }
+}
