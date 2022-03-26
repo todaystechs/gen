@@ -165,6 +165,223 @@ var _ interface {
 	ErrorName() string
 } = ForgotPasswordDataValidationError{}
 
+// Validate checks the field values on ForgotPasswordToken with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, the first error encountered is returned, or nil if there are no violations.
+func (m *ForgotPasswordToken) Validate() error {
+	return m.validate(false)
+}
+
+// ValidateAll checks the field values on ForgotPasswordToken with the rules
+// defined in the proto definition for this message. If any rules are
+// violated, the result is a list of violation errors wrapped in
+// ForgotPasswordTokenMultiError, or nil if none found.
+func (m *ForgotPasswordToken) ValidateAll() error {
+	return m.validate(true)
+}
+
+func (m *ForgotPasswordToken) validate(all bool) error {
+	if m == nil {
+		return nil
+	}
+
+	var errors []error
+
+	if all {
+		switch v := interface{}(m.GetIssuedTo()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, ForgotPasswordTokenValidationError{
+					field:  "IssuedTo",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, ForgotPasswordTokenValidationError{
+					field:  "IssuedTo",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetIssuedTo()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return ForgotPasswordTokenValidationError{
+				field:  "IssuedTo",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
+
+	if all {
+		switch v := interface{}(m.GetIssuedOn()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, ForgotPasswordTokenValidationError{
+					field:  "IssuedOn",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, ForgotPasswordTokenValidationError{
+					field:  "IssuedOn",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetIssuedOn()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return ForgotPasswordTokenValidationError{
+				field:  "IssuedOn",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
+
+	if all {
+		switch v := interface{}(m.GetExpiresOn()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, ForgotPasswordTokenValidationError{
+					field:  "ExpiresOn",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, ForgotPasswordTokenValidationError{
+					field:  "ExpiresOn",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetExpiresOn()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return ForgotPasswordTokenValidationError{
+				field:  "ExpiresOn",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
+
+	if all {
+		switch v := interface{}(m.GetToken()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, ForgotPasswordTokenValidationError{
+					field:  "Token",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, ForgotPasswordTokenValidationError{
+					field:  "Token",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
+			}
+		}
+	} else if v, ok := interface{}(m.GetToken()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return ForgotPasswordTokenValidationError{
+				field:  "Token",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
+	}
+
+	if len(errors) > 0 {
+		return ForgotPasswordTokenMultiError(errors)
+	}
+	return nil
+}
+
+// ForgotPasswordTokenMultiError is an error wrapping multiple validation
+// errors returned by ForgotPasswordToken.ValidateAll() if the designated
+// constraints aren't met.
+type ForgotPasswordTokenMultiError []error
+
+// Error returns a concatenation of all the error messages it wraps.
+func (m ForgotPasswordTokenMultiError) Error() string {
+	var msgs []string
+	for _, err := range m {
+		msgs = append(msgs, err.Error())
+	}
+	return strings.Join(msgs, "; ")
+}
+
+// AllErrors returns a list of validation violation errors.
+func (m ForgotPasswordTokenMultiError) AllErrors() []error { return m }
+
+// ForgotPasswordTokenValidationError is the validation error returned by
+// ForgotPasswordToken.Validate if the designated constraints aren't met.
+type ForgotPasswordTokenValidationError struct {
+	field  string
+	reason string
+	cause  error
+	key    bool
+}
+
+// Field function returns field value.
+func (e ForgotPasswordTokenValidationError) Field() string { return e.field }
+
+// Reason function returns reason value.
+func (e ForgotPasswordTokenValidationError) Reason() string { return e.reason }
+
+// Cause function returns cause value.
+func (e ForgotPasswordTokenValidationError) Cause() error { return e.cause }
+
+// Key function returns key value.
+func (e ForgotPasswordTokenValidationError) Key() bool { return e.key }
+
+// ErrorName returns error name.
+func (e ForgotPasswordTokenValidationError) ErrorName() string {
+	return "ForgotPasswordTokenValidationError"
+}
+
+// Error satisfies the builtin error interface
+func (e ForgotPasswordTokenValidationError) Error() string {
+	cause := ""
+	if e.cause != nil {
+		cause = fmt.Sprintf(" | caused by: %v", e.cause)
+	}
+
+	key := ""
+	if e.key {
+		key = "key for "
+	}
+
+	return fmt.Sprintf(
+		"invalid %sForgotPasswordToken.%s: %s%s",
+		key,
+		e.field,
+		e.reason,
+		cause)
+}
+
+var _ error = ForgotPasswordTokenValidationError{}
+
+var _ interface {
+	Field() string
+	Reason() string
+	Key() bool
+	Cause() error
+	ErrorName() string
+} = ForgotPasswordTokenValidationError{}
+
 // Validate checks the field values on ForgotPassswordResponse with the rules
 // defined in the proto definition for this message. If any rules are
 // violated, the first error encountered is returned, or nil if there are no violations.
