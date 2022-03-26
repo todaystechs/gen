@@ -57,214 +57,25 @@ func (m *Commodity) validate(all bool) error {
 
 	var errors []error
 
-	if all {
-		switch v := interface{}(m.GetDensity()).(type) {
-		case interface{ ValidateAll() error }:
-			if err := v.ValidateAll(); err != nil {
-				errors = append(errors, CommodityValidationError{
-					field:  "Density",
-					reason: "embedded message failed validation",
-					cause:  err,
-				})
-			}
-		case interface{ Validate() error }:
-			if err := v.Validate(); err != nil {
-				errors = append(errors, CommodityValidationError{
-					field:  "Density",
-					reason: "embedded message failed validation",
-					cause:  err,
-				})
-			}
-		}
-	} else if v, ok := interface{}(m.GetDensity()).(interface{ Validate() error }); ok {
-		if err := v.Validate(); err != nil {
-			return CommodityValidationError{
-				field:  "Density",
-				reason: "embedded message failed validation",
-				cause:  err,
-			}
-		}
-	}
+	// no validation rules for Density
 
-	if all {
-		switch v := interface{}(m.GetLength()).(type) {
-		case interface{ ValidateAll() error }:
-			if err := v.ValidateAll(); err != nil {
-				errors = append(errors, CommodityValidationError{
-					field:  "Length",
-					reason: "embedded message failed validation",
-					cause:  err,
-				})
-			}
-		case interface{ Validate() error }:
-			if err := v.Validate(); err != nil {
-				errors = append(errors, CommodityValidationError{
-					field:  "Length",
-					reason: "embedded message failed validation",
-					cause:  err,
-				})
-			}
-		}
-	} else if v, ok := interface{}(m.GetLength()).(interface{ Validate() error }); ok {
-		if err := v.Validate(); err != nil {
-			return CommodityValidationError{
-				field:  "Length",
-				reason: "embedded message failed validation",
-				cause:  err,
-			}
-		}
-	}
+	// no validation rules for Length
 
-	if all {
-		switch v := interface{}(m.GetWidth()).(type) {
-		case interface{ ValidateAll() error }:
-			if err := v.ValidateAll(); err != nil {
-				errors = append(errors, CommodityValidationError{
-					field:  "Width",
-					reason: "embedded message failed validation",
-					cause:  err,
-				})
-			}
-		case interface{ Validate() error }:
-			if err := v.Validate(); err != nil {
-				errors = append(errors, CommodityValidationError{
-					field:  "Width",
-					reason: "embedded message failed validation",
-					cause:  err,
-				})
-			}
-		}
-	} else if v, ok := interface{}(m.GetWidth()).(interface{ Validate() error }); ok {
-		if err := v.Validate(); err != nil {
-			return CommodityValidationError{
-				field:  "Width",
-				reason: "embedded message failed validation",
-				cause:  err,
-			}
-		}
-	}
+	// no validation rules for Width
 
-	if all {
-		switch v := interface{}(m.GetHeight()).(type) {
-		case interface{ ValidateAll() error }:
-			if err := v.ValidateAll(); err != nil {
-				errors = append(errors, CommodityValidationError{
-					field:  "Height",
-					reason: "embedded message failed validation",
-					cause:  err,
-				})
-			}
-		case interface{ Validate() error }:
-			if err := v.Validate(); err != nil {
-				errors = append(errors, CommodityValidationError{
-					field:  "Height",
-					reason: "embedded message failed validation",
-					cause:  err,
-				})
-			}
-		}
-	} else if v, ok := interface{}(m.GetHeight()).(interface{ Validate() error }); ok {
-		if err := v.Validate(); err != nil {
-			return CommodityValidationError{
-				field:  "Height",
-				reason: "embedded message failed validation",
-				cause:  err,
-			}
-		}
-	}
+	// no validation rules for Height
 
-	if all {
-		switch v := interface{}(m.GetWeight()).(type) {
-		case interface{ ValidateAll() error }:
-			if err := v.ValidateAll(); err != nil {
-				errors = append(errors, CommodityValidationError{
-					field:  "Weight",
-					reason: "embedded message failed validation",
-					cause:  err,
-				})
-			}
-		case interface{ Validate() error }:
-			if err := v.Validate(); err != nil {
-				errors = append(errors, CommodityValidationError{
-					field:  "Weight",
-					reason: "embedded message failed validation",
-					cause:  err,
-				})
-			}
-		}
-	} else if v, ok := interface{}(m.GetWeight()).(interface{ Validate() error }); ok {
-		if err := v.Validate(); err != nil {
-			return CommodityValidationError{
-				field:  "Weight",
-				reason: "embedded message failed validation",
-				cause:  err,
-			}
-		}
-	}
+	// no validation rules for Weight
 
 	// no validation rules for DimensionUOM
 
 	// no validation rules for WeightUOM
 
-	if all {
-		switch v := interface{}(m.GetDimensionDisplay()).(type) {
-		case interface{ ValidateAll() error }:
-			if err := v.ValidateAll(); err != nil {
-				errors = append(errors, CommodityValidationError{
-					field:  "DimensionDisplay",
-					reason: "embedded message failed validation",
-					cause:  err,
-				})
-			}
-		case interface{ Validate() error }:
-			if err := v.Validate(); err != nil {
-				errors = append(errors, CommodityValidationError{
-					field:  "DimensionDisplay",
-					reason: "embedded message failed validation",
-					cause:  err,
-				})
-			}
-		}
-	} else if v, ok := interface{}(m.GetDimensionDisplay()).(interface{ Validate() error }); ok {
-		if err := v.Validate(); err != nil {
-			return CommodityValidationError{
-				field:  "DimensionDisplay",
-				reason: "embedded message failed validation",
-				cause:  err,
-			}
-		}
-	}
+	// no validation rules for DimensionDisplay
 
 	// no validation rules for PackageType
 
-	if all {
-		switch v := interface{}(m.GetQuantity()).(type) {
-		case interface{ ValidateAll() error }:
-			if err := v.ValidateAll(); err != nil {
-				errors = append(errors, CommodityValidationError{
-					field:  "Quantity",
-					reason: "embedded message failed validation",
-					cause:  err,
-				})
-			}
-		case interface{ Validate() error }:
-			if err := v.Validate(); err != nil {
-				errors = append(errors, CommodityValidationError{
-					field:  "Quantity",
-					reason: "embedded message failed validation",
-					cause:  err,
-				})
-			}
-		}
-	} else if v, ok := interface{}(m.GetQuantity()).(interface{ Validate() error }); ok {
-		if err := v.Validate(); err != nil {
-			return CommodityValidationError{
-				field:  "Quantity",
-				reason: "embedded message failed validation",
-				cause:  err,
-			}
-		}
-	}
+	// no validation rules for Quantity
 
 	// no validation rules for FreightClass
 

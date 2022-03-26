@@ -56,92 +56,11 @@ func (m *Amount) validate(all bool) error {
 
 	var errors []error
 
-	if all {
-		switch v := interface{}(m.GetFullAmount()).(type) {
-		case interface{ ValidateAll() error }:
-			if err := v.ValidateAll(); err != nil {
-				errors = append(errors, AmountValidationError{
-					field:  "FullAmount",
-					reason: "embedded message failed validation",
-					cause:  err,
-				})
-			}
-		case interface{ Validate() error }:
-			if err := v.Validate(); err != nil {
-				errors = append(errors, AmountValidationError{
-					field:  "FullAmount",
-					reason: "embedded message failed validation",
-					cause:  err,
-				})
-			}
-		}
-	} else if v, ok := interface{}(m.GetFullAmount()).(interface{ Validate() error }); ok {
-		if err := v.Validate(); err != nil {
-			return AmountValidationError{
-				field:  "FullAmount",
-				reason: "embedded message failed validation",
-				cause:  err,
-			}
-		}
-	}
+	// no validation rules for FullAmount
 
-	if all {
-		switch v := interface{}(m.GetDiscountApplied()).(type) {
-		case interface{ ValidateAll() error }:
-			if err := v.ValidateAll(); err != nil {
-				errors = append(errors, AmountValidationError{
-					field:  "DiscountApplied",
-					reason: "embedded message failed validation",
-					cause:  err,
-				})
-			}
-		case interface{ Validate() error }:
-			if err := v.Validate(); err != nil {
-				errors = append(errors, AmountValidationError{
-					field:  "DiscountApplied",
-					reason: "embedded message failed validation",
-					cause:  err,
-				})
-			}
-		}
-	} else if v, ok := interface{}(m.GetDiscountApplied()).(interface{ Validate() error }); ok {
-		if err := v.Validate(); err != nil {
-			return AmountValidationError{
-				field:  "DiscountApplied",
-				reason: "embedded message failed validation",
-				cause:  err,
-			}
-		}
-	}
+	// no validation rules for DiscountApplied
 
-	if all {
-		switch v := interface{}(m.GetNetAmount()).(type) {
-		case interface{ ValidateAll() error }:
-			if err := v.ValidateAll(); err != nil {
-				errors = append(errors, AmountValidationError{
-					field:  "NetAmount",
-					reason: "embedded message failed validation",
-					cause:  err,
-				})
-			}
-		case interface{ Validate() error }:
-			if err := v.Validate(); err != nil {
-				errors = append(errors, AmountValidationError{
-					field:  "NetAmount",
-					reason: "embedded message failed validation",
-					cause:  err,
-				})
-			}
-		}
-	} else if v, ok := interface{}(m.GetNetAmount()).(interface{ Validate() error }); ok {
-		if err := v.Validate(); err != nil {
-			return AmountValidationError{
-				field:  "NetAmount",
-				reason: "embedded message failed validation",
-				cause:  err,
-			}
-		}
-	}
+	// no validation rules for NetAmount
 
 	if len(errors) > 0 {
 		return AmountMultiError(errors)

@@ -22,11 +22,11 @@ const _ = grpc.SupportPackageIsVersion7
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type UserServiceClient interface {
-	Ping(ctx context.Context, in *UserServicePingData, opts ...grpc.CallOption) (*UserServicePingData, error)
+	PingUserService(ctx context.Context, in *UserServicePingData, opts ...grpc.CallOption) (*UserServicePingData, error)
 	SignUp(ctx context.Context, in *SignUpData, opts ...grpc.CallOption) (*Ok, error)
 	LogIn(ctx context.Context, in *LoginUserData, opts ...grpc.CallOption) (*LoginUserResponse, error)
 	LogOut(ctx context.Context, in *LogOutData, opts ...grpc.CallOption) (*Ok, error)
-	ForgotPassword(ctx context.Context, in *ForgotPassswordData, opts ...grpc.CallOption) (*ForgotPassswordResponse, error)
+	ForgotPassword(ctx context.Context, in *ForgotPasswordData, opts ...grpc.CallOption) (*ForgotPassswordResponse, error)
 	ResetPassword(ctx context.Context, in *ResetPasswordData, opts ...grpc.CallOption) (*Ok, error)
 	UpdateRole(ctx context.Context, in *UpdateRoleData, opts ...grpc.CallOption) (*Ok, error)
 	AddUser(ctx context.Context, in *AddStaffData, opts ...grpc.CallOption) (*Ok, error)
@@ -43,9 +43,9 @@ func NewUserServiceClient(cc grpc.ClientConnInterface) UserServiceClient {
 	return &userServiceClient{cc}
 }
 
-func (c *userServiceClient) Ping(ctx context.Context, in *UserServicePingData, opts ...grpc.CallOption) (*UserServicePingData, error) {
+func (c *userServiceClient) PingUserService(ctx context.Context, in *UserServicePingData, opts ...grpc.CallOption) (*UserServicePingData, error) {
 	out := new(UserServicePingData)
-	err := c.cc.Invoke(ctx, "/userservice.UserService/Ping", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/userservice.UserService/PingUserService", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -79,7 +79,7 @@ func (c *userServiceClient) LogOut(ctx context.Context, in *LogOutData, opts ...
 	return out, nil
 }
 
-func (c *userServiceClient) ForgotPassword(ctx context.Context, in *ForgotPassswordData, opts ...grpc.CallOption) (*ForgotPassswordResponse, error) {
+func (c *userServiceClient) ForgotPassword(ctx context.Context, in *ForgotPasswordData, opts ...grpc.CallOption) (*ForgotPassswordResponse, error) {
 	out := new(ForgotPassswordResponse)
 	err := c.cc.Invoke(ctx, "/userservice.UserService/ForgotPassword", in, out, opts...)
 	if err != nil {
@@ -146,11 +146,11 @@ func (c *userServiceClient) ConfirmEmail(ctx context.Context, in *ConfirmEmailDa
 // All implementations should embed UnimplementedUserServiceServer
 // for forward compatibility
 type UserServiceServer interface {
-	Ping(context.Context, *UserServicePingData) (*UserServicePingData, error)
+	PingUserService(context.Context, *UserServicePingData) (*UserServicePingData, error)
 	SignUp(context.Context, *SignUpData) (*Ok, error)
 	LogIn(context.Context, *LoginUserData) (*LoginUserResponse, error)
 	LogOut(context.Context, *LogOutData) (*Ok, error)
-	ForgotPassword(context.Context, *ForgotPassswordData) (*ForgotPassswordResponse, error)
+	ForgotPassword(context.Context, *ForgotPasswordData) (*ForgotPassswordResponse, error)
 	ResetPassword(context.Context, *ResetPasswordData) (*Ok, error)
 	UpdateRole(context.Context, *UpdateRoleData) (*Ok, error)
 	AddUser(context.Context, *AddStaffData) (*Ok, error)
@@ -163,8 +163,8 @@ type UserServiceServer interface {
 type UnimplementedUserServiceServer struct {
 }
 
-func (UnimplementedUserServiceServer) Ping(context.Context, *UserServicePingData) (*UserServicePingData, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method Ping not implemented")
+func (UnimplementedUserServiceServer) PingUserService(context.Context, *UserServicePingData) (*UserServicePingData, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PingUserService not implemented")
 }
 func (UnimplementedUserServiceServer) SignUp(context.Context, *SignUpData) (*Ok, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SignUp not implemented")
@@ -175,7 +175,7 @@ func (UnimplementedUserServiceServer) LogIn(context.Context, *LoginUserData) (*L
 func (UnimplementedUserServiceServer) LogOut(context.Context, *LogOutData) (*Ok, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method LogOut not implemented")
 }
-func (UnimplementedUserServiceServer) ForgotPassword(context.Context, *ForgotPassswordData) (*ForgotPassswordResponse, error) {
+func (UnimplementedUserServiceServer) ForgotPassword(context.Context, *ForgotPasswordData) (*ForgotPassswordResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ForgotPassword not implemented")
 }
 func (UnimplementedUserServiceServer) ResetPassword(context.Context, *ResetPasswordData) (*Ok, error) {
@@ -208,20 +208,20 @@ func RegisterUserServiceServer(s grpc.ServiceRegistrar, srv UserServiceServer) {
 	s.RegisterService(&UserService_ServiceDesc, srv)
 }
 
-func _UserService_Ping_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _UserService_PingUserService_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(UserServicePingData)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(UserServiceServer).Ping(ctx, in)
+		return srv.(UserServiceServer).PingUserService(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/userservice.UserService/Ping",
+		FullMethod: "/userservice.UserService/PingUserService",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(UserServiceServer).Ping(ctx, req.(*UserServicePingData))
+		return srv.(UserServiceServer).PingUserService(ctx, req.(*UserServicePingData))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -281,7 +281,7 @@ func _UserService_LogOut_Handler(srv interface{}, ctx context.Context, dec func(
 }
 
 func _UserService_ForgotPassword_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ForgotPassswordData)
+	in := new(ForgotPasswordData)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -293,7 +293,7 @@ func _UserService_ForgotPassword_Handler(srv interface{}, ctx context.Context, d
 		FullMethod: "/userservice.UserService/ForgotPassword",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(UserServiceServer).ForgotPassword(ctx, req.(*ForgotPassswordData))
+		return srv.(UserServiceServer).ForgotPassword(ctx, req.(*ForgotPasswordData))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -414,8 +414,8 @@ var UserService_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*UserServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "Ping",
-			Handler:    _UserService_Ping_Handler,
+			MethodName: "PingUserService",
+			Handler:    _UserService_PingUserService_Handler,
 		},
 		{
 			MethodName: "SignUp",

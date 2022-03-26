@@ -25,8 +25,6 @@ var carrier_pb = require('./carrier_pb.js');
 goog.object.extend(proto, carrier_pb);
 var amount_pb = require('./amount_pb.js');
 goog.object.extend(proto, amount_pb);
-var google_protobuf_wrappers_pb = require('google-protobuf/google/protobuf/wrappers_pb.js');
-goog.object.extend(proto, google_protobuf_wrappers_pb);
 goog.exportSymbol('proto.carrier.FetchQuotesRequest', null, global);
 goog.exportSymbol('proto.carrier.ListOfQuoteResponse', null, global);
 goog.exportSymbol('proto.carrier.QuoteRequest', null, global);
@@ -154,9 +152,9 @@ proto.carrier.QuoteRequest.prototype.toObject = function(opt_includeInstance) {
  */
 proto.carrier.QuoteRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    quoteid: (f = msg.getQuoteid()) && google_protobuf_wrappers_pb.StringValue.toObject(includeInstance, f),
-    mode: (f = msg.getMode()) && google_protobuf_wrappers_pb.StringValue.toObject(includeInstance, f),
-    liablepartyid: (f = msg.getLiablepartyid()) && google_protobuf_wrappers_pb.StringValue.toObject(includeInstance, f),
+    quoteid: jspb.Message.getFieldWithDefault(msg, 1, ""),
+    mode: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    liablepartyid: jspb.Message.getFieldWithDefault(msg, 3, ""),
     shippingdetail: (f = msg.getShippingdetail()) && shipping_detail_pb.ShippingDetail.toObject(includeInstance, f),
     additionalservicesList: (f = jspb.Message.getRepeatedField(msg, 5)) == null ? undefined : f,
     commoditiesList: jspb.Message.toObjectList(msg.getCommoditiesList(),
@@ -198,18 +196,15 @@ proto.carrier.QuoteRequest.deserializeBinaryFromReader = function(msg, reader) {
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = new google_protobuf_wrappers_pb.StringValue;
-      reader.readMessage(value,google_protobuf_wrappers_pb.StringValue.deserializeBinaryFromReader);
+      var value = /** @type {string} */ (reader.readString());
       msg.setQuoteid(value);
       break;
     case 2:
-      var value = new google_protobuf_wrappers_pb.StringValue;
-      reader.readMessage(value,google_protobuf_wrappers_pb.StringValue.deserializeBinaryFromReader);
+      var value = /** @type {string} */ (reader.readString());
       msg.setMode(value);
       break;
     case 3:
-      var value = new google_protobuf_wrappers_pb.StringValue;
-      reader.readMessage(value,google_protobuf_wrappers_pb.StringValue.deserializeBinaryFromReader);
+      var value = /** @type {string} */ (reader.readString());
       msg.setLiablepartyid(value);
       break;
     case 4:
@@ -258,27 +253,24 @@ proto.carrier.QuoteRequest.prototype.serializeBinary = function() {
 proto.carrier.QuoteRequest.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getQuoteid();
-  if (f != null) {
-    writer.writeMessage(
+  if (f.length > 0) {
+    writer.writeString(
       1,
-      f,
-      google_protobuf_wrappers_pb.StringValue.serializeBinaryToWriter
+      f
     );
   }
   f = message.getMode();
-  if (f != null) {
-    writer.writeMessage(
+  if (f.length > 0) {
+    writer.writeString(
       2,
-      f,
-      google_protobuf_wrappers_pb.StringValue.serializeBinaryToWriter
+      f
     );
   }
   f = message.getLiablepartyid();
-  if (f != null) {
-    writer.writeMessage(
+  if (f.length > 0) {
+    writer.writeString(
       3,
-      f,
-      google_protobuf_wrappers_pb.StringValue.serializeBinaryToWriter
+      f
     );
   }
   f = message.getShippingdetail();
@@ -308,113 +300,56 @@ proto.carrier.QuoteRequest.serializeBinaryToWriter = function(message, writer) {
 
 
 /**
- * optional google.protobuf.StringValue quoteId = 1;
- * @return {?proto.google.protobuf.StringValue}
+ * optional string quoteId = 1;
+ * @return {string}
  */
 proto.carrier.QuoteRequest.prototype.getQuoteid = function() {
-  return /** @type{?proto.google.protobuf.StringValue} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_wrappers_pb.StringValue, 1));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
 };
 
 
 /**
- * @param {?proto.google.protobuf.StringValue|undefined} value
+ * @param {string} value
  * @return {!proto.carrier.QuoteRequest} returns this
-*/
+ */
 proto.carrier.QuoteRequest.prototype.setQuoteid = function(value) {
-  return jspb.Message.setWrapperField(this, 1, value);
+  return jspb.Message.setProto3StringField(this, 1, value);
 };
 
 
 /**
- * Clears the message field making it undefined.
- * @return {!proto.carrier.QuoteRequest} returns this
- */
-proto.carrier.QuoteRequest.prototype.clearQuoteid = function() {
-  return this.setQuoteid(undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {boolean}
- */
-proto.carrier.QuoteRequest.prototype.hasQuoteid = function() {
-  return jspb.Message.getField(this, 1) != null;
-};
-
-
-/**
- * optional google.protobuf.StringValue mode = 2;
- * @return {?proto.google.protobuf.StringValue}
+ * optional string mode = 2;
+ * @return {string}
  */
 proto.carrier.QuoteRequest.prototype.getMode = function() {
-  return /** @type{?proto.google.protobuf.StringValue} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_wrappers_pb.StringValue, 2));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
 };
 
 
 /**
- * @param {?proto.google.protobuf.StringValue|undefined} value
+ * @param {string} value
  * @return {!proto.carrier.QuoteRequest} returns this
-*/
+ */
 proto.carrier.QuoteRequest.prototype.setMode = function(value) {
-  return jspb.Message.setWrapperField(this, 2, value);
+  return jspb.Message.setProto3StringField(this, 2, value);
 };
 
 
 /**
- * Clears the message field making it undefined.
- * @return {!proto.carrier.QuoteRequest} returns this
- */
-proto.carrier.QuoteRequest.prototype.clearMode = function() {
-  return this.setMode(undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {boolean}
- */
-proto.carrier.QuoteRequest.prototype.hasMode = function() {
-  return jspb.Message.getField(this, 2) != null;
-};
-
-
-/**
- * optional google.protobuf.StringValue liablePartyID = 3;
- * @return {?proto.google.protobuf.StringValue}
+ * optional string liablePartyID = 3;
+ * @return {string}
  */
 proto.carrier.QuoteRequest.prototype.getLiablepartyid = function() {
-  return /** @type{?proto.google.protobuf.StringValue} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_wrappers_pb.StringValue, 3));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
 };
 
 
 /**
- * @param {?proto.google.protobuf.StringValue|undefined} value
+ * @param {string} value
  * @return {!proto.carrier.QuoteRequest} returns this
-*/
+ */
 proto.carrier.QuoteRequest.prototype.setLiablepartyid = function(value) {
-  return jspb.Message.setWrapperField(this, 3, value);
-};
-
-
-/**
- * Clears the message field making it undefined.
- * @return {!proto.carrier.QuoteRequest} returns this
- */
-proto.carrier.QuoteRequest.prototype.clearLiablepartyid = function() {
-  return this.setLiablepartyid(undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {boolean}
- */
-proto.carrier.QuoteRequest.prototype.hasLiablepartyid = function() {
-  return jspb.Message.getField(this, 3) != null;
+  return jspb.Message.setProto3StringField(this, 3, value);
 };
 
 
@@ -562,12 +497,12 @@ proto.carrier.QuoteResponse.prototype.toObject = function(opt_includeInstance) {
  */
 proto.carrier.QuoteResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    quoteid: (f = msg.getQuoteid()) && google_protobuf_wrappers_pb.StringValue.toObject(includeInstance, f),
-    sortid: (f = msg.getSortid()) && google_protobuf_wrappers_pb.StringValue.toObject(includeInstance, f),
+    quoteid: jspb.Message.getFieldWithDefault(msg, 1, ""),
+    sortid: jspb.Message.getFieldWithDefault(msg, 2, ""),
     carrier: (f = msg.getCarrier()) && carrier_pb.Carrier.toObject(includeInstance, f),
     amount: (f = msg.getAmount()) && amount_pb.Amount.toObject(includeInstance, f),
-    transittime: (f = msg.getTransittime()) && google_protobuf_wrappers_pb.StringValue.toObject(includeInstance, f),
-    guranteed: (f = msg.getGuranteed()) && google_protobuf_wrappers_pb.BoolValue.toObject(includeInstance, f)
+    transittime: jspb.Message.getFieldWithDefault(msg, 5, ""),
+    guranteed: jspb.Message.getBooleanFieldWithDefault(msg, 6, false)
   };
 
   if (includeInstance) {
@@ -605,13 +540,11 @@ proto.carrier.QuoteResponse.deserializeBinaryFromReader = function(msg, reader) 
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = new google_protobuf_wrappers_pb.StringValue;
-      reader.readMessage(value,google_protobuf_wrappers_pb.StringValue.deserializeBinaryFromReader);
+      var value = /** @type {string} */ (reader.readString());
       msg.setQuoteid(value);
       break;
     case 2:
-      var value = new google_protobuf_wrappers_pb.StringValue;
-      reader.readMessage(value,google_protobuf_wrappers_pb.StringValue.deserializeBinaryFromReader);
+      var value = /** @type {string} */ (reader.readString());
       msg.setSortid(value);
       break;
     case 3:
@@ -625,13 +558,11 @@ proto.carrier.QuoteResponse.deserializeBinaryFromReader = function(msg, reader) 
       msg.setAmount(value);
       break;
     case 5:
-      var value = new google_protobuf_wrappers_pb.StringValue;
-      reader.readMessage(value,google_protobuf_wrappers_pb.StringValue.deserializeBinaryFromReader);
+      var value = /** @type {string} */ (reader.readString());
       msg.setTransittime(value);
       break;
     case 6:
-      var value = new google_protobuf_wrappers_pb.BoolValue;
-      reader.readMessage(value,google_protobuf_wrappers_pb.BoolValue.deserializeBinaryFromReader);
+      var value = /** @type {boolean} */ (reader.readBool());
       msg.setGuranteed(value);
       break;
     default:
@@ -664,19 +595,17 @@ proto.carrier.QuoteResponse.prototype.serializeBinary = function() {
 proto.carrier.QuoteResponse.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getQuoteid();
-  if (f != null) {
-    writer.writeMessage(
+  if (f.length > 0) {
+    writer.writeString(
       1,
-      f,
-      google_protobuf_wrappers_pb.StringValue.serializeBinaryToWriter
+      f
     );
   }
   f = message.getSortid();
-  if (f != null) {
-    writer.writeMessage(
+  if (f.length > 0) {
+    writer.writeString(
       2,
-      f,
-      google_protobuf_wrappers_pb.StringValue.serializeBinaryToWriter
+      f
     );
   }
   f = message.getCarrier();
@@ -696,95 +625,55 @@ proto.carrier.QuoteResponse.serializeBinaryToWriter = function(message, writer) 
     );
   }
   f = message.getTransittime();
-  if (f != null) {
-    writer.writeMessage(
+  if (f.length > 0) {
+    writer.writeString(
       5,
-      f,
-      google_protobuf_wrappers_pb.StringValue.serializeBinaryToWriter
+      f
     );
   }
   f = message.getGuranteed();
-  if (f != null) {
-    writer.writeMessage(
+  if (f) {
+    writer.writeBool(
       6,
-      f,
-      google_protobuf_wrappers_pb.BoolValue.serializeBinaryToWriter
+      f
     );
   }
 };
 
 
 /**
- * optional google.protobuf.StringValue quoteId = 1;
- * @return {?proto.google.protobuf.StringValue}
+ * optional string quoteId = 1;
+ * @return {string}
  */
 proto.carrier.QuoteResponse.prototype.getQuoteid = function() {
-  return /** @type{?proto.google.protobuf.StringValue} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_wrappers_pb.StringValue, 1));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
 };
 
 
 /**
- * @param {?proto.google.protobuf.StringValue|undefined} value
+ * @param {string} value
  * @return {!proto.carrier.QuoteResponse} returns this
-*/
+ */
 proto.carrier.QuoteResponse.prototype.setQuoteid = function(value) {
-  return jspb.Message.setWrapperField(this, 1, value);
+  return jspb.Message.setProto3StringField(this, 1, value);
 };
 
 
 /**
- * Clears the message field making it undefined.
- * @return {!proto.carrier.QuoteResponse} returns this
- */
-proto.carrier.QuoteResponse.prototype.clearQuoteid = function() {
-  return this.setQuoteid(undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {boolean}
- */
-proto.carrier.QuoteResponse.prototype.hasQuoteid = function() {
-  return jspb.Message.getField(this, 1) != null;
-};
-
-
-/**
- * optional google.protobuf.StringValue sortId = 2;
- * @return {?proto.google.protobuf.StringValue}
+ * optional string sortId = 2;
+ * @return {string}
  */
 proto.carrier.QuoteResponse.prototype.getSortid = function() {
-  return /** @type{?proto.google.protobuf.StringValue} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_wrappers_pb.StringValue, 2));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
 };
 
 
 /**
- * @param {?proto.google.protobuf.StringValue|undefined} value
+ * @param {string} value
  * @return {!proto.carrier.QuoteResponse} returns this
-*/
+ */
 proto.carrier.QuoteResponse.prototype.setSortid = function(value) {
-  return jspb.Message.setWrapperField(this, 2, value);
-};
-
-
-/**
- * Clears the message field making it undefined.
- * @return {!proto.carrier.QuoteResponse} returns this
- */
-proto.carrier.QuoteResponse.prototype.clearSortid = function() {
-  return this.setSortid(undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {boolean}
- */
-proto.carrier.QuoteResponse.prototype.hasSortid = function() {
-  return jspb.Message.getField(this, 2) != null;
+  return jspb.Message.setProto3StringField(this, 2, value);
 };
 
 
@@ -863,76 +752,38 @@ proto.carrier.QuoteResponse.prototype.hasAmount = function() {
 
 
 /**
- * optional google.protobuf.StringValue transitTime = 5;
- * @return {?proto.google.protobuf.StringValue}
+ * optional string transitTime = 5;
+ * @return {string}
  */
 proto.carrier.QuoteResponse.prototype.getTransittime = function() {
-  return /** @type{?proto.google.protobuf.StringValue} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_wrappers_pb.StringValue, 5));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 5, ""));
 };
 
 
 /**
- * @param {?proto.google.protobuf.StringValue|undefined} value
+ * @param {string} value
  * @return {!proto.carrier.QuoteResponse} returns this
-*/
+ */
 proto.carrier.QuoteResponse.prototype.setTransittime = function(value) {
-  return jspb.Message.setWrapperField(this, 5, value);
+  return jspb.Message.setProto3StringField(this, 5, value);
 };
 
 
 /**
- * Clears the message field making it undefined.
- * @return {!proto.carrier.QuoteResponse} returns this
- */
-proto.carrier.QuoteResponse.prototype.clearTransittime = function() {
-  return this.setTransittime(undefined);
-};
-
-
-/**
- * Returns whether this field is set.
+ * optional bool guranteed = 6;
  * @return {boolean}
- */
-proto.carrier.QuoteResponse.prototype.hasTransittime = function() {
-  return jspb.Message.getField(this, 5) != null;
-};
-
-
-/**
- * optional google.protobuf.BoolValue guranteed = 6;
- * @return {?proto.google.protobuf.BoolValue}
  */
 proto.carrier.QuoteResponse.prototype.getGuranteed = function() {
-  return /** @type{?proto.google.protobuf.BoolValue} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_wrappers_pb.BoolValue, 6));
+  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 6, false));
 };
 
 
 /**
- * @param {?proto.google.protobuf.BoolValue|undefined} value
+ * @param {boolean} value
  * @return {!proto.carrier.QuoteResponse} returns this
-*/
+ */
 proto.carrier.QuoteResponse.prototype.setGuranteed = function(value) {
-  return jspb.Message.setWrapperField(this, 6, value);
-};
-
-
-/**
- * Clears the message field making it undefined.
- * @return {!proto.carrier.QuoteResponse} returns this
- */
-proto.carrier.QuoteResponse.prototype.clearGuranteed = function() {
-  return this.setGuranteed(undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {boolean}
- */
-proto.carrier.QuoteResponse.prototype.hasGuranteed = function() {
-  return jspb.Message.getField(this, 6) != null;
+  return jspb.Message.setProto3BooleanField(this, 6, value);
 };
 
 
@@ -1179,9 +1030,9 @@ proto.carrier.FetchQuotesRequest.prototype.toObject = function(opt_includeInstan
  */
 proto.carrier.FetchQuotesRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    startfrom: (f = msg.getStartfrom()) && google_protobuf_wrappers_pb.StringValue.toObject(includeInstance, f),
-    endon: (f = msg.getEndon()) && google_protobuf_wrappers_pb.StringValue.toObject(includeInstance, f),
-    orgid: (f = msg.getOrgid()) && google_protobuf_wrappers_pb.StringValue.toObject(includeInstance, f)
+    startfrom: jspb.Message.getFieldWithDefault(msg, 1, ""),
+    endon: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    orgid: jspb.Message.getFieldWithDefault(msg, 3, "")
   };
 
   if (includeInstance) {
@@ -1219,18 +1070,15 @@ proto.carrier.FetchQuotesRequest.deserializeBinaryFromReader = function(msg, rea
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = new google_protobuf_wrappers_pb.StringValue;
-      reader.readMessage(value,google_protobuf_wrappers_pb.StringValue.deserializeBinaryFromReader);
+      var value = /** @type {string} */ (reader.readString());
       msg.setStartfrom(value);
       break;
     case 2:
-      var value = new google_protobuf_wrappers_pb.StringValue;
-      reader.readMessage(value,google_protobuf_wrappers_pb.StringValue.deserializeBinaryFromReader);
+      var value = /** @type {string} */ (reader.readString());
       msg.setEndon(value);
       break;
     case 3:
-      var value = new google_protobuf_wrappers_pb.StringValue;
-      reader.readMessage(value,google_protobuf_wrappers_pb.StringValue.deserializeBinaryFromReader);
+      var value = /** @type {string} */ (reader.readString());
       msg.setOrgid(value);
       break;
     default:
@@ -1263,140 +1111,80 @@ proto.carrier.FetchQuotesRequest.prototype.serializeBinary = function() {
 proto.carrier.FetchQuotesRequest.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getStartfrom();
-  if (f != null) {
-    writer.writeMessage(
+  if (f.length > 0) {
+    writer.writeString(
       1,
-      f,
-      google_protobuf_wrappers_pb.StringValue.serializeBinaryToWriter
+      f
     );
   }
   f = message.getEndon();
-  if (f != null) {
-    writer.writeMessage(
+  if (f.length > 0) {
+    writer.writeString(
       2,
-      f,
-      google_protobuf_wrappers_pb.StringValue.serializeBinaryToWriter
+      f
     );
   }
   f = message.getOrgid();
-  if (f != null) {
-    writer.writeMessage(
+  if (f.length > 0) {
+    writer.writeString(
       3,
-      f,
-      google_protobuf_wrappers_pb.StringValue.serializeBinaryToWriter
+      f
     );
   }
 };
 
 
 /**
- * optional google.protobuf.StringValue startFrom = 1;
- * @return {?proto.google.protobuf.StringValue}
+ * optional string startFrom = 1;
+ * @return {string}
  */
 proto.carrier.FetchQuotesRequest.prototype.getStartfrom = function() {
-  return /** @type{?proto.google.protobuf.StringValue} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_wrappers_pb.StringValue, 1));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
 };
 
 
 /**
- * @param {?proto.google.protobuf.StringValue|undefined} value
+ * @param {string} value
  * @return {!proto.carrier.FetchQuotesRequest} returns this
-*/
+ */
 proto.carrier.FetchQuotesRequest.prototype.setStartfrom = function(value) {
-  return jspb.Message.setWrapperField(this, 1, value);
+  return jspb.Message.setProto3StringField(this, 1, value);
 };
 
 
 /**
- * Clears the message field making it undefined.
- * @return {!proto.carrier.FetchQuotesRequest} returns this
- */
-proto.carrier.FetchQuotesRequest.prototype.clearStartfrom = function() {
-  return this.setStartfrom(undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {boolean}
- */
-proto.carrier.FetchQuotesRequest.prototype.hasStartfrom = function() {
-  return jspb.Message.getField(this, 1) != null;
-};
-
-
-/**
- * optional google.protobuf.StringValue endOn = 2;
- * @return {?proto.google.protobuf.StringValue}
+ * optional string endOn = 2;
+ * @return {string}
  */
 proto.carrier.FetchQuotesRequest.prototype.getEndon = function() {
-  return /** @type{?proto.google.protobuf.StringValue} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_wrappers_pb.StringValue, 2));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
 };
 
 
 /**
- * @param {?proto.google.protobuf.StringValue|undefined} value
+ * @param {string} value
  * @return {!proto.carrier.FetchQuotesRequest} returns this
-*/
+ */
 proto.carrier.FetchQuotesRequest.prototype.setEndon = function(value) {
-  return jspb.Message.setWrapperField(this, 2, value);
+  return jspb.Message.setProto3StringField(this, 2, value);
 };
 
 
 /**
- * Clears the message field making it undefined.
- * @return {!proto.carrier.FetchQuotesRequest} returns this
- */
-proto.carrier.FetchQuotesRequest.prototype.clearEndon = function() {
-  return this.setEndon(undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {boolean}
- */
-proto.carrier.FetchQuotesRequest.prototype.hasEndon = function() {
-  return jspb.Message.getField(this, 2) != null;
-};
-
-
-/**
- * optional google.protobuf.StringValue orgId = 3;
- * @return {?proto.google.protobuf.StringValue}
+ * optional string orgId = 3;
+ * @return {string}
  */
 proto.carrier.FetchQuotesRequest.prototype.getOrgid = function() {
-  return /** @type{?proto.google.protobuf.StringValue} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_wrappers_pb.StringValue, 3));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
 };
 
 
 /**
- * @param {?proto.google.protobuf.StringValue|undefined} value
+ * @param {string} value
  * @return {!proto.carrier.FetchQuotesRequest} returns this
-*/
+ */
 proto.carrier.FetchQuotesRequest.prototype.setOrgid = function(value) {
-  return jspb.Message.setWrapperField(this, 3, value);
-};
-
-
-/**
- * Clears the message field making it undefined.
- * @return {!proto.carrier.FetchQuotesRequest} returns this
- */
-proto.carrier.FetchQuotesRequest.prototype.clearOrgid = function() {
-  return this.setOrgid(undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {boolean}
- */
-proto.carrier.FetchQuotesRequest.prototype.hasOrgid = function() {
-  return jspb.Message.getField(this, 3) != null;
+  return jspb.Message.setProto3StringField(this, 3, value);
 };
 
 

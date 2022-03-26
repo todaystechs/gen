@@ -35,22 +35,22 @@ var (
 	_ = sort.Sort
 )
 
-// Validate checks the field values on ForgotPassswordData with the rules
+// Validate checks the field values on ForgotPasswordData with the rules
 // defined in the proto definition for this message. If any rules are
 // violated, the first error encountered is returned, or nil if there are no violations.
-func (m *ForgotPassswordData) Validate() error {
+func (m *ForgotPasswordData) Validate() error {
 	return m.validate(false)
 }
 
-// ValidateAll checks the field values on ForgotPassswordData with the rules
+// ValidateAll checks the field values on ForgotPasswordData with the rules
 // defined in the proto definition for this message. If any rules are
 // violated, the result is a list of violation errors wrapped in
-// ForgotPassswordDataMultiError, or nil if none found.
-func (m *ForgotPassswordData) ValidateAll() error {
+// ForgotPasswordDataMultiError, or nil if none found.
+func (m *ForgotPasswordData) ValidateAll() error {
 	return m.validate(true)
 }
 
-func (m *ForgotPassswordData) validate(all bool) error {
+func (m *ForgotPasswordData) validate(all bool) error {
 	if m == nil {
 		return nil
 	}
@@ -61,7 +61,7 @@ func (m *ForgotPassswordData) validate(all bool) error {
 		switch v := interface{}(m.GetEmail()).(type) {
 		case interface{ ValidateAll() error }:
 			if err := v.ValidateAll(); err != nil {
-				errors = append(errors, ForgotPassswordDataValidationError{
+				errors = append(errors, ForgotPasswordDataValidationError{
 					field:  "Email",
 					reason: "embedded message failed validation",
 					cause:  err,
@@ -69,7 +69,7 @@ func (m *ForgotPassswordData) validate(all bool) error {
 			}
 		case interface{ Validate() error }:
 			if err := v.Validate(); err != nil {
-				errors = append(errors, ForgotPassswordDataValidationError{
+				errors = append(errors, ForgotPasswordDataValidationError{
 					field:  "Email",
 					reason: "embedded message failed validation",
 					cause:  err,
@@ -78,7 +78,7 @@ func (m *ForgotPassswordData) validate(all bool) error {
 		}
 	} else if v, ok := interface{}(m.GetEmail()).(interface{ Validate() error }); ok {
 		if err := v.Validate(); err != nil {
-			return ForgotPassswordDataValidationError{
+			return ForgotPasswordDataValidationError{
 				field:  "Email",
 				reason: "embedded message failed validation",
 				cause:  err,
@@ -87,18 +87,18 @@ func (m *ForgotPassswordData) validate(all bool) error {
 	}
 
 	if len(errors) > 0 {
-		return ForgotPassswordDataMultiError(errors)
+		return ForgotPasswordDataMultiError(errors)
 	}
 	return nil
 }
 
-// ForgotPassswordDataMultiError is an error wrapping multiple validation
-// errors returned by ForgotPassswordData.ValidateAll() if the designated
-// constraints aren't met.
-type ForgotPassswordDataMultiError []error
+// ForgotPasswordDataMultiError is an error wrapping multiple validation errors
+// returned by ForgotPasswordData.ValidateAll() if the designated constraints
+// aren't met.
+type ForgotPasswordDataMultiError []error
 
 // Error returns a concatenation of all the error messages it wraps.
-func (m ForgotPassswordDataMultiError) Error() string {
+func (m ForgotPasswordDataMultiError) Error() string {
 	var msgs []string
 	for _, err := range m {
 		msgs = append(msgs, err.Error())
@@ -107,11 +107,11 @@ func (m ForgotPassswordDataMultiError) Error() string {
 }
 
 // AllErrors returns a list of validation violation errors.
-func (m ForgotPassswordDataMultiError) AllErrors() []error { return m }
+func (m ForgotPasswordDataMultiError) AllErrors() []error { return m }
 
-// ForgotPassswordDataValidationError is the validation error returned by
-// ForgotPassswordData.Validate if the designated constraints aren't met.
-type ForgotPassswordDataValidationError struct {
+// ForgotPasswordDataValidationError is the validation error returned by
+// ForgotPasswordData.Validate if the designated constraints aren't met.
+type ForgotPasswordDataValidationError struct {
 	field  string
 	reason string
 	cause  error
@@ -119,24 +119,24 @@ type ForgotPassswordDataValidationError struct {
 }
 
 // Field function returns field value.
-func (e ForgotPassswordDataValidationError) Field() string { return e.field }
+func (e ForgotPasswordDataValidationError) Field() string { return e.field }
 
 // Reason function returns reason value.
-func (e ForgotPassswordDataValidationError) Reason() string { return e.reason }
+func (e ForgotPasswordDataValidationError) Reason() string { return e.reason }
 
 // Cause function returns cause value.
-func (e ForgotPassswordDataValidationError) Cause() error { return e.cause }
+func (e ForgotPasswordDataValidationError) Cause() error { return e.cause }
 
 // Key function returns key value.
-func (e ForgotPassswordDataValidationError) Key() bool { return e.key }
+func (e ForgotPasswordDataValidationError) Key() bool { return e.key }
 
 // ErrorName returns error name.
-func (e ForgotPassswordDataValidationError) ErrorName() string {
-	return "ForgotPassswordDataValidationError"
+func (e ForgotPasswordDataValidationError) ErrorName() string {
+	return "ForgotPasswordDataValidationError"
 }
 
 // Error satisfies the builtin error interface
-func (e ForgotPassswordDataValidationError) Error() string {
+func (e ForgotPasswordDataValidationError) Error() string {
 	cause := ""
 	if e.cause != nil {
 		cause = fmt.Sprintf(" | caused by: %v", e.cause)
@@ -148,14 +148,14 @@ func (e ForgotPassswordDataValidationError) Error() string {
 	}
 
 	return fmt.Sprintf(
-		"invalid %sForgotPassswordData.%s: %s%s",
+		"invalid %sForgotPasswordData.%s: %s%s",
 		key,
 		e.field,
 		e.reason,
 		cause)
 }
 
-var _ error = ForgotPassswordDataValidationError{}
+var _ error = ForgotPasswordDataValidationError{}
 
 var _ interface {
 	Field() string
@@ -163,7 +163,7 @@ var _ interface {
 	Key() bool
 	Cause() error
 	ErrorName() string
-} = ForgotPassswordDataValidationError{}
+} = ForgotPasswordDataValidationError{}
 
 // Validate checks the field values on ForgotPassswordResponse with the rules
 // defined in the proto definition for this message. If any rules are

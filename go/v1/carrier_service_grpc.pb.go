@@ -28,7 +28,7 @@ type CarrierServiceClient interface {
 	UpdateLocation(ctx context.Context, in *Location, opts ...grpc.CallOption) (*Location, error)
 	DeleteLocation(ctx context.Context, in *Location, opts ...grpc.CallOption) (*ResponseOk, error)
 	// health
-	Ping(ctx context.Context, in *CarrierServicePing, opts ...grpc.CallOption) (*CarrierServicePing, error)
+	PingCarrierService(ctx context.Context, in *CarrierServicePing, opts ...grpc.CallOption) (*CarrierServicePing, error)
 	// quote
 	GetQuotes(ctx context.Context, in *QuoteRequest, opts ...grpc.CallOption) (*ListOfQuoteResponse, error)
 	UpdateQuote(ctx context.Context, in *QuoteRequest, opts ...grpc.CallOption) (*ListOfQuoteResponse, error)
@@ -84,9 +84,9 @@ func (c *carrierServiceClient) DeleteLocation(ctx context.Context, in *Location,
 	return out, nil
 }
 
-func (c *carrierServiceClient) Ping(ctx context.Context, in *CarrierServicePing, opts ...grpc.CallOption) (*CarrierServicePing, error) {
+func (c *carrierServiceClient) PingCarrierService(ctx context.Context, in *CarrierServicePing, opts ...grpc.CallOption) (*CarrierServicePing, error) {
 	out := new(CarrierServicePing)
-	err := c.cc.Invoke(ctx, "/carrier.CarrierService/Ping", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/carrier.CarrierService/PingCarrierService", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -166,7 +166,7 @@ type CarrierServiceServer interface {
 	UpdateLocation(context.Context, *Location) (*Location, error)
 	DeleteLocation(context.Context, *Location) (*ResponseOk, error)
 	// health
-	Ping(context.Context, *CarrierServicePing) (*CarrierServicePing, error)
+	PingCarrierService(context.Context, *CarrierServicePing) (*CarrierServicePing, error)
 	// quote
 	GetQuotes(context.Context, *QuoteRequest) (*ListOfQuoteResponse, error)
 	UpdateQuote(context.Context, *QuoteRequest) (*ListOfQuoteResponse, error)
@@ -194,8 +194,8 @@ func (UnimplementedCarrierServiceServer) UpdateLocation(context.Context, *Locati
 func (UnimplementedCarrierServiceServer) DeleteLocation(context.Context, *Location) (*ResponseOk, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteLocation not implemented")
 }
-func (UnimplementedCarrierServiceServer) Ping(context.Context, *CarrierServicePing) (*CarrierServicePing, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method Ping not implemented")
+func (UnimplementedCarrierServiceServer) PingCarrierService(context.Context, *CarrierServicePing) (*CarrierServicePing, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PingCarrierService not implemented")
 }
 func (UnimplementedCarrierServiceServer) GetQuotes(context.Context, *QuoteRequest) (*ListOfQuoteResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetQuotes not implemented")
@@ -302,20 +302,20 @@ func _CarrierService_DeleteLocation_Handler(srv interface{}, ctx context.Context
 	return interceptor(ctx, in, info, handler)
 }
 
-func _CarrierService_Ping_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _CarrierService_PingCarrierService_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(CarrierServicePing)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(CarrierServiceServer).Ping(ctx, in)
+		return srv.(CarrierServiceServer).PingCarrierService(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/carrier.CarrierService/Ping",
+		FullMethod: "/carrier.CarrierService/PingCarrierService",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CarrierServiceServer).Ping(ctx, req.(*CarrierServicePing))
+		return srv.(CarrierServiceServer).PingCarrierService(ctx, req.(*CarrierServicePing))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -470,8 +470,8 @@ var CarrierService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _CarrierService_DeleteLocation_Handler,
 		},
 		{
-			MethodName: "Ping",
-			Handler:    _CarrierService_Ping_Handler,
+			MethodName: "PingCarrierService",
+			Handler:    _CarrierService_PingCarrierService_Handler,
 		},
 		{
 			MethodName: "GetQuotes",

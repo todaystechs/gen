@@ -57,92 +57,11 @@ func (m *QuoteRequest) validate(all bool) error {
 
 	var errors []error
 
-	if all {
-		switch v := interface{}(m.GetQuoteId()).(type) {
-		case interface{ ValidateAll() error }:
-			if err := v.ValidateAll(); err != nil {
-				errors = append(errors, QuoteRequestValidationError{
-					field:  "QuoteId",
-					reason: "embedded message failed validation",
-					cause:  err,
-				})
-			}
-		case interface{ Validate() error }:
-			if err := v.Validate(); err != nil {
-				errors = append(errors, QuoteRequestValidationError{
-					field:  "QuoteId",
-					reason: "embedded message failed validation",
-					cause:  err,
-				})
-			}
-		}
-	} else if v, ok := interface{}(m.GetQuoteId()).(interface{ Validate() error }); ok {
-		if err := v.Validate(); err != nil {
-			return QuoteRequestValidationError{
-				field:  "QuoteId",
-				reason: "embedded message failed validation",
-				cause:  err,
-			}
-		}
-	}
+	// no validation rules for QuoteId
 
-	if all {
-		switch v := interface{}(m.GetMode()).(type) {
-		case interface{ ValidateAll() error }:
-			if err := v.ValidateAll(); err != nil {
-				errors = append(errors, QuoteRequestValidationError{
-					field:  "Mode",
-					reason: "embedded message failed validation",
-					cause:  err,
-				})
-			}
-		case interface{ Validate() error }:
-			if err := v.Validate(); err != nil {
-				errors = append(errors, QuoteRequestValidationError{
-					field:  "Mode",
-					reason: "embedded message failed validation",
-					cause:  err,
-				})
-			}
-		}
-	} else if v, ok := interface{}(m.GetMode()).(interface{ Validate() error }); ok {
-		if err := v.Validate(); err != nil {
-			return QuoteRequestValidationError{
-				field:  "Mode",
-				reason: "embedded message failed validation",
-				cause:  err,
-			}
-		}
-	}
+	// no validation rules for Mode
 
-	if all {
-		switch v := interface{}(m.GetLiablePartyID()).(type) {
-		case interface{ ValidateAll() error }:
-			if err := v.ValidateAll(); err != nil {
-				errors = append(errors, QuoteRequestValidationError{
-					field:  "LiablePartyID",
-					reason: "embedded message failed validation",
-					cause:  err,
-				})
-			}
-		case interface{ Validate() error }:
-			if err := v.Validate(); err != nil {
-				errors = append(errors, QuoteRequestValidationError{
-					field:  "LiablePartyID",
-					reason: "embedded message failed validation",
-					cause:  err,
-				})
-			}
-		}
-	} else if v, ok := interface{}(m.GetLiablePartyID()).(interface{ Validate() error }); ok {
-		if err := v.Validate(); err != nil {
-			return QuoteRequestValidationError{
-				field:  "LiablePartyID",
-				reason: "embedded message failed validation",
-				cause:  err,
-			}
-		}
-	}
+	// no validation rules for LiablePartyID
 
 	if all {
 		switch v := interface{}(m.GetShippingDetail()).(type) {
@@ -305,63 +224,9 @@ func (m *QuoteResponse) validate(all bool) error {
 
 	var errors []error
 
-	if all {
-		switch v := interface{}(m.GetQuoteId()).(type) {
-		case interface{ ValidateAll() error }:
-			if err := v.ValidateAll(); err != nil {
-				errors = append(errors, QuoteResponseValidationError{
-					field:  "QuoteId",
-					reason: "embedded message failed validation",
-					cause:  err,
-				})
-			}
-		case interface{ Validate() error }:
-			if err := v.Validate(); err != nil {
-				errors = append(errors, QuoteResponseValidationError{
-					field:  "QuoteId",
-					reason: "embedded message failed validation",
-					cause:  err,
-				})
-			}
-		}
-	} else if v, ok := interface{}(m.GetQuoteId()).(interface{ Validate() error }); ok {
-		if err := v.Validate(); err != nil {
-			return QuoteResponseValidationError{
-				field:  "QuoteId",
-				reason: "embedded message failed validation",
-				cause:  err,
-			}
-		}
-	}
+	// no validation rules for QuoteId
 
-	if all {
-		switch v := interface{}(m.GetSortId()).(type) {
-		case interface{ ValidateAll() error }:
-			if err := v.ValidateAll(); err != nil {
-				errors = append(errors, QuoteResponseValidationError{
-					field:  "SortId",
-					reason: "embedded message failed validation",
-					cause:  err,
-				})
-			}
-		case interface{ Validate() error }:
-			if err := v.Validate(); err != nil {
-				errors = append(errors, QuoteResponseValidationError{
-					field:  "SortId",
-					reason: "embedded message failed validation",
-					cause:  err,
-				})
-			}
-		}
-	} else if v, ok := interface{}(m.GetSortId()).(interface{ Validate() error }); ok {
-		if err := v.Validate(); err != nil {
-			return QuoteResponseValidationError{
-				field:  "SortId",
-				reason: "embedded message failed validation",
-				cause:  err,
-			}
-		}
-	}
+	// no validation rules for SortId
 
 	if all {
 		switch v := interface{}(m.GetCarrier()).(type) {
@@ -421,63 +286,9 @@ func (m *QuoteResponse) validate(all bool) error {
 		}
 	}
 
-	if all {
-		switch v := interface{}(m.GetTransitTime()).(type) {
-		case interface{ ValidateAll() error }:
-			if err := v.ValidateAll(); err != nil {
-				errors = append(errors, QuoteResponseValidationError{
-					field:  "TransitTime",
-					reason: "embedded message failed validation",
-					cause:  err,
-				})
-			}
-		case interface{ Validate() error }:
-			if err := v.Validate(); err != nil {
-				errors = append(errors, QuoteResponseValidationError{
-					field:  "TransitTime",
-					reason: "embedded message failed validation",
-					cause:  err,
-				})
-			}
-		}
-	} else if v, ok := interface{}(m.GetTransitTime()).(interface{ Validate() error }); ok {
-		if err := v.Validate(); err != nil {
-			return QuoteResponseValidationError{
-				field:  "TransitTime",
-				reason: "embedded message failed validation",
-				cause:  err,
-			}
-		}
-	}
+	// no validation rules for TransitTime
 
-	if all {
-		switch v := interface{}(m.GetGuranteed()).(type) {
-		case interface{ ValidateAll() error }:
-			if err := v.ValidateAll(); err != nil {
-				errors = append(errors, QuoteResponseValidationError{
-					field:  "Guranteed",
-					reason: "embedded message failed validation",
-					cause:  err,
-				})
-			}
-		case interface{ Validate() error }:
-			if err := v.Validate(); err != nil {
-				errors = append(errors, QuoteResponseValidationError{
-					field:  "Guranteed",
-					reason: "embedded message failed validation",
-					cause:  err,
-				})
-			}
-		}
-	} else if v, ok := interface{}(m.GetGuranteed()).(interface{ Validate() error }); ok {
-		if err := v.Validate(); err != nil {
-			return QuoteResponseValidationError{
-				field:  "Guranteed",
-				reason: "embedded message failed validation",
-				cause:  err,
-			}
-		}
-	}
+	// no validation rules for Guranteed
 
 	if len(errors) > 0 {
 		return QuoteResponseMultiError(errors)
@@ -742,92 +553,11 @@ func (m *FetchQuotesRequest) validate(all bool) error {
 
 	var errors []error
 
-	if all {
-		switch v := interface{}(m.GetStartFrom()).(type) {
-		case interface{ ValidateAll() error }:
-			if err := v.ValidateAll(); err != nil {
-				errors = append(errors, FetchQuotesRequestValidationError{
-					field:  "StartFrom",
-					reason: "embedded message failed validation",
-					cause:  err,
-				})
-			}
-		case interface{ Validate() error }:
-			if err := v.Validate(); err != nil {
-				errors = append(errors, FetchQuotesRequestValidationError{
-					field:  "StartFrom",
-					reason: "embedded message failed validation",
-					cause:  err,
-				})
-			}
-		}
-	} else if v, ok := interface{}(m.GetStartFrom()).(interface{ Validate() error }); ok {
-		if err := v.Validate(); err != nil {
-			return FetchQuotesRequestValidationError{
-				field:  "StartFrom",
-				reason: "embedded message failed validation",
-				cause:  err,
-			}
-		}
-	}
+	// no validation rules for StartFrom
 
-	if all {
-		switch v := interface{}(m.GetEndOn()).(type) {
-		case interface{ ValidateAll() error }:
-			if err := v.ValidateAll(); err != nil {
-				errors = append(errors, FetchQuotesRequestValidationError{
-					field:  "EndOn",
-					reason: "embedded message failed validation",
-					cause:  err,
-				})
-			}
-		case interface{ Validate() error }:
-			if err := v.Validate(); err != nil {
-				errors = append(errors, FetchQuotesRequestValidationError{
-					field:  "EndOn",
-					reason: "embedded message failed validation",
-					cause:  err,
-				})
-			}
-		}
-	} else if v, ok := interface{}(m.GetEndOn()).(interface{ Validate() error }); ok {
-		if err := v.Validate(); err != nil {
-			return FetchQuotesRequestValidationError{
-				field:  "EndOn",
-				reason: "embedded message failed validation",
-				cause:  err,
-			}
-		}
-	}
+	// no validation rules for EndOn
 
-	if all {
-		switch v := interface{}(m.GetOrgId()).(type) {
-		case interface{ ValidateAll() error }:
-			if err := v.ValidateAll(); err != nil {
-				errors = append(errors, FetchQuotesRequestValidationError{
-					field:  "OrgId",
-					reason: "embedded message failed validation",
-					cause:  err,
-				})
-			}
-		case interface{ Validate() error }:
-			if err := v.Validate(); err != nil {
-				errors = append(errors, FetchQuotesRequestValidationError{
-					field:  "OrgId",
-					reason: "embedded message failed validation",
-					cause:  err,
-				})
-			}
-		}
-	} else if v, ok := interface{}(m.GetOrgId()).(interface{ Validate() error }); ok {
-		if err := v.Validate(); err != nil {
-			return FetchQuotesRequestValidationError{
-				field:  "OrgId",
-				reason: "embedded message failed validation",
-				cause:  err,
-			}
-		}
-	}
+	// no validation rules for OrgId
 
 	if len(errors) > 0 {
 		return FetchQuotesRequestMultiError(errors)

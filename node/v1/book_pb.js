@@ -15,12 +15,12 @@ var jspb = require('google-protobuf');
 var goog = jspb;
 var global = Function('return this')();
 
+var role_pb = require('./role_pb.js');
+goog.object.extend(proto, role_pb);
 var amount_pb = require('./amount_pb.js');
 goog.object.extend(proto, amount_pb);
 var quote_pb = require('./quote_pb.js');
 goog.object.extend(proto, quote_pb);
-var google_protobuf_wrappers_pb = require('google-protobuf/google/protobuf/wrappers_pb.js');
-goog.object.extend(proto, google_protobuf_wrappers_pb);
 goog.exportSymbol('proto.carrier.BookingRequest', null, global);
 goog.exportSymbol('proto.carrier.BookingResponse', null, global);
 goog.exportSymbol('proto.carrier.FetchBookingsRequest', null, global);
@@ -36,7 +36,7 @@ goog.exportSymbol('proto.carrier.ListOfBooking', null, global);
  * @constructor
  */
 proto.carrier.BookingRequest = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.carrier.BookingRequest.repeatedFields_, null);
 };
 goog.inherits(proto.carrier.BookingRequest, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
@@ -110,6 +110,13 @@ if (goog.DEBUG && !COMPILED) {
   proto.carrier.FetchBookingsRequest.displayName = 'proto.carrier.FetchBookingsRequest';
 }
 
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
+proto.carrier.BookingRequest.repeatedFields_ = [7];
+
 
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
@@ -141,13 +148,14 @@ proto.carrier.BookingRequest.prototype.toObject = function(opt_includeInstance) 
  */
 proto.carrier.BookingRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    quoteid: (f = msg.getQuoteid()) && google_protobuf_wrappers_pb.StringValue.toObject(includeInstance, f),
-    lastname: (f = msg.getLastname()) && google_protobuf_wrappers_pb.StringValue.toObject(includeInstance, f),
-    phonenumber: (f = msg.getPhonenumber()) && google_protobuf_wrappers_pb.StringValue.toObject(includeInstance, f),
-    phonenumberextension: (f = msg.getPhonenumberextension()) && google_protobuf_wrappers_pb.StringValue.toObject(includeInstance, f),
-    emailaddress: (f = msg.getEmailaddress()) && google_protobuf_wrappers_pb.StringValue.toObject(includeInstance, f),
-    phonenumberdisplay: (f = msg.getPhonenumberdisplay()) && google_protobuf_wrappers_pb.StringValue.toObject(includeInstance, f),
-    prefferedcontactmethod: (f = msg.getPrefferedcontactmethod()) && google_protobuf_wrappers_pb.StringValue.toObject(includeInstance, f)
+    quoteid: jspb.Message.getFieldWithDefault(msg, 1, ""),
+    lastname: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    phonenumber: jspb.Message.getFieldWithDefault(msg, 3, ""),
+    phonenumberextension: jspb.Message.getFieldWithDefault(msg, 4, ""),
+    emailaddress: jspb.Message.getFieldWithDefault(msg, 5, ""),
+    phonenumberdisplay: jspb.Message.getFieldWithDefault(msg, 6, ""),
+    roleList: (f = jspb.Message.getRepeatedField(msg, 7)) == null ? undefined : f,
+    prefferedcontactmethod: jspb.Message.getFieldWithDefault(msg, 8, "")
   };
 
   if (includeInstance) {
@@ -185,38 +193,37 @@ proto.carrier.BookingRequest.deserializeBinaryFromReader = function(msg, reader)
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = new google_protobuf_wrappers_pb.StringValue;
-      reader.readMessage(value,google_protobuf_wrappers_pb.StringValue.deserializeBinaryFromReader);
+      var value = /** @type {string} */ (reader.readString());
       msg.setQuoteid(value);
       break;
     case 2:
-      var value = new google_protobuf_wrappers_pb.StringValue;
-      reader.readMessage(value,google_protobuf_wrappers_pb.StringValue.deserializeBinaryFromReader);
+      var value = /** @type {string} */ (reader.readString());
       msg.setLastname(value);
       break;
     case 3:
-      var value = new google_protobuf_wrappers_pb.StringValue;
-      reader.readMessage(value,google_protobuf_wrappers_pb.StringValue.deserializeBinaryFromReader);
+      var value = /** @type {string} */ (reader.readString());
       msg.setPhonenumber(value);
       break;
     case 4:
-      var value = new google_protobuf_wrappers_pb.StringValue;
-      reader.readMessage(value,google_protobuf_wrappers_pb.StringValue.deserializeBinaryFromReader);
+      var value = /** @type {string} */ (reader.readString());
       msg.setPhonenumberextension(value);
       break;
     case 5:
-      var value = new google_protobuf_wrappers_pb.StringValue;
-      reader.readMessage(value,google_protobuf_wrappers_pb.StringValue.deserializeBinaryFromReader);
+      var value = /** @type {string} */ (reader.readString());
       msg.setEmailaddress(value);
       break;
     case 6:
-      var value = new google_protobuf_wrappers_pb.StringValue;
-      reader.readMessage(value,google_protobuf_wrappers_pb.StringValue.deserializeBinaryFromReader);
+      var value = /** @type {string} */ (reader.readString());
       msg.setPhonenumberdisplay(value);
       break;
+    case 7:
+      var values = /** @type {!Array<!proto.carrier.Role>} */ (reader.isDelimited() ? reader.readPackedEnum() : [reader.readEnum()]);
+      for (var i = 0; i < values.length; i++) {
+        msg.addRole(values[i]);
+      }
+      break;
     case 8:
-      var value = new google_protobuf_wrappers_pb.StringValue;
-      reader.readMessage(value,google_protobuf_wrappers_pb.StringValue.deserializeBinaryFromReader);
+      var value = /** @type {string} */ (reader.readString());
       msg.setPrefferedcontactmethod(value);
       break;
     default:
@@ -249,320 +256,224 @@ proto.carrier.BookingRequest.prototype.serializeBinary = function() {
 proto.carrier.BookingRequest.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getQuoteid();
-  if (f != null) {
-    writer.writeMessage(
+  if (f.length > 0) {
+    writer.writeString(
       1,
-      f,
-      google_protobuf_wrappers_pb.StringValue.serializeBinaryToWriter
+      f
     );
   }
   f = message.getLastname();
-  if (f != null) {
-    writer.writeMessage(
+  if (f.length > 0) {
+    writer.writeString(
       2,
-      f,
-      google_protobuf_wrappers_pb.StringValue.serializeBinaryToWriter
+      f
     );
   }
   f = message.getPhonenumber();
-  if (f != null) {
-    writer.writeMessage(
+  if (f.length > 0) {
+    writer.writeString(
       3,
-      f,
-      google_protobuf_wrappers_pb.StringValue.serializeBinaryToWriter
+      f
     );
   }
   f = message.getPhonenumberextension();
-  if (f != null) {
-    writer.writeMessage(
+  if (f.length > 0) {
+    writer.writeString(
       4,
-      f,
-      google_protobuf_wrappers_pb.StringValue.serializeBinaryToWriter
+      f
     );
   }
   f = message.getEmailaddress();
-  if (f != null) {
-    writer.writeMessage(
+  if (f.length > 0) {
+    writer.writeString(
       5,
-      f,
-      google_protobuf_wrappers_pb.StringValue.serializeBinaryToWriter
+      f
     );
   }
   f = message.getPhonenumberdisplay();
-  if (f != null) {
-    writer.writeMessage(
+  if (f.length > 0) {
+    writer.writeString(
       6,
-      f,
-      google_protobuf_wrappers_pb.StringValue.serializeBinaryToWriter
+      f
+    );
+  }
+  f = message.getRoleList();
+  if (f.length > 0) {
+    writer.writePackedEnum(
+      7,
+      f
     );
   }
   f = message.getPrefferedcontactmethod();
-  if (f != null) {
-    writer.writeMessage(
+  if (f.length > 0) {
+    writer.writeString(
       8,
-      f,
-      google_protobuf_wrappers_pb.StringValue.serializeBinaryToWriter
+      f
     );
   }
 };
 
 
 /**
- * optional google.protobuf.StringValue quoteId = 1;
- * @return {?proto.google.protobuf.StringValue}
+ * optional string quoteId = 1;
+ * @return {string}
  */
 proto.carrier.BookingRequest.prototype.getQuoteid = function() {
-  return /** @type{?proto.google.protobuf.StringValue} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_wrappers_pb.StringValue, 1));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
 };
 
 
 /**
- * @param {?proto.google.protobuf.StringValue|undefined} value
+ * @param {string} value
  * @return {!proto.carrier.BookingRequest} returns this
-*/
+ */
 proto.carrier.BookingRequest.prototype.setQuoteid = function(value) {
-  return jspb.Message.setWrapperField(this, 1, value);
+  return jspb.Message.setProto3StringField(this, 1, value);
 };
 
 
 /**
- * Clears the message field making it undefined.
- * @return {!proto.carrier.BookingRequest} returns this
- */
-proto.carrier.BookingRequest.prototype.clearQuoteid = function() {
-  return this.setQuoteid(undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {boolean}
- */
-proto.carrier.BookingRequest.prototype.hasQuoteid = function() {
-  return jspb.Message.getField(this, 1) != null;
-};
-
-
-/**
- * optional google.protobuf.StringValue lastName = 2;
- * @return {?proto.google.protobuf.StringValue}
+ * optional string lastName = 2;
+ * @return {string}
  */
 proto.carrier.BookingRequest.prototype.getLastname = function() {
-  return /** @type{?proto.google.protobuf.StringValue} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_wrappers_pb.StringValue, 2));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
 };
 
 
 /**
- * @param {?proto.google.protobuf.StringValue|undefined} value
+ * @param {string} value
  * @return {!proto.carrier.BookingRequest} returns this
-*/
+ */
 proto.carrier.BookingRequest.prototype.setLastname = function(value) {
-  return jspb.Message.setWrapperField(this, 2, value);
+  return jspb.Message.setProto3StringField(this, 2, value);
 };
 
 
 /**
- * Clears the message field making it undefined.
- * @return {!proto.carrier.BookingRequest} returns this
- */
-proto.carrier.BookingRequest.prototype.clearLastname = function() {
-  return this.setLastname(undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {boolean}
- */
-proto.carrier.BookingRequest.prototype.hasLastname = function() {
-  return jspb.Message.getField(this, 2) != null;
-};
-
-
-/**
- * optional google.protobuf.StringValue phoneNumber = 3;
- * @return {?proto.google.protobuf.StringValue}
+ * optional string phoneNumber = 3;
+ * @return {string}
  */
 proto.carrier.BookingRequest.prototype.getPhonenumber = function() {
-  return /** @type{?proto.google.protobuf.StringValue} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_wrappers_pb.StringValue, 3));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
 };
 
 
 /**
- * @param {?proto.google.protobuf.StringValue|undefined} value
+ * @param {string} value
  * @return {!proto.carrier.BookingRequest} returns this
-*/
+ */
 proto.carrier.BookingRequest.prototype.setPhonenumber = function(value) {
-  return jspb.Message.setWrapperField(this, 3, value);
+  return jspb.Message.setProto3StringField(this, 3, value);
 };
 
 
 /**
- * Clears the message field making it undefined.
- * @return {!proto.carrier.BookingRequest} returns this
- */
-proto.carrier.BookingRequest.prototype.clearPhonenumber = function() {
-  return this.setPhonenumber(undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {boolean}
- */
-proto.carrier.BookingRequest.prototype.hasPhonenumber = function() {
-  return jspb.Message.getField(this, 3) != null;
-};
-
-
-/**
- * optional google.protobuf.StringValue phoneNumberExtension = 4;
- * @return {?proto.google.protobuf.StringValue}
+ * optional string phoneNumberExtension = 4;
+ * @return {string}
  */
 proto.carrier.BookingRequest.prototype.getPhonenumberextension = function() {
-  return /** @type{?proto.google.protobuf.StringValue} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_wrappers_pb.StringValue, 4));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 4, ""));
 };
 
 
 /**
- * @param {?proto.google.protobuf.StringValue|undefined} value
+ * @param {string} value
  * @return {!proto.carrier.BookingRequest} returns this
-*/
+ */
 proto.carrier.BookingRequest.prototype.setPhonenumberextension = function(value) {
-  return jspb.Message.setWrapperField(this, 4, value);
+  return jspb.Message.setProto3StringField(this, 4, value);
 };
 
 
 /**
- * Clears the message field making it undefined.
- * @return {!proto.carrier.BookingRequest} returns this
- */
-proto.carrier.BookingRequest.prototype.clearPhonenumberextension = function() {
-  return this.setPhonenumberextension(undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {boolean}
- */
-proto.carrier.BookingRequest.prototype.hasPhonenumberextension = function() {
-  return jspb.Message.getField(this, 4) != null;
-};
-
-
-/**
- * optional google.protobuf.StringValue emailAddress = 5;
- * @return {?proto.google.protobuf.StringValue}
+ * optional string emailAddress = 5;
+ * @return {string}
  */
 proto.carrier.BookingRequest.prototype.getEmailaddress = function() {
-  return /** @type{?proto.google.protobuf.StringValue} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_wrappers_pb.StringValue, 5));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 5, ""));
 };
 
 
 /**
- * @param {?proto.google.protobuf.StringValue|undefined} value
+ * @param {string} value
  * @return {!proto.carrier.BookingRequest} returns this
-*/
+ */
 proto.carrier.BookingRequest.prototype.setEmailaddress = function(value) {
-  return jspb.Message.setWrapperField(this, 5, value);
+  return jspb.Message.setProto3StringField(this, 5, value);
 };
 
 
 /**
- * Clears the message field making it undefined.
- * @return {!proto.carrier.BookingRequest} returns this
- */
-proto.carrier.BookingRequest.prototype.clearEmailaddress = function() {
-  return this.setEmailaddress(undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {boolean}
- */
-proto.carrier.BookingRequest.prototype.hasEmailaddress = function() {
-  return jspb.Message.getField(this, 5) != null;
-};
-
-
-/**
- * optional google.protobuf.StringValue phoneNumberDisplay = 6;
- * @return {?proto.google.protobuf.StringValue}
+ * optional string phoneNumberDisplay = 6;
+ * @return {string}
  */
 proto.carrier.BookingRequest.prototype.getPhonenumberdisplay = function() {
-  return /** @type{?proto.google.protobuf.StringValue} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_wrappers_pb.StringValue, 6));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 6, ""));
 };
 
 
 /**
- * @param {?proto.google.protobuf.StringValue|undefined} value
+ * @param {string} value
  * @return {!proto.carrier.BookingRequest} returns this
-*/
+ */
 proto.carrier.BookingRequest.prototype.setPhonenumberdisplay = function(value) {
-  return jspb.Message.setWrapperField(this, 6, value);
+  return jspb.Message.setProto3StringField(this, 6, value);
 };
 
 
 /**
- * Clears the message field making it undefined.
+ * repeated Role role = 7;
+ * @return {!Array<!proto.carrier.Role>}
+ */
+proto.carrier.BookingRequest.prototype.getRoleList = function() {
+  return /** @type {!Array<!proto.carrier.Role>} */ (jspb.Message.getRepeatedField(this, 7));
+};
+
+
+/**
+ * @param {!Array<!proto.carrier.Role>} value
  * @return {!proto.carrier.BookingRequest} returns this
  */
-proto.carrier.BookingRequest.prototype.clearPhonenumberdisplay = function() {
-  return this.setPhonenumberdisplay(undefined);
+proto.carrier.BookingRequest.prototype.setRoleList = function(value) {
+  return jspb.Message.setField(this, 7, value || []);
 };
 
 
 /**
- * Returns whether this field is set.
- * @return {boolean}
+ * @param {!proto.carrier.Role} value
+ * @param {number=} opt_index
+ * @return {!proto.carrier.BookingRequest} returns this
  */
-proto.carrier.BookingRequest.prototype.hasPhonenumberdisplay = function() {
-  return jspb.Message.getField(this, 6) != null;
+proto.carrier.BookingRequest.prototype.addRole = function(value, opt_index) {
+  return jspb.Message.addToRepeatedField(this, 7, value, opt_index);
 };
 
 
 /**
- * optional google.protobuf.StringValue prefferedContactMethod = 8;
- * @return {?proto.google.protobuf.StringValue}
+ * Clears the list making it empty but non-null.
+ * @return {!proto.carrier.BookingRequest} returns this
+ */
+proto.carrier.BookingRequest.prototype.clearRoleList = function() {
+  return this.setRoleList([]);
+};
+
+
+/**
+ * optional string prefferedContactMethod = 8;
+ * @return {string}
  */
 proto.carrier.BookingRequest.prototype.getPrefferedcontactmethod = function() {
-  return /** @type{?proto.google.protobuf.StringValue} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_wrappers_pb.StringValue, 8));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 8, ""));
 };
 
 
 /**
- * @param {?proto.google.protobuf.StringValue|undefined} value
+ * @param {string} value
  * @return {!proto.carrier.BookingRequest} returns this
-*/
+ */
 proto.carrier.BookingRequest.prototype.setPrefferedcontactmethod = function(value) {
-  return jspb.Message.setWrapperField(this, 8, value);
-};
-
-
-/**
- * Clears the message field making it undefined.
- * @return {!proto.carrier.BookingRequest} returns this
- */
-proto.carrier.BookingRequest.prototype.clearPrefferedcontactmethod = function() {
-  return this.setPrefferedcontactmethod(undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {boolean}
- */
-proto.carrier.BookingRequest.prototype.hasPrefferedcontactmethod = function() {
-  return jspb.Message.getField(this, 8) != null;
+  return jspb.Message.setProto3StringField(this, 8, value);
 };
 
 
@@ -598,12 +509,12 @@ proto.carrier.BookingResponse.prototype.toObject = function(opt_includeInstance)
  */
 proto.carrier.BookingResponse.toObject = function(includeInstance, msg) {
   var f, obj = {
-    bookingid: (f = msg.getBookingid()) && google_protobuf_wrappers_pb.StringValue.toObject(includeInstance, f),
-    bolurl: (f = msg.getBolurl()) && google_protobuf_wrappers_pb.StringValue.toObject(includeInstance, f),
-    invoiceurl: (f = msg.getInvoiceurl()) && google_protobuf_wrappers_pb.StringValue.toObject(includeInstance, f),
-    invoiceduedate: (f = msg.getInvoiceduedate()) && google_protobuf_wrappers_pb.StringValue.toObject(includeInstance, f),
-    pickupstart: (f = msg.getPickupstart()) && google_protobuf_wrappers_pb.StringValue.toObject(includeInstance, f),
-    pickupend: (f = msg.getPickupend()) && google_protobuf_wrappers_pb.StringValue.toObject(includeInstance, f),
+    bookingid: jspb.Message.getFieldWithDefault(msg, 1, ""),
+    bolurl: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    invoiceurl: jspb.Message.getFieldWithDefault(msg, 3, ""),
+    invoiceduedate: jspb.Message.getFieldWithDefault(msg, 4, ""),
+    pickupstart: jspb.Message.getFieldWithDefault(msg, 5, ""),
+    pickupend: jspb.Message.getFieldWithDefault(msg, 6, ""),
     quotebooked: (f = msg.getQuotebooked()) && quote_pb.QuoteRequest.toObject(includeInstance, f)
   };
 
@@ -642,33 +553,27 @@ proto.carrier.BookingResponse.deserializeBinaryFromReader = function(msg, reader
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = new google_protobuf_wrappers_pb.StringValue;
-      reader.readMessage(value,google_protobuf_wrappers_pb.StringValue.deserializeBinaryFromReader);
+      var value = /** @type {string} */ (reader.readString());
       msg.setBookingid(value);
       break;
     case 2:
-      var value = new google_protobuf_wrappers_pb.StringValue;
-      reader.readMessage(value,google_protobuf_wrappers_pb.StringValue.deserializeBinaryFromReader);
+      var value = /** @type {string} */ (reader.readString());
       msg.setBolurl(value);
       break;
     case 3:
-      var value = new google_protobuf_wrappers_pb.StringValue;
-      reader.readMessage(value,google_protobuf_wrappers_pb.StringValue.deserializeBinaryFromReader);
+      var value = /** @type {string} */ (reader.readString());
       msg.setInvoiceurl(value);
       break;
     case 4:
-      var value = new google_protobuf_wrappers_pb.StringValue;
-      reader.readMessage(value,google_protobuf_wrappers_pb.StringValue.deserializeBinaryFromReader);
+      var value = /** @type {string} */ (reader.readString());
       msg.setInvoiceduedate(value);
       break;
     case 5:
-      var value = new google_protobuf_wrappers_pb.StringValue;
-      reader.readMessage(value,google_protobuf_wrappers_pb.StringValue.deserializeBinaryFromReader);
+      var value = /** @type {string} */ (reader.readString());
       msg.setPickupstart(value);
       break;
     case 6:
-      var value = new google_protobuf_wrappers_pb.StringValue;
-      reader.readMessage(value,google_protobuf_wrappers_pb.StringValue.deserializeBinaryFromReader);
+      var value = /** @type {string} */ (reader.readString());
       msg.setPickupend(value);
       break;
     case 7:
@@ -706,51 +611,45 @@ proto.carrier.BookingResponse.prototype.serializeBinary = function() {
 proto.carrier.BookingResponse.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getBookingid();
-  if (f != null) {
-    writer.writeMessage(
+  if (f.length > 0) {
+    writer.writeString(
       1,
-      f,
-      google_protobuf_wrappers_pb.StringValue.serializeBinaryToWriter
+      f
     );
   }
   f = message.getBolurl();
-  if (f != null) {
-    writer.writeMessage(
+  if (f.length > 0) {
+    writer.writeString(
       2,
-      f,
-      google_protobuf_wrappers_pb.StringValue.serializeBinaryToWriter
+      f
     );
   }
   f = message.getInvoiceurl();
-  if (f != null) {
-    writer.writeMessage(
+  if (f.length > 0) {
+    writer.writeString(
       3,
-      f,
-      google_protobuf_wrappers_pb.StringValue.serializeBinaryToWriter
+      f
     );
   }
   f = message.getInvoiceduedate();
-  if (f != null) {
-    writer.writeMessage(
+  if (f.length > 0) {
+    writer.writeString(
       4,
-      f,
-      google_protobuf_wrappers_pb.StringValue.serializeBinaryToWriter
+      f
     );
   }
   f = message.getPickupstart();
-  if (f != null) {
-    writer.writeMessage(
+  if (f.length > 0) {
+    writer.writeString(
       5,
-      f,
-      google_protobuf_wrappers_pb.StringValue.serializeBinaryToWriter
+      f
     );
   }
   f = message.getPickupend();
-  if (f != null) {
-    writer.writeMessage(
+  if (f.length > 0) {
+    writer.writeString(
       6,
-      f,
-      google_protobuf_wrappers_pb.StringValue.serializeBinaryToWriter
+      f
     );
   }
   f = message.getQuotebooked();
@@ -765,224 +664,110 @@ proto.carrier.BookingResponse.serializeBinaryToWriter = function(message, writer
 
 
 /**
- * optional google.protobuf.StringValue bookingId = 1;
- * @return {?proto.google.protobuf.StringValue}
+ * optional string bookingId = 1;
+ * @return {string}
  */
 proto.carrier.BookingResponse.prototype.getBookingid = function() {
-  return /** @type{?proto.google.protobuf.StringValue} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_wrappers_pb.StringValue, 1));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
 };
 
 
 /**
- * @param {?proto.google.protobuf.StringValue|undefined} value
+ * @param {string} value
  * @return {!proto.carrier.BookingResponse} returns this
-*/
+ */
 proto.carrier.BookingResponse.prototype.setBookingid = function(value) {
-  return jspb.Message.setWrapperField(this, 1, value);
+  return jspb.Message.setProto3StringField(this, 1, value);
 };
 
 
 /**
- * Clears the message field making it undefined.
- * @return {!proto.carrier.BookingResponse} returns this
- */
-proto.carrier.BookingResponse.prototype.clearBookingid = function() {
-  return this.setBookingid(undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {boolean}
- */
-proto.carrier.BookingResponse.prototype.hasBookingid = function() {
-  return jspb.Message.getField(this, 1) != null;
-};
-
-
-/**
- * optional google.protobuf.StringValue bolUrl = 2;
- * @return {?proto.google.protobuf.StringValue}
+ * optional string bolUrl = 2;
+ * @return {string}
  */
 proto.carrier.BookingResponse.prototype.getBolurl = function() {
-  return /** @type{?proto.google.protobuf.StringValue} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_wrappers_pb.StringValue, 2));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
 };
 
 
 /**
- * @param {?proto.google.protobuf.StringValue|undefined} value
+ * @param {string} value
  * @return {!proto.carrier.BookingResponse} returns this
-*/
+ */
 proto.carrier.BookingResponse.prototype.setBolurl = function(value) {
-  return jspb.Message.setWrapperField(this, 2, value);
+  return jspb.Message.setProto3StringField(this, 2, value);
 };
 
 
 /**
- * Clears the message field making it undefined.
- * @return {!proto.carrier.BookingResponse} returns this
- */
-proto.carrier.BookingResponse.prototype.clearBolurl = function() {
-  return this.setBolurl(undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {boolean}
- */
-proto.carrier.BookingResponse.prototype.hasBolurl = function() {
-  return jspb.Message.getField(this, 2) != null;
-};
-
-
-/**
- * optional google.protobuf.StringValue invoiceUrl = 3;
- * @return {?proto.google.protobuf.StringValue}
+ * optional string invoiceUrl = 3;
+ * @return {string}
  */
 proto.carrier.BookingResponse.prototype.getInvoiceurl = function() {
-  return /** @type{?proto.google.protobuf.StringValue} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_wrappers_pb.StringValue, 3));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
 };
 
 
 /**
- * @param {?proto.google.protobuf.StringValue|undefined} value
+ * @param {string} value
  * @return {!proto.carrier.BookingResponse} returns this
-*/
+ */
 proto.carrier.BookingResponse.prototype.setInvoiceurl = function(value) {
-  return jspb.Message.setWrapperField(this, 3, value);
+  return jspb.Message.setProto3StringField(this, 3, value);
 };
 
 
 /**
- * Clears the message field making it undefined.
- * @return {!proto.carrier.BookingResponse} returns this
- */
-proto.carrier.BookingResponse.prototype.clearInvoiceurl = function() {
-  return this.setInvoiceurl(undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {boolean}
- */
-proto.carrier.BookingResponse.prototype.hasInvoiceurl = function() {
-  return jspb.Message.getField(this, 3) != null;
-};
-
-
-/**
- * optional google.protobuf.StringValue invoiceDueDate = 4;
- * @return {?proto.google.protobuf.StringValue}
+ * optional string invoiceDueDate = 4;
+ * @return {string}
  */
 proto.carrier.BookingResponse.prototype.getInvoiceduedate = function() {
-  return /** @type{?proto.google.protobuf.StringValue} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_wrappers_pb.StringValue, 4));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 4, ""));
 };
 
 
 /**
- * @param {?proto.google.protobuf.StringValue|undefined} value
+ * @param {string} value
  * @return {!proto.carrier.BookingResponse} returns this
-*/
+ */
 proto.carrier.BookingResponse.prototype.setInvoiceduedate = function(value) {
-  return jspb.Message.setWrapperField(this, 4, value);
+  return jspb.Message.setProto3StringField(this, 4, value);
 };
 
 
 /**
- * Clears the message field making it undefined.
- * @return {!proto.carrier.BookingResponse} returns this
- */
-proto.carrier.BookingResponse.prototype.clearInvoiceduedate = function() {
-  return this.setInvoiceduedate(undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {boolean}
- */
-proto.carrier.BookingResponse.prototype.hasInvoiceduedate = function() {
-  return jspb.Message.getField(this, 4) != null;
-};
-
-
-/**
- * optional google.protobuf.StringValue pickUpStart = 5;
- * @return {?proto.google.protobuf.StringValue}
+ * optional string pickUpStart = 5;
+ * @return {string}
  */
 proto.carrier.BookingResponse.prototype.getPickupstart = function() {
-  return /** @type{?proto.google.protobuf.StringValue} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_wrappers_pb.StringValue, 5));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 5, ""));
 };
 
 
 /**
- * @param {?proto.google.protobuf.StringValue|undefined} value
+ * @param {string} value
  * @return {!proto.carrier.BookingResponse} returns this
-*/
+ */
 proto.carrier.BookingResponse.prototype.setPickupstart = function(value) {
-  return jspb.Message.setWrapperField(this, 5, value);
+  return jspb.Message.setProto3StringField(this, 5, value);
 };
 
 
 /**
- * Clears the message field making it undefined.
- * @return {!proto.carrier.BookingResponse} returns this
- */
-proto.carrier.BookingResponse.prototype.clearPickupstart = function() {
-  return this.setPickupstart(undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {boolean}
- */
-proto.carrier.BookingResponse.prototype.hasPickupstart = function() {
-  return jspb.Message.getField(this, 5) != null;
-};
-
-
-/**
- * optional google.protobuf.StringValue pickUpEnd = 6;
- * @return {?proto.google.protobuf.StringValue}
+ * optional string pickUpEnd = 6;
+ * @return {string}
  */
 proto.carrier.BookingResponse.prototype.getPickupend = function() {
-  return /** @type{?proto.google.protobuf.StringValue} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_wrappers_pb.StringValue, 6));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 6, ""));
 };
 
 
 /**
- * @param {?proto.google.protobuf.StringValue|undefined} value
+ * @param {string} value
  * @return {!proto.carrier.BookingResponse} returns this
-*/
+ */
 proto.carrier.BookingResponse.prototype.setPickupend = function(value) {
-  return jspb.Message.setWrapperField(this, 6, value);
-};
-
-
-/**
- * Clears the message field making it undefined.
- * @return {!proto.carrier.BookingResponse} returns this
- */
-proto.carrier.BookingResponse.prototype.clearPickupend = function() {
-  return this.setPickupend(undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {boolean}
- */
-proto.carrier.BookingResponse.prototype.hasPickupend = function() {
-  return jspb.Message.getField(this, 6) != null;
+  return jspb.Message.setProto3StringField(this, 6, value);
 };
 
 
@@ -1222,11 +1007,10 @@ proto.carrier.FetchBookingsRequest.prototype.toObject = function(opt_includeInst
  */
 proto.carrier.FetchBookingsRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    bookingidList: jspb.Message.toObjectList(msg.getBookingidList(),
-    google_protobuf_wrappers_pb.StringValue.toObject, includeInstance),
-    orgid: (f = msg.getOrgid()) && google_protobuf_wrappers_pb.StringValue.toObject(includeInstance, f),
-    startfrom: (f = msg.getStartfrom()) && google_protobuf_wrappers_pb.StringValue.toObject(includeInstance, f),
-    endon: (f = msg.getEndon()) && google_protobuf_wrappers_pb.StringValue.toObject(includeInstance, f)
+    bookingidList: (f = jspb.Message.getRepeatedField(msg, 1)) == null ? undefined : f,
+    orgid: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    startfrom: jspb.Message.getFieldWithDefault(msg, 3, ""),
+    endon: jspb.Message.getFieldWithDefault(msg, 4, "")
   };
 
   if (includeInstance) {
@@ -1264,23 +1048,19 @@ proto.carrier.FetchBookingsRequest.deserializeBinaryFromReader = function(msg, r
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = new google_protobuf_wrappers_pb.StringValue;
-      reader.readMessage(value,google_protobuf_wrappers_pb.StringValue.deserializeBinaryFromReader);
+      var value = /** @type {string} */ (reader.readString());
       msg.addBookingid(value);
       break;
     case 2:
-      var value = new google_protobuf_wrappers_pb.StringValue;
-      reader.readMessage(value,google_protobuf_wrappers_pb.StringValue.deserializeBinaryFromReader);
+      var value = /** @type {string} */ (reader.readString());
       msg.setOrgid(value);
       break;
     case 3:
-      var value = new google_protobuf_wrappers_pb.StringValue;
-      reader.readMessage(value,google_protobuf_wrappers_pb.StringValue.deserializeBinaryFromReader);
+      var value = /** @type {string} */ (reader.readString());
       msg.setStartfrom(value);
       break;
     case 4:
-      var value = new google_protobuf_wrappers_pb.StringValue;
-      reader.readMessage(value,google_protobuf_wrappers_pb.StringValue.deserializeBinaryFromReader);
+      var value = /** @type {string} */ (reader.readString());
       msg.setEndon(value);
       break;
     default:
@@ -1314,65 +1094,60 @@ proto.carrier.FetchBookingsRequest.serializeBinaryToWriter = function(message, w
   var f = undefined;
   f = message.getBookingidList();
   if (f.length > 0) {
-    writer.writeRepeatedMessage(
+    writer.writeRepeatedString(
       1,
-      f,
-      google_protobuf_wrappers_pb.StringValue.serializeBinaryToWriter
+      f
     );
   }
   f = message.getOrgid();
-  if (f != null) {
-    writer.writeMessage(
+  if (f.length > 0) {
+    writer.writeString(
       2,
-      f,
-      google_protobuf_wrappers_pb.StringValue.serializeBinaryToWriter
+      f
     );
   }
   f = message.getStartfrom();
-  if (f != null) {
-    writer.writeMessage(
+  if (f.length > 0) {
+    writer.writeString(
       3,
-      f,
-      google_protobuf_wrappers_pb.StringValue.serializeBinaryToWriter
+      f
     );
   }
   f = message.getEndon();
-  if (f != null) {
-    writer.writeMessage(
+  if (f.length > 0) {
+    writer.writeString(
       4,
-      f,
-      google_protobuf_wrappers_pb.StringValue.serializeBinaryToWriter
+      f
     );
   }
 };
 
 
 /**
- * repeated google.protobuf.StringValue bookingId = 1;
- * @return {!Array<!proto.google.protobuf.StringValue>}
+ * repeated string bookingId = 1;
+ * @return {!Array<string>}
  */
 proto.carrier.FetchBookingsRequest.prototype.getBookingidList = function() {
-  return /** @type{!Array<!proto.google.protobuf.StringValue>} */ (
-    jspb.Message.getRepeatedWrapperField(this, google_protobuf_wrappers_pb.StringValue, 1));
+  return /** @type {!Array<string>} */ (jspb.Message.getRepeatedField(this, 1));
 };
 
 
 /**
- * @param {!Array<!proto.google.protobuf.StringValue>} value
+ * @param {!Array<string>} value
  * @return {!proto.carrier.FetchBookingsRequest} returns this
-*/
+ */
 proto.carrier.FetchBookingsRequest.prototype.setBookingidList = function(value) {
-  return jspb.Message.setRepeatedWrapperField(this, 1, value);
+  return jspb.Message.setField(this, 1, value || []);
 };
 
 
 /**
- * @param {!proto.google.protobuf.StringValue=} opt_value
+ * @param {string} value
  * @param {number=} opt_index
- * @return {!proto.google.protobuf.StringValue}
+ * @return {!proto.carrier.FetchBookingsRequest} returns this
  */
-proto.carrier.FetchBookingsRequest.prototype.addBookingid = function(opt_value, opt_index) {
-  return jspb.Message.addToRepeatedWrapperField(this, 1, opt_value, proto.google.protobuf.StringValue, opt_index);
+proto.carrier.FetchBookingsRequest.prototype.addBookingid = function(value, opt_index) {
+  return jspb.Message.addToRepeatedField(this, 1, value, opt_index);
 };
 
 
@@ -1386,113 +1161,56 @@ proto.carrier.FetchBookingsRequest.prototype.clearBookingidList = function() {
 
 
 /**
- * optional google.protobuf.StringValue orgId = 2;
- * @return {?proto.google.protobuf.StringValue}
+ * optional string orgId = 2;
+ * @return {string}
  */
 proto.carrier.FetchBookingsRequest.prototype.getOrgid = function() {
-  return /** @type{?proto.google.protobuf.StringValue} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_wrappers_pb.StringValue, 2));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
 };
 
 
 /**
- * @param {?proto.google.protobuf.StringValue|undefined} value
+ * @param {string} value
  * @return {!proto.carrier.FetchBookingsRequest} returns this
-*/
+ */
 proto.carrier.FetchBookingsRequest.prototype.setOrgid = function(value) {
-  return jspb.Message.setWrapperField(this, 2, value);
+  return jspb.Message.setProto3StringField(this, 2, value);
 };
 
 
 /**
- * Clears the message field making it undefined.
- * @return {!proto.carrier.FetchBookingsRequest} returns this
- */
-proto.carrier.FetchBookingsRequest.prototype.clearOrgid = function() {
-  return this.setOrgid(undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {boolean}
- */
-proto.carrier.FetchBookingsRequest.prototype.hasOrgid = function() {
-  return jspb.Message.getField(this, 2) != null;
-};
-
-
-/**
- * optional google.protobuf.StringValue startFrom = 3;
- * @return {?proto.google.protobuf.StringValue}
+ * optional string startFrom = 3;
+ * @return {string}
  */
 proto.carrier.FetchBookingsRequest.prototype.getStartfrom = function() {
-  return /** @type{?proto.google.protobuf.StringValue} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_wrappers_pb.StringValue, 3));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
 };
 
 
 /**
- * @param {?proto.google.protobuf.StringValue|undefined} value
+ * @param {string} value
  * @return {!proto.carrier.FetchBookingsRequest} returns this
-*/
+ */
 proto.carrier.FetchBookingsRequest.prototype.setStartfrom = function(value) {
-  return jspb.Message.setWrapperField(this, 3, value);
+  return jspb.Message.setProto3StringField(this, 3, value);
 };
 
 
 /**
- * Clears the message field making it undefined.
- * @return {!proto.carrier.FetchBookingsRequest} returns this
- */
-proto.carrier.FetchBookingsRequest.prototype.clearStartfrom = function() {
-  return this.setStartfrom(undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {boolean}
- */
-proto.carrier.FetchBookingsRequest.prototype.hasStartfrom = function() {
-  return jspb.Message.getField(this, 3) != null;
-};
-
-
-/**
- * optional google.protobuf.StringValue endOn = 4;
- * @return {?proto.google.protobuf.StringValue}
+ * optional string endOn = 4;
+ * @return {string}
  */
 proto.carrier.FetchBookingsRequest.prototype.getEndon = function() {
-  return /** @type{?proto.google.protobuf.StringValue} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_wrappers_pb.StringValue, 4));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 4, ""));
 };
 
 
 /**
- * @param {?proto.google.protobuf.StringValue|undefined} value
+ * @param {string} value
  * @return {!proto.carrier.FetchBookingsRequest} returns this
-*/
+ */
 proto.carrier.FetchBookingsRequest.prototype.setEndon = function(value) {
-  return jspb.Message.setWrapperField(this, 4, value);
-};
-
-
-/**
- * Clears the message field making it undefined.
- * @return {!proto.carrier.FetchBookingsRequest} returns this
- */
-proto.carrier.FetchBookingsRequest.prototype.clearEndon = function() {
-  return this.setEndon(undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {boolean}
- */
-proto.carrier.FetchBookingsRequest.prototype.hasEndon = function() {
-  return jspb.Message.getField(this, 4) != null;
+  return jspb.Message.setProto3StringField(this, 4, value);
 };
 
 
