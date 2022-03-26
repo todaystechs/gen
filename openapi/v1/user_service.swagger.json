@@ -65,17 +65,6 @@
         }
       }
     },
-    "userserviceBusinessOwnerRole": {
-      "type": "object",
-      "properties": {
-        "businessOwnerRole": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/userserviceRole"
-          }
-        }
-      }
-    },
     "userserviceForgotPassswordResponse": {
       "type": "object",
       "properties": {

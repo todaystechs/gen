@@ -33,7 +33,7 @@ goog.exportSymbol('proto.userservice.SignUpData', null, global);
  * @constructor
  */
 proto.userservice.SignUpData = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.userservice.SignUpData.repeatedFields_, null);
 };
 goog.inherits(proto.userservice.SignUpData, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
@@ -43,6 +43,13 @@ if (goog.DEBUG && !COMPILED) {
    */
   proto.userservice.SignUpData.displayName = 'proto.userservice.SignUpData';
 }
+
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
+proto.userservice.SignUpData.repeatedFields_ = [7];
 
 
 
@@ -81,7 +88,7 @@ proto.userservice.SignUpData.toObject = function(includeInstance, msg) {
     email: (f = msg.getEmail()) && google_protobuf_wrappers_pb.StringValue.toObject(includeInstance, f),
     password: (f = msg.getPassword()) && google_protobuf_wrappers_pb.StringValue.toObject(includeInstance, f),
     phoneNumber: (f = msg.getPhoneNumber()) && google_protobuf_wrappers_pb.StringValue.toObject(includeInstance, f),
-    role: (f = msg.getRole()) && role_pb.BusinessOwnerRole.toObject(includeInstance, f)
+    roleList: (f = jspb.Message.getRepeatedField(msg, 7)) == null ? undefined : f
   };
 
   if (includeInstance) {
@@ -149,9 +156,10 @@ proto.userservice.SignUpData.deserializeBinaryFromReader = function(msg, reader)
       msg.setPhoneNumber(value);
       break;
     case 7:
-      var value = new role_pb.BusinessOwnerRole;
-      reader.readMessage(value,role_pb.BusinessOwnerRole.deserializeBinaryFromReader);
-      msg.setRole(value);
+      var values = /** @type {!Array<!proto.userservice.Role>} */ (reader.isDelimited() ? reader.readPackedEnum() : [reader.readEnum()]);
+      for (var i = 0; i < values.length; i++) {
+        msg.addRole(values[i]);
+      }
       break;
     default:
       reader.skipField();
@@ -230,12 +238,11 @@ proto.userservice.SignUpData.serializeBinaryToWriter = function(message, writer)
       google_protobuf_wrappers_pb.StringValue.serializeBinaryToWriter
     );
   }
-  f = message.getRole();
-  if (f != null) {
-    writer.writeMessage(
+  f = message.getRoleList();
+  if (f.length > 0) {
+    writer.writePackedEnum(
       7,
-      f,
-      role_pb.BusinessOwnerRole.serializeBinaryToWriter
+      f
     );
   }
 };
@@ -464,39 +471,39 @@ proto.userservice.SignUpData.prototype.hasPhoneNumber = function() {
 
 
 /**
- * optional BusinessOwnerRole role = 7;
- * @return {?proto.userservice.BusinessOwnerRole}
+ * repeated Role role = 7;
+ * @return {!Array<!proto.userservice.Role>}
  */
-proto.userservice.SignUpData.prototype.getRole = function() {
-  return /** @type{?proto.userservice.BusinessOwnerRole} */ (
-    jspb.Message.getWrapperField(this, role_pb.BusinessOwnerRole, 7));
+proto.userservice.SignUpData.prototype.getRoleList = function() {
+  return /** @type {!Array<!proto.userservice.Role>} */ (jspb.Message.getRepeatedField(this, 7));
 };
 
 
 /**
- * @param {?proto.userservice.BusinessOwnerRole|undefined} value
- * @return {!proto.userservice.SignUpData} returns this
-*/
-proto.userservice.SignUpData.prototype.setRole = function(value) {
-  return jspb.Message.setWrapperField(this, 7, value);
-};
-
-
-/**
- * Clears the message field making it undefined.
+ * @param {!Array<!proto.userservice.Role>} value
  * @return {!proto.userservice.SignUpData} returns this
  */
-proto.userservice.SignUpData.prototype.clearRole = function() {
-  return this.setRole(undefined);
+proto.userservice.SignUpData.prototype.setRoleList = function(value) {
+  return jspb.Message.setField(this, 7, value || []);
 };
 
 
 /**
- * Returns whether this field is set.
- * @return {boolean}
+ * @param {!proto.userservice.Role} value
+ * @param {number=} opt_index
+ * @return {!proto.userservice.SignUpData} returns this
  */
-proto.userservice.SignUpData.prototype.hasRole = function() {
-  return jspb.Message.getField(this, 7) != null;
+proto.userservice.SignUpData.prototype.addRole = function(value, opt_index) {
+  return jspb.Message.addToRepeatedField(this, 7, value, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.userservice.SignUpData} returns this
+ */
+proto.userservice.SignUpData.prototype.clearRoleList = function() {
+  return this.setRoleList([]);
 };
 
 
