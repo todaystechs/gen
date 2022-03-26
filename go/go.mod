@@ -1,4 +1,4 @@
-module github.com/todaystechs/gen
+module github.com/todaystechs/gen/go
 
 go 1.17
 
