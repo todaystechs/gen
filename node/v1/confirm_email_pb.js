@@ -15,10 +15,6 @@ var jspb = require('google-protobuf');
 var goog = jspb;
 var global = Function('return this')();
 
-var validate_validate_pb = require('./validate/validate_pb.js');
-goog.object.extend(proto, validate_validate_pb);
-var role_pb = require('./role_pb.js');
-goog.object.extend(proto, role_pb);
 var google_protobuf_wrappers_pb = require('google-protobuf/google/protobuf/wrappers_pb.js');
 goog.object.extend(proto, google_protobuf_wrappers_pb);
 goog.exportSymbol('proto.userservice.ConfirmEmailData', null, global);
@@ -76,6 +72,8 @@ proto.userservice.ConfirmEmailData.prototype.toObject = function(opt_includeInst
 proto.userservice.ConfirmEmailData.toObject = function(includeInstance, msg) {
   var f, obj = {
     email: (f = msg.getEmail()) && google_protobuf_wrappers_pb.StringValue.toObject(includeInstance, f),
+    userName: (f = msg.getUserName()) && google_protobuf_wrappers_pb.StringValue.toObject(includeInstance, f),
+    confirmationCode: (f = msg.getConfirmationCode()) && google_protobuf_wrappers_pb.StringValue.toObject(includeInstance, f),
     token: (f = msg.getToken()) && google_protobuf_wrappers_pb.StringValue.toObject(includeInstance, f)
   };
 
@@ -121,6 +119,16 @@ proto.userservice.ConfirmEmailData.deserializeBinaryFromReader = function(msg, r
     case 2:
       var value = new google_protobuf_wrappers_pb.StringValue;
       reader.readMessage(value,google_protobuf_wrappers_pb.StringValue.deserializeBinaryFromReader);
+      msg.setUserName(value);
+      break;
+    case 3:
+      var value = new google_protobuf_wrappers_pb.StringValue;
+      reader.readMessage(value,google_protobuf_wrappers_pb.StringValue.deserializeBinaryFromReader);
+      msg.setConfirmationCode(value);
+      break;
+    case 4:
+      var value = new google_protobuf_wrappers_pb.StringValue;
+      reader.readMessage(value,google_protobuf_wrappers_pb.StringValue.deserializeBinaryFromReader);
       msg.setToken(value);
       break;
     default:
@@ -160,10 +168,26 @@ proto.userservice.ConfirmEmailData.serializeBinaryToWriter = function(message, w
       google_protobuf_wrappers_pb.StringValue.serializeBinaryToWriter
     );
   }
-  f = message.getToken();
+  f = message.getUserName();
   if (f != null) {
     writer.writeMessage(
       2,
+      f,
+      google_protobuf_wrappers_pb.StringValue.serializeBinaryToWriter
+    );
+  }
+  f = message.getConfirmationCode();
+  if (f != null) {
+    writer.writeMessage(
+      3,
+      f,
+      google_protobuf_wrappers_pb.StringValue.serializeBinaryToWriter
+    );
+  }
+  f = message.getToken();
+  if (f != null) {
+    writer.writeMessage(
+      4,
       f,
       google_protobuf_wrappers_pb.StringValue.serializeBinaryToWriter
     );
@@ -209,10 +233,10 @@ proto.userservice.ConfirmEmailData.prototype.hasEmail = function() {
 
 
 /**
- * optional google.protobuf.StringValue token = 2;
+ * optional google.protobuf.StringValue user_name = 2;
  * @return {?proto.google.protobuf.StringValue}
  */
-proto.userservice.ConfirmEmailData.prototype.getToken = function() {
+proto.userservice.ConfirmEmailData.prototype.getUserName = function() {
   return /** @type{?proto.google.protobuf.StringValue} */ (
     jspb.Message.getWrapperField(this, google_protobuf_wrappers_pb.StringValue, 2));
 };
@@ -222,8 +246,82 @@ proto.userservice.ConfirmEmailData.prototype.getToken = function() {
  * @param {?proto.google.protobuf.StringValue|undefined} value
  * @return {!proto.userservice.ConfirmEmailData} returns this
 */
-proto.userservice.ConfirmEmailData.prototype.setToken = function(value) {
+proto.userservice.ConfirmEmailData.prototype.setUserName = function(value) {
   return jspb.Message.setWrapperField(this, 2, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.userservice.ConfirmEmailData} returns this
+ */
+proto.userservice.ConfirmEmailData.prototype.clearUserName = function() {
+  return this.setUserName(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.userservice.ConfirmEmailData.prototype.hasUserName = function() {
+  return jspb.Message.getField(this, 2) != null;
+};
+
+
+/**
+ * optional google.protobuf.StringValue confirmation_code = 3;
+ * @return {?proto.google.protobuf.StringValue}
+ */
+proto.userservice.ConfirmEmailData.prototype.getConfirmationCode = function() {
+  return /** @type{?proto.google.protobuf.StringValue} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_wrappers_pb.StringValue, 3));
+};
+
+
+/**
+ * @param {?proto.google.protobuf.StringValue|undefined} value
+ * @return {!proto.userservice.ConfirmEmailData} returns this
+*/
+proto.userservice.ConfirmEmailData.prototype.setConfirmationCode = function(value) {
+  return jspb.Message.setWrapperField(this, 3, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.userservice.ConfirmEmailData} returns this
+ */
+proto.userservice.ConfirmEmailData.prototype.clearConfirmationCode = function() {
+  return this.setConfirmationCode(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.userservice.ConfirmEmailData.prototype.hasConfirmationCode = function() {
+  return jspb.Message.getField(this, 3) != null;
+};
+
+
+/**
+ * optional google.protobuf.StringValue token = 4;
+ * @return {?proto.google.protobuf.StringValue}
+ */
+proto.userservice.ConfirmEmailData.prototype.getToken = function() {
+  return /** @type{?proto.google.protobuf.StringValue} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_wrappers_pb.StringValue, 4));
+};
+
+
+/**
+ * @param {?proto.google.protobuf.StringValue|undefined} value
+ * @return {!proto.userservice.ConfirmEmailData} returns this
+*/
+proto.userservice.ConfirmEmailData.prototype.setToken = function(value) {
+  return jspb.Message.setWrapperField(this, 4, value);
 };
 
 
@@ -241,7 +339,7 @@ proto.userservice.ConfirmEmailData.prototype.clearToken = function() {
  * @return {boolean}
  */
 proto.userservice.ConfirmEmailData.prototype.hasToken = function() {
-  return jspb.Message.getField(this, 2) != null;
+  return jspb.Message.getField(this, 4) != null;
 };
 
 
