@@ -623,72 +623,62 @@ func (m *UserData) validate(all bool) error {
 
 	}
 
-	for idx, item := range m.GetSk() {
-		_, _ = idx, item
-
-		if all {
-			switch v := interface{}(item).(type) {
-			case interface{ ValidateAll() error }:
-				if err := v.ValidateAll(); err != nil {
-					errors = append(errors, UserDataValidationError{
-						field:  fmt.Sprintf("Sk[%v]", idx),
-						reason: "embedded message failed validation",
-						cause:  err,
-					})
-				}
-			case interface{ Validate() error }:
-				if err := v.Validate(); err != nil {
-					errors = append(errors, UserDataValidationError{
-						field:  fmt.Sprintf("Sk[%v]", idx),
-						reason: "embedded message failed validation",
-						cause:  err,
-					})
-				}
-			}
-		} else if v, ok := interface{}(item).(interface{ Validate() error }); ok {
-			if err := v.Validate(); err != nil {
-				return UserDataValidationError{
-					field:  fmt.Sprintf("Sk[%v]", idx),
+	if all {
+		switch v := interface{}(m.GetSK()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, UserDataValidationError{
+					field:  "SK",
 					reason: "embedded message failed validation",
 					cause:  err,
-				}
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, UserDataValidationError{
+					field:  "SK",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
 			}
 		}
-
+	} else if v, ok := interface{}(m.GetSK()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return UserDataValidationError{
+				field:  "SK",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
 	}
 
-	for idx, item := range m.GetPk() {
-		_, _ = idx, item
-
-		if all {
-			switch v := interface{}(item).(type) {
-			case interface{ ValidateAll() error }:
-				if err := v.ValidateAll(); err != nil {
-					errors = append(errors, UserDataValidationError{
-						field:  fmt.Sprintf("Pk[%v]", idx),
-						reason: "embedded message failed validation",
-						cause:  err,
-					})
-				}
-			case interface{ Validate() error }:
-				if err := v.Validate(); err != nil {
-					errors = append(errors, UserDataValidationError{
-						field:  fmt.Sprintf("Pk[%v]", idx),
-						reason: "embedded message failed validation",
-						cause:  err,
-					})
-				}
-			}
-		} else if v, ok := interface{}(item).(interface{ Validate() error }); ok {
-			if err := v.Validate(); err != nil {
-				return UserDataValidationError{
-					field:  fmt.Sprintf("Pk[%v]", idx),
+	if all {
+		switch v := interface{}(m.GetPK()).(type) {
+		case interface{ ValidateAll() error }:
+			if err := v.ValidateAll(); err != nil {
+				errors = append(errors, UserDataValidationError{
+					field:  "PK",
 					reason: "embedded message failed validation",
 					cause:  err,
-				}
+				})
+			}
+		case interface{ Validate() error }:
+			if err := v.Validate(); err != nil {
+				errors = append(errors, UserDataValidationError{
+					field:  "PK",
+					reason: "embedded message failed validation",
+					cause:  err,
+				})
 			}
 		}
-
+	} else if v, ok := interface{}(m.GetPK()).(interface{ Validate() error }); ok {
+		if err := v.Validate(); err != nil {
+			return UserDataValidationError{
+				field:  "PK",
+				reason: "embedded message failed validation",
+				cause:  err,
+			}
+		}
 	}
 
 	for idx, item := range m.GetBusinessIds() {

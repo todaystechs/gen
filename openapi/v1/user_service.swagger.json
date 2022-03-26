@@ -223,17 +223,11 @@
             "type": "string"
           }
         },
-        "sk": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
+        "SK": {
+          "type": "string"
         },
-        "pk": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
+        "PK": {
+          "type": "string"
         },
         "businessIds": {
           "type": "array",

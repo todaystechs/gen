@@ -77,7 +77,7 @@ if (goog.DEBUG && !COMPILED) {
  * @private {!Array<number>}
  * @const
  */
-proto.userservice.UserData.repeatedFields_ = [11,17,19,20,21,22,23];
+proto.userservice.UserData.repeatedFields_ = [11,17,19,20,23];
 
 
 
@@ -133,10 +133,8 @@ proto.userservice.UserData.toObject = function(includeInstance, msg) {
     google_protobuf_wrappers_pb.StringValue.toObject, includeInstance),
     sessionsList: jspb.Message.toObjectList(msg.getSessionsList(),
     google_protobuf_wrappers_pb.StringValue.toObject, includeInstance),
-    skList: jspb.Message.toObjectList(msg.getSkList(),
-    google_protobuf_wrappers_pb.StringValue.toObject, includeInstance),
-    pkList: jspb.Message.toObjectList(msg.getPkList(),
-    google_protobuf_wrappers_pb.StringValue.toObject, includeInstance),
+    sk: (f = msg.getSk()) && google_protobuf_wrappers_pb.StringValue.toObject(includeInstance, f),
+    pk: (f = msg.getPk()) && google_protobuf_wrappers_pb.StringValue.toObject(includeInstance, f),
     businessIdsList: jspb.Message.toObjectList(msg.getBusinessIdsList(),
     google_protobuf_wrappers_pb.StringValue.toObject, includeInstance)
   };
@@ -279,12 +277,12 @@ proto.userservice.UserData.deserializeBinaryFromReader = function(msg, reader) {
     case 21:
       var value = new google_protobuf_wrappers_pb.StringValue;
       reader.readMessage(value,google_protobuf_wrappers_pb.StringValue.deserializeBinaryFromReader);
-      msg.addSk(value);
+      msg.setSk(value);
       break;
     case 22:
       var value = new google_protobuf_wrappers_pb.StringValue;
       reader.readMessage(value,google_protobuf_wrappers_pb.StringValue.deserializeBinaryFromReader);
-      msg.addPk(value);
+      msg.setPk(value);
       break;
     case 23:
       var value = new google_protobuf_wrappers_pb.StringValue;
@@ -479,17 +477,17 @@ proto.userservice.UserData.serializeBinaryToWriter = function(message, writer) {
       google_protobuf_wrappers_pb.StringValue.serializeBinaryToWriter
     );
   }
-  f = message.getSkList();
-  if (f.length > 0) {
-    writer.writeRepeatedMessage(
+  f = message.getSk();
+  if (f != null) {
+    writer.writeMessage(
       21,
       f,
       google_protobuf_wrappers_pb.StringValue.serializeBinaryToWriter
     );
   }
-  f = message.getPkList();
-  if (f.length > 0) {
-    writer.writeRepeatedMessage(
+  f = message.getPk();
+  if (f != null) {
+    writer.writeMessage(
       22,
       f,
       google_protobuf_wrappers_pb.StringValue.serializeBinaryToWriter
@@ -1250,78 +1248,76 @@ proto.userservice.UserData.prototype.clearSessionsList = function() {
 
 
 /**
- * repeated google.protobuf.StringValue sk = 21;
- * @return {!Array<!proto.google.protobuf.StringValue>}
+ * optional google.protobuf.StringValue SK = 21;
+ * @return {?proto.google.protobuf.StringValue}
  */
-proto.userservice.UserData.prototype.getSkList = function() {
-  return /** @type{!Array<!proto.google.protobuf.StringValue>} */ (
-    jspb.Message.getRepeatedWrapperField(this, google_protobuf_wrappers_pb.StringValue, 21));
+proto.userservice.UserData.prototype.getSk = function() {
+  return /** @type{?proto.google.protobuf.StringValue} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_wrappers_pb.StringValue, 21));
 };
 
 
 /**
- * @param {!Array<!proto.google.protobuf.StringValue>} value
+ * @param {?proto.google.protobuf.StringValue|undefined} value
  * @return {!proto.userservice.UserData} returns this
 */
-proto.userservice.UserData.prototype.setSkList = function(value) {
-  return jspb.Message.setRepeatedWrapperField(this, 21, value);
+proto.userservice.UserData.prototype.setSk = function(value) {
+  return jspb.Message.setWrapperField(this, 21, value);
 };
 
 
 /**
- * @param {!proto.google.protobuf.StringValue=} opt_value
- * @param {number=} opt_index
- * @return {!proto.google.protobuf.StringValue}
- */
-proto.userservice.UserData.prototype.addSk = function(opt_value, opt_index) {
-  return jspb.Message.addToRepeatedWrapperField(this, 21, opt_value, proto.google.protobuf.StringValue, opt_index);
-};
-
-
-/**
- * Clears the list making it empty but non-null.
+ * Clears the message field making it undefined.
  * @return {!proto.userservice.UserData} returns this
  */
-proto.userservice.UserData.prototype.clearSkList = function() {
-  return this.setSkList([]);
+proto.userservice.UserData.prototype.clearSk = function() {
+  return this.setSk(undefined);
 };
 
 
 /**
- * repeated google.protobuf.StringValue pk = 22;
- * @return {!Array<!proto.google.protobuf.StringValue>}
+ * Returns whether this field is set.
+ * @return {boolean}
  */
-proto.userservice.UserData.prototype.getPkList = function() {
-  return /** @type{!Array<!proto.google.protobuf.StringValue>} */ (
-    jspb.Message.getRepeatedWrapperField(this, google_protobuf_wrappers_pb.StringValue, 22));
+proto.userservice.UserData.prototype.hasSk = function() {
+  return jspb.Message.getField(this, 21) != null;
 };
 
 
 /**
- * @param {!Array<!proto.google.protobuf.StringValue>} value
+ * optional google.protobuf.StringValue PK = 22;
+ * @return {?proto.google.protobuf.StringValue}
+ */
+proto.userservice.UserData.prototype.getPk = function() {
+  return /** @type{?proto.google.protobuf.StringValue} */ (
+    jspb.Message.getWrapperField(this, google_protobuf_wrappers_pb.StringValue, 22));
+};
+
+
+/**
+ * @param {?proto.google.protobuf.StringValue|undefined} value
  * @return {!proto.userservice.UserData} returns this
 */
-proto.userservice.UserData.prototype.setPkList = function(value) {
-  return jspb.Message.setRepeatedWrapperField(this, 22, value);
+proto.userservice.UserData.prototype.setPk = function(value) {
+  return jspb.Message.setWrapperField(this, 22, value);
 };
 
 
 /**
- * @param {!proto.google.protobuf.StringValue=} opt_value
- * @param {number=} opt_index
- * @return {!proto.google.protobuf.StringValue}
- */
-proto.userservice.UserData.prototype.addPk = function(opt_value, opt_index) {
-  return jspb.Message.addToRepeatedWrapperField(this, 22, opt_value, proto.google.protobuf.StringValue, opt_index);
-};
-
-
-/**
- * Clears the list making it empty but non-null.
+ * Clears the message field making it undefined.
  * @return {!proto.userservice.UserData} returns this
  */
-proto.userservice.UserData.prototype.clearPkList = function() {
-  return this.setPkList([]);
+proto.userservice.UserData.prototype.clearPk = function() {
+  return this.setPk(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.userservice.UserData.prototype.hasPk = function() {
+  return jspb.Message.getField(this, 22) != null;
 };
 
 
