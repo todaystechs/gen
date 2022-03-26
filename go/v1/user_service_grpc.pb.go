@@ -33,6 +33,7 @@ type UserServiceClient interface {
 	UpdateUser(ctx context.Context, in *UserData, opts ...grpc.CallOption) (*Ok, error)
 	GetMe(ctx context.Context, in *MeData, opts ...grpc.CallOption) (*UserData, error)
 	ConfirmEmail(ctx context.Context, in *ConfirmEmailData, opts ...grpc.CallOption) (*Ok, error)
+	Home(ctx context.Context, in *Token, opts ...grpc.CallOption) (*Any, error)
 }
 
 type userServiceClient struct {
@@ -142,6 +143,15 @@ func (c *userServiceClient) ConfirmEmail(ctx context.Context, in *ConfirmEmailDa
 	return out, nil
 }
 
+func (c *userServiceClient) Home(ctx context.Context, in *Token, opts ...grpc.CallOption) (*Any, error) {
+	out := new(Any)
+	err := c.cc.Invoke(ctx, "/userservice.UserService/Home", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // UserServiceServer is the server API for UserService service.
 // All implementations should embed UnimplementedUserServiceServer
 // for forward compatibility
@@ -157,6 +167,7 @@ type UserServiceServer interface {
 	UpdateUser(context.Context, *UserData) (*Ok, error)
 	GetMe(context.Context, *MeData) (*UserData, error)
 	ConfirmEmail(context.Context, *ConfirmEmailData) (*Ok, error)
+	Home(context.Context, *Token) (*Any, error)
 }
 
 // UnimplementedUserServiceServer should be embedded to have forward compatible implementations.
@@ -195,6 +206,9 @@ func (UnimplementedUserServiceServer) GetMe(context.Context, *MeData) (*UserData
 }
 func (UnimplementedUserServiceServer) ConfirmEmail(context.Context, *ConfirmEmailData) (*Ok, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ConfirmEmail not implemented")
+}
+func (UnimplementedUserServiceServer) Home(context.Context, *Token) (*Any, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Home not implemented")
 }
 
 // UnsafeUserServiceServer may be embedded to opt out of forward compatibility for this service.
@@ -406,6 +420,24 @@ func _UserService_ConfirmEmail_Handler(srv interface{}, ctx context.Context, dec
 	return interceptor(ctx, in, info, handler)
 }
 
+func _UserService_Home_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(Token)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserServiceServer).Home(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/userservice.UserService/Home",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserServiceServer).Home(ctx, req.(*Token))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // UserService_ServiceDesc is the grpc.ServiceDesc for UserService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -456,6 +488,10 @@ var UserService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "ConfirmEmail",
 			Handler:    _UserService_ConfirmEmail_Handler,
+		},
+		{
+			MethodName: "Home",
+			Handler:    _UserService_Home_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

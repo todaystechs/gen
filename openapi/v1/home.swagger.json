@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "log_out.proto",
+    "title": "home.proto",
     "version": "version not set"
   },
   "consumes": [
