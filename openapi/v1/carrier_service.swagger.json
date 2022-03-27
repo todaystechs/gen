@@ -167,6 +167,25 @@
       },
       "title": "type BaseCarrier struct {\n\tName            string `json:\"name,omitempty\"`\n\tAuthUrl         string `json:\"auth_url,omitempty\"`\n\tRateUrl         string `json:\"rate_url,omitempty\"`\n\tAddAddressUrl   string `json:\"add_address_url,omitempty\"`\n\tGetAddressesUrl string `json:\"get_addresses_url,omitempty\"`\n\tQuoteHistoryUrl string `json:\"quote_history_url,omitempty\"`\n}"
     },
+    "carrierCarrierRole": {
+      "type": "string",
+      "enum": [
+        "SystemOwner",
+        "SystemManager",
+        "SystemStaff",
+        "SystemDeveloper",
+        "SystemWarehouseManager",
+        "SystemWarehouseStaff",
+        "BusinessOwner",
+        "BusinessManager",
+        "BusinessStaff",
+        "BusinessWarehouseManager",
+        "BusinessWarehouseStaff",
+        "ThreePLOwner",
+        "ThreePLStaff"
+      ],
+      "default": "SystemOwner"
+    },
     "carrierCarrierServicePing": {
       "type": "object",
       "properties": {
@@ -240,10 +259,10 @@
         "phoneNumberDisplay": {
           "type": "string"
         },
-        "role": {
+        "roles": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/carrierRole"
+            "$ref": "#/definitions/carrierCarrierRole"
           }
         },
         "prefferedContactMethod": {
@@ -474,25 +493,6 @@
         }
       },
       "title": "type QuoteResponse struct {\n\tQuoteId     string    `dynamodbav:\"quote_id\" json:\"quote_id\"`\n\tSortId      string    `dynamodbav:\"sort_id\" json:\"sort_id\"`\n\tCarrier     Carrier   `dynamodbav:\"carrier\" json:\"carrier\"`\n\tAmount      Amount    `dynamodbav:\"amount\" json:\"amount\"`\n\tTransitTime string    `dynamodbav:\"transit_time\" json:\"transit_time\"`\n\tGuranteed   Guranteed `dynamodbav:\"guranteed\" json:\"guranteed\"`\n}"
-    },
-    "carrierRole": {
-      "type": "string",
-      "enum": [
-        "SystemOwner",
-        "SystemManager",
-        "SystemStaff",
-        "SystemDeveloper",
-        "SystemWarehouseManager",
-        "SystemWarehouseStaff",
-        "BusinessOwner",
-        "BusinessManager",
-        "BusinessStaff",
-        "BusinessWarehouseManager",
-        "BusinessWarehouseStaff",
-        "ThreePLOwner",
-        "ThreePLStaff"
-      ],
-      "default": "SystemOwner"
     },
     "carrierShippingDetail": {
       "type": "object",

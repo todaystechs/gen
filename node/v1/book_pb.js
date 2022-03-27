@@ -15,8 +15,8 @@ var jspb = require('google-protobuf');
 var goog = jspb;
 var global = Function('return this')();
 
-var role_pb = require('./role_pb.js');
-goog.object.extend(proto, role_pb);
+var carrier_role_pb = require('./carrier_role_pb.js');
+goog.object.extend(proto, carrier_role_pb);
 var amount_pb = require('./amount_pb.js');
 goog.object.extend(proto, amount_pb);
 var quote_pb = require('./quote_pb.js');
@@ -154,7 +154,7 @@ proto.carrier.BookingRequest.toObject = function(includeInstance, msg) {
     phonenumberextension: jspb.Message.getFieldWithDefault(msg, 4, ""),
     emailaddress: jspb.Message.getFieldWithDefault(msg, 5, ""),
     phonenumberdisplay: jspb.Message.getFieldWithDefault(msg, 6, ""),
-    roleList: (f = jspb.Message.getRepeatedField(msg, 7)) == null ? undefined : f,
+    rolesList: (f = jspb.Message.getRepeatedField(msg, 7)) == null ? undefined : f,
     prefferedcontactmethod: jspb.Message.getFieldWithDefault(msg, 8, "")
   };
 
@@ -217,9 +217,9 @@ proto.carrier.BookingRequest.deserializeBinaryFromReader = function(msg, reader)
       msg.setPhonenumberdisplay(value);
       break;
     case 7:
-      var values = /** @type {!Array<!proto.carrier.Role>} */ (reader.isDelimited() ? reader.readPackedEnum() : [reader.readEnum()]);
+      var values = /** @type {!Array<!proto.carrier.CarrierRole>} */ (reader.isDelimited() ? reader.readPackedEnum() : [reader.readEnum()]);
       for (var i = 0; i < values.length; i++) {
-        msg.addRole(values[i]);
+        msg.addRoles(values[i]);
       }
       break;
     case 8:
@@ -297,7 +297,7 @@ proto.carrier.BookingRequest.serializeBinaryToWriter = function(message, writer)
       f
     );
   }
-  f = message.getRoleList();
+  f = message.getRolesList();
   if (f.length > 0) {
     writer.writePackedEnum(
       7,
@@ -423,29 +423,29 @@ proto.carrier.BookingRequest.prototype.setPhonenumberdisplay = function(value) {
 
 
 /**
- * repeated Role role = 7;
- * @return {!Array<!proto.carrier.Role>}
+ * repeated CarrierRole roles = 7;
+ * @return {!Array<!proto.carrier.CarrierRole>}
  */
-proto.carrier.BookingRequest.prototype.getRoleList = function() {
-  return /** @type {!Array<!proto.carrier.Role>} */ (jspb.Message.getRepeatedField(this, 7));
+proto.carrier.BookingRequest.prototype.getRolesList = function() {
+  return /** @type {!Array<!proto.carrier.CarrierRole>} */ (jspb.Message.getRepeatedField(this, 7));
 };
 
 
 /**
- * @param {!Array<!proto.carrier.Role>} value
+ * @param {!Array<!proto.carrier.CarrierRole>} value
  * @return {!proto.carrier.BookingRequest} returns this
  */
-proto.carrier.BookingRequest.prototype.setRoleList = function(value) {
+proto.carrier.BookingRequest.prototype.setRolesList = function(value) {
   return jspb.Message.setField(this, 7, value || []);
 };
 
 
 /**
- * @param {!proto.carrier.Role} value
+ * @param {!proto.carrier.CarrierRole} value
  * @param {number=} opt_index
  * @return {!proto.carrier.BookingRequest} returns this
  */
-proto.carrier.BookingRequest.prototype.addRole = function(value, opt_index) {
+proto.carrier.BookingRequest.prototype.addRoles = function(value, opt_index) {
   return jspb.Message.addToRepeatedField(this, 7, value, opt_index);
 };
 
@@ -454,8 +454,8 @@ proto.carrier.BookingRequest.prototype.addRole = function(value, opt_index) {
  * Clears the list making it empty but non-null.
  * @return {!proto.carrier.BookingRequest} returns this
  */
-proto.carrier.BookingRequest.prototype.clearRoleList = function() {
-  return this.setRoleList([]);
+proto.carrier.BookingRequest.prototype.clearRolesList = function() {
+  return this.setRolesList([]);
 };
 
 

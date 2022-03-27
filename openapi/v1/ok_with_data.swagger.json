@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "google/api/httpbody.proto",
+    "title": "ok_with_data.proto",
     "version": "version not set"
   },
   "consumes": [
