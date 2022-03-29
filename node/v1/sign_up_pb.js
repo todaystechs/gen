@@ -82,12 +82,12 @@ proto.user.SignUpData.prototype.toObject = function(opt_includeInstance) {
  */
 proto.user.SignUpData.toObject = function(includeInstance, msg) {
   var f, obj = {
-    firstName: (f = msg.getFirstName()) && google_protobuf_wrappers_pb.StringValue.toObject(includeInstance, f),
-    middleName: (f = msg.getMiddleName()) && google_protobuf_wrappers_pb.StringValue.toObject(includeInstance, f),
-    lastName: (f = msg.getLastName()) && google_protobuf_wrappers_pb.StringValue.toObject(includeInstance, f),
-    email: (f = msg.getEmail()) && google_protobuf_wrappers_pb.StringValue.toObject(includeInstance, f),
-    password: (f = msg.getPassword()) && google_protobuf_wrappers_pb.StringValue.toObject(includeInstance, f),
-    phoneNumber: (f = msg.getPhoneNumber()) && google_protobuf_wrappers_pb.StringValue.toObject(includeInstance, f),
+    firstName: jspb.Message.getFieldWithDefault(msg, 1, ""),
+    middleName: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    lastName: jspb.Message.getFieldWithDefault(msg, 3, ""),
+    email: jspb.Message.getFieldWithDefault(msg, 4, ""),
+    password: jspb.Message.getFieldWithDefault(msg, 5, ""),
+    phoneNumber: jspb.Message.getFieldWithDefault(msg, 6, ""),
     roleList: (f = jspb.Message.getRepeatedField(msg, 7)) == null ? undefined : f
   };
 
@@ -126,33 +126,27 @@ proto.user.SignUpData.deserializeBinaryFromReader = function(msg, reader) {
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = new google_protobuf_wrappers_pb.StringValue;
-      reader.readMessage(value,google_protobuf_wrappers_pb.StringValue.deserializeBinaryFromReader);
+      var value = /** @type {string} */ (reader.readString());
       msg.setFirstName(value);
       break;
     case 2:
-      var value = new google_protobuf_wrappers_pb.StringValue;
-      reader.readMessage(value,google_protobuf_wrappers_pb.StringValue.deserializeBinaryFromReader);
+      var value = /** @type {string} */ (reader.readString());
       msg.setMiddleName(value);
       break;
     case 3:
-      var value = new google_protobuf_wrappers_pb.StringValue;
-      reader.readMessage(value,google_protobuf_wrappers_pb.StringValue.deserializeBinaryFromReader);
+      var value = /** @type {string} */ (reader.readString());
       msg.setLastName(value);
       break;
     case 4:
-      var value = new google_protobuf_wrappers_pb.StringValue;
-      reader.readMessage(value,google_protobuf_wrappers_pb.StringValue.deserializeBinaryFromReader);
+      var value = /** @type {string} */ (reader.readString());
       msg.setEmail(value);
       break;
     case 5:
-      var value = new google_protobuf_wrappers_pb.StringValue;
-      reader.readMessage(value,google_protobuf_wrappers_pb.StringValue.deserializeBinaryFromReader);
+      var value = /** @type {string} */ (reader.readString());
       msg.setPassword(value);
       break;
     case 6:
-      var value = new google_protobuf_wrappers_pb.StringValue;
-      reader.readMessage(value,google_protobuf_wrappers_pb.StringValue.deserializeBinaryFromReader);
+      var value = /** @type {string} */ (reader.readString());
       msg.setPhoneNumber(value);
       break;
     case 7:
@@ -191,51 +185,45 @@ proto.user.SignUpData.prototype.serializeBinary = function() {
 proto.user.SignUpData.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getFirstName();
-  if (f != null) {
-    writer.writeMessage(
+  if (f.length > 0) {
+    writer.writeString(
       1,
-      f,
-      google_protobuf_wrappers_pb.StringValue.serializeBinaryToWriter
+      f
     );
   }
   f = message.getMiddleName();
-  if (f != null) {
-    writer.writeMessage(
+  if (f.length > 0) {
+    writer.writeString(
       2,
-      f,
-      google_protobuf_wrappers_pb.StringValue.serializeBinaryToWriter
+      f
     );
   }
   f = message.getLastName();
-  if (f != null) {
-    writer.writeMessage(
+  if (f.length > 0) {
+    writer.writeString(
       3,
-      f,
-      google_protobuf_wrappers_pb.StringValue.serializeBinaryToWriter
+      f
     );
   }
   f = message.getEmail();
-  if (f != null) {
-    writer.writeMessage(
+  if (f.length > 0) {
+    writer.writeString(
       4,
-      f,
-      google_protobuf_wrappers_pb.StringValue.serializeBinaryToWriter
+      f
     );
   }
   f = message.getPassword();
-  if (f != null) {
-    writer.writeMessage(
+  if (f.length > 0) {
+    writer.writeString(
       5,
-      f,
-      google_protobuf_wrappers_pb.StringValue.serializeBinaryToWriter
+      f
     );
   }
   f = message.getPhoneNumber();
-  if (f != null) {
-    writer.writeMessage(
+  if (f.length > 0) {
+    writer.writeString(
       6,
-      f,
-      google_protobuf_wrappers_pb.StringValue.serializeBinaryToWriter
+      f
     );
   }
   f = message.getRoleList();
@@ -249,224 +237,110 @@ proto.user.SignUpData.serializeBinaryToWriter = function(message, writer) {
 
 
 /**
- * optional google.protobuf.StringValue first_name = 1;
- * @return {?proto.google.protobuf.StringValue}
+ * optional string first_name = 1;
+ * @return {string}
  */
 proto.user.SignUpData.prototype.getFirstName = function() {
-  return /** @type{?proto.google.protobuf.StringValue} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_wrappers_pb.StringValue, 1));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
 };
 
 
 /**
- * @param {?proto.google.protobuf.StringValue|undefined} value
+ * @param {string} value
  * @return {!proto.user.SignUpData} returns this
-*/
+ */
 proto.user.SignUpData.prototype.setFirstName = function(value) {
-  return jspb.Message.setWrapperField(this, 1, value);
+  return jspb.Message.setProto3StringField(this, 1, value);
 };
 
 
 /**
- * Clears the message field making it undefined.
- * @return {!proto.user.SignUpData} returns this
- */
-proto.user.SignUpData.prototype.clearFirstName = function() {
-  return this.setFirstName(undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {boolean}
- */
-proto.user.SignUpData.prototype.hasFirstName = function() {
-  return jspb.Message.getField(this, 1) != null;
-};
-
-
-/**
- * optional google.protobuf.StringValue middle_name = 2;
- * @return {?proto.google.protobuf.StringValue}
+ * optional string middle_name = 2;
+ * @return {string}
  */
 proto.user.SignUpData.prototype.getMiddleName = function() {
-  return /** @type{?proto.google.protobuf.StringValue} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_wrappers_pb.StringValue, 2));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
 };
 
 
 /**
- * @param {?proto.google.protobuf.StringValue|undefined} value
+ * @param {string} value
  * @return {!proto.user.SignUpData} returns this
-*/
+ */
 proto.user.SignUpData.prototype.setMiddleName = function(value) {
-  return jspb.Message.setWrapperField(this, 2, value);
+  return jspb.Message.setProto3StringField(this, 2, value);
 };
 
 
 /**
- * Clears the message field making it undefined.
- * @return {!proto.user.SignUpData} returns this
- */
-proto.user.SignUpData.prototype.clearMiddleName = function() {
-  return this.setMiddleName(undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {boolean}
- */
-proto.user.SignUpData.prototype.hasMiddleName = function() {
-  return jspb.Message.getField(this, 2) != null;
-};
-
-
-/**
- * optional google.protobuf.StringValue last_name = 3;
- * @return {?proto.google.protobuf.StringValue}
+ * optional string last_name = 3;
+ * @return {string}
  */
 proto.user.SignUpData.prototype.getLastName = function() {
-  return /** @type{?proto.google.protobuf.StringValue} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_wrappers_pb.StringValue, 3));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
 };
 
 
 /**
- * @param {?proto.google.protobuf.StringValue|undefined} value
+ * @param {string} value
  * @return {!proto.user.SignUpData} returns this
-*/
+ */
 proto.user.SignUpData.prototype.setLastName = function(value) {
-  return jspb.Message.setWrapperField(this, 3, value);
+  return jspb.Message.setProto3StringField(this, 3, value);
 };
 
 
 /**
- * Clears the message field making it undefined.
- * @return {!proto.user.SignUpData} returns this
- */
-proto.user.SignUpData.prototype.clearLastName = function() {
-  return this.setLastName(undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {boolean}
- */
-proto.user.SignUpData.prototype.hasLastName = function() {
-  return jspb.Message.getField(this, 3) != null;
-};
-
-
-/**
- * optional google.protobuf.StringValue email = 4;
- * @return {?proto.google.protobuf.StringValue}
+ * optional string email = 4;
+ * @return {string}
  */
 proto.user.SignUpData.prototype.getEmail = function() {
-  return /** @type{?proto.google.protobuf.StringValue} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_wrappers_pb.StringValue, 4));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 4, ""));
 };
 
 
 /**
- * @param {?proto.google.protobuf.StringValue|undefined} value
+ * @param {string} value
  * @return {!proto.user.SignUpData} returns this
-*/
+ */
 proto.user.SignUpData.prototype.setEmail = function(value) {
-  return jspb.Message.setWrapperField(this, 4, value);
+  return jspb.Message.setProto3StringField(this, 4, value);
 };
 
 
 /**
- * Clears the message field making it undefined.
- * @return {!proto.user.SignUpData} returns this
- */
-proto.user.SignUpData.prototype.clearEmail = function() {
-  return this.setEmail(undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {boolean}
- */
-proto.user.SignUpData.prototype.hasEmail = function() {
-  return jspb.Message.getField(this, 4) != null;
-};
-
-
-/**
- * optional google.protobuf.StringValue password = 5;
- * @return {?proto.google.protobuf.StringValue}
+ * optional string password = 5;
+ * @return {string}
  */
 proto.user.SignUpData.prototype.getPassword = function() {
-  return /** @type{?proto.google.protobuf.StringValue} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_wrappers_pb.StringValue, 5));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 5, ""));
 };
 
 
 /**
- * @param {?proto.google.protobuf.StringValue|undefined} value
+ * @param {string} value
  * @return {!proto.user.SignUpData} returns this
-*/
+ */
 proto.user.SignUpData.prototype.setPassword = function(value) {
-  return jspb.Message.setWrapperField(this, 5, value);
+  return jspb.Message.setProto3StringField(this, 5, value);
 };
 
 
 /**
- * Clears the message field making it undefined.
- * @return {!proto.user.SignUpData} returns this
- */
-proto.user.SignUpData.prototype.clearPassword = function() {
-  return this.setPassword(undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {boolean}
- */
-proto.user.SignUpData.prototype.hasPassword = function() {
-  return jspb.Message.getField(this, 5) != null;
-};
-
-
-/**
- * optional google.protobuf.StringValue phone_number = 6;
- * @return {?proto.google.protobuf.StringValue}
+ * optional string phone_number = 6;
+ * @return {string}
  */
 proto.user.SignUpData.prototype.getPhoneNumber = function() {
-  return /** @type{?proto.google.protobuf.StringValue} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_wrappers_pb.StringValue, 6));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 6, ""));
 };
 
 
 /**
- * @param {?proto.google.protobuf.StringValue|undefined} value
+ * @param {string} value
  * @return {!proto.user.SignUpData} returns this
-*/
+ */
 proto.user.SignUpData.prototype.setPhoneNumber = function(value) {
-  return jspb.Message.setWrapperField(this, 6, value);
-};
-
-
-/**
- * Clears the message field making it undefined.
- * @return {!proto.user.SignUpData} returns this
- */
-proto.user.SignUpData.prototype.clearPhoneNumber = function() {
-  return this.setPhoneNumber(undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {boolean}
- */
-proto.user.SignUpData.prototype.hasPhoneNumber = function() {
-  return jspb.Message.getField(this, 6) != null;
+  return jspb.Message.setProto3StringField(this, 6, value);
 };
 
 

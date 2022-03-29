@@ -56,44 +56,12 @@
       "properties": {
         "typeUrl": {
           "type": "string",
-          "description": "A URL/resource name that uniquely identifies the type of the serialized\nprotocol buffer message. This string must contain at least\none \"/\" character. The last segment of the URL's path must represent\nthe fully qualified name of the type (as in\n`path/google.protobuf.Duration`). The name should be in a canonical form\n(e.g., leading \".\" is not accepted).\n\nIn practice, teams usually precompile into the binary all types that they\nexpect it to use in the context of Any. However, for URLs which use the\nscheme `http`, `https`, or no scheme, one can optionally set up a type\nserver that maps type URLs to message definitions as follows:\n\n* If no scheme is provided, `https` is assumed.\n* An HTTP GET on the URL must yield a [google.protobuf.Type][]\n  value in binary format, or produce an error.\n* Applications are allowed to cache lookup results based on the\n  URL, or have them precompiled into a binary to avoid any\n  lookup. Therefore, binary compatibility needs to be preserved\n  on changes to types. (Use versioned type names to manage\n  breaking changes.)\n\nNote: this functionality is not currently available in the official\nprotobuf release, and it is not used for type URLs beginning with\ntype.googleapis.com.\n\nSchemes other than `http`, `https` (or the empty scheme) might be\nused with implementation specific semantics."
+          "description": "A URL/resource name that uniquely identifies the type of the serialized\nprotocol buffer message. This string must contain at least\none \"/\" character. The last segment of the URL's path must represent\nthe fully qualified name of the type (as in\n`path/google.protobuf.Duration`). The name should be in a canonical form\n(e.g., leading \".\" is not accepted).\n\nIn practice, teams usually precompile into the binary all types that they\nexpect it to use in the context of Any. However, for URLs which use the\nscheme `http`, `https`, or no scheme, one can optionally set up a type\nserver that maps type URLs to message definitions as follows:\n\n* If no scheme is provided, `https` is assumed.\n* An HTTP GET on the URL must yield a [google.protobuf.Type][]\n  value in binary format, or produce an error.\n* Applications are allowed to cache lookup results based on the\n  URL, or have them precompiled into a binary to avoid any\n  lookup. Therefore, binary compatibility needs to be preserved\n  on changes to types. (Use versioned type names to manage\n  breaking changes.)\n\nNote: this functionality is not currently available in the official\nprotobuf release, and it is not used for type URLs beginning with\ntype.googleapis.com.\n\nSchemes other than `http`, `https` (or the empty scheme) might be\nused with implementation specific semantics.\n\n@gotags: dynamodbav:\"type_url\""
         },
         "value": {
           "type": "string",
           "format": "byte",
-          "description": "Must be a valid serialized protocol buffer of the above specified type."
-        }
-      }
-    },
-    "userForgotPassswordResponse": {
-      "type": "object",
-      "properties": {
-        "redirectLink": {
-          "type": "string"
-        },
-        "token": {
-          "type": "string"
-        },
-        "success": {
-          "type": "boolean"
-        }
-      }
-    },
-    "userLoginUserResponse": {
-      "type": "object",
-      "properties": {
-        "success": {
-          "type": "boolean"
-        },
-        "statusCode": {
-          "type": "string",
-          "title": "format: JWT"
-        },
-        "token": {
-          "type": "string"
-        },
-        "userId": {
-          "type": "string"
+          "title": "Must be a valid serialized protocol buffer of the above specified type.\n@gotags: dynamodbav:\"value\""
         }
       }
     },
@@ -101,13 +69,17 @@
       "type": "object",
       "properties": {
         "success": {
-          "type": "boolean"
+          "type": "boolean",
+          "title": "@gotags: dynamodbav:\"success\""
         },
         "statusCode": {
-          "type": "string"
+          "type": "integer",
+          "format": "int32",
+          "title": "@gotags: dynamodbav:\"status_code\""
         },
         "message": {
-          "type": "string"
+          "type": "string",
+          "title": "@gotags: dynamodbav:\"message\""
         }
       }
     },
@@ -115,16 +87,21 @@
       "type": "object",
       "properties": {
         "success": {
-          "type": "boolean"
+          "type": "boolean",
+          "title": "@gotags: dynamodbav:\"success\""
         },
         "statusCode": {
-          "type": "string"
+          "type": "integer",
+          "format": "int32",
+          "title": "@gotags: dynamodbav:\"status_code\""
         },
         "message": {
-          "type": "string"
+          "type": "string",
+          "title": "@gotags: dynamodbav:\"message\""
         },
         "data": {
-          "$ref": "#/definitions/userAny"
+          "$ref": "#/definitions/userAny",
+          "title": "@gotags: dynamodbav:\"data\""
         }
       }
     },
@@ -132,10 +109,12 @@
       "type": "object",
       "properties": {
         "phoneNumber": {
-          "type": "string"
+          "type": "string",
+          "title": "@gotags: dynamodbav:\"phone_number\""
         },
         "type": {
-          "$ref": "#/definitions/userPhoneNumberType"
+          "$ref": "#/definitions/userPhoneNumberType",
+          "title": "@gotags: dynamodbav:\"phone_number_type\""
         }
       }
     },
@@ -170,93 +149,116 @@
     "userUserData": {
       "type": "object",
       "properties": {
-        "type": {
-          "type": "string"
+        "Type": {
+          "type": "string",
+          "title": "@gotags: dynamodbav:\"type\""
         },
         "cognitoId": {
-          "type": "string"
+          "type": "string",
+          "title": "@gotags: dynamodbav:\"cognito_id\""
         },
         "userName": {
-          "type": "string"
+          "type": "string",
+          "title": "@gotags: dynamodbav:\"user_name\""
         },
         "userId": {
-          "type": "string"
+          "type": "string",
+          "title": "@gotags: dynamodbav:\"user_id\""
         },
         "firstName": {
-          "type": "string"
+          "type": "string",
+          "title": "@gotags: dynamodbav:\"first_name\""
         },
         "middleName": {
-          "type": "string"
+          "type": "string",
+          "title": "@gotags: dynamodbav:\"middle_name\""
         },
         "lastName": {
-          "type": "string"
+          "type": "string",
+          "title": "@gotags: dynamodbav:\"last_name\""
         },
         "email": {
-          "type": "string"
+          "type": "string",
+          "title": "@gotags: dynamodbav:\"email\""
         },
         "hashedPassword": {
-          "type": "string"
+          "type": "string",
+          "title": "@gotags: dynamodbav:\"hashed_password\""
         },
         "avatarUrl": {
-          "type": "string"
+          "type": "string",
+          "title": "@gotags: dynamodbav:\"avatar_url\""
         },
         "roles": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/userRole"
-          }
+          },
+          "title": "@gotags: dynamodbav:\"roles\""
         },
         "newPasswordRequired": {
-          "type": "boolean"
+          "type": "boolean",
+          "title": "@gotags: dynamodbav:\"new_password_required\""
         },
         "passwordChangedAt": {
           "type": "string",
-          "format": "date-time"
+          "title": "@gotags: dynamodbav:\"password_changed_at\""
         },
         "createdOn": {
           "type": "string",
-          "format": "date-time"
+          "title": "@gotags: dynamodbav:\"created_on\""
         },
         "updatedOn": {
           "type": "string",
-          "format": "date-time"
+          "title": "@gotags: dynamodbav:\"updated_on\""
         },
         "deletedOn": {
           "type": "string",
-          "format": "date-time"
+          "title": "@gotags: dynamodbav:\"deleted_on\""
         },
         "phoneNumbers": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/userPhoneNumberData"
-          }
+          },
+          "title": "@gotags: dynamodbav:\"phone_numbers\""
         },
         "emailVerified": {
-          "type": "boolean"
+          "type": "boolean",
+          "title": "@gotags: dynamodbav:\"email_verified\""
         },
-        "forgotPasswordTokens": {
+        "resetPasswordToken": {
           "type": "array",
           "items": {
             "type": "string"
-          }
+          },
+          "title": "@gotags: dynamodbav:\"reset_password_token\""
         },
         "sessions": {
           "type": "array",
           "items": {
             "type": "string"
-          }
+          },
+          "title": "@gotags: dynamodbav:\"sessions\""
         },
-        "SK": {
-          "type": "string"
+        "pk": {
+          "type": "string",
+          "title": "@gotags: dynamodbav:\"sk\""
         },
-        "PK": {
-          "type": "string"
+        "sk": {
+          "type": "string",
+          "title": "@gotags: dynamodbav:\"pk\""
         },
-        "businessIds": {
+        "BusinessIds": {
           "type": "array",
           "items": {
             "type": "string"
-          }
+          },
+          "title": "@gotags: dynamodbav:\"business_ids\""
+        },
+        "unsuscribedToMarketingEmail": {
+          "type": "boolean",
+          "title": "@gotags: dynamodbav:\"unsuscribed_to_marketing_email\""
         }
       }
     },
@@ -264,7 +266,8 @@
       "type": "object",
       "properties": {
         "hi": {
-          "type": "string"
+          "type": "string",
+          "title": "@gotags: dynamodbav:\"hi\""
         }
       }
     }

@@ -81,7 +81,7 @@ proto.user.UpdateUserRoleData.prototype.toObject = function(opt_includeInstance)
  */
 proto.user.UpdateUserRoleData.toObject = function(includeInstance, msg) {
   var f, obj = {
-    token: (f = msg.getToken()) && google_protobuf_wrappers_pb.StringValue.toObject(includeInstance, f),
+    token: jspb.Message.getFieldWithDefault(msg, 1, ""),
     newRoleList: (f = jspb.Message.getRepeatedField(msg, 2)) == null ? undefined : f
   };
 
@@ -120,8 +120,7 @@ proto.user.UpdateUserRoleData.deserializeBinaryFromReader = function(msg, reader
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = new google_protobuf_wrappers_pb.StringValue;
-      reader.readMessage(value,google_protobuf_wrappers_pb.StringValue.deserializeBinaryFromReader);
+      var value = /** @type {string} */ (reader.readString());
       msg.setToken(value);
       break;
     case 2:
@@ -160,11 +159,10 @@ proto.user.UpdateUserRoleData.prototype.serializeBinary = function() {
 proto.user.UpdateUserRoleData.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getToken();
-  if (f != null) {
-    writer.writeMessage(
+  if (f.length > 0) {
+    writer.writeString(
       1,
-      f,
-      google_protobuf_wrappers_pb.StringValue.serializeBinaryToWriter
+      f
     );
   }
   f = message.getNewRoleList();
@@ -178,39 +176,20 @@ proto.user.UpdateUserRoleData.serializeBinaryToWriter = function(message, writer
 
 
 /**
- * optional google.protobuf.StringValue token = 1;
- * @return {?proto.google.protobuf.StringValue}
+ * optional string token = 1;
+ * @return {string}
  */
 proto.user.UpdateUserRoleData.prototype.getToken = function() {
-  return /** @type{?proto.google.protobuf.StringValue} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_wrappers_pb.StringValue, 1));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
 };
 
 
 /**
- * @param {?proto.google.protobuf.StringValue|undefined} value
+ * @param {string} value
  * @return {!proto.user.UpdateUserRoleData} returns this
-*/
+ */
 proto.user.UpdateUserRoleData.prototype.setToken = function(value) {
-  return jspb.Message.setWrapperField(this, 1, value);
-};
-
-
-/**
- * Clears the message field making it undefined.
- * @return {!proto.user.UpdateUserRoleData} returns this
- */
-proto.user.UpdateUserRoleData.prototype.clearToken = function() {
-  return this.setToken(undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {boolean}
- */
-proto.user.UpdateUserRoleData.prototype.hasToken = function() {
-  return jspb.Message.getField(this, 1) != null;
+  return jspb.Message.setProto3StringField(this, 1, value);
 };
 
 

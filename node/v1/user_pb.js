@@ -110,33 +110,31 @@ proto.user.UserData.prototype.toObject = function(opt_includeInstance) {
  */
 proto.user.UserData.toObject = function(includeInstance, msg) {
   var f, obj = {
-    type: (f = msg.getType()) && google_protobuf_wrappers_pb.StringValue.toObject(includeInstance, f),
-    cognitoId: (f = msg.getCognitoId()) && google_protobuf_wrappers_pb.StringValue.toObject(includeInstance, f),
-    userName: (f = msg.getUserName()) && google_protobuf_wrappers_pb.StringValue.toObject(includeInstance, f),
-    userId: (f = msg.getUserId()) && google_protobuf_wrappers_pb.StringValue.toObject(includeInstance, f),
-    firstName: (f = msg.getFirstName()) && google_protobuf_wrappers_pb.StringValue.toObject(includeInstance, f),
-    middleName: (f = msg.getMiddleName()) && google_protobuf_wrappers_pb.StringValue.toObject(includeInstance, f),
-    lastName: (f = msg.getLastName()) && google_protobuf_wrappers_pb.StringValue.toObject(includeInstance, f),
-    email: (f = msg.getEmail()) && google_protobuf_wrappers_pb.StringValue.toObject(includeInstance, f),
-    hashedPassword: (f = msg.getHashedPassword()) && google_protobuf_wrappers_pb.StringValue.toObject(includeInstance, f),
-    avatarUrl: (f = msg.getAvatarUrl()) && google_protobuf_wrappers_pb.StringValue.toObject(includeInstance, f),
+    type: jspb.Message.getFieldWithDefault(msg, 1, ""),
+    cognitoId: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    userName: jspb.Message.getFieldWithDefault(msg, 3, ""),
+    userId: jspb.Message.getFieldWithDefault(msg, 4, ""),
+    firstName: jspb.Message.getFieldWithDefault(msg, 5, ""),
+    middleName: jspb.Message.getFieldWithDefault(msg, 6, ""),
+    lastName: jspb.Message.getFieldWithDefault(msg, 7, ""),
+    email: jspb.Message.getFieldWithDefault(msg, 8, ""),
+    hashedPassword: jspb.Message.getFieldWithDefault(msg, 9, ""),
+    avatarUrl: jspb.Message.getFieldWithDefault(msg, 10, ""),
     rolesList: (f = jspb.Message.getRepeatedField(msg, 11)) == null ? undefined : f,
-    newPasswordRequired: (f = msg.getNewPasswordRequired()) && google_protobuf_wrappers_pb.BoolValue.toObject(includeInstance, f),
-    passwordChangedAt: (f = msg.getPasswordChangedAt()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
-    createdOn: (f = msg.getCreatedOn()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
-    updatedOn: (f = msg.getUpdatedOn()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
-    deletedOn: (f = msg.getDeletedOn()) && google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, f),
+    newPasswordRequired: jspb.Message.getBooleanFieldWithDefault(msg, 12, false),
+    passwordChangedAt: jspb.Message.getFieldWithDefault(msg, 13, ""),
+    createdOn: jspb.Message.getFieldWithDefault(msg, 14, ""),
+    updatedOn: jspb.Message.getFieldWithDefault(msg, 15, ""),
+    deletedOn: jspb.Message.getFieldWithDefault(msg, 16, ""),
     phoneNumbersList: jspb.Message.toObjectList(msg.getPhoneNumbersList(),
     phone_number_pb.PhoneNumberData.toObject, includeInstance),
-    emailVerified: (f = msg.getEmailVerified()) && google_protobuf_wrappers_pb.BoolValue.toObject(includeInstance, f),
-    forgotPasswordTokensList: jspb.Message.toObjectList(msg.getForgotPasswordTokensList(),
-    google_protobuf_wrappers_pb.StringValue.toObject, includeInstance),
-    sessionsList: jspb.Message.toObjectList(msg.getSessionsList(),
-    google_protobuf_wrappers_pb.StringValue.toObject, includeInstance),
-    sk: (f = msg.getSk()) && google_protobuf_wrappers_pb.StringValue.toObject(includeInstance, f),
-    pk: (f = msg.getPk()) && google_protobuf_wrappers_pb.StringValue.toObject(includeInstance, f),
-    businessIdsList: jspb.Message.toObjectList(msg.getBusinessIdsList(),
-    google_protobuf_wrappers_pb.StringValue.toObject, includeInstance)
+    emailVerified: jspb.Message.getBooleanFieldWithDefault(msg, 18, false),
+    resetPasswordTokenList: (f = jspb.Message.getRepeatedField(msg, 19)) == null ? undefined : f,
+    sessionsList: (f = jspb.Message.getRepeatedField(msg, 20)) == null ? undefined : f,
+    pk: jspb.Message.getFieldWithDefault(msg, 21, ""),
+    sk: jspb.Message.getFieldWithDefault(msg, 22, ""),
+    businessIdsList: (f = jspb.Message.getRepeatedField(msg, 23)) == null ? undefined : f,
+    unsuscribedToMarketingEmail: jspb.Message.getBooleanFieldWithDefault(msg, 24, false)
   };
 
   if (includeInstance) {
@@ -174,53 +172,43 @@ proto.user.UserData.deserializeBinaryFromReader = function(msg, reader) {
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = new google_protobuf_wrappers_pb.StringValue;
-      reader.readMessage(value,google_protobuf_wrappers_pb.StringValue.deserializeBinaryFromReader);
+      var value = /** @type {string} */ (reader.readString());
       msg.setType(value);
       break;
     case 2:
-      var value = new google_protobuf_wrappers_pb.StringValue;
-      reader.readMessage(value,google_protobuf_wrappers_pb.StringValue.deserializeBinaryFromReader);
+      var value = /** @type {string} */ (reader.readString());
       msg.setCognitoId(value);
       break;
     case 3:
-      var value = new google_protobuf_wrappers_pb.StringValue;
-      reader.readMessage(value,google_protobuf_wrappers_pb.StringValue.deserializeBinaryFromReader);
+      var value = /** @type {string} */ (reader.readString());
       msg.setUserName(value);
       break;
     case 4:
-      var value = new google_protobuf_wrappers_pb.StringValue;
-      reader.readMessage(value,google_protobuf_wrappers_pb.StringValue.deserializeBinaryFromReader);
+      var value = /** @type {string} */ (reader.readString());
       msg.setUserId(value);
       break;
     case 5:
-      var value = new google_protobuf_wrappers_pb.StringValue;
-      reader.readMessage(value,google_protobuf_wrappers_pb.StringValue.deserializeBinaryFromReader);
+      var value = /** @type {string} */ (reader.readString());
       msg.setFirstName(value);
       break;
     case 6:
-      var value = new google_protobuf_wrappers_pb.StringValue;
-      reader.readMessage(value,google_protobuf_wrappers_pb.StringValue.deserializeBinaryFromReader);
+      var value = /** @type {string} */ (reader.readString());
       msg.setMiddleName(value);
       break;
     case 7:
-      var value = new google_protobuf_wrappers_pb.StringValue;
-      reader.readMessage(value,google_protobuf_wrappers_pb.StringValue.deserializeBinaryFromReader);
+      var value = /** @type {string} */ (reader.readString());
       msg.setLastName(value);
       break;
     case 8:
-      var value = new google_protobuf_wrappers_pb.StringValue;
-      reader.readMessage(value,google_protobuf_wrappers_pb.StringValue.deserializeBinaryFromReader);
+      var value = /** @type {string} */ (reader.readString());
       msg.setEmail(value);
       break;
     case 9:
-      var value = new google_protobuf_wrappers_pb.StringValue;
-      reader.readMessage(value,google_protobuf_wrappers_pb.StringValue.deserializeBinaryFromReader);
+      var value = /** @type {string} */ (reader.readString());
       msg.setHashedPassword(value);
       break;
     case 10:
-      var value = new google_protobuf_wrappers_pb.StringValue;
-      reader.readMessage(value,google_protobuf_wrappers_pb.StringValue.deserializeBinaryFromReader);
+      var value = /** @type {string} */ (reader.readString());
       msg.setAvatarUrl(value);
       break;
     case 11:
@@ -230,28 +218,23 @@ proto.user.UserData.deserializeBinaryFromReader = function(msg, reader) {
       }
       break;
     case 12:
-      var value = new google_protobuf_wrappers_pb.BoolValue;
-      reader.readMessage(value,google_protobuf_wrappers_pb.BoolValue.deserializeBinaryFromReader);
+      var value = /** @type {boolean} */ (reader.readBool());
       msg.setNewPasswordRequired(value);
       break;
     case 13:
-      var value = new google_protobuf_timestamp_pb.Timestamp;
-      reader.readMessage(value,google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader);
+      var value = /** @type {string} */ (reader.readString());
       msg.setPasswordChangedAt(value);
       break;
     case 14:
-      var value = new google_protobuf_timestamp_pb.Timestamp;
-      reader.readMessage(value,google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader);
+      var value = /** @type {string} */ (reader.readString());
       msg.setCreatedOn(value);
       break;
     case 15:
-      var value = new google_protobuf_timestamp_pb.Timestamp;
-      reader.readMessage(value,google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader);
+      var value = /** @type {string} */ (reader.readString());
       msg.setUpdatedOn(value);
       break;
     case 16:
-      var value = new google_protobuf_timestamp_pb.Timestamp;
-      reader.readMessage(value,google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader);
+      var value = /** @type {string} */ (reader.readString());
       msg.setDeletedOn(value);
       break;
     case 17:
@@ -260,34 +243,32 @@ proto.user.UserData.deserializeBinaryFromReader = function(msg, reader) {
       msg.addPhoneNumbers(value);
       break;
     case 18:
-      var value = new google_protobuf_wrappers_pb.BoolValue;
-      reader.readMessage(value,google_protobuf_wrappers_pb.BoolValue.deserializeBinaryFromReader);
+      var value = /** @type {boolean} */ (reader.readBool());
       msg.setEmailVerified(value);
       break;
     case 19:
-      var value = new google_protobuf_wrappers_pb.StringValue;
-      reader.readMessage(value,google_protobuf_wrappers_pb.StringValue.deserializeBinaryFromReader);
-      msg.addForgotPasswordTokens(value);
+      var value = /** @type {string} */ (reader.readString());
+      msg.addResetPasswordToken(value);
       break;
     case 20:
-      var value = new google_protobuf_wrappers_pb.StringValue;
-      reader.readMessage(value,google_protobuf_wrappers_pb.StringValue.deserializeBinaryFromReader);
+      var value = /** @type {string} */ (reader.readString());
       msg.addSessions(value);
       break;
     case 21:
-      var value = new google_protobuf_wrappers_pb.StringValue;
-      reader.readMessage(value,google_protobuf_wrappers_pb.StringValue.deserializeBinaryFromReader);
-      msg.setSk(value);
-      break;
-    case 22:
-      var value = new google_protobuf_wrappers_pb.StringValue;
-      reader.readMessage(value,google_protobuf_wrappers_pb.StringValue.deserializeBinaryFromReader);
+      var value = /** @type {string} */ (reader.readString());
       msg.setPk(value);
       break;
+    case 22:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setSk(value);
+      break;
     case 23:
-      var value = new google_protobuf_wrappers_pb.StringValue;
-      reader.readMessage(value,google_protobuf_wrappers_pb.StringValue.deserializeBinaryFromReader);
+      var value = /** @type {string} */ (reader.readString());
       msg.addBusinessIds(value);
+      break;
+    case 24:
+      var value = /** @type {boolean} */ (reader.readBool());
+      msg.setUnsuscribedToMarketingEmail(value);
       break;
     default:
       reader.skipField();
@@ -319,83 +300,73 @@ proto.user.UserData.prototype.serializeBinary = function() {
 proto.user.UserData.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getType();
-  if (f != null) {
-    writer.writeMessage(
+  if (f.length > 0) {
+    writer.writeString(
       1,
-      f,
-      google_protobuf_wrappers_pb.StringValue.serializeBinaryToWriter
+      f
     );
   }
   f = message.getCognitoId();
-  if (f != null) {
-    writer.writeMessage(
+  if (f.length > 0) {
+    writer.writeString(
       2,
-      f,
-      google_protobuf_wrappers_pb.StringValue.serializeBinaryToWriter
+      f
     );
   }
   f = message.getUserName();
-  if (f != null) {
-    writer.writeMessage(
+  if (f.length > 0) {
+    writer.writeString(
       3,
-      f,
-      google_protobuf_wrappers_pb.StringValue.serializeBinaryToWriter
+      f
     );
   }
   f = message.getUserId();
-  if (f != null) {
-    writer.writeMessage(
+  if (f.length > 0) {
+    writer.writeString(
       4,
-      f,
-      google_protobuf_wrappers_pb.StringValue.serializeBinaryToWriter
+      f
     );
   }
   f = message.getFirstName();
-  if (f != null) {
-    writer.writeMessage(
+  if (f.length > 0) {
+    writer.writeString(
       5,
-      f,
-      google_protobuf_wrappers_pb.StringValue.serializeBinaryToWriter
+      f
     );
   }
   f = message.getMiddleName();
-  if (f != null) {
-    writer.writeMessage(
+  if (f.length > 0) {
+    writer.writeString(
       6,
-      f,
-      google_protobuf_wrappers_pb.StringValue.serializeBinaryToWriter
+      f
     );
   }
   f = message.getLastName();
-  if (f != null) {
-    writer.writeMessage(
+  if (f.length > 0) {
+    writer.writeString(
       7,
-      f,
-      google_protobuf_wrappers_pb.StringValue.serializeBinaryToWriter
+      f
     );
   }
   f = message.getEmail();
-  if (f != null) {
-    writer.writeMessage(
+  if (f.length > 0) {
+    writer.writeString(
       8,
-      f,
-      google_protobuf_wrappers_pb.StringValue.serializeBinaryToWriter
+      f
     );
   }
   f = message.getHashedPassword();
-  if (f != null) {
-    writer.writeMessage(
+  if (f.length > 0) {
+    writer.writeString(
       9,
-      f,
-      google_protobuf_wrappers_pb.StringValue.serializeBinaryToWriter
+      f
     );
   }
   f = message.getAvatarUrl();
-  if (f != null) {
-    writer.writeMessage(
+  if (f.length > 0) {
+    writer.writeString(
       10,
-      f,
-      google_protobuf_wrappers_pb.StringValue.serializeBinaryToWriter
+      f
     );
   }
   f = message.getRolesList();
@@ -406,43 +377,38 @@ proto.user.UserData.serializeBinaryToWriter = function(message, writer) {
     );
   }
   f = message.getNewPasswordRequired();
-  if (f != null) {
-    writer.writeMessage(
+  if (f) {
+    writer.writeBool(
       12,
-      f,
-      google_protobuf_wrappers_pb.BoolValue.serializeBinaryToWriter
+      f
     );
   }
   f = message.getPasswordChangedAt();
-  if (f != null) {
-    writer.writeMessage(
+  if (f.length > 0) {
+    writer.writeString(
       13,
-      f,
-      google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter
+      f
     );
   }
   f = message.getCreatedOn();
-  if (f != null) {
-    writer.writeMessage(
+  if (f.length > 0) {
+    writer.writeString(
       14,
-      f,
-      google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter
+      f
     );
   }
   f = message.getUpdatedOn();
-  if (f != null) {
-    writer.writeMessage(
+  if (f.length > 0) {
+    writer.writeString(
       15,
-      f,
-      google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter
+      f
     );
   }
   f = message.getDeletedOn();
-  if (f != null) {
-    writer.writeMessage(
+  if (f.length > 0) {
+    writer.writeString(
       16,
-      f,
-      google_protobuf_timestamp_pb.Timestamp.serializeBinaryToWriter
+      f
     );
   }
   f = message.getPhoneNumbersList();
@@ -454,423 +420,234 @@ proto.user.UserData.serializeBinaryToWriter = function(message, writer) {
     );
   }
   f = message.getEmailVerified();
-  if (f != null) {
-    writer.writeMessage(
+  if (f) {
+    writer.writeBool(
       18,
-      f,
-      google_protobuf_wrappers_pb.BoolValue.serializeBinaryToWriter
+      f
     );
   }
-  f = message.getForgotPasswordTokensList();
+  f = message.getResetPasswordTokenList();
   if (f.length > 0) {
-    writer.writeRepeatedMessage(
+    writer.writeRepeatedString(
       19,
-      f,
-      google_protobuf_wrappers_pb.StringValue.serializeBinaryToWriter
+      f
     );
   }
   f = message.getSessionsList();
   if (f.length > 0) {
-    writer.writeRepeatedMessage(
+    writer.writeRepeatedString(
       20,
-      f,
-      google_protobuf_wrappers_pb.StringValue.serializeBinaryToWriter
-    );
-  }
-  f = message.getSk();
-  if (f != null) {
-    writer.writeMessage(
-      21,
-      f,
-      google_protobuf_wrappers_pb.StringValue.serializeBinaryToWriter
+      f
     );
   }
   f = message.getPk();
-  if (f != null) {
-    writer.writeMessage(
+  if (f.length > 0) {
+    writer.writeString(
+      21,
+      f
+    );
+  }
+  f = message.getSk();
+  if (f.length > 0) {
+    writer.writeString(
       22,
-      f,
-      google_protobuf_wrappers_pb.StringValue.serializeBinaryToWriter
+      f
     );
   }
   f = message.getBusinessIdsList();
   if (f.length > 0) {
-    writer.writeRepeatedMessage(
+    writer.writeRepeatedString(
       23,
-      f,
-      google_protobuf_wrappers_pb.StringValue.serializeBinaryToWriter
+      f
+    );
+  }
+  f = message.getUnsuscribedToMarketingEmail();
+  if (f) {
+    writer.writeBool(
+      24,
+      f
     );
   }
 };
 
 
 /**
- * optional google.protobuf.StringValue type = 1;
- * @return {?proto.google.protobuf.StringValue}
+ * optional string Type = 1;
+ * @return {string}
  */
 proto.user.UserData.prototype.getType = function() {
-  return /** @type{?proto.google.protobuf.StringValue} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_wrappers_pb.StringValue, 1));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
 };
 
 
 /**
- * @param {?proto.google.protobuf.StringValue|undefined} value
+ * @param {string} value
  * @return {!proto.user.UserData} returns this
-*/
+ */
 proto.user.UserData.prototype.setType = function(value) {
-  return jspb.Message.setWrapperField(this, 1, value);
+  return jspb.Message.setProto3StringField(this, 1, value);
 };
 
 
 /**
- * Clears the message field making it undefined.
- * @return {!proto.user.UserData} returns this
- */
-proto.user.UserData.prototype.clearType = function() {
-  return this.setType(undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {boolean}
- */
-proto.user.UserData.prototype.hasType = function() {
-  return jspb.Message.getField(this, 1) != null;
-};
-
-
-/**
- * optional google.protobuf.StringValue cognito_id = 2;
- * @return {?proto.google.protobuf.StringValue}
+ * optional string cognito_id = 2;
+ * @return {string}
  */
 proto.user.UserData.prototype.getCognitoId = function() {
-  return /** @type{?proto.google.protobuf.StringValue} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_wrappers_pb.StringValue, 2));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
 };
 
 
 /**
- * @param {?proto.google.protobuf.StringValue|undefined} value
+ * @param {string} value
  * @return {!proto.user.UserData} returns this
-*/
+ */
 proto.user.UserData.prototype.setCognitoId = function(value) {
-  return jspb.Message.setWrapperField(this, 2, value);
+  return jspb.Message.setProto3StringField(this, 2, value);
 };
 
 
 /**
- * Clears the message field making it undefined.
- * @return {!proto.user.UserData} returns this
- */
-proto.user.UserData.prototype.clearCognitoId = function() {
-  return this.setCognitoId(undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {boolean}
- */
-proto.user.UserData.prototype.hasCognitoId = function() {
-  return jspb.Message.getField(this, 2) != null;
-};
-
-
-/**
- * optional google.protobuf.StringValue user_name = 3;
- * @return {?proto.google.protobuf.StringValue}
+ * optional string user_name = 3;
+ * @return {string}
  */
 proto.user.UserData.prototype.getUserName = function() {
-  return /** @type{?proto.google.protobuf.StringValue} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_wrappers_pb.StringValue, 3));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
 };
 
 
 /**
- * @param {?proto.google.protobuf.StringValue|undefined} value
+ * @param {string} value
  * @return {!proto.user.UserData} returns this
-*/
+ */
 proto.user.UserData.prototype.setUserName = function(value) {
-  return jspb.Message.setWrapperField(this, 3, value);
+  return jspb.Message.setProto3StringField(this, 3, value);
 };
 
 
 /**
- * Clears the message field making it undefined.
- * @return {!proto.user.UserData} returns this
- */
-proto.user.UserData.prototype.clearUserName = function() {
-  return this.setUserName(undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {boolean}
- */
-proto.user.UserData.prototype.hasUserName = function() {
-  return jspb.Message.getField(this, 3) != null;
-};
-
-
-/**
- * optional google.protobuf.StringValue user_id = 4;
- * @return {?proto.google.protobuf.StringValue}
+ * optional string user_id = 4;
+ * @return {string}
  */
 proto.user.UserData.prototype.getUserId = function() {
-  return /** @type{?proto.google.protobuf.StringValue} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_wrappers_pb.StringValue, 4));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 4, ""));
 };
 
 
 /**
- * @param {?proto.google.protobuf.StringValue|undefined} value
+ * @param {string} value
  * @return {!proto.user.UserData} returns this
-*/
+ */
 proto.user.UserData.prototype.setUserId = function(value) {
-  return jspb.Message.setWrapperField(this, 4, value);
+  return jspb.Message.setProto3StringField(this, 4, value);
 };
 
 
 /**
- * Clears the message field making it undefined.
- * @return {!proto.user.UserData} returns this
- */
-proto.user.UserData.prototype.clearUserId = function() {
-  return this.setUserId(undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {boolean}
- */
-proto.user.UserData.prototype.hasUserId = function() {
-  return jspb.Message.getField(this, 4) != null;
-};
-
-
-/**
- * optional google.protobuf.StringValue first_name = 5;
- * @return {?proto.google.protobuf.StringValue}
+ * optional string first_name = 5;
+ * @return {string}
  */
 proto.user.UserData.prototype.getFirstName = function() {
-  return /** @type{?proto.google.protobuf.StringValue} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_wrappers_pb.StringValue, 5));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 5, ""));
 };
 
 
 /**
- * @param {?proto.google.protobuf.StringValue|undefined} value
+ * @param {string} value
  * @return {!proto.user.UserData} returns this
-*/
+ */
 proto.user.UserData.prototype.setFirstName = function(value) {
-  return jspb.Message.setWrapperField(this, 5, value);
+  return jspb.Message.setProto3StringField(this, 5, value);
 };
 
 
 /**
- * Clears the message field making it undefined.
- * @return {!proto.user.UserData} returns this
- */
-proto.user.UserData.prototype.clearFirstName = function() {
-  return this.setFirstName(undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {boolean}
- */
-proto.user.UserData.prototype.hasFirstName = function() {
-  return jspb.Message.getField(this, 5) != null;
-};
-
-
-/**
- * optional google.protobuf.StringValue middle_name = 6;
- * @return {?proto.google.protobuf.StringValue}
+ * optional string middle_name = 6;
+ * @return {string}
  */
 proto.user.UserData.prototype.getMiddleName = function() {
-  return /** @type{?proto.google.protobuf.StringValue} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_wrappers_pb.StringValue, 6));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 6, ""));
 };
 
 
 /**
- * @param {?proto.google.protobuf.StringValue|undefined} value
+ * @param {string} value
  * @return {!proto.user.UserData} returns this
-*/
+ */
 proto.user.UserData.prototype.setMiddleName = function(value) {
-  return jspb.Message.setWrapperField(this, 6, value);
+  return jspb.Message.setProto3StringField(this, 6, value);
 };
 
 
 /**
- * Clears the message field making it undefined.
- * @return {!proto.user.UserData} returns this
- */
-proto.user.UserData.prototype.clearMiddleName = function() {
-  return this.setMiddleName(undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {boolean}
- */
-proto.user.UserData.prototype.hasMiddleName = function() {
-  return jspb.Message.getField(this, 6) != null;
-};
-
-
-/**
- * optional google.protobuf.StringValue last_name = 7;
- * @return {?proto.google.protobuf.StringValue}
+ * optional string last_name = 7;
+ * @return {string}
  */
 proto.user.UserData.prototype.getLastName = function() {
-  return /** @type{?proto.google.protobuf.StringValue} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_wrappers_pb.StringValue, 7));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 7, ""));
 };
 
 
 /**
- * @param {?proto.google.protobuf.StringValue|undefined} value
+ * @param {string} value
  * @return {!proto.user.UserData} returns this
-*/
+ */
 proto.user.UserData.prototype.setLastName = function(value) {
-  return jspb.Message.setWrapperField(this, 7, value);
+  return jspb.Message.setProto3StringField(this, 7, value);
 };
 
 
 /**
- * Clears the message field making it undefined.
- * @return {!proto.user.UserData} returns this
- */
-proto.user.UserData.prototype.clearLastName = function() {
-  return this.setLastName(undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {boolean}
- */
-proto.user.UserData.prototype.hasLastName = function() {
-  return jspb.Message.getField(this, 7) != null;
-};
-
-
-/**
- * optional google.protobuf.StringValue email = 8;
- * @return {?proto.google.protobuf.StringValue}
+ * optional string email = 8;
+ * @return {string}
  */
 proto.user.UserData.prototype.getEmail = function() {
-  return /** @type{?proto.google.protobuf.StringValue} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_wrappers_pb.StringValue, 8));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 8, ""));
 };
 
 
 /**
- * @param {?proto.google.protobuf.StringValue|undefined} value
+ * @param {string} value
  * @return {!proto.user.UserData} returns this
-*/
+ */
 proto.user.UserData.prototype.setEmail = function(value) {
-  return jspb.Message.setWrapperField(this, 8, value);
+  return jspb.Message.setProto3StringField(this, 8, value);
 };
 
 
 /**
- * Clears the message field making it undefined.
- * @return {!proto.user.UserData} returns this
- */
-proto.user.UserData.prototype.clearEmail = function() {
-  return this.setEmail(undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {boolean}
- */
-proto.user.UserData.prototype.hasEmail = function() {
-  return jspb.Message.getField(this, 8) != null;
-};
-
-
-/**
- * optional google.protobuf.StringValue hashed_password = 9;
- * @return {?proto.google.protobuf.StringValue}
+ * optional string hashed_password = 9;
+ * @return {string}
  */
 proto.user.UserData.prototype.getHashedPassword = function() {
-  return /** @type{?proto.google.protobuf.StringValue} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_wrappers_pb.StringValue, 9));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 9, ""));
 };
 
 
 /**
- * @param {?proto.google.protobuf.StringValue|undefined} value
+ * @param {string} value
  * @return {!proto.user.UserData} returns this
-*/
+ */
 proto.user.UserData.prototype.setHashedPassword = function(value) {
-  return jspb.Message.setWrapperField(this, 9, value);
+  return jspb.Message.setProto3StringField(this, 9, value);
 };
 
 
 /**
- * Clears the message field making it undefined.
- * @return {!proto.user.UserData} returns this
- */
-proto.user.UserData.prototype.clearHashedPassword = function() {
-  return this.setHashedPassword(undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {boolean}
- */
-proto.user.UserData.prototype.hasHashedPassword = function() {
-  return jspb.Message.getField(this, 9) != null;
-};
-
-
-/**
- * optional google.protobuf.StringValue avatar_url = 10;
- * @return {?proto.google.protobuf.StringValue}
+ * optional string avatar_url = 10;
+ * @return {string}
  */
 proto.user.UserData.prototype.getAvatarUrl = function() {
-  return /** @type{?proto.google.protobuf.StringValue} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_wrappers_pb.StringValue, 10));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 10, ""));
 };
 
 
 /**
- * @param {?proto.google.protobuf.StringValue|undefined} value
+ * @param {string} value
  * @return {!proto.user.UserData} returns this
-*/
+ */
 proto.user.UserData.prototype.setAvatarUrl = function(value) {
-  return jspb.Message.setWrapperField(this, 10, value);
-};
-
-
-/**
- * Clears the message field making it undefined.
- * @return {!proto.user.UserData} returns this
- */
-proto.user.UserData.prototype.clearAvatarUrl = function() {
-  return this.setAvatarUrl(undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {boolean}
- */
-proto.user.UserData.prototype.hasAvatarUrl = function() {
-  return jspb.Message.getField(this, 10) != null;
+  return jspb.Message.setProto3StringField(this, 10, value);
 };
 
 
@@ -912,187 +689,92 @@ proto.user.UserData.prototype.clearRolesList = function() {
 
 
 /**
- * optional google.protobuf.BoolValue new_password_required = 12;
- * @return {?proto.google.protobuf.BoolValue}
+ * optional bool new_password_required = 12;
+ * @return {boolean}
  */
 proto.user.UserData.prototype.getNewPasswordRequired = function() {
-  return /** @type{?proto.google.protobuf.BoolValue} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_wrappers_pb.BoolValue, 12));
+  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 12, false));
 };
 
 
 /**
- * @param {?proto.google.protobuf.BoolValue|undefined} value
+ * @param {boolean} value
  * @return {!proto.user.UserData} returns this
-*/
+ */
 proto.user.UserData.prototype.setNewPasswordRequired = function(value) {
-  return jspb.Message.setWrapperField(this, 12, value);
+  return jspb.Message.setProto3BooleanField(this, 12, value);
 };
 
 
 /**
- * Clears the message field making it undefined.
- * @return {!proto.user.UserData} returns this
- */
-proto.user.UserData.prototype.clearNewPasswordRequired = function() {
-  return this.setNewPasswordRequired(undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {boolean}
- */
-proto.user.UserData.prototype.hasNewPasswordRequired = function() {
-  return jspb.Message.getField(this, 12) != null;
-};
-
-
-/**
- * optional google.protobuf.Timestamp password_changed_at = 13;
- * @return {?proto.google.protobuf.Timestamp}
+ * optional string password_changed_at = 13;
+ * @return {string}
  */
 proto.user.UserData.prototype.getPasswordChangedAt = function() {
-  return /** @type{?proto.google.protobuf.Timestamp} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 13));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 13, ""));
 };
 
 
 /**
- * @param {?proto.google.protobuf.Timestamp|undefined} value
+ * @param {string} value
  * @return {!proto.user.UserData} returns this
-*/
+ */
 proto.user.UserData.prototype.setPasswordChangedAt = function(value) {
-  return jspb.Message.setWrapperField(this, 13, value);
+  return jspb.Message.setProto3StringField(this, 13, value);
 };
 
 
 /**
- * Clears the message field making it undefined.
- * @return {!proto.user.UserData} returns this
- */
-proto.user.UserData.prototype.clearPasswordChangedAt = function() {
-  return this.setPasswordChangedAt(undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {boolean}
- */
-proto.user.UserData.prototype.hasPasswordChangedAt = function() {
-  return jspb.Message.getField(this, 13) != null;
-};
-
-
-/**
- * optional google.protobuf.Timestamp created_on = 14;
- * @return {?proto.google.protobuf.Timestamp}
+ * optional string created_on = 14;
+ * @return {string}
  */
 proto.user.UserData.prototype.getCreatedOn = function() {
-  return /** @type{?proto.google.protobuf.Timestamp} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 14));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 14, ""));
 };
 
 
 /**
- * @param {?proto.google.protobuf.Timestamp|undefined} value
+ * @param {string} value
  * @return {!proto.user.UserData} returns this
-*/
+ */
 proto.user.UserData.prototype.setCreatedOn = function(value) {
-  return jspb.Message.setWrapperField(this, 14, value);
+  return jspb.Message.setProto3StringField(this, 14, value);
 };
 
 
 /**
- * Clears the message field making it undefined.
- * @return {!proto.user.UserData} returns this
- */
-proto.user.UserData.prototype.clearCreatedOn = function() {
-  return this.setCreatedOn(undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {boolean}
- */
-proto.user.UserData.prototype.hasCreatedOn = function() {
-  return jspb.Message.getField(this, 14) != null;
-};
-
-
-/**
- * optional google.protobuf.Timestamp updated_on = 15;
- * @return {?proto.google.protobuf.Timestamp}
+ * optional string updated_on = 15;
+ * @return {string}
  */
 proto.user.UserData.prototype.getUpdatedOn = function() {
-  return /** @type{?proto.google.protobuf.Timestamp} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 15));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 15, ""));
 };
 
 
 /**
- * @param {?proto.google.protobuf.Timestamp|undefined} value
+ * @param {string} value
  * @return {!proto.user.UserData} returns this
-*/
+ */
 proto.user.UserData.prototype.setUpdatedOn = function(value) {
-  return jspb.Message.setWrapperField(this, 15, value);
+  return jspb.Message.setProto3StringField(this, 15, value);
 };
 
 
 /**
- * Clears the message field making it undefined.
- * @return {!proto.user.UserData} returns this
- */
-proto.user.UserData.prototype.clearUpdatedOn = function() {
-  return this.setUpdatedOn(undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {boolean}
- */
-proto.user.UserData.prototype.hasUpdatedOn = function() {
-  return jspb.Message.getField(this, 15) != null;
-};
-
-
-/**
- * optional google.protobuf.Timestamp deleted_on = 16;
- * @return {?proto.google.protobuf.Timestamp}
+ * optional string deleted_on = 16;
+ * @return {string}
  */
 proto.user.UserData.prototype.getDeletedOn = function() {
-  return /** @type{?proto.google.protobuf.Timestamp} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 16));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 16, ""));
 };
 
 
 /**
- * @param {?proto.google.protobuf.Timestamp|undefined} value
+ * @param {string} value
  * @return {!proto.user.UserData} returns this
-*/
+ */
 proto.user.UserData.prototype.setDeletedOn = function(value) {
-  return jspb.Message.setWrapperField(this, 16, value);
-};
-
-
-/**
- * Clears the message field making it undefined.
- * @return {!proto.user.UserData} returns this
- */
-proto.user.UserData.prototype.clearDeletedOn = function() {
-  return this.setDeletedOn(undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {boolean}
- */
-proto.user.UserData.prototype.hasDeletedOn = function() {
-  return jspb.Message.getField(this, 16) != null;
+  return jspb.Message.setProto3StringField(this, 16, value);
 };
 
 
@@ -1135,68 +817,48 @@ proto.user.UserData.prototype.clearPhoneNumbersList = function() {
 
 
 /**
- * optional google.protobuf.BoolValue email_verified = 18;
- * @return {?proto.google.protobuf.BoolValue}
- */
-proto.user.UserData.prototype.getEmailVerified = function() {
-  return /** @type{?proto.google.protobuf.BoolValue} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_wrappers_pb.BoolValue, 18));
-};
-
-
-/**
- * @param {?proto.google.protobuf.BoolValue|undefined} value
- * @return {!proto.user.UserData} returns this
-*/
-proto.user.UserData.prototype.setEmailVerified = function(value) {
-  return jspb.Message.setWrapperField(this, 18, value);
-};
-
-
-/**
- * Clears the message field making it undefined.
- * @return {!proto.user.UserData} returns this
- */
-proto.user.UserData.prototype.clearEmailVerified = function() {
-  return this.setEmailVerified(undefined);
-};
-
-
-/**
- * Returns whether this field is set.
+ * optional bool email_verified = 18;
  * @return {boolean}
  */
-proto.user.UserData.prototype.hasEmailVerified = function() {
-  return jspb.Message.getField(this, 18) != null;
+proto.user.UserData.prototype.getEmailVerified = function() {
+  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 18, false));
 };
 
 
 /**
- * repeated google.protobuf.StringValue forgot_password_tokens = 19;
- * @return {!Array<!proto.google.protobuf.StringValue>}
- */
-proto.user.UserData.prototype.getForgotPasswordTokensList = function() {
-  return /** @type{!Array<!proto.google.protobuf.StringValue>} */ (
-    jspb.Message.getRepeatedWrapperField(this, google_protobuf_wrappers_pb.StringValue, 19));
-};
-
-
-/**
- * @param {!Array<!proto.google.protobuf.StringValue>} value
+ * @param {boolean} value
  * @return {!proto.user.UserData} returns this
-*/
-proto.user.UserData.prototype.setForgotPasswordTokensList = function(value) {
-  return jspb.Message.setRepeatedWrapperField(this, 19, value);
+ */
+proto.user.UserData.prototype.setEmailVerified = function(value) {
+  return jspb.Message.setProto3BooleanField(this, 18, value);
 };
 
 
 /**
- * @param {!proto.google.protobuf.StringValue=} opt_value
- * @param {number=} opt_index
- * @return {!proto.google.protobuf.StringValue}
+ * repeated string reset_password_token = 19;
+ * @return {!Array<string>}
  */
-proto.user.UserData.prototype.addForgotPasswordTokens = function(opt_value, opt_index) {
-  return jspb.Message.addToRepeatedWrapperField(this, 19, opt_value, proto.google.protobuf.StringValue, opt_index);
+proto.user.UserData.prototype.getResetPasswordTokenList = function() {
+  return /** @type {!Array<string>} */ (jspb.Message.getRepeatedField(this, 19));
+};
+
+
+/**
+ * @param {!Array<string>} value
+ * @return {!proto.user.UserData} returns this
+ */
+proto.user.UserData.prototype.setResetPasswordTokenList = function(value) {
+  return jspb.Message.setField(this, 19, value || []);
+};
+
+
+/**
+ * @param {string} value
+ * @param {number=} opt_index
+ * @return {!proto.user.UserData} returns this
+ */
+proto.user.UserData.prototype.addResetPasswordToken = function(value, opt_index) {
+  return jspb.Message.addToRepeatedField(this, 19, value, opt_index);
 };
 
 
@@ -1204,37 +866,36 @@ proto.user.UserData.prototype.addForgotPasswordTokens = function(opt_value, opt_
  * Clears the list making it empty but non-null.
  * @return {!proto.user.UserData} returns this
  */
-proto.user.UserData.prototype.clearForgotPasswordTokensList = function() {
-  return this.setForgotPasswordTokensList([]);
+proto.user.UserData.prototype.clearResetPasswordTokenList = function() {
+  return this.setResetPasswordTokenList([]);
 };
 
 
 /**
- * repeated google.protobuf.StringValue sessions = 20;
- * @return {!Array<!proto.google.protobuf.StringValue>}
+ * repeated string sessions = 20;
+ * @return {!Array<string>}
  */
 proto.user.UserData.prototype.getSessionsList = function() {
-  return /** @type{!Array<!proto.google.protobuf.StringValue>} */ (
-    jspb.Message.getRepeatedWrapperField(this, google_protobuf_wrappers_pb.StringValue, 20));
+  return /** @type {!Array<string>} */ (jspb.Message.getRepeatedField(this, 20));
 };
 
 
 /**
- * @param {!Array<!proto.google.protobuf.StringValue>} value
+ * @param {!Array<string>} value
  * @return {!proto.user.UserData} returns this
-*/
+ */
 proto.user.UserData.prototype.setSessionsList = function(value) {
-  return jspb.Message.setRepeatedWrapperField(this, 20, value);
+  return jspb.Message.setField(this, 20, value || []);
 };
 
 
 /**
- * @param {!proto.google.protobuf.StringValue=} opt_value
+ * @param {string} value
  * @param {number=} opt_index
- * @return {!proto.google.protobuf.StringValue}
+ * @return {!proto.user.UserData} returns this
  */
-proto.user.UserData.prototype.addSessions = function(opt_value, opt_index) {
-  return jspb.Message.addToRepeatedWrapperField(this, 20, opt_value, proto.google.protobuf.StringValue, opt_index);
+proto.user.UserData.prototype.addSessions = function(value, opt_index) {
+  return jspb.Message.addToRepeatedField(this, 20, value, opt_index);
 };
 
 
@@ -1248,105 +909,66 @@ proto.user.UserData.prototype.clearSessionsList = function() {
 
 
 /**
- * optional google.protobuf.StringValue SK = 21;
- * @return {?proto.google.protobuf.StringValue}
- */
-proto.user.UserData.prototype.getSk = function() {
-  return /** @type{?proto.google.protobuf.StringValue} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_wrappers_pb.StringValue, 21));
-};
-
-
-/**
- * @param {?proto.google.protobuf.StringValue|undefined} value
- * @return {!proto.user.UserData} returns this
-*/
-proto.user.UserData.prototype.setSk = function(value) {
-  return jspb.Message.setWrapperField(this, 21, value);
-};
-
-
-/**
- * Clears the message field making it undefined.
- * @return {!proto.user.UserData} returns this
- */
-proto.user.UserData.prototype.clearSk = function() {
-  return this.setSk(undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {boolean}
- */
-proto.user.UserData.prototype.hasSk = function() {
-  return jspb.Message.getField(this, 21) != null;
-};
-
-
-/**
- * optional google.protobuf.StringValue PK = 22;
- * @return {?proto.google.protobuf.StringValue}
+ * optional string pk = 21;
+ * @return {string}
  */
 proto.user.UserData.prototype.getPk = function() {
-  return /** @type{?proto.google.protobuf.StringValue} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_wrappers_pb.StringValue, 22));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 21, ""));
 };
 
 
 /**
- * @param {?proto.google.protobuf.StringValue|undefined} value
+ * @param {string} value
  * @return {!proto.user.UserData} returns this
-*/
+ */
 proto.user.UserData.prototype.setPk = function(value) {
-  return jspb.Message.setWrapperField(this, 22, value);
+  return jspb.Message.setProto3StringField(this, 21, value);
 };
 
 
 /**
- * Clears the message field making it undefined.
+ * optional string sk = 22;
+ * @return {string}
+ */
+proto.user.UserData.prototype.getSk = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 22, ""));
+};
+
+
+/**
+ * @param {string} value
  * @return {!proto.user.UserData} returns this
  */
-proto.user.UserData.prototype.clearPk = function() {
-  return this.setPk(undefined);
+proto.user.UserData.prototype.setSk = function(value) {
+  return jspb.Message.setProto3StringField(this, 22, value);
 };
 
 
 /**
- * Returns whether this field is set.
- * @return {boolean}
- */
-proto.user.UserData.prototype.hasPk = function() {
-  return jspb.Message.getField(this, 22) != null;
-};
-
-
-/**
- * repeated google.protobuf.StringValue business_ids = 23;
- * @return {!Array<!proto.google.protobuf.StringValue>}
+ * repeated string Business_ids = 23;
+ * @return {!Array<string>}
  */
 proto.user.UserData.prototype.getBusinessIdsList = function() {
-  return /** @type{!Array<!proto.google.protobuf.StringValue>} */ (
-    jspb.Message.getRepeatedWrapperField(this, google_protobuf_wrappers_pb.StringValue, 23));
+  return /** @type {!Array<string>} */ (jspb.Message.getRepeatedField(this, 23));
 };
 
 
 /**
- * @param {!Array<!proto.google.protobuf.StringValue>} value
+ * @param {!Array<string>} value
  * @return {!proto.user.UserData} returns this
-*/
+ */
 proto.user.UserData.prototype.setBusinessIdsList = function(value) {
-  return jspb.Message.setRepeatedWrapperField(this, 23, value);
+  return jspb.Message.setField(this, 23, value || []);
 };
 
 
 /**
- * @param {!proto.google.protobuf.StringValue=} opt_value
+ * @param {string} value
  * @param {number=} opt_index
- * @return {!proto.google.protobuf.StringValue}
+ * @return {!proto.user.UserData} returns this
  */
-proto.user.UserData.prototype.addBusinessIds = function(opt_value, opt_index) {
-  return jspb.Message.addToRepeatedWrapperField(this, 23, opt_value, proto.google.protobuf.StringValue, opt_index);
+proto.user.UserData.prototype.addBusinessIds = function(value, opt_index) {
+  return jspb.Message.addToRepeatedField(this, 23, value, opt_index);
 };
 
 
@@ -1356,6 +978,24 @@ proto.user.UserData.prototype.addBusinessIds = function(opt_value, opt_index) {
  */
 proto.user.UserData.prototype.clearBusinessIdsList = function() {
   return this.setBusinessIdsList([]);
+};
+
+
+/**
+ * optional bool unsuscribed_to_marketing_email = 24;
+ * @return {boolean}
+ */
+proto.user.UserData.prototype.getUnsuscribedToMarketingEmail = function() {
+  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 24, false));
+};
+
+
+/**
+ * @param {boolean} value
+ * @return {!proto.user.UserData} returns this
+ */
+proto.user.UserData.prototype.setUnsuscribedToMarketingEmail = function(value) {
+  return jspb.Message.setProto3BooleanField(this, 24, value);
 };
 
 
@@ -1398,8 +1038,7 @@ proto.user.MeData.prototype.toObject = function(opt_includeInstance) {
  */
 proto.user.MeData.toObject = function(includeInstance, msg) {
   var f, obj = {
-    tokenList: jspb.Message.toObjectList(msg.getTokenList(),
-    google_protobuf_wrappers_pb.StringValue.toObject, includeInstance)
+    tokenList: (f = jspb.Message.getRepeatedField(msg, 1)) == null ? undefined : f
   };
 
   if (includeInstance) {
@@ -1437,8 +1076,7 @@ proto.user.MeData.deserializeBinaryFromReader = function(msg, reader) {
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = new google_protobuf_wrappers_pb.StringValue;
-      reader.readMessage(value,google_protobuf_wrappers_pb.StringValue.deserializeBinaryFromReader);
+      var value = /** @type {string} */ (reader.readString());
       msg.addToken(value);
       break;
     default:
@@ -1472,41 +1110,39 @@ proto.user.MeData.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getTokenList();
   if (f.length > 0) {
-    writer.writeRepeatedMessage(
+    writer.writeRepeatedString(
       1,
-      f,
-      google_protobuf_wrappers_pb.StringValue.serializeBinaryToWriter
+      f
     );
   }
 };
 
 
 /**
- * repeated google.protobuf.StringValue token = 1;
- * @return {!Array<!proto.google.protobuf.StringValue>}
+ * repeated string token = 1;
+ * @return {!Array<string>}
  */
 proto.user.MeData.prototype.getTokenList = function() {
-  return /** @type{!Array<!proto.google.protobuf.StringValue>} */ (
-    jspb.Message.getRepeatedWrapperField(this, google_protobuf_wrappers_pb.StringValue, 1));
+  return /** @type {!Array<string>} */ (jspb.Message.getRepeatedField(this, 1));
 };
 
 
 /**
- * @param {!Array<!proto.google.protobuf.StringValue>} value
+ * @param {!Array<string>} value
  * @return {!proto.user.MeData} returns this
-*/
+ */
 proto.user.MeData.prototype.setTokenList = function(value) {
-  return jspb.Message.setRepeatedWrapperField(this, 1, value);
+  return jspb.Message.setField(this, 1, value || []);
 };
 
 
 /**
- * @param {!proto.google.protobuf.StringValue=} opt_value
+ * @param {string} value
  * @param {number=} opt_index
- * @return {!proto.google.protobuf.StringValue}
+ * @return {!proto.user.MeData} returns this
  */
-proto.user.MeData.prototype.addToken = function(opt_value, opt_index) {
-  return jspb.Message.addToRepeatedWrapperField(this, 1, opt_value, proto.google.protobuf.StringValue, opt_index);
+proto.user.MeData.prototype.addToken = function(value, opt_index) {
+  return jspb.Message.addToRepeatedField(this, 1, value, opt_index);
 };
 
 

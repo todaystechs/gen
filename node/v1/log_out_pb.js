@@ -73,7 +73,7 @@ proto.user.LogOutData.prototype.toObject = function(opt_includeInstance) {
  */
 proto.user.LogOutData.toObject = function(includeInstance, msg) {
   var f, obj = {
-    userId: (f = msg.getUserId()) && google_protobuf_wrappers_pb.StringValue.toObject(includeInstance, f)
+    userId: jspb.Message.getFieldWithDefault(msg, 1, "")
   };
 
   if (includeInstance) {
@@ -111,8 +111,7 @@ proto.user.LogOutData.deserializeBinaryFromReader = function(msg, reader) {
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = new google_protobuf_wrappers_pb.StringValue;
-      reader.readMessage(value,google_protobuf_wrappers_pb.StringValue.deserializeBinaryFromReader);
+      var value = /** @type {string} */ (reader.readString());
       msg.setUserId(value);
       break;
     default:
@@ -145,50 +144,30 @@ proto.user.LogOutData.prototype.serializeBinary = function() {
 proto.user.LogOutData.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getUserId();
-  if (f != null) {
-    writer.writeMessage(
+  if (f.length > 0) {
+    writer.writeString(
       1,
-      f,
-      google_protobuf_wrappers_pb.StringValue.serializeBinaryToWriter
+      f
     );
   }
 };
 
 
 /**
- * optional google.protobuf.StringValue user_id = 1;
- * @return {?proto.google.protobuf.StringValue}
+ * optional string user_id = 1;
+ * @return {string}
  */
 proto.user.LogOutData.prototype.getUserId = function() {
-  return /** @type{?proto.google.protobuf.StringValue} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_wrappers_pb.StringValue, 1));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
 };
 
 
 /**
- * @param {?proto.google.protobuf.StringValue|undefined} value
+ * @param {string} value
  * @return {!proto.user.LogOutData} returns this
-*/
+ */
 proto.user.LogOutData.prototype.setUserId = function(value) {
-  return jspb.Message.setWrapperField(this, 1, value);
-};
-
-
-/**
- * Clears the message field making it undefined.
- * @return {!proto.user.LogOutData} returns this
- */
-proto.user.LogOutData.prototype.clearUserId = function() {
-  return this.setUserId(undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {boolean}
- */
-proto.user.LogOutData.prototype.hasUserId = function() {
-  return jspb.Message.getField(this, 1) != null;
+  return jspb.Message.setProto3StringField(this, 1, value);
 };
 
 

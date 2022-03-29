@@ -15,11 +15,11 @@ var jspb = require('google-protobuf');
 var goog = jspb;
 var global = Function('return this')();
 
-goog.exportSymbol('proto.carrier.LocationType', null, global);
+goog.exportSymbol('proto.user.LocationType', null, global);
 /**
  * @enum {number}
  */
-proto.carrier.LocationType = {
+proto.user.LocationType = {
   BUSINESSWITHDOCK: 0,
   BUSINESSWITHOUTDOCK: 1,
   RESIDENTIALLOCATION: 2,
@@ -32,4 +32,4 @@ proto.carrier.LocationType = {
   WAREHOUSE: 9
 };
 
-goog.object.extend(exports, proto.carrier);
+goog.object.extend(exports, proto.user);

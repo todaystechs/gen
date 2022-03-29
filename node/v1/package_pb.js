@@ -15,11 +15,11 @@ var jspb = require('google-protobuf');
 var goog = jspb;
 var global = Function('return this')();
 
-goog.exportSymbol('proto.carrier.PackageType', null, global);
+goog.exportSymbol('proto.user.PackageType', null, global);
 /**
  * @enum {number}
  */
-proto.carrier.PackageType = {
+proto.user.PackageType = {
   PALLET: 0,
   BOX: 2,
   BUNDLES: 3,
@@ -29,4 +29,4 @@ proto.carrier.PackageType = {
   ROLL: 7
 };
 
-goog.object.extend(exports, proto.carrier);
+goog.object.extend(exports, proto.user);

@@ -71,9 +71,9 @@ proto.user.Ok.prototype.toObject = function(opt_includeInstance) {
  */
 proto.user.Ok.toObject = function(includeInstance, msg) {
   var f, obj = {
-    success: (f = msg.getSuccess()) && google_protobuf_wrappers_pb.BoolValue.toObject(includeInstance, f),
-    statusCode: (f = msg.getStatusCode()) && google_protobuf_wrappers_pb.StringValue.toObject(includeInstance, f),
-    message: (f = msg.getMessage()) && google_protobuf_wrappers_pb.StringValue.toObject(includeInstance, f)
+    success: jspb.Message.getBooleanFieldWithDefault(msg, 1, false),
+    statusCode: jspb.Message.getFieldWithDefault(msg, 2, 0),
+    message: jspb.Message.getFieldWithDefault(msg, 3, "")
   };
 
   if (includeInstance) {
@@ -111,18 +111,15 @@ proto.user.Ok.deserializeBinaryFromReader = function(msg, reader) {
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = new google_protobuf_wrappers_pb.BoolValue;
-      reader.readMessage(value,google_protobuf_wrappers_pb.BoolValue.deserializeBinaryFromReader);
+      var value = /** @type {boolean} */ (reader.readBool());
       msg.setSuccess(value);
       break;
     case 2:
-      var value = new google_protobuf_wrappers_pb.StringValue;
-      reader.readMessage(value,google_protobuf_wrappers_pb.StringValue.deserializeBinaryFromReader);
+      var value = /** @type {number} */ (reader.readInt32());
       msg.setStatusCode(value);
       break;
     case 3:
-      var value = new google_protobuf_wrappers_pb.StringValue;
-      reader.readMessage(value,google_protobuf_wrappers_pb.StringValue.deserializeBinaryFromReader);
+      var value = /** @type {string} */ (reader.readString());
       msg.setMessage(value);
       break;
     default:
@@ -155,140 +152,80 @@ proto.user.Ok.prototype.serializeBinary = function() {
 proto.user.Ok.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getSuccess();
-  if (f != null) {
-    writer.writeMessage(
+  if (f) {
+    writer.writeBool(
       1,
-      f,
-      google_protobuf_wrappers_pb.BoolValue.serializeBinaryToWriter
+      f
     );
   }
   f = message.getStatusCode();
-  if (f != null) {
-    writer.writeMessage(
+  if (f !== 0) {
+    writer.writeInt32(
       2,
-      f,
-      google_protobuf_wrappers_pb.StringValue.serializeBinaryToWriter
+      f
     );
   }
   f = message.getMessage();
-  if (f != null) {
-    writer.writeMessage(
+  if (f.length > 0) {
+    writer.writeString(
       3,
-      f,
-      google_protobuf_wrappers_pb.StringValue.serializeBinaryToWriter
+      f
     );
   }
 };
 
 
 /**
- * optional google.protobuf.BoolValue success = 1;
- * @return {?proto.google.protobuf.BoolValue}
+ * optional bool success = 1;
+ * @return {boolean}
  */
 proto.user.Ok.prototype.getSuccess = function() {
-  return /** @type{?proto.google.protobuf.BoolValue} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_wrappers_pb.BoolValue, 1));
+  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 1, false));
 };
 
 
 /**
- * @param {?proto.google.protobuf.BoolValue|undefined} value
+ * @param {boolean} value
  * @return {!proto.user.Ok} returns this
-*/
+ */
 proto.user.Ok.prototype.setSuccess = function(value) {
-  return jspb.Message.setWrapperField(this, 1, value);
+  return jspb.Message.setProto3BooleanField(this, 1, value);
 };
 
 
 /**
- * Clears the message field making it undefined.
- * @return {!proto.user.Ok} returns this
- */
-proto.user.Ok.prototype.clearSuccess = function() {
-  return this.setSuccess(undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {boolean}
- */
-proto.user.Ok.prototype.hasSuccess = function() {
-  return jspb.Message.getField(this, 1) != null;
-};
-
-
-/**
- * optional google.protobuf.StringValue status_code = 2;
- * @return {?proto.google.protobuf.StringValue}
+ * optional int32 status_code = 2;
+ * @return {number}
  */
 proto.user.Ok.prototype.getStatusCode = function() {
-  return /** @type{?proto.google.protobuf.StringValue} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_wrappers_pb.StringValue, 2));
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 2, 0));
 };
 
 
 /**
- * @param {?proto.google.protobuf.StringValue|undefined} value
+ * @param {number} value
  * @return {!proto.user.Ok} returns this
-*/
+ */
 proto.user.Ok.prototype.setStatusCode = function(value) {
-  return jspb.Message.setWrapperField(this, 2, value);
+  return jspb.Message.setProto3IntField(this, 2, value);
 };
 
 
 /**
- * Clears the message field making it undefined.
- * @return {!proto.user.Ok} returns this
- */
-proto.user.Ok.prototype.clearStatusCode = function() {
-  return this.setStatusCode(undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {boolean}
- */
-proto.user.Ok.prototype.hasStatusCode = function() {
-  return jspb.Message.getField(this, 2) != null;
-};
-
-
-/**
- * optional google.protobuf.StringValue message = 3;
- * @return {?proto.google.protobuf.StringValue}
+ * optional string message = 3;
+ * @return {string}
  */
 proto.user.Ok.prototype.getMessage = function() {
-  return /** @type{?proto.google.protobuf.StringValue} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_wrappers_pb.StringValue, 3));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
 };
 
 
 /**
- * @param {?proto.google.protobuf.StringValue|undefined} value
+ * @param {string} value
  * @return {!proto.user.Ok} returns this
-*/
+ */
 proto.user.Ok.prototype.setMessage = function(value) {
-  return jspb.Message.setWrapperField(this, 3, value);
-};
-
-
-/**
- * Clears the message field making it undefined.
- * @return {!proto.user.Ok} returns this
- */
-proto.user.Ok.prototype.clearMessage = function() {
-  return this.setMessage(undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {boolean}
- */
-proto.user.Ok.prototype.hasMessage = function() {
-  return jspb.Message.getField(this, 3) != null;
+  return jspb.Message.setProto3StringField(this, 3, value);
 };
 
 

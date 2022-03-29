@@ -95,7 +95,7 @@ proto.user.UserServicePingData.prototype.toObject = function(opt_includeInstance
  */
 proto.user.UserServicePingData.toObject = function(includeInstance, msg) {
   var f, obj = {
-    hi: (f = msg.getHi()) && google_protobuf_wrappers_pb.StringValue.toObject(includeInstance, f)
+    hi: jspb.Message.getFieldWithDefault(msg, 1, "")
   };
 
   if (includeInstance) {
@@ -133,8 +133,7 @@ proto.user.UserServicePingData.deserializeBinaryFromReader = function(msg, reade
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = new google_protobuf_wrappers_pb.StringValue;
-      reader.readMessage(value,google_protobuf_wrappers_pb.StringValue.deserializeBinaryFromReader);
+      var value = /** @type {string} */ (reader.readString());
       msg.setHi(value);
       break;
     default:
@@ -167,50 +166,30 @@ proto.user.UserServicePingData.prototype.serializeBinary = function() {
 proto.user.UserServicePingData.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getHi();
-  if (f != null) {
-    writer.writeMessage(
+  if (f.length > 0) {
+    writer.writeString(
       1,
-      f,
-      google_protobuf_wrappers_pb.StringValue.serializeBinaryToWriter
+      f
     );
   }
 };
 
 
 /**
- * optional google.protobuf.StringValue hi = 1;
- * @return {?proto.google.protobuf.StringValue}
+ * optional string hi = 1;
+ * @return {string}
  */
 proto.user.UserServicePingData.prototype.getHi = function() {
-  return /** @type{?proto.google.protobuf.StringValue} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_wrappers_pb.StringValue, 1));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
 };
 
 
 /**
- * @param {?proto.google.protobuf.StringValue|undefined} value
+ * @param {string} value
  * @return {!proto.user.UserServicePingData} returns this
-*/
+ */
 proto.user.UserServicePingData.prototype.setHi = function(value) {
-  return jspb.Message.setWrapperField(this, 1, value);
-};
-
-
-/**
- * Clears the message field making it undefined.
- * @return {!proto.user.UserServicePingData} returns this
- */
-proto.user.UserServicePingData.prototype.clearHi = function() {
-  return this.setHi(undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {boolean}
- */
-proto.user.UserServicePingData.prototype.hasHi = function() {
-  return jspb.Message.getField(this, 1) != null;
+  return jspb.Message.setProto3StringField(this, 1, value);
 };
 
 

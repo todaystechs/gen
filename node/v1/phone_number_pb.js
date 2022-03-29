@@ -74,7 +74,7 @@ proto.user.PhoneNumberData.prototype.toObject = function(opt_includeInstance) {
  */
 proto.user.PhoneNumberData.toObject = function(includeInstance, msg) {
   var f, obj = {
-    phoneNumber: (f = msg.getPhoneNumber()) && google_protobuf_wrappers_pb.StringValue.toObject(includeInstance, f),
+    phoneNumber: jspb.Message.getFieldWithDefault(msg, 1, ""),
     type: jspb.Message.getFieldWithDefault(msg, 2, 0)
   };
 
@@ -113,8 +113,7 @@ proto.user.PhoneNumberData.deserializeBinaryFromReader = function(msg, reader) {
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = new google_protobuf_wrappers_pb.StringValue;
-      reader.readMessage(value,google_protobuf_wrappers_pb.StringValue.deserializeBinaryFromReader);
+      var value = /** @type {string} */ (reader.readString());
       msg.setPhoneNumber(value);
       break;
     case 2:
@@ -151,11 +150,10 @@ proto.user.PhoneNumberData.prototype.serializeBinary = function() {
 proto.user.PhoneNumberData.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getPhoneNumber();
-  if (f != null) {
-    writer.writeMessage(
+  if (f.length > 0) {
+    writer.writeString(
       1,
-      f,
-      google_protobuf_wrappers_pb.StringValue.serializeBinaryToWriter
+      f
     );
   }
   f = message.getType();
@@ -169,39 +167,20 @@ proto.user.PhoneNumberData.serializeBinaryToWriter = function(message, writer) {
 
 
 /**
- * optional google.protobuf.StringValue phone_number = 1;
- * @return {?proto.google.protobuf.StringValue}
+ * optional string phone_number = 1;
+ * @return {string}
  */
 proto.user.PhoneNumberData.prototype.getPhoneNumber = function() {
-  return /** @type{?proto.google.protobuf.StringValue} */ (
-    jspb.Message.getWrapperField(this, google_protobuf_wrappers_pb.StringValue, 1));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
 };
 
 
 /**
- * @param {?proto.google.protobuf.StringValue|undefined} value
+ * @param {string} value
  * @return {!proto.user.PhoneNumberData} returns this
-*/
+ */
 proto.user.PhoneNumberData.prototype.setPhoneNumber = function(value) {
-  return jspb.Message.setWrapperField(this, 1, value);
-};
-
-
-/**
- * Clears the message field making it undefined.
- * @return {!proto.user.PhoneNumberData} returns this
- */
-proto.user.PhoneNumberData.prototype.clearPhoneNumber = function() {
-  return this.setPhoneNumber(undefined);
-};
-
-
-/**
- * Returns whether this field is set.
- * @return {boolean}
- */
-proto.user.PhoneNumberData.prototype.hasPhoneNumber = function() {
-  return jspb.Message.getField(this, 1) != null;
+  return jspb.Message.setProto3StringField(this, 1, value);
 };
 
 

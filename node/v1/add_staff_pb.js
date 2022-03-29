@@ -82,11 +82,9 @@ proto.user.AddStaffData.prototype.toObject = function(opt_includeInstance) {
  */
 proto.user.AddStaffData.toObject = function(includeInstance, msg) {
   var f, obj = {
-    tokenList: jspb.Message.toObjectList(msg.getTokenList(),
-    google_protobuf_wrappers_pb.StringValue.toObject, includeInstance),
-    roleList: (f = jspb.Message.getRepeatedField(msg, 2)) == null ? undefined : f,
-    newStaffEmailList: jspb.Message.toObjectList(msg.getNewStaffEmailList(),
-    google_protobuf_wrappers_pb.StringValue.toObject, includeInstance)
+    tokenList: (f = jspb.Message.getRepeatedField(msg, 1)) == null ? undefined : f,
+    rolesList: (f = jspb.Message.getRepeatedField(msg, 2)) == null ? undefined : f,
+    newStaffEmailList: (f = jspb.Message.getRepeatedField(msg, 3)) == null ? undefined : f
   };
 
   if (includeInstance) {
@@ -124,19 +122,17 @@ proto.user.AddStaffData.deserializeBinaryFromReader = function(msg, reader) {
     var field = reader.getFieldNumber();
     switch (field) {
     case 1:
-      var value = new google_protobuf_wrappers_pb.StringValue;
-      reader.readMessage(value,google_protobuf_wrappers_pb.StringValue.deserializeBinaryFromReader);
+      var value = /** @type {string} */ (reader.readString());
       msg.addToken(value);
       break;
     case 2:
       var values = /** @type {!Array<!proto.user.Role>} */ (reader.isDelimited() ? reader.readPackedEnum() : [reader.readEnum()]);
       for (var i = 0; i < values.length; i++) {
-        msg.addRole(values[i]);
+        msg.addRoles(values[i]);
       }
       break;
     case 3:
-      var value = new google_protobuf_wrappers_pb.StringValue;
-      reader.readMessage(value,google_protobuf_wrappers_pb.StringValue.deserializeBinaryFromReader);
+      var value = /** @type {string} */ (reader.readString());
       msg.addNewStaffEmail(value);
       break;
     default:
@@ -170,13 +166,12 @@ proto.user.AddStaffData.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
   f = message.getTokenList();
   if (f.length > 0) {
-    writer.writeRepeatedMessage(
+    writer.writeRepeatedString(
       1,
-      f,
-      google_protobuf_wrappers_pb.StringValue.serializeBinaryToWriter
+      f
     );
   }
-  f = message.getRoleList();
+  f = message.getRolesList();
   if (f.length > 0) {
     writer.writePackedEnum(
       2,
@@ -185,41 +180,39 @@ proto.user.AddStaffData.serializeBinaryToWriter = function(message, writer) {
   }
   f = message.getNewStaffEmailList();
   if (f.length > 0) {
-    writer.writeRepeatedMessage(
+    writer.writeRepeatedString(
       3,
-      f,
-      google_protobuf_wrappers_pb.StringValue.serializeBinaryToWriter
+      f
     );
   }
 };
 
 
 /**
- * repeated google.protobuf.StringValue token = 1;
- * @return {!Array<!proto.google.protobuf.StringValue>}
+ * repeated string token = 1;
+ * @return {!Array<string>}
  */
 proto.user.AddStaffData.prototype.getTokenList = function() {
-  return /** @type{!Array<!proto.google.protobuf.StringValue>} */ (
-    jspb.Message.getRepeatedWrapperField(this, google_protobuf_wrappers_pb.StringValue, 1));
+  return /** @type {!Array<string>} */ (jspb.Message.getRepeatedField(this, 1));
 };
 
 
 /**
- * @param {!Array<!proto.google.protobuf.StringValue>} value
+ * @param {!Array<string>} value
  * @return {!proto.user.AddStaffData} returns this
-*/
+ */
 proto.user.AddStaffData.prototype.setTokenList = function(value) {
-  return jspb.Message.setRepeatedWrapperField(this, 1, value);
+  return jspb.Message.setField(this, 1, value || []);
 };
 
 
 /**
- * @param {!proto.google.protobuf.StringValue=} opt_value
+ * @param {string} value
  * @param {number=} opt_index
- * @return {!proto.google.protobuf.StringValue}
+ * @return {!proto.user.AddStaffData} returns this
  */
-proto.user.AddStaffData.prototype.addToken = function(opt_value, opt_index) {
-  return jspb.Message.addToRepeatedWrapperField(this, 1, opt_value, proto.google.protobuf.StringValue, opt_index);
+proto.user.AddStaffData.prototype.addToken = function(value, opt_index) {
+  return jspb.Message.addToRepeatedField(this, 1, value, opt_index);
 };
 
 
@@ -233,10 +226,10 @@ proto.user.AddStaffData.prototype.clearTokenList = function() {
 
 
 /**
- * repeated Role role = 2;
+ * repeated Role roles = 2;
  * @return {!Array<!proto.user.Role>}
  */
-proto.user.AddStaffData.prototype.getRoleList = function() {
+proto.user.AddStaffData.prototype.getRolesList = function() {
   return /** @type {!Array<!proto.user.Role>} */ (jspb.Message.getRepeatedField(this, 2));
 };
 
@@ -245,7 +238,7 @@ proto.user.AddStaffData.prototype.getRoleList = function() {
  * @param {!Array<!proto.user.Role>} value
  * @return {!proto.user.AddStaffData} returns this
  */
-proto.user.AddStaffData.prototype.setRoleList = function(value) {
+proto.user.AddStaffData.prototype.setRolesList = function(value) {
   return jspb.Message.setField(this, 2, value || []);
 };
 
@@ -255,7 +248,7 @@ proto.user.AddStaffData.prototype.setRoleList = function(value) {
  * @param {number=} opt_index
  * @return {!proto.user.AddStaffData} returns this
  */
-proto.user.AddStaffData.prototype.addRole = function(value, opt_index) {
+proto.user.AddStaffData.prototype.addRoles = function(value, opt_index) {
   return jspb.Message.addToRepeatedField(this, 2, value, opt_index);
 };
 
@@ -264,37 +257,36 @@ proto.user.AddStaffData.prototype.addRole = function(value, opt_index) {
  * Clears the list making it empty but non-null.
  * @return {!proto.user.AddStaffData} returns this
  */
-proto.user.AddStaffData.prototype.clearRoleList = function() {
-  return this.setRoleList([]);
+proto.user.AddStaffData.prototype.clearRolesList = function() {
+  return this.setRolesList([]);
 };
 
 
 /**
- * repeated google.protobuf.StringValue new_staff_email = 3;
- * @return {!Array<!proto.google.protobuf.StringValue>}
+ * repeated string new_staff_email = 3;
+ * @return {!Array<string>}
  */
 proto.user.AddStaffData.prototype.getNewStaffEmailList = function() {
-  return /** @type{!Array<!proto.google.protobuf.StringValue>} */ (
-    jspb.Message.getRepeatedWrapperField(this, google_protobuf_wrappers_pb.StringValue, 3));
+  return /** @type {!Array<string>} */ (jspb.Message.getRepeatedField(this, 3));
 };
 
 
 /**
- * @param {!Array<!proto.google.protobuf.StringValue>} value
+ * @param {!Array<string>} value
  * @return {!proto.user.AddStaffData} returns this
-*/
+ */
 proto.user.AddStaffData.prototype.setNewStaffEmailList = function(value) {
-  return jspb.Message.setRepeatedWrapperField(this, 3, value);
+  return jspb.Message.setField(this, 3, value || []);
 };
 
 
 /**
- * @param {!proto.google.protobuf.StringValue=} opt_value
+ * @param {string} value
  * @param {number=} opt_index
- * @return {!proto.google.protobuf.StringValue}
+ * @return {!proto.user.AddStaffData} returns this
  */
-proto.user.AddStaffData.prototype.addNewStaffEmail = function(opt_value, opt_index) {
-  return jspb.Message.addToRepeatedWrapperField(this, 3, opt_value, proto.google.protobuf.StringValue, opt_index);
+proto.user.AddStaffData.prototype.addNewStaffEmail = function(value, opt_index) {
+  return jspb.Message.addToRepeatedField(this, 3, value, opt_index);
 };
 
 

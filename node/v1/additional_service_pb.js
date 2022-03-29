@@ -15,11 +15,11 @@ var jspb = require('google-protobuf');
 var goog = jspb;
 var global = Function('return this')();
 
-goog.exportSymbol('proto.carrier.AdditionalService', null, global);
+goog.exportSymbol('proto.user.AdditionalService', null, global);
 /**
  * @enum {number}
  */
-proto.carrier.AdditionalService = {
+proto.user.AdditionalService = {
   INSIDEPICKUP: 0,
   INSIDEDELIVERY: 1,
   PICKUPNOTIFICATION: 2,
@@ -28,4 +28,4 @@ proto.carrier.AdditionalService = {
   LIFTGATEDELIVERY: 5
 };
 
-goog.object.extend(exports, proto.carrier);
+goog.object.extend(exports, proto.user);

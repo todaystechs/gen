@@ -15,11 +15,11 @@ var jspb = require('google-protobuf');
 var goog = jspb;
 var global = Function('return this')();
 
-goog.exportSymbol('proto.carrier.FreightClass', null, global);
+goog.exportSymbol('proto.user.FreightClass', null, global);
 /**
  * @enum {number}
  */
-proto.carrier.FreightClass = {
+proto.user.FreightClass = {
   CLASS50: 0,
   CLASS55: 1,
   CLASS60: 2,
@@ -40,4 +40,4 @@ proto.carrier.FreightClass = {
   CLASS500: 17
 };
 
-goog.object.extend(exports, proto.carrier);
+goog.object.extend(exports, proto.user);
