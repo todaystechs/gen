@@ -71,7 +71,7 @@ proto.user.UserHomeData.prototype.toObject = function(opt_includeInstance) {
  */
 proto.user.UserHomeData.toObject = function(includeInstance, msg) {
   var f, obj = {
-    token: jspb.Message.getFieldWithDefault(msg, 1, "")
+    userId: jspb.Message.getFieldWithDefault(msg, 1, "")
   };
 
   if (includeInstance) {
@@ -110,7 +110,7 @@ proto.user.UserHomeData.deserializeBinaryFromReader = function(msg, reader) {
     switch (field) {
     case 1:
       var value = /** @type {string} */ (reader.readString());
-      msg.setToken(value);
+      msg.setUserId(value);
       break;
     default:
       reader.skipField();
@@ -141,7 +141,7 @@ proto.user.UserHomeData.prototype.serializeBinary = function() {
  */
 proto.user.UserHomeData.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getToken();
+  f = message.getUserId();
   if (f.length > 0) {
     writer.writeString(
       1,
@@ -152,10 +152,10 @@ proto.user.UserHomeData.serializeBinaryToWriter = function(message, writer) {
 
 
 /**
- * optional string token = 1;
+ * optional string user_id = 1;
  * @return {string}
  */
-proto.user.UserHomeData.prototype.getToken = function() {
+proto.user.UserHomeData.prototype.getUserId = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
 };
 
@@ -164,7 +164,7 @@ proto.user.UserHomeData.prototype.getToken = function() {
  * @param {string} value
  * @return {!proto.user.UserHomeData} returns this
  */
-proto.user.UserHomeData.prototype.setToken = function(value) {
+proto.user.UserHomeData.prototype.setUserId = function(value) {
   return jspb.Message.setProto3StringField(this, 1, value);
 };
 

@@ -49,7 +49,7 @@ if (goog.DEBUG && !COMPILED) {
  * @private {!Array<number>}
  * @const
  */
-proto.user.AddStaffData.repeatedFields_ = [1,2,3];
+proto.user.AddStaffData.repeatedFields_ = [2,3];
 
 
 
@@ -82,7 +82,7 @@ proto.user.AddStaffData.prototype.toObject = function(opt_includeInstance) {
  */
 proto.user.AddStaffData.toObject = function(includeInstance, msg) {
   var f, obj = {
-    tokenList: (f = jspb.Message.getRepeatedField(msg, 1)) == null ? undefined : f,
+    token: jspb.Message.getFieldWithDefault(msg, 1, ""),
     rolesList: (f = jspb.Message.getRepeatedField(msg, 2)) == null ? undefined : f,
     newStaffEmailList: (f = jspb.Message.getRepeatedField(msg, 3)) == null ? undefined : f
   };
@@ -123,7 +123,7 @@ proto.user.AddStaffData.deserializeBinaryFromReader = function(msg, reader) {
     switch (field) {
     case 1:
       var value = /** @type {string} */ (reader.readString());
-      msg.addToken(value);
+      msg.setToken(value);
       break;
     case 2:
       var values = /** @type {!Array<!proto.user.Role>} */ (reader.isDelimited() ? reader.readPackedEnum() : [reader.readEnum()]);
@@ -164,9 +164,9 @@ proto.user.AddStaffData.prototype.serializeBinary = function() {
  */
 proto.user.AddStaffData.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getTokenList();
+  f = message.getToken();
   if (f.length > 0) {
-    writer.writeRepeatedString(
+    writer.writeString(
       1,
       f
     );
@@ -189,39 +189,20 @@ proto.user.AddStaffData.serializeBinaryToWriter = function(message, writer) {
 
 
 /**
- * repeated string token = 1;
- * @return {!Array<string>}
+ * optional string token = 1;
+ * @return {string}
  */
-proto.user.AddStaffData.prototype.getTokenList = function() {
-  return /** @type {!Array<string>} */ (jspb.Message.getRepeatedField(this, 1));
-};
-
-
-/**
- * @param {!Array<string>} value
- * @return {!proto.user.AddStaffData} returns this
- */
-proto.user.AddStaffData.prototype.setTokenList = function(value) {
-  return jspb.Message.setField(this, 1, value || []);
+proto.user.AddStaffData.prototype.getToken = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
 };
 
 
 /**
  * @param {string} value
- * @param {number=} opt_index
  * @return {!proto.user.AddStaffData} returns this
  */
-proto.user.AddStaffData.prototype.addToken = function(value, opt_index) {
-  return jspb.Message.addToRepeatedField(this, 1, value, opt_index);
-};
-
-
-/**
- * Clears the list making it empty but non-null.
- * @return {!proto.user.AddStaffData} returns this
- */
-proto.user.AddStaffData.prototype.clearTokenList = function() {
-  return this.setTokenList([]);
+proto.user.AddStaffData.prototype.setToken = function(value) {
+  return jspb.Message.setProto3StringField(this, 1, value);
 };
 
 

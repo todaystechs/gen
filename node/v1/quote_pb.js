@@ -119,7 +119,7 @@ if (goog.DEBUG && !COMPILED) {
  * @private {!Array<number>}
  * @const
  */
-proto.user.QuoteRequest.repeatedFields_ = [5,6];
+proto.user.QuoteRequest.repeatedFields_ = [7,8];
 
 
 
@@ -153,10 +153,12 @@ proto.user.QuoteRequest.prototype.toObject = function(opt_includeInstance) {
 proto.user.QuoteRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
     quoteId: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    mode: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    liablePartyId: jspb.Message.getFieldWithDefault(msg, 3, ""),
+    userEmail: jspb.Message.getFieldWithDefault(msg, 2, ""),
+    buisnessId: jspb.Message.getFieldWithDefault(msg, 3, ""),
+    mode: jspb.Message.getFieldWithDefault(msg, 4, ""),
+    liablePartyId: jspb.Message.getFieldWithDefault(msg, 5, ""),
     shippingDetail: (f = msg.getShippingDetail()) && shipping_detail_pb.ShippingDetail.toObject(includeInstance, f),
-    additionalServicesList: (f = jspb.Message.getRepeatedField(msg, 5)) == null ? undefined : f,
+    additionalServicesList: (f = jspb.Message.getRepeatedField(msg, 7)) == null ? undefined : f,
     commoditiesList: jspb.Message.toObjectList(msg.getCommoditiesList(),
     commodity_pb.Commodity.toObject, includeInstance)
   };
@@ -201,24 +203,32 @@ proto.user.QuoteRequest.deserializeBinaryFromReader = function(msg, reader) {
       break;
     case 2:
       var value = /** @type {string} */ (reader.readString());
-      msg.setMode(value);
+      msg.setUserEmail(value);
       break;
     case 3:
       var value = /** @type {string} */ (reader.readString());
-      msg.setLiablePartyId(value);
+      msg.setBuisnessId(value);
       break;
     case 4:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setMode(value);
+      break;
+    case 5:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setLiablePartyId(value);
+      break;
+    case 6:
       var value = new shipping_detail_pb.ShippingDetail;
       reader.readMessage(value,shipping_detail_pb.ShippingDetail.deserializeBinaryFromReader);
       msg.setShippingDetail(value);
       break;
-    case 5:
+    case 7:
       var values = /** @type {!Array<!proto.user.AdditionalService>} */ (reader.isDelimited() ? reader.readPackedEnum() : [reader.readEnum()]);
       for (var i = 0; i < values.length; i++) {
         msg.addAdditionalServices(values[i]);
       }
       break;
-    case 6:
+    case 8:
       var value = new commodity_pb.Commodity;
       reader.readMessage(value,commodity_pb.Commodity.deserializeBinaryFromReader);
       msg.addCommodities(value);
@@ -259,24 +269,38 @@ proto.user.QuoteRequest.serializeBinaryToWriter = function(message, writer) {
       f
     );
   }
-  f = message.getMode();
+  f = message.getUserEmail();
   if (f.length > 0) {
     writer.writeString(
       2,
       f
     );
   }
-  f = message.getLiablePartyId();
+  f = message.getBuisnessId();
   if (f.length > 0) {
     writer.writeString(
       3,
       f
     );
   }
+  f = message.getMode();
+  if (f.length > 0) {
+    writer.writeString(
+      4,
+      f
+    );
+  }
+  f = message.getLiablePartyId();
+  if (f.length > 0) {
+    writer.writeString(
+      5,
+      f
+    );
+  }
   f = message.getShippingDetail();
   if (f != null) {
     writer.writeMessage(
-      4,
+      6,
       f,
       shipping_detail_pb.ShippingDetail.serializeBinaryToWriter
     );
@@ -284,14 +308,14 @@ proto.user.QuoteRequest.serializeBinaryToWriter = function(message, writer) {
   f = message.getAdditionalServicesList();
   if (f.length > 0) {
     writer.writePackedEnum(
-      5,
+      7,
       f
     );
   }
   f = message.getCommoditiesList();
   if (f.length > 0) {
     writer.writeRepeatedMessage(
-      6,
+      8,
       f,
       commodity_pb.Commodity.serializeBinaryToWriter
     );
@@ -318,10 +342,10 @@ proto.user.QuoteRequest.prototype.setQuoteId = function(value) {
 
 
 /**
- * optional string mode = 2;
+ * optional string user_email = 2;
  * @return {string}
  */
-proto.user.QuoteRequest.prototype.getMode = function() {
+proto.user.QuoteRequest.prototype.getUserEmail = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 2, ""));
 };
 
@@ -330,16 +354,16 @@ proto.user.QuoteRequest.prototype.getMode = function() {
  * @param {string} value
  * @return {!proto.user.QuoteRequest} returns this
  */
-proto.user.QuoteRequest.prototype.setMode = function(value) {
+proto.user.QuoteRequest.prototype.setUserEmail = function(value) {
   return jspb.Message.setProto3StringField(this, 2, value);
 };
 
 
 /**
- * optional string liable_party_id = 3;
+ * optional string buisness_id = 3;
  * @return {string}
  */
-proto.user.QuoteRequest.prototype.getLiablePartyId = function() {
+proto.user.QuoteRequest.prototype.getBuisnessId = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
 };
 
@@ -348,18 +372,54 @@ proto.user.QuoteRequest.prototype.getLiablePartyId = function() {
  * @param {string} value
  * @return {!proto.user.QuoteRequest} returns this
  */
-proto.user.QuoteRequest.prototype.setLiablePartyId = function(value) {
+proto.user.QuoteRequest.prototype.setBuisnessId = function(value) {
   return jspb.Message.setProto3StringField(this, 3, value);
 };
 
 
 /**
- * optional ShippingDetail shipping_detail = 4;
+ * optional string mode = 4;
+ * @return {string}
+ */
+proto.user.QuoteRequest.prototype.getMode = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 4, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.user.QuoteRequest} returns this
+ */
+proto.user.QuoteRequest.prototype.setMode = function(value) {
+  return jspb.Message.setProto3StringField(this, 4, value);
+};
+
+
+/**
+ * optional string liable_party_id = 5;
+ * @return {string}
+ */
+proto.user.QuoteRequest.prototype.getLiablePartyId = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 5, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.user.QuoteRequest} returns this
+ */
+proto.user.QuoteRequest.prototype.setLiablePartyId = function(value) {
+  return jspb.Message.setProto3StringField(this, 5, value);
+};
+
+
+/**
+ * optional ShippingDetail shipping_detail = 6;
  * @return {?proto.user.ShippingDetail}
  */
 proto.user.QuoteRequest.prototype.getShippingDetail = function() {
   return /** @type{?proto.user.ShippingDetail} */ (
-    jspb.Message.getWrapperField(this, shipping_detail_pb.ShippingDetail, 4));
+    jspb.Message.getWrapperField(this, shipping_detail_pb.ShippingDetail, 6));
 };
 
 
@@ -368,7 +428,7 @@ proto.user.QuoteRequest.prototype.getShippingDetail = function() {
  * @return {!proto.user.QuoteRequest} returns this
 */
 proto.user.QuoteRequest.prototype.setShippingDetail = function(value) {
-  return jspb.Message.setWrapperField(this, 4, value);
+  return jspb.Message.setWrapperField(this, 6, value);
 };
 
 
@@ -386,16 +446,16 @@ proto.user.QuoteRequest.prototype.clearShippingDetail = function() {
  * @return {boolean}
  */
 proto.user.QuoteRequest.prototype.hasShippingDetail = function() {
-  return jspb.Message.getField(this, 4) != null;
+  return jspb.Message.getField(this, 6) != null;
 };
 
 
 /**
- * repeated AdditionalService additional_services = 5;
+ * repeated AdditionalService additional_services = 7;
  * @return {!Array<!proto.user.AdditionalService>}
  */
 proto.user.QuoteRequest.prototype.getAdditionalServicesList = function() {
-  return /** @type {!Array<!proto.user.AdditionalService>} */ (jspb.Message.getRepeatedField(this, 5));
+  return /** @type {!Array<!proto.user.AdditionalService>} */ (jspb.Message.getRepeatedField(this, 7));
 };
 
 
@@ -404,7 +464,7 @@ proto.user.QuoteRequest.prototype.getAdditionalServicesList = function() {
  * @return {!proto.user.QuoteRequest} returns this
  */
 proto.user.QuoteRequest.prototype.setAdditionalServicesList = function(value) {
-  return jspb.Message.setField(this, 5, value || []);
+  return jspb.Message.setField(this, 7, value || []);
 };
 
 
@@ -414,7 +474,7 @@ proto.user.QuoteRequest.prototype.setAdditionalServicesList = function(value) {
  * @return {!proto.user.QuoteRequest} returns this
  */
 proto.user.QuoteRequest.prototype.addAdditionalServices = function(value, opt_index) {
-  return jspb.Message.addToRepeatedField(this, 5, value, opt_index);
+  return jspb.Message.addToRepeatedField(this, 7, value, opt_index);
 };
 
 
@@ -428,12 +488,12 @@ proto.user.QuoteRequest.prototype.clearAdditionalServicesList = function() {
 
 
 /**
- * repeated Commodity commodities = 6;
+ * repeated Commodity commodities = 8;
  * @return {!Array<!proto.user.Commodity>}
  */
 proto.user.QuoteRequest.prototype.getCommoditiesList = function() {
   return /** @type{!Array<!proto.user.Commodity>} */ (
-    jspb.Message.getRepeatedWrapperField(this, commodity_pb.Commodity, 6));
+    jspb.Message.getRepeatedWrapperField(this, commodity_pb.Commodity, 8));
 };
 
 
@@ -442,7 +502,7 @@ proto.user.QuoteRequest.prototype.getCommoditiesList = function() {
  * @return {!proto.user.QuoteRequest} returns this
 */
 proto.user.QuoteRequest.prototype.setCommoditiesList = function(value) {
-  return jspb.Message.setRepeatedWrapperField(this, 6, value);
+  return jspb.Message.setRepeatedWrapperField(this, 8, value);
 };
 
 
@@ -452,7 +512,7 @@ proto.user.QuoteRequest.prototype.setCommoditiesList = function(value) {
  * @return {!proto.user.Commodity}
  */
 proto.user.QuoteRequest.prototype.addCommodities = function(opt_value, opt_index) {
-  return jspb.Message.addToRepeatedWrapperField(this, 6, opt_value, proto.user.Commodity, opt_index);
+  return jspb.Message.addToRepeatedWrapperField(this, 8, opt_value, proto.user.Commodity, opt_index);
 };
 
 

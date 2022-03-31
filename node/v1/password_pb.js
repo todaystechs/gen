@@ -472,7 +472,7 @@ proto.user.ResetPasswordData.toObject = function(includeInstance, msg) {
     token: jspb.Message.getFieldWithDefault(msg, 1, ""),
     newPassword: jspb.Message.getFieldWithDefault(msg, 2, ""),
     confirmPassword: jspb.Message.getFieldWithDefault(msg, 3, ""),
-    userId: jspb.Message.getFieldWithDefault(msg, 4, "")
+    email: jspb.Message.getFieldWithDefault(msg, 4, "")
   };
 
   if (includeInstance) {
@@ -523,7 +523,7 @@ proto.user.ResetPasswordData.deserializeBinaryFromReader = function(msg, reader)
       break;
     case 4:
       var value = /** @type {string} */ (reader.readString());
-      msg.setUserId(value);
+      msg.setEmail(value);
       break;
     default:
       reader.skipField();
@@ -575,7 +575,7 @@ proto.user.ResetPasswordData.serializeBinaryToWriter = function(message, writer)
       f
     );
   }
-  f = message.getUserId();
+  f = message.getEmail();
   if (f.length > 0) {
     writer.writeString(
       4,
@@ -640,10 +640,10 @@ proto.user.ResetPasswordData.prototype.setConfirmPassword = function(value) {
 
 
 /**
- * optional string user_id = 4;
+ * optional string email = 4;
  * @return {string}
  */
-proto.user.ResetPasswordData.prototype.getUserId = function() {
+proto.user.ResetPasswordData.prototype.getEmail = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 4, ""));
 };
 
@@ -652,7 +652,7 @@ proto.user.ResetPasswordData.prototype.getUserId = function() {
  * @param {string} value
  * @return {!proto.user.ResetPasswordData} returns this
  */
-proto.user.ResetPasswordData.prototype.setUserId = function(value) {
+proto.user.ResetPasswordData.prototype.setEmail = function(value) {
   return jspb.Message.setProto3StringField(this, 4, value);
 };
 

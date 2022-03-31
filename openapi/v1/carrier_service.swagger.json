@@ -548,6 +548,14 @@
           "type": "string",
           "title": "@gotags: dynamodbav:\"quote_id\""
         },
+        "userEmail": {
+          "type": "string",
+          "title": "@gotags: dynamodbav:\"user_email\""
+        },
+        "buisnessId": {
+          "type": "string",
+          "title": "@gotags: dynamodbav:\"business_id\""
+        },
         "mode": {
           "type": "string",
           "title": "@gotags: dynamodbav:\"mode\""
