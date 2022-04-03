@@ -7,7 +7,20 @@ var quote_pb = require('./quote_pb.js');
 var location_pb = require('./location_pb.js');
 var book_pb = require('./book_pb.js');
 var ok_pb = require('./ok_pb.js');
+var ok_with_data_pb = require('./ok_with_data_pb.js');
+var business_pb = require('./business_pb.js');
 var google_protobuf_wrappers_pb = require('google-protobuf/google/protobuf/wrappers_pb.js');
+
+function serialize_user_AllBusinessRequest(arg) {
+  if (!(arg instanceof business_pb.AllBusinessRequest)) {
+    throw new Error('Expected argument of type user.AllBusinessRequest');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_user_AllBusinessRequest(buffer_arg) {
+  return business_pb.AllBusinessRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
 
 function serialize_user_BookingData(arg) {
   if (!(arg instanceof book_pb.BookingData)) {
@@ -42,6 +55,17 @@ function deserialize_user_BusinessId(buffer_arg) {
   return carrier_service_pb.BusinessId.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_user_BusinessRequest(arg) {
+  if (!(arg instanceof business_pb.BusinessRequest)) {
+    throw new Error('Expected argument of type user.BusinessRequest');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_user_BusinessRequest(buffer_arg) {
+  return business_pb.BusinessRequest.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_user_CarrierServicePing(arg) {
   if (!(arg instanceof carrier_service_pb.CarrierServicePing)) {
     throw new Error('Expected argument of type user.CarrierServicePing');
@@ -51,6 +75,17 @@ function serialize_user_CarrierServicePing(arg) {
 
 function deserialize_user_CarrierServicePing(buffer_arg) {
   return carrier_service_pb.CarrierServicePing.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
+function serialize_user_DynamoBusiness(arg) {
+  if (!(arg instanceof business_pb.DynamoBusiness)) {
+    throw new Error('Expected argument of type user.DynamoBusiness');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_user_DynamoBusiness(buffer_arg) {
+  return business_pb.DynamoBusiness.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
 function serialize_user_FetchBookingsRequest(arg) {
@@ -130,6 +165,17 @@ function deserialize_user_Ok(buffer_arg) {
   return ok_pb.Ok.deserializeBinary(new Uint8Array(buffer_arg));
 }
 
+function serialize_user_OkWithData(arg) {
+  if (!(arg instanceof ok_with_data_pb.OkWithData)) {
+    throw new Error('Expected argument of type user.OkWithData');
+  }
+  return Buffer.from(arg.serializeBinary());
+}
+
+function deserialize_user_OkWithData(buffer_arg) {
+  return ok_with_data_pb.OkWithData.deserializeBinary(new Uint8Array(buffer_arg));
+}
+
 function serialize_user_QuoteRequest(arg) {
   if (!(arg instanceof quote_pb.QuoteRequest)) {
     throw new Error('Expected argument of type user.QuoteRequest');
@@ -154,6 +200,29 @@ function deserialize_user_QuoteResponse(buffer_arg) {
 
 
 var CarrierServiceService = exports.CarrierServiceService = {
+  // get business
+getBusinessById: {
+    path: '/user.CarrierService/GetBusinessById',
+    requestStream: false,
+    responseStream: false,
+    requestType: business_pb.BusinessRequest,
+    responseType: business_pb.DynamoBusiness,
+    requestSerialize: serialize_user_BusinessRequest,
+    requestDeserialize: deserialize_user_BusinessRequest,
+    responseSerialize: serialize_user_DynamoBusiness,
+    responseDeserialize: deserialize_user_DynamoBusiness,
+  },
+  getAllBusinesses: {
+    path: '/user.CarrierService/GetAllBusinesses',
+    requestStream: false,
+    responseStream: false,
+    requestType: business_pb.AllBusinessRequest,
+    responseType: ok_with_data_pb.OkWithData,
+    requestSerialize: serialize_user_AllBusinessRequest,
+    requestDeserialize: deserialize_user_AllBusinessRequest,
+    responseSerialize: serialize_user_OkWithData,
+    responseDeserialize: deserialize_user_OkWithData,
+  },
   // location
 getLocations: {
     path: '/user.CarrierService/GetLocations',

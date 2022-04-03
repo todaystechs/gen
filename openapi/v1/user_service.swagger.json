@@ -56,12 +56,12 @@
       "properties": {
         "typeUrl": {
           "type": "string",
-          "description": "A URL/resource name that uniquely identifies the type of the serialized\nprotocol buffer message. This string must contain at least\none \"/\" character. The last segment of the URL's path must represent\nthe fully qualified name of the type (as in\n`path/google.protobuf.Duration`). The name should be in a canonical form\n(e.g., leading \".\" is not accepted).\n\nIn practice, teams usually precompile into the binary all types that they\nexpect it to use in the context of Any. However, for URLs which use the\nscheme `http`, `https`, or no scheme, one can optionally set up a type\nserver that maps type URLs to message definitions as follows:\n\n* If no scheme is provided, `https` is assumed.\n* An HTTP GET on the URL must yield a [google.protobuf.Type][]\n  value in binary format, or produce an error.\n* Applications are allowed to cache lookup results based on the\n  URL, or have them precompiled into a binary to avoid any\n  lookup. Therefore, binary compatibility needs to be preserved\n  on changes to types. (Use versioned type names to manage\n  breaking changes.)\n\nNote: this functionality is not currently available in the official\nprotobuf release, and it is not used for type URLs beginning with\ntype.googleapis.com.\n\nSchemes other than `http`, `https` (or the empty scheme) might be\nused with implementation specific semantics.\n\n@gotags: dynamodbav:\"type_url\""
+          "description": "A URL/resource name that uniquely identifies the type of the serialized\nprotocol buffer message. This string must contain at least\none \"/\" character. The last segment of the URL's path must represent\nthe fully qualified name of the type (as in\n`path/google.protobuf.Duration`). The name should be in a canonical form\n(e.g., leading \".\" is not accepted).\n\nIn practice, teams usually precompile into the binary all types that they\nexpect it to use in the context of Any. However, for URLs which use the\nscheme `http`, `https`, or no scheme, one can optionally set up a type\nserver that maps type URLs to message definitions as follows:\n\n* If no scheme is provided, `https` is assumed.\n* An HTTP GET on the URL must yield a [google.protobuf.Type][]\n  value in binary format, or produce an error.\n* Applications are allowed to cache lookup results based on the\n  URL, or have them precompiled into a binary to avoid any\n  lookup. Therefore, binary compatibility needs to be preserved\n  on changes to types. (Use versioned type names to manage\n  breaking changes.)\n\nNote: this functionality is not currently available in the official\nprotobuf release, and it is not used for type URLs beginning with\ntype.googleapis.com.\n\nSchemes other than `http`, `https` (or the empty scheme) might be\nused with implementation specific semantics.\n\n@gotags: dynamodbav:\"type_url,omitempty\""
         },
         "value": {
           "type": "string",
           "format": "byte",
-          "title": "Must be a valid serialized protocol buffer of the above specified type.\n@gotags: dynamodbav:\"value\""
+          "title": "Must be a valid serialized protocol buffer of the above specified type.\n@gotags: dynamodbav:\"value,omitempty\""
         }
       }
     },
@@ -70,16 +70,16 @@
       "properties": {
         "success": {
           "type": "boolean",
-          "title": "@gotags: dynamodbav:\"success\""
+          "title": "@gotags: dynamodbav:\"success,omitempty\""
         },
         "statusCode": {
           "type": "integer",
           "format": "int32",
-          "title": "@gotags: dynamodbav:\"status_code\""
+          "title": "@gotags: dynamodbav:\"status_code,omitempty\""
         },
         "message": {
           "type": "string",
-          "title": "@gotags: dynamodbav:\"message\""
+          "title": "@gotags: dynamodbav:\"message,omitempty\""
         }
       }
     },
@@ -88,20 +88,20 @@
       "properties": {
         "success": {
           "type": "boolean",
-          "title": "@gotags: dynamodbav:\"success\""
+          "title": "@gotags: dynamodbav:\"success,omitempty\""
         },
         "statusCode": {
           "type": "integer",
           "format": "int32",
-          "title": "@gotags: dynamodbav:\"status_code\""
+          "title": "@gotags: dynamodbav:\"status_code,omitempty\""
         },
         "message": {
           "type": "string",
-          "title": "@gotags: dynamodbav:\"message\""
+          "title": "@gotags: dynamodbav:\"message,omitempty\""
         },
         "data": {
           "$ref": "#/definitions/userAny",
-          "title": "@gotags: dynamodbav:\"data\""
+          "title": "@gotags: dynamodbav:\"data,omitempty\""
         }
       }
     },
@@ -110,11 +110,11 @@
       "properties": {
         "phoneNumber": {
           "type": "string",
-          "title": "@gotags: dynamodbav:\"phone_number\""
+          "title": "@gotags: dynamodbav:\"phone_number,omitempty\""
         },
         "type": {
           "$ref": "#/definitions/userPhoneNumberType",
-          "title": "@gotags: dynamodbav:\"phone_number_type\""
+          "title": "@gotags: dynamodbav:\"phone_number_type,omitempty\""
         }
       }
     },
@@ -151,123 +151,132 @@
       "properties": {
         "Type": {
           "type": "string",
-          "title": "@gotags: dynamodbav:\"type\""
+          "title": "@gotags: dynamodbav:\"type,omitempty\""
         },
         "cognitoId": {
           "type": "string",
-          "title": "@gotags: dynamodbav:\"cognito_id\""
+          "title": "@gotags: dynamodbav:\"cognito_id,omitempty\""
         },
         "userName": {
           "type": "string",
-          "title": "@gotags: dynamodbav:\"user_name\""
+          "title": "@gotags: dynamodbav:\"user_name,omitempty\""
         },
         "userId": {
           "type": "string",
-          "title": "@gotags: dynamodbav:\"user_id\""
+          "title": "@gotags: dynamodbav:\"user_id,omitempty\""
         },
         "firstName": {
           "type": "string",
-          "title": "@gotags: dynamodbav:\"first_name\""
+          "title": "@gotags: dynamodbav:\"first_name,omitempty\""
         },
         "middleName": {
           "type": "string",
-          "title": "@gotags: dynamodbav:\"middle_name\""
+          "title": "@gotags: dynamodbav:\"middle_name,omitempty\""
         },
         "lastName": {
           "type": "string",
-          "title": "@gotags: dynamodbav:\"last_name\""
+          "title": "@gotags: dynamodbav:\"last_name,omitempty\""
         },
         "email": {
           "type": "string",
-          "title": "@gotags: dynamodbav:\"email\""
+          "title": "@gotags: dynamodbav:\"email,omitempty\""
         },
         "hashedPassword": {
           "type": "string",
-          "title": "@gotags: dynamodbav:\"hashed_password\""
+          "title": "@gotags: dynamodbav:\"hashed_password,omitempty\""
         },
         "avatarUrl": {
           "type": "string",
-          "title": "@gotags: dynamodbav:\"avatar_url\""
+          "title": "@gotags: dynamodbav:\"avatar_url,omitempty\""
         },
         "roles": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/userRole"
           },
-          "title": "@gotags: dynamodbav:\"roles\""
+          "title": "@gotags: dynamodbav:\"roles,omitempty\""
         },
         "newPasswordRequired": {
           "type": "boolean",
-          "title": "@gotags: dynamodbav:\"new_password_required\""
+          "title": "@gotags: dynamodbav:\"new_password_required,omitempty\""
         },
         "passwordChangedAt": {
           "type": "string",
-          "title": "@gotags: dynamodbav:\"password_changed_at\""
+          "title": "@gotags: dynamodbav:\"password_changed_at,omitempty\""
         },
         "createdOn": {
           "type": "string",
-          "title": "@gotags: dynamodbav:\"created_on\""
+          "title": "@gotags: dynamodbav:\"created_on,omitempty\""
         },
         "updatedOn": {
           "type": "string",
-          "title": "@gotags: dynamodbav:\"updated_on\""
+          "title": "@gotags: dynamodbav:\"updated_on,omitempty\""
         },
         "deletedOn": {
           "type": "string",
-          "title": "@gotags: dynamodbav:\"deleted_on\""
+          "title": "@gotags: dynamodbav:\"deleted_on,omitempty\""
         },
         "phoneNumbers": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/userPhoneNumberData"
           },
-          "title": "@gotags: dynamodbav:\"phone_numbers\""
+          "title": "@gotags: dynamodbav:\"phone_numbers,omitempty\""
         },
         "emailVerified": {
           "type": "boolean",
-          "title": "@gotags: dynamodbav:\"email_verified\""
+          "title": "@gotags: dynamodbav:\"email_verified,omitempty\""
         },
-        "resetPasswordToken": {
+        "resetPasswordTokens": {
           "type": "array",
           "items": {
             "type": "string"
           },
-          "title": "@gotags: dynamodbav:\"reset_password_token\""
+          "title": "@gotags: dynamodbav:\"reset_password_tokens,omitempty\""
+        },
+        "resetPasswordToken": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "number",
+            "format": "double"
+          },
+          "title": "@gotags: dynamodbav:\"reset_password_token,omitempty\""
         },
         "sessions": {
           "type": "array",
           "items": {
             "type": "string"
           },
-          "title": "@gotags: dynamodbav:\"sessions\""
+          "title": "@gotags: dynamodbav:\"sessions,omitempty\""
         },
         "pk": {
           "type": "string",
-          "title": "@gotags: dynamodbav:\"sk\""
+          "title": "@gotags: dynamodbav:\"sk,omitempty\""
         },
         "sk": {
           "type": "string",
-          "title": "@gotags: dynamodbav:\"pk\""
+          "title": "@gotags: dynamodbav:\"pk,omitempty\""
         },
         "BusinessIds": {
           "type": "array",
           "items": {
             "type": "string"
           },
-          "title": "@gotags: dynamodbav:\"business_ids\""
+          "title": "@gotags: dynamodbav:\"business_ids,omitempty\""
         },
         "unsuscribedToMarketingEmail": {
           "type": "boolean",
-          "title": "@gotags: dynamodbav:\"unsuscribed_to_marketing_email\""
+          "title": "@gotags: dynamodbav:\"unsuscribed_to_marketing_email,omitempty\""
         }
-      }
+      },
+      "title": "@gotags: dynamodbav:\"user_entity,omitempty\""
     },
     "userUserServicePingData": {
       "type": "object",
       "properties": {
         "hi": {
           "type": "string",
-          "title": "@gotags: dynamodbav:\"hi\""
+          "title": "@gotags: dynamodbav:\"hi,omitempty\""
         }
       }
     }

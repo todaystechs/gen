@@ -49,7 +49,7 @@ if (goog.DEBUG && !COMPILED) {
  * @private {!Array<number>}
  * @const
  */
-proto.user.AddStaffData.repeatedFields_ = [2,3];
+proto.user.AddStaffData.repeatedFields_ = [2];
 
 
 
@@ -84,7 +84,8 @@ proto.user.AddStaffData.toObject = function(includeInstance, msg) {
   var f, obj = {
     token: jspb.Message.getFieldWithDefault(msg, 1, ""),
     rolesList: (f = jspb.Message.getRepeatedField(msg, 2)) == null ? undefined : f,
-    newStaffEmailList: (f = jspb.Message.getRepeatedField(msg, 3)) == null ? undefined : f
+    newStaffEmail: jspb.Message.getFieldWithDefault(msg, 3, ""),
+    password: jspb.Message.getFieldWithDefault(msg, 4, "")
   };
 
   if (includeInstance) {
@@ -133,7 +134,11 @@ proto.user.AddStaffData.deserializeBinaryFromReader = function(msg, reader) {
       break;
     case 3:
       var value = /** @type {string} */ (reader.readString());
-      msg.addNewStaffEmail(value);
+      msg.setNewStaffEmail(value);
+      break;
+    case 4:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setPassword(value);
       break;
     default:
       reader.skipField();
@@ -178,10 +183,17 @@ proto.user.AddStaffData.serializeBinaryToWriter = function(message, writer) {
       f
     );
   }
-  f = message.getNewStaffEmailList();
+  f = message.getNewStaffEmail();
   if (f.length > 0) {
-    writer.writeRepeatedString(
+    writer.writeString(
       3,
+      f
+    );
+  }
+  f = message.getPassword();
+  if (f.length > 0) {
+    writer.writeString(
+      4,
       f
     );
   }
@@ -244,39 +256,38 @@ proto.user.AddStaffData.prototype.clearRolesList = function() {
 
 
 /**
- * repeated string new_staff_email = 3;
- * @return {!Array<string>}
+ * optional string new_staff_email = 3;
+ * @return {string}
  */
-proto.user.AddStaffData.prototype.getNewStaffEmailList = function() {
-  return /** @type {!Array<string>} */ (jspb.Message.getRepeatedField(this, 3));
-};
-
-
-/**
- * @param {!Array<string>} value
- * @return {!proto.user.AddStaffData} returns this
- */
-proto.user.AddStaffData.prototype.setNewStaffEmailList = function(value) {
-  return jspb.Message.setField(this, 3, value || []);
+proto.user.AddStaffData.prototype.getNewStaffEmail = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
 };
 
 
 /**
  * @param {string} value
- * @param {number=} opt_index
  * @return {!proto.user.AddStaffData} returns this
  */
-proto.user.AddStaffData.prototype.addNewStaffEmail = function(value, opt_index) {
-  return jspb.Message.addToRepeatedField(this, 3, value, opt_index);
+proto.user.AddStaffData.prototype.setNewStaffEmail = function(value) {
+  return jspb.Message.setProto3StringField(this, 3, value);
 };
 
 
 /**
- * Clears the list making it empty but non-null.
+ * optional string password = 4;
+ * @return {string}
+ */
+proto.user.AddStaffData.prototype.getPassword = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 4, ""));
+};
+
+
+/**
+ * @param {string} value
  * @return {!proto.user.AddStaffData} returns this
  */
-proto.user.AddStaffData.prototype.clearNewStaffEmailList = function() {
-  return this.setNewStaffEmailList([]);
+proto.user.AddStaffData.prototype.setPassword = function(value) {
+  return jspb.Message.setProto3StringField(this, 4, value);
 };
 
 

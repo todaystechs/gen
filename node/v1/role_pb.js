@@ -82,7 +82,8 @@ proto.user.UpdateUserRoleData.prototype.toObject = function(opt_includeInstance)
 proto.user.UpdateUserRoleData.toObject = function(includeInstance, msg) {
   var f, obj = {
     token: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    newRoleList: (f = jspb.Message.getRepeatedField(msg, 2)) == null ? undefined : f
+    newRoleList: (f = jspb.Message.getRepeatedField(msg, 2)) == null ? undefined : f,
+    staffEmail: jspb.Message.getFieldWithDefault(msg, 3, "")
   };
 
   if (includeInstance) {
@@ -129,6 +130,10 @@ proto.user.UpdateUserRoleData.deserializeBinaryFromReader = function(msg, reader
         msg.addNewRole(values[i]);
       }
       break;
+    case 3:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setStaffEmail(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -169,6 +174,13 @@ proto.user.UpdateUserRoleData.serializeBinaryToWriter = function(message, writer
   if (f.length > 0) {
     writer.writePackedEnum(
       2,
+      f
+    );
+  }
+  f = message.getStaffEmail();
+  if (f.length > 0) {
+    writer.writeString(
+      3,
       f
     );
   }
@@ -227,6 +239,24 @@ proto.user.UpdateUserRoleData.prototype.addNewRole = function(value, opt_index) 
  */
 proto.user.UpdateUserRoleData.prototype.clearNewRoleList = function() {
   return this.setNewRoleList([]);
+};
+
+
+/**
+ * optional string staff_email = 3;
+ * @return {string}
+ */
+proto.user.UpdateUserRoleData.prototype.getStaffEmail = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.user.UpdateUserRoleData} returns this
+ */
+proto.user.UpdateUserRoleData.prototype.setStaffEmail = function(value) {
+  return jspb.Message.setProto3StringField(this, 3, value);
 };
 
 

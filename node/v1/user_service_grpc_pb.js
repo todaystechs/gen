@@ -250,8 +250,8 @@ var UserServiceService = exports.UserServiceService = {
     responseSerialize: serialize_user_OkWithData,
     responseDeserialize: deserialize_user_OkWithData,
   },
-  addUser: {
-    path: '/user.UserService/AddUser',
+  addStaff: {
+    path: '/user.UserService/AddStaff',
     requestStream: false,
     responseStream: false,
     requestType: add_staff_pb.AddStaffData,

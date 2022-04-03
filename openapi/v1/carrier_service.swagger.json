@@ -68,67 +68,67 @@
       "properties": {
         "addressLine1": {
           "type": "string",
-          "title": "@gotags: dynamodbav:\"address_line_1\""
+          "title": "@gotags: dynamodbav:\"address_line_1,omitempty\""
         },
         "addressLine2": {
           "type": "string",
-          "title": "@gotags: dynamodbav:\"address_line_2\""
+          "title": "@gotags: dynamodbav:\"address_line_2,omitempty\""
         },
         "streetNumber": {
           "type": "string",
-          "title": "@gotags: dynamodbav:\"street_number_1\""
+          "title": "@gotags: dynamodbav:\"street_number_1,omitempty\""
         },
         "streetName": {
           "type": "string",
-          "title": "@gotags: dynamodbav:\"street_name\""
+          "title": "@gotags: dynamodbav:\"street_name,omitempty\""
         },
         "city": {
           "type": "string",
-          "title": "@gotags: dynamodbav:\"city\""
+          "title": "@gotags: dynamodbav:\"city,omitempty\""
         },
         "county": {
           "type": "string",
-          "title": "@gotags: dynamodbav:\"county\""
+          "title": "@gotags: dynamodbav:\"county,omitempty\""
         },
         "zipCode": {
           "type": "string",
-          "title": "@gotags: dynamodbav:\"zip_code\""
+          "title": "@gotags: dynamodbav:\"zip_code,omitempty\""
         },
         "state": {
           "type": "string",
-          "title": "@gotags: dynamodbav:\"state\""
+          "title": "@gotags: dynamodbav:\"state,omitempty\""
         },
         "extendedZipCode": {
           "type": "string",
-          "title": "@gotags: dynamodbav:\"extended_zip_code\""
+          "title": "@gotags: dynamodbav:\"extended_zip_code,omitempty\""
         },
         "country": {
           "type": "string",
-          "title": "@gotags: dynamodbav:\"country\""
+          "title": "@gotags: dynamodbav:\"country,omitempty\""
         },
         "freeFormAddress": {
           "type": "string",
-          "title": "@gotags: dynamodbav:\"free_form_address\""
+          "title": "@gotags: dynamodbav:\"free_form_address,omitempty\""
         },
         "localName": {
           "type": "string",
-          "title": "@gotags: dynamodbav:\"local_name\""
+          "title": "@gotags: dynamodbav:\"local_name,omitempty\""
         },
         "id": {
           "type": "string",
-          "title": "@gotags: dynamodbav:\"id\""
+          "title": "@gotags: dynamodbav:\"id,omitempty\""
         },
         "type": {
           "type": "string",
-          "title": "@gotags: dynamodbav:\"type\""
+          "title": "@gotags: dynamodbav:\"type,omitempty\""
         },
         "pk": {
           "type": "string",
-          "title": "@gotags: dynamodbav:\"pk\""
+          "title": "@gotags: dynamodbav:\"pk,omitempty\""
         },
         "sk": {
           "type": "string",
-          "title": "@gotags: dynamodbav:\"sk\""
+          "title": "@gotags: dynamodbav:\"sk,omitempty\""
         }
       },
       "title": "type Address struct {\n\tStreetNumber                string `dynamodbav:\"street_number\" json:\"street_number\"`\n\tStreetName                  string `dynamodbav:\"street_name\" json:\"street_name\"`\n\tMunicipality                string `dynamodbav:\"municipality\" json:\"municipality\"`\n\tCountrySecondarySubdivision string `dynamodbav:\"country_secondary_subdivision\"  json:\"country_secondary_subdivision\"`\n\tCountrySubdivision          string `dynamodbav:\"country_subdivision\" json:\"country_subdivision\"`\n\tCountrySubdivisionName      string `dynamodbav:\"country_subdivision_name\" json:\"country_subdivision_name\"`\n\tPostalCode                  string `dynamodbav:\"postal_code\" json:\"postal_code\"`\n\tState                       string `dynamodbav:\"state\" json:\"state\"`\n\tExtendedPostalCode          string `dynamodbav:\"extended_postal_code\" json:\"extended_postal_code\"`\n\tCountryCode                 string `dynamodbav:\"country_code\" json:\"country_code\"`\n\tCountry                     string `dynamodbav:\"country\" json:\"country\"`\n\tCountryCodeISO3             string `dynamodbav:\"country_codeISO3\" json:\"country_codeISO3\"`\n\tFreeformAddress             string `dynamodbav:\"freeform_address\" json:\"freeform_address\"`\n\tLocalName                   string `dynamodbav:\"local_name\" json:\"local_name\"`\n\tID                          string `dynamodbav:\"id\" json:\"id\"`\n\tType                        string `dynamodbav:\"type\" json:\"type\"`\n\tAddressLine2                string `dynamodbav:\"address_line2\" json:\"address_line2\"`\n\tAddressLine1                string `dynamodbav:\"address_line1\" json:\"address_line1\"`\n}"
@@ -139,17 +139,31 @@
         "fullAmount": {
           "type": "number",
           "format": "double",
-          "title": "@gotags: dynamodbav:\"full_amount\""
+          "title": "@gotags: dynamodbav:\"full_amount,omitempty\""
         },
         "discountApplied": {
           "type": "number",
           "format": "double",
-          "title": "@gotags: dynamodbav:\"discount_applied\""
+          "title": "@gotags: dynamodbav:\"discount_applied,omitempty\""
         },
         "netAmount": {
           "type": "number",
           "format": "double",
-          "title": "@gotags: dynamodbav:\"net_amount\""
+          "title": "@gotags: dynamodbav:\"net_amount,omitempty\""
+        }
+      }
+    },
+    "userAny": {
+      "type": "object",
+      "properties": {
+        "typeUrl": {
+          "type": "string",
+          "description": "A URL/resource name that uniquely identifies the type of the serialized\nprotocol buffer message. This string must contain at least\none \"/\" character. The last segment of the URL's path must represent\nthe fully qualified name of the type (as in\n`path/google.protobuf.Duration`). The name should be in a canonical form\n(e.g., leading \".\" is not accepted).\n\nIn practice, teams usually precompile into the binary all types that they\nexpect it to use in the context of Any. However, for URLs which use the\nscheme `http`, `https`, or no scheme, one can optionally set up a type\nserver that maps type URLs to message definitions as follows:\n\n* If no scheme is provided, `https` is assumed.\n* An HTTP GET on the URL must yield a [google.protobuf.Type][]\n  value in binary format, or produce an error.\n* Applications are allowed to cache lookup results based on the\n  URL, or have them precompiled into a binary to avoid any\n  lookup. Therefore, binary compatibility needs to be preserved\n  on changes to types. (Use versioned type names to manage\n  breaking changes.)\n\nNote: this functionality is not currently available in the official\nprotobuf release, and it is not used for type URLs beginning with\ntype.googleapis.com.\n\nSchemes other than `http`, `https` (or the empty scheme) might be\nused with implementation specific semantics.\n\n@gotags: dynamodbav:\"type_url,omitempty\""
+        },
+        "value": {
+          "type": "string",
+          "format": "byte",
+          "title": "Must be a valid serialized protocol buffer of the above specified type.\n@gotags: dynamodbav:\"value,omitempty\""
         }
       }
     },
@@ -158,31 +172,99 @@
       "properties": {
         "bookingId": {
           "type": "string",
-          "title": "@gotags: dynamodbav:\"booking_id\""
+          "title": "@gotags: dynamodbav:\"booking_id,omitempty\""
         },
         "bolUrl": {
           "type": "string",
-          "title": "@gotags: dynamodbav:\"bol_url\""
+          "title": "@gotags: dynamodbav:\"bol_url,omitempty\""
         },
         "invoiceUrl": {
           "type": "string",
-          "title": "@gotags: dynamodbav:\"invoice_url\""
+          "title": "@gotags: dynamodbav:\"invoice_url,omitempty\""
         },
         "invoiceDueDate": {
           "type": "string",
-          "title": "@gotags: dynamodbav:\"invoice_due_date\""
+          "title": "@gotags: dynamodbav:\"invoice_due_date,omitempty\""
         },
         "pickUpStart": {
           "type": "string",
-          "title": "@gotags: dynamodbav:\"pick_up_start\""
+          "title": "@gotags: dynamodbav:\"pick_up_start,omitempty\""
         },
         "pickUpEnd": {
           "type": "string",
-          "title": "@gotags: dynamodbav:\"pick_up_end\""
+          "title": "@gotags: dynamodbav:\"pick_up_end,omitempty\""
         },
         "bookedQuote": {
           "$ref": "#/definitions/userQuoteRequest",
-          "title": "@gotags: dynamodbav:\"booked_quote\""
+          "title": "@gotags: dynamodbav:\"booked_quote,omitempty\""
+        }
+      }
+    },
+    "userBusinessData": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "title": "@gotags: dynamodbav:\"type,omitempty\""
+        },
+        "businessName": {
+          "type": "string",
+          "title": "@gotags: dynamodbav:\"business_name,omitempty\""
+        },
+        "businessId": {
+          "type": "string",
+          "title": "@gotags: dynamodbav:\"business_id,omitempty\""
+        },
+        "businessEmail": {
+          "type": "string",
+          "title": "@gotags: dynamodbav:\"business_email,omitempty\""
+        },
+        "accountingEmail": {
+          "type": "string",
+          "title": "@gotags: dynamodbav:\"accounting_email,omitempty\""
+        },
+        "customerServiceEmail": {
+          "type": "string",
+          "title": "@gotags: dynamodbav:\"customer_service_email,omitempty\""
+        },
+        "highPriorityEmail": {
+          "type": "string",
+          "title": "@gotags: dynamodbav:\"high_priority_email,omitempty\""
+        },
+        "avatarUrl": {
+          "type": "string",
+          "title": "@gotags: dynamodbav:\"avatar_url,omitempty\""
+        },
+        "adminEmail": {
+          "type": "string",
+          "title": "@gotags: dynamodbav:\"admin_email,omitempty\""
+        },
+        "createdOn": {
+          "type": "string",
+          "title": "@gotags: dynamodbav:\"created_on,omitempty\""
+        },
+        "updatedOn": {
+          "type": "string",
+          "title": "@gotags: dynamodbav:\"updated_on,omitempty\""
+        },
+        "deletedOn": {
+          "type": "string",
+          "title": "@gotags: dynamodbav:\"deleted_on,omitempty\""
+        },
+        "phoneNumbers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/userPhoneNumberData"
+          },
+          "title": "@gotags: dynamodbav:\"phone_numbers,omitempty\""
+        },
+        "sk": {
+          "type": "string",
+          "title": "@gotags: dynamodbav:\"sk,omitempty\""
+        },
+        "pk": {
+          "type": "string",
+          "title": "@gotags: dynamodbav:\"pk,omitempty\""
         }
       }
     },
@@ -191,11 +273,11 @@
       "properties": {
         "start": {
           "type": "string",
-          "title": "@gotags: dynamodbav:\"start\""
+          "title": "@gotags: dynamodbav:\"start,omitempty\""
         },
         "end": {
           "type": "string",
-          "title": "@gotags: dynamodbav:\"end\""
+          "title": "@gotags: dynamodbav:\"end,omitempty\""
         }
       }
     },
@@ -204,27 +286,27 @@
       "properties": {
         "name": {
           "type": "string",
-          "title": "@gotags: dynamodbav:\"name\""
+          "title": "@gotags: dynamodbav:\"name,omitempty\""
         },
         "authUrl": {
           "type": "string",
-          "title": "@gotags: dynamodbav:\"auth_url\""
+          "title": "@gotags: dynamodbav:\"auth_url,omitempty\""
         },
         "rateUrl": {
           "type": "string",
-          "title": "@gotags: dynamodbav:\"rate_url\""
+          "title": "@gotags: dynamodbav:\"rate_url,omitempty\""
         },
         "addAddressUrl": {
           "type": "string",
-          "title": "@gotags: dynamodbav:\"add_address_url\""
+          "title": "@gotags: dynamodbav:\"add_address_url,omitempty\""
         },
         "getAddressUrl": {
           "type": "string",
-          "title": "@gotags: dynamodbav:\"get_address_url\""
+          "title": "@gotags: dynamodbav:\"get_address_url,omitempty\""
         },
         "quoteHistoryUrl": {
           "type": "string",
-          "title": "@gotags: dynamodbav:\"quote_history_url\""
+          "title": "@gotags: dynamodbav:\"quote_history_url,omitempty\""
         }
       },
       "title": "type BaseCarrier struct {\n\tName            string `json:\"name,omitempty\"`\n\tAuthUrl         string `json:\"auth_url,omitempty\"`\n\tRateUrl         string `json:\"rate_url,omitempty\"`\n\tAddAddressUrl   string `json:\"add_address_url,omitempty\"`\n\tGetAddressesUrl string `json:\"get_addresses_url,omitempty\"`\n\tQuoteHistoryUrl string `json:\"quote_history_url,omitempty\"`\n}"
@@ -234,7 +316,7 @@
       "properties": {
         "hi": {
           "type": "string",
-          "title": "@gotags: dynamodbav:\"hi\""
+          "title": "@gotags: dynamodbav:\"hi,omitempty\""
         }
       }
     },
@@ -244,52 +326,52 @@
         "density": {
           "type": "number",
           "format": "float",
-          "title": "@gotags: dynamodbav:\"density\""
+          "title": "@gotags: dynamodbav:\"density,omitempty\""
         },
         "length": {
           "type": "number",
           "format": "float",
-          "title": "@gotags: dynamodbav:\"length\""
+          "title": "@gotags: dynamodbav:\"length,omitempty\""
         },
         "width": {
           "type": "number",
           "format": "float",
-          "title": "@gotags: dynamodbav:\"width\""
+          "title": "@gotags: dynamodbav:\"width,omitempty\""
         },
         "height": {
           "type": "number",
           "format": "float",
-          "title": "@gotags: dynamodbav:\"height\""
+          "title": "@gotags: dynamodbav:\"height,omitempty\""
         },
         "weight": {
           "type": "number",
           "format": "float",
-          "title": "@gotags: dynamodbav:\"weight\""
+          "title": "@gotags: dynamodbav:\"weight,omitempty\""
         },
         "dimensionUOM": {
           "$ref": "#/definitions/userDimensionUOM",
-          "title": "@gotags: dynamodbav:\"dimension_uom\""
+          "title": "@gotags: dynamodbav:\"dimension_uom,omitempty\""
         },
         "weightUOM": {
           "$ref": "#/definitions/userWeightUOM",
-          "title": "@gotags: dynamodbav:\"weight_uom\""
+          "title": "@gotags: dynamodbav:\"weight_uom,omitempty\""
         },
         "dimensionDisplay": {
           "type": "string",
-          "title": "@gotags: dynamodbav:\"dimension_display\""
+          "title": "@gotags: dynamodbav:\"dimension_display,omitempty\""
         },
         "packageType": {
           "$ref": "#/definitions/userPackageType",
-          "title": "@gotags: dynamodbav:\"package_type\""
+          "title": "@gotags: dynamodbav:\"package_type,omitempty\""
         },
         "quantity": {
           "type": "integer",
           "format": "int32",
-          "title": "@gotags: dynamodbav:\"quantity\""
+          "title": "@gotags: dynamodbav:\"quantity,omitempty\""
         },
         "freightClass": {
           "$ref": "#/definitions/userFreightClass",
-          "title": "@gotags: dynamodbav:\"freight_class\""
+          "title": "@gotags: dynamodbav:\"freight_class,omitempty\""
         }
       }
     },
@@ -298,38 +380,38 @@
       "properties": {
         "firstName": {
           "type": "string",
-          "title": "@gotags: dynamodbav:\"first_name\""
+          "title": "@gotags: dynamodbav:\"first_name,omitempty\""
         },
         "lastName": {
           "type": "string",
-          "title": "@gotags: dynamodbav:\"last_name\""
+          "title": "@gotags: dynamodbav:\"last_name,omitempty\""
         },
         "phoneNumber": {
           "type": "string",
-          "title": "@gotags: dynamodbav:\"phone_number\""
+          "title": "@gotags: dynamodbav:\"phone_number,omitempty\""
         },
         "phoneNumberExtension": {
           "type": "string",
-          "title": "@gotags: dynamodbav:\"phone_number_extension\""
+          "title": "@gotags: dynamodbav:\"phone_number_extension,omitempty\""
         },
         "emailAddress": {
           "type": "string",
-          "title": "@gotags: dynamodbav:\"email_address\""
+          "title": "@gotags: dynamodbav:\"email_address,omitempty\""
         },
         "phoneNumberDisplay": {
           "type": "string",
-          "title": "@gotags: dynamodbav:\"phone_number_display\""
+          "title": "@gotags: dynamodbav:\"phone_number_display,omitempty\""
         },
         "roles": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/userRole"
           },
-          "title": "@gotags: dynamodbav:\"roles\""
+          "title": "@gotags: dynamodbav:\"roles,omitempty\""
         },
         "prefferedContactMethod": {
           "type": "string",
-          "title": "@gotags: dynamodbav:\"preffered_contact_method\""
+          "title": "@gotags: dynamodbav:\"preffered_contact_method,omitempty\""
         }
       }
     },
@@ -338,22 +420,22 @@
       "properties": {
         "location": {
           "$ref": "#/definitions/userLocation",
-          "title": "@gotags: dynamodbav:\"location\""
+          "title": "@gotags: dynamodbav:\"location,omitempty\""
         },
         "locationType": {
           "$ref": "#/definitions/userLocationType",
-          "title": "@gotags: dynamodbav:\"location_type\""
+          "title": "@gotags: dynamodbav:\"location_type,omitempty\""
         },
         "additionalSevices": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/userAdditionalService"
           },
-          "title": "@gotags: dynamodbav:\"additional_sevices\""
+          "title": "@gotags: dynamodbav:\"additional_sevices,omitempty\""
         },
         "date": {
           "type": "string",
-          "title": "@gotags: dynamodbav:\"date\""
+          "title": "@gotags: dynamodbav:\"date,omitempty\""
         }
       }
     },
@@ -364,6 +446,31 @@
         "CM"
       ],
       "default": "INCH"
+    },
+    "userDynamoBusiness": {
+      "type": "object",
+      "properties": {
+        "pk": {
+          "type": "string",
+          "title": "@gotags: dynamodbav:\"pk,omitempty\""
+        },
+        "sk": {
+          "type": "string",
+          "title": "@gotags: dynamodbav:\"sk,omitempty\""
+        },
+        "businessPk": {
+          "type": "string",
+          "title": "@gotags: dynamodbav:\"business_pk,omitempty\""
+        },
+        "businessSk": {
+          "type": "string",
+          "title": "@gotags: dynamodbav:\"business_sk,omitempty\""
+        },
+        "businessEntity": {
+          "$ref": "#/definitions/userBusinessData",
+          "title": "@gotags: dynamodbav:\"business_entity,omitempty\""
+        }
+      }
     },
     "userFreightClass": {
       "type": "string",
@@ -397,7 +504,7 @@
           "items": {
             "$ref": "#/definitions/userBookingResponse"
           },
-          "title": "@gotags: dynamodbav:\"booking_response\""
+          "title": "@gotags: dynamodbav:\"booking_response,omitempty\""
         }
       }
     },
@@ -406,14 +513,14 @@
       "properties": {
         "quote": {
           "$ref": "#/definitions/userQuoteRequest",
-          "title": "@gotags: dynamodbav:\"quote\""
+          "title": "@gotags: dynamodbav:\"quote,omitempty\""
         },
         "quotes": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/userQuoteResponse"
           },
-          "title": "@gotags: dynamodbav:\"quotes\""
+          "title": "@gotags: dynamodbav:\"quotes,omitempty\""
         }
       }
     },
@@ -422,7 +529,7 @@
       "properties": {
         "ListsOfLocation": {
           "$ref": "#/definitions/userLocation",
-          "title": "@gotags: dynamodbav:\""
+          "title": "@gotags: dynamodbav:lists_of_locations,omitempty\""
         }
       }
     },
@@ -431,42 +538,42 @@
       "properties": {
         "id": {
           "type": "string",
-          "title": "@gotags: dynamodbav:\"id\""
+          "title": "@gotags: dynamodbav:\"id,omitempty\""
         },
         "name": {
           "type": "string",
-          "title": "@gotags: dynamodbav:\"name\""
+          "title": "@gotags: dynamodbav:\"name,omitempty\""
         },
         "address": {
           "$ref": "#/definitions/userAddress",
-          "title": "@gotags: dynamodbav:\"address\""
+          "title": "@gotags: dynamodbav:\"address,omitempty\""
         },
         "contact": {
           "$ref": "#/definitions/userContact",
-          "title": "@gotags: dynamodbav:\"contact\""
+          "title": "@gotags: dynamodbav:\"contact,omitempty\""
         },
         "locationType": {
           "$ref": "#/definitions/userLocationType",
-          "title": "@gotags: dynamodbav:\"location_type\""
+          "title": "@gotags: dynamodbav:\"location_type,omitempty\""
         },
         "additionalService": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/userAdditionalService"
           },
-          "title": "@gotags: dynamodbav:\"additional_service\""
+          "title": "@gotags: dynamodbav:\"additional_service,omitempty\""
         },
         "businessHours": {
           "$ref": "#/definitions/userBusinessHour",
-          "title": "@gotags: dynamodbav:\"business_hours\""
+          "title": "@gotags: dynamodbav:\"business_hours,omitempty\","
         },
         "isDefaultPickUp": {
           "type": "boolean",
-          "title": "@gotags: dynamodbav:\"is_default_pick_up\""
+          "title": "@gotags: dynamodbav:\"is_default_pick_up,omitempty\""
         },
         "isDefaultDelivery": {
           "type": "boolean",
-          "title": "@gotags: dynamodbav:\"is_default_delivery\""
+          "title": "@gotags: dynamodbav:\"is_default_delivery,omitempty\""
         }
       }
     },
@@ -491,16 +598,38 @@
       "properties": {
         "success": {
           "type": "boolean",
-          "title": "@gotags: dynamodbav:\"success\""
+          "title": "@gotags: dynamodbav:\"success,omitempty\""
         },
         "statusCode": {
           "type": "integer",
           "format": "int32",
-          "title": "@gotags: dynamodbav:\"status_code\""
+          "title": "@gotags: dynamodbav:\"status_code,omitempty\""
         },
         "message": {
           "type": "string",
-          "title": "@gotags: dynamodbav:\"message\""
+          "title": "@gotags: dynamodbav:\"message,omitempty\""
+        }
+      }
+    },
+    "userOkWithData": {
+      "type": "object",
+      "properties": {
+        "success": {
+          "type": "boolean",
+          "title": "@gotags: dynamodbav:\"success,omitempty\""
+        },
+        "statusCode": {
+          "type": "integer",
+          "format": "int32",
+          "title": "@gotags: dynamodbav:\"status_code,omitempty\""
+        },
+        "message": {
+          "type": "string",
+          "title": "@gotags: dynamodbav:\"message,omitempty\""
+        },
+        "data": {
+          "$ref": "#/definitions/userAny",
+          "title": "@gotags: dynamodbav:\"data,omitempty\""
         }
       }
     },
@@ -517,27 +646,49 @@
       ],
       "default": "Pallet"
     },
+    "userPhoneNumberData": {
+      "type": "object",
+      "properties": {
+        "phoneNumber": {
+          "type": "string",
+          "title": "@gotags: dynamodbav:\"phone_number,omitempty\""
+        },
+        "type": {
+          "$ref": "#/definitions/userPhoneNumberType",
+          "title": "@gotags: dynamodbav:\"phone_number_type,omitempty\""
+        }
+      }
+    },
+    "userPhoneNumberType": {
+      "type": "string",
+      "enum": [
+        "Home",
+        "Office",
+        "CellPhone"
+      ],
+      "default": "Home"
+    },
     "userPickup": {
       "type": "object",
       "properties": {
         "location": {
           "$ref": "#/definitions/userLocation",
-          "title": "@gotags: dynamodbav:\"location\""
+          "title": "@gotags: dynamodbav:\"location,omitempty\""
         },
         "locationType": {
           "$ref": "#/definitions/userLocationType",
-          "title": "@gotags: dynamodbav:\"location_type\""
+          "title": "@gotags: dynamodbav:\"location_type,omitempty\""
         },
         "additionalSevices": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/userAdditionalService"
           },
-          "title": "@gotags: dynamodbav:\"additional_Sevices\""
+          "title": "@gotags: dynamodbav:\"additional_Sevices,omitempty\""
         },
         "date": {
           "type": "string",
-          "title": "@gotags: dynamodbav:\"date\""
+          "title": "@gotags: dynamodbav:\"date,omitempty\""
         }
       }
     },
@@ -546,41 +697,41 @@
       "properties": {
         "quoteId": {
           "type": "string",
-          "title": "@gotags: dynamodbav:\"quote_id\""
+          "title": "@gotags: dynamodbav:\"quote_id,omitempty\""
         },
         "userEmail": {
           "type": "string",
-          "title": "@gotags: dynamodbav:\"user_email\""
+          "title": "@gotags: dynamodbav:\"user_email,omitempty\""
         },
         "buisnessId": {
           "type": "string",
-          "title": "@gotags: dynamodbav:\"business_id\""
+          "title": "@gotags: dynamodbav:\"business_id,omitempty\""
         },
         "mode": {
           "type": "string",
-          "title": "@gotags: dynamodbav:\"mode\""
+          "title": "@gotags: dynamodbav:\"mode,omitempty\""
         },
         "liablePartyId": {
           "type": "string",
-          "title": "@gotags: dynamodbav:\"liable_party_id\""
+          "title": "@gotags: dynamodbav:\"liable_party_id,omitempty\""
         },
         "shippingDetail": {
           "$ref": "#/definitions/userShippingDetail",
-          "title": "@gotags: dynamodbav:\"shipping_detail\""
+          "title": "@gotags: dynamodbav:\"shipping_detail,omitempty\""
         },
         "additionalServices": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/userAdditionalService"
           },
-          "title": "@gotags: dynamodbav:\"additional_services\""
+          "title": "@gotags: dynamodbav:\"additional_services,omitempty\""
         },
         "commodities": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/userCommodity"
           },
-          "title": "@gotags: dynamodbav:\"commodities\""
+          "title": "@gotags: dynamodbav:\"commodities,omitempty\""
         }
       }
     },
@@ -589,27 +740,27 @@
       "properties": {
         "quoteId": {
           "type": "string",
-          "title": "@gotags: dynamodbav:\"quote_id\""
+          "title": "@gotags: dynamodbav:\"quote_id,omitempty\""
         },
         "sk": {
           "type": "string",
-          "title": "@gotags: dynamodbav:\"sort_id\""
+          "title": "@gotags: dynamodbav:\"sort_id,omitempty\""
         },
         "carrier": {
           "$ref": "#/definitions/userCarrier",
-          "title": "@gotags: dynamodbav:\"carrier\""
+          "title": "@gotags: dynamodbav:\"carrier,omitempty\""
         },
         "amount": {
           "$ref": "#/definitions/userAmount",
-          "title": "@gotags: dynamodbav:\"amount\""
+          "title": "@gotags: dynamodbav:\"amount,omitempty\""
         },
         "transitTime": {
           "type": "string",
-          "title": "@gotags: dynamodbav:\"transit_time\""
+          "title": "@gotags: dynamodbav:\"transit_time,omitempty\""
         },
         "guranteed": {
           "type": "boolean",
-          "title": "@gotags: dynamodbav:\"guranteed\""
+          "title": "@gotags: dynamodbav:\"guranteed,omitempty\""
         }
       }
     },
@@ -637,11 +788,11 @@
       "properties": {
         "pickUp": {
           "$ref": "#/definitions/userPickup",
-          "title": "@gotags: dynamodbav:\"pick_up\""
+          "title": "@gotags: dynamodbav:\"pick_up,omitempty\""
         },
         "delivery": {
           "$ref": "#/definitions/userDelivery",
-          "title": "@gotags: dynamodbav:\"delivery\""
+          "title": "@gotags: dynamodbav:\"delivery,omitempty\""
         }
       }
     },

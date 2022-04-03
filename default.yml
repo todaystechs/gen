@@ -1,0 +1,101 @@
+env: local-dev
+testport: 8090
+servicename: carriers
+servicefullname: github.com/todaystechs/carriers
+version: "0.0.1"
+enablesignup: true
+sessionKey: "asdfasdfasdfasdf"
+domain: firstshipper.com
+lambdagateway: https://fuiqmlchal.execute-api.us-west-1.amazonaws.com
+# Timeout represents graceful shutdown period. Defaults to 60 sec
+timeout: 5s
+# Configuration for profiling application with new relic
+awshost: firstshipper.com
+aws:
+  cognito:
+    region: us-west-1
+    keyseturl: https://cognito-idp.us-west-1.amazonaws.com/us-west-1_CJcTngKiF/.well-known/jwks.json
+    userpoolid: us-west-1_CJcTngKiF
+    clientid: 12aosvc6p8d9urgn128b6sdm81
+    poolarn: arn:aws:cognito-idp:us-west-1:489071408075:userpool/us-west-1_CJcTngKiF
+  dynamodb:
+    tablename: first_shipper_dev
+    carrierservice:
+      pk: pk
+      sk: sk
+      userprefix: user#
+      businessprefix: business#
+      quoteprefix: qt#
+      bookingprfix: bk#
+      locationprefix: loc#
+
+  redis:
+    host: redis:6379
+    password: 
+    db: 
+newrelic:
+  appname: grpcauth
+  enabled: true
+  license: 63b6f32a332f7900564a89674bfd9c3d6860NRAL
+# cache:
+#   cacheaddr: ""
+#   cachepassword: ""
+#   db: ""
+couchbase:
+  accesskey: BcsjcRknsNXb03SmPlXtursA9jAOnGL5
+  secretkey: oCDe2HYtW3Vx9gCZ1HBT5yMykJIOLJvLVQJFWnhiO0p1SboglIou0wjB6FTBbqhC 
+
+forpasswordexpiry: 10
+server:
+  host: app
+  grpcport: 8090
+  httpport: 8090
+  debugport: 8091
+  timeout: 5
+logger:
+  outputPath: stdout
+  level: info
+  disableStackTrace: false
+accessLogger:
+  outputPath: stdout
+  level: error
+  disableStackTrace: false
+database:
+  host: app
+  port: 5432
+  username: suren
+  password: password
+  dbname:   userservice
+  driver: postgres
+  disablessl: disable
+  migrationpath: DB_MIGRATIONS_PATH
+redis:
+  host: 0.0.0.0:6379
+  password: 
+  db: 
+grpc:
+  maxrecvmsgsizeinmb: 10
+  maxsendmsgsizeinmb: 10 
+sendinblue:
+  apikey: xkeysibs-ad8ff5f481dd0d6c17e4db5b85f0aa3ff2b40545b4da75a36bd9c47596dcd04a-8tTzCwbXDasMA67O
+keysfolder: 
+  folder: ../../configs/keys
+  activekid: private
+zipkin:
+  reporteruri: http://0.0.0.0:9411/api/v2/spans
+  servicename:  userservice
+  probability: 1
+carriers:
+  rapidshipltl:
+    authtokenname: authorization
+    carrier: RAPIDSHIPLTL
+    username: kandelsuren@gmail.com
+    password: Priya@1234
+    email: kandelsuren@gmail.com
+    authurl: https://rapidshipltl.mycarriertms.com/MyCarrierAPI//api/TOKEN
+    rateurl: https://rapidshipltl.mycarriertms.com/MyCarrierAPI//api/Quote/GetQuoteRates
+    addaddressurl : https://rapidshipltl.mycarriertms.com/MyCarrierAPI//api/AddressBook/AddAddress
+    addressesurl: https://rapidshipltl.mycarriertms.com/MyCarrierAPI//api/AddressBook/GetAddresses
+    quotehistoryurl: https://rapidshipltl.mycarriertms.com/MyCarrierAPI//api/SaveQuote/GetSaveQuotes
+
+    
